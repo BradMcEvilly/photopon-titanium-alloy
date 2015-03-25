@@ -1,0 +1,65 @@
+<Alloy>
+	
+	<View  class="container hor"  id="homeScrollView1" >
+		
+		<View class="h-size hor rssView" id="viewRSS" top="2" onClick="openFeedsList">
+			<ImageView class="iconSmall" id="imgRSS">
+			</ImageView>
+			<Label class="p text-left w-size h-size" height="25" top="2" id="lblRSS" color="#fff" >
+				For RSS
+			</Label>
+		</View>
+		
+	
+		
+		
+		<View  class="w-fll h-size hor">
+			<View id="leftColumnTitle" class="h-size w-fill btnCategory"  top="2" left="1" right="1" width='157'  position="left" onClick="openLeftCategory">
+				<View class="h-size hor" position="left">
+					<ImageView class="categoryIcon" id="imgMenCat">
+					</ImageView>
+					<Label class="p-special text-left h-size" top="4" color="#fff" id="lblMen">
+						For Men
+					</Label>
+				</View>
+				
+				<View class="title-right-cat-icon"  visible="true">
+					<ImageView id="imgOpenCat1" width="15" height="15"></ImageView>
+				</View>
+				
+			</View>
+			
+			<View id="rightColumnTitle" class="h-size w-fill btnCategory" top="2" left="1"  right="1" position="right" width='157' onClick="openRightCategory">
+				<View class="h-size hor" position="right">
+					<ImageView class="categoryIcon" id="imgWomenCat"  >
+					</ImageView>
+					<Label class="p-special text-left h-size" top="4" color="#fff" id="lblWomen">
+						For Women
+					</Label>
+				</View>
+				
+				
+				<View class="title-right-cat-icon"  visible="true">
+					<ImageView id="imgOpenCat2" width="15" height="15"></ImageView>
+				</View>
+				
+			</View>
+		</View>
+		
+        <View  top="1" id="leftColumn" class="container"  width='159' bottom="10" >
+        	<ScrollView layout="vertical" id="leftScrollView">
+        	</ScrollView>
+        </View>
+        
+        <View  top="1" id="rightColumn" class="container"  width='159' bottom="10"  >
+        	<ScrollView layout="vertical" id="rightScrollView">
+        	</ScrollView>
+        </View> 
+       
+       
+      
+	</View>
+	
+	
+   
+</Alloy>

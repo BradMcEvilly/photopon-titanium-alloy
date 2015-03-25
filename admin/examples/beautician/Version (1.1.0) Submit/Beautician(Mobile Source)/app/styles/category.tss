@@ -1,0 +1,14 @@
+
+".container" : {
+  backgroundColor:Alloy.CFG.Colors.BackgroundColor
+},
+".categoryView" : {
+	height : Ti.UI.FILL,
+	width : Ti.UI.FILL
+},
+".icon" : {
+	width : 30,
+	height : 30,
+	left : 0,
+	right :5
+}

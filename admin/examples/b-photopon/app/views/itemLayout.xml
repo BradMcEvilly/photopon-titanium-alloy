@@ -1,0 +1,28 @@
+<Alloy>
+		<View id="itemContainerView" class="rowContainer" layout="vertical" onClick="openItemDetail">
+				
+			<ImageView class="image" id="imgItem"/>
+			
+			<View class='bottomContainer hor' >
+				
+				<ImageView class="icon" id="imgLike" >
+				</ImageView>
+				<Label class="labelStyle" id="lblLike" text="10" />		
+				
+				<ImageView class="icon" id="imgReview" left="10" >
+				</ImageView>
+				<Label class="labelStyle" id="lblComment" text="2" />	
+			
+			</View>
+			
+			<View class="line"></View>
+			
+			<View class='bottomContainer'>
+				<Label class="left_num labelStyle" id="lblTitle" text="No-1" />
+				<Label class="price labelStyle" id="lblPrice"  text="S$10" />
+			</View>
+			
+		</View>	
+		
+</Alloy>
+

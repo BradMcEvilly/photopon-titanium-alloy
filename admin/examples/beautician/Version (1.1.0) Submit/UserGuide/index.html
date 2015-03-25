@@ -1,0 +1,1375 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <title>Beautician</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Description">
+        <meta name="author" content="Autor">
+    
+        <!-- loading the css -->
+        <link href="assets/css/bootstrap.css" rel="stylesheet">
+        <link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
+
+        <link href="assets/js/google-code-prettify/prettify.css" rel="stylesheet">
+        
+		<style type="text/css">
+        body {
+            padding-bottom: 40px;
+        }
+		
+		section {padding: 60px 0 0 0;}
+        </style>
+        
+        <!--[if lt IE 9]>
+          <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+    
+        <!-- Various Icons (Favicon, Touch Icon,... -->
+        <link rel="shortcut icon" href="assets/img/favicon.ico">
+        <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+        <link rel="apple-touch-icon" sizes="72x72" href="assets/img/apple-touch-icon-72x72.png">
+        <link rel="apple-touch-icon" sizes="114x114" href="assets/img/apple-touch-icon-114x114.png">
+        
+    </head>
+    
+    
+        
+    <body data-spy="scroll" data-target=".navbar" id="top">
+    
+        <!-- ========================= NAVIGATION BAR >> START ========================= -->
+        <div class="navbar navbar-fixed-top navbar-inverse">
+            <div class="navbar-inner">
+                <div class="container">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </a> 
+                    <a class="brand" href="#overview">Beautician</a><!-- TIP: Change this for the name of your file -->
+                    <div class="nav-collapse">
+                        <!--
+                        <ul class="nav">
+                            <li><a href="#overview">Overview</a></li>
+                            
+                            <li><a href="#markup">Introduction</a></li>
+                            <li><a href="#styles">Quick Start</a></li>
+                            <li><a href="#javascript">JavaScript</a></li>
+                            <li><a href="#psd">Photoshop</a></li>
+                            <li><a href="#installation">Installation</a></li>
+                            
+                            <li>
+                            <div class="dropdown">
+                              <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+                                Mobile
+                                <span class="caret"></span>
+                              </button>
+                              <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
+                                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
+                                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
+                                <li role="presentation" class="divider"></li>
+                                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li>
+                              </ul>
+                            </div>
+                            </li>
+                        </ul>
+                        -->
+                        
+                        <ul class="nav nav-pills">
+                            <li class="active"><a href="#javascript">Overview</a></li>
+                            
+                            <li class="dropdown">
+                                <a href="#" data-toggle="dropdown" class="dropdown-toggle">
+                                Mobile <b class="caret"></b>
+                                </a>
+                                
+                                <ul class="dropdown-menu">
+                                
+                                	<li role="presentation">&nbsp;&nbsp;Setup</li>
+                                	  
+                                    <li><a href="#quickstart">Quick Start</a></li>
+                                    <li><a href="#apiconfig">API Link Config</a></li>
+                                    <li><a href="#theme">Theme Color Config</a></li>
+                                    <li><a href="#language">Language Setting</a></li>
+                                    <li class="divider"></li>
+                                    <li role="presentation">&nbsp;&nbsp;Font Icons Tutorial</li>
+                                    <li><a href="#iconreplace">How to replace another icon?</a></li>
+                                    <li><a href="#iconaddnew">How to add new icon?</a></li>
+                                    <li class="divider"></li>
+                                    <li role="presentation">&nbsp;&nbsp;SDK Dependency </li>
+                                    <li><a href="#ti323">With Ti SDK 3.2.3 GA</a></li>
+                                    <li><a href="#ti330">With Ti SDK 3.3.0 GA</a></li>
+                                    <li class="divider"></li>
+                                    <li role="presentation">&nbsp;&nbsp;Others</li>
+                                    <li><a href="#bonus">Bonus Files</a></li>
+                                    
+                                    
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" data-toggle="dropdown" class="dropdown-toggle">
+                                Backend <b class="caret"></b>
+                                </a>
+                                <ul class="dropdown-menu">
+                                	<li role="presentation">&nbsp;&nbsp;Setup</li>
+                                    <li><a href="#ciconfig">CI Configuration</a></li>
+                                    <li><a href="#import">Import Sample Data</a></li>
+                                    <li class="divider"></li>
+                                    <li role="presentation">&nbsp;&nbsp;Features</li>
+                                    <li><a href="#login">Login To System</a></li>
+                                    <li><a href="#role">Users Role & Access</a></li>
+                                    <li><a href="#modulecrud">Modules & CRUD</a></li>
+                                    <li><a href="#analytics">Data Analytics</a></li>
+                                    <li class="divider"></li>
+                                    <li role="presentation">&nbsp;&nbsp;Modification</li>
+                                    <li><a href="#moduledev">New Module Development</a></li>
+                                    <li class="divider"></li>
+                                    <li role="presentation">&nbsp;&nbsp;APIs</li>
+                                    <li><a href="#apidev">API Management</a></li>
+                                    
+                                    
+                                </ul>
+                            </li>
+                            
+                            <li class="dropdown">
+                                <a href="#" data-toggle="dropdown" class="dropdown-toggle">
+                                Change Logs <b class="caret"></b>
+                                </a>
+                                <ul class="dropdown-menu">
+                                	<li role="presentation">&nbsp;&nbsp;Versions</li>
+                                    <li><a href="#bc110">Beautician(v1.1.0)</a></li>
+                                </ul>
+                            </li>
+                            
+                            
+                        </ul>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- ========================= NAVIGATION BAR >> END ========================= -->
+    
+    
+    
+        <!-- ========================= MAIN CONTAINER >> START ========================= -->
+        <div class="container">
+        
+            <!-- ========================= SECTION: Intro >> START ========================= -->
+            <section id="overview">
+            
+                <div class="hero-unit">
+                    <h1>User Guide</h1>
+                    <p>Powered by <a href="http://panacea-soft.com">Panacea-Soft</a></p>
+                    <p>
+                    <b>Beautician</b> is another full application form Panacea-Soft. It is including <b>Mobile App</b> for iOS(iPhone & iPad) and Android and <b>Backend System</b> for content management. 
+                    </p>
+                    <p class="well well-small">  Thank you for purchasing my full application. If you have any questions that are beyond the scope of this help file, please feel free to email via my user page contact form <a href="#">here</a>. Response time is within 24 hrs.Thanks so much!.</p>
+                    <br>
+                    <center>
+                    <img src="assets/img/powered_by_with_bg.png" >
+                    </center>
+                    
+    
+                </div>
+                
+                <hr>
+                
+                <div class="row-fluid">
+                    <div class="span4">
+                        <table width="100%">
+                            <tr>
+                                <td>Author:</td>
+                                <td>Han</td>
+                            </tr>
+                            <tr>
+                                <td>Contact:</td>
+                                <td><a href="#nowhere">teamps.is.cool@gmail.com</a></td>
+                            </tr>
+                        </table>
+                    </div>
+                    
+                    <div class="span4">
+                        <table width="100%">
+                            <tr>
+                                <td>Current Version:</td>
+                                <td>1.0.0</td>
+                            </tr>
+                            <tr>
+                                <td>Documentation Version</td>
+                                <td>1.0.0</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="span4">
+                        <table width="100%">
+                            <tr>
+                                <td>Created:</td>
+                                <td>19th Aug 2014</td>
+                            </tr>
+                            <tr>
+                                <td>Modified:</td>
+                                <td>N/A</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                
+                <hr>
+                
+            </section>
+            <!-- ========================= SECTION: Intro >> END ========================= -->
+
+
+          
+            <!-- ========================= SECTION: Overview >> START ========================= -->
+            <section id="markup">
+                <div class="page-header">
+                    <h1>Overview <small>{About The Item}</small></h1>
+                </div>
+            
+                <div class="alert alert-info"> <b>Beautician!</b> 
+                It is another full application for any beauty saloon. It develops for not only <u>Mobile App</u> for iOS(iPhone & iPad), <u>Android</u> but also provides <u>Backend</u> for content management. 
+                Mobile App supports for <u>Unlimited Theme Architecture</u> with simple configuration and using <u>FontIcon</u>.
+                <u>RESTFUL API</u>  will handle for data transfer in between Mobile App and Backend System. Moreover, Backend includes <u>Data Analytics</u> module to know easily popular items(Most Interesting Item) from system. <br><br>
+                <b>Used Technology :</b>  Alloy, Titanium SDK 3.2.3 GA, CodeIgniter, Bootstrap, RESTFUL, Google Chart API                      
+                </div>
+                <hr />
+            
+                <div class="row">
+                	
+                    <div class="span6">
+                        
+                         <b>Features Highlight Of Mobile App</b><br>
+                        <span class="glyphicon glyphicon-ok"></span> Categories & Items Detail<br>
+                        <span class="glyphicon glyphicon-ok"></span> Feeds For Promotion & Announcement <br>
+                        <span class="glyphicon glyphicon-ok"></span> Shop Information & Contact Us<br>
+                        <span class="glyphicon glyphicon-ok"></span> User Reviews Items<br>
+                        <span class="glyphicon glyphicon-ok"></span> User Likes Items<br>
+                        <span class="glyphicon glyphicon-ok"></span> User Favourites Items<br>
+                        <span class="glyphicon glyphicon-ok"></span> User Register, Login, Forgot Password<br>
+                        <span class="glyphicon glyphicon-ok"></span> User Profile Management<br>
+                        <span class="glyphicon glyphicon-ok"></span> Pinterest Style Grid View<br>
+                        
+                        <br>
+                        
+                    </div>
+            
+                    <div class="span6"> 
+                 		
+                 		<b>Features Highlight Of Backend</b><br>
+                 		<span class="glyphicon glyphicon-ok"></span> Categories & Items Management<br>
+                 		<span class="glyphicon glyphicon-ok"></span> Shop Information Management<br>
+                 		<span class="glyphicon glyphicon-ok"></span> News Feeds Management<br>
+						<span class="glyphicon glyphicon-ok"></span> Like, Review, Favourite Management<br>
+						<span class="glyphicon glyphicon-ok"></span> Contact Message Management<br>
+						<span class="glyphicon glyphicon-ok"></span> Registered Users Management<br>
+						<span class="glyphicon glyphicon-ok"></span> System Users & Access Management<br>
+						<span class="glyphicon glyphicon-ok"></span> Data Analytics Using Google Chart<br>
+						<span class="glyphicon glyphicon-ok"></span> Database Backup<br>
+                    </div>
+                </div>
+            
+                <hr />
+                
+ 
+  
+      
+  </section>
+  <!-- ========================= SECTION: Overview >> END ========================= -->
+                
+                
+
+  <!-- ========================= SECTION: Import >> START ========================= -->
+            <section id="quickstart">
+                <div class="page-header">
+                    <h1>Quick Start <small>{How to start Titanium Project?}</small></h1>
+                </div>
+                
+                <div class="row">
+                    <div class="span3">
+                        <h3>Import Project</h3>
+                        <p>
+                        	You have to import "Beautician(Mobile Source)" folder from Titanium Studio. 
+                        </p>
+                    </div>
+    
+                    <div class="span9">
+                        <div class="accordion" id="accordion2">
+                            <div class="accordion-group">
+                                <div class="accordion-heading"> <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne"> 1. Make Sure Titanium SDK Version & Environment </a> </div>
+                                <div id="collapseOne" class="accordion-body collapse">
+                                    <div class="accordion-inner">
+                                        <p>
+                                        Please make sure your Titanium SDK version is over 3.2.x. iOS and Android SDK also installed on your computer. <br><b>Recommended SDK : 3.2.3 GA</b> 
+                                        
+                                        <br>
+                                        Note : If use 3.3.0 GA, there is problem to hide navbar at Android. But we try the best to hide that navbar at Android because that issue is come out from SDK.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-group">
+                                <div class="accordion-heading"> <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo"> 2. Import Project </a> </div>
+                                <div id="collapseTwo" class="accordion-body collapse">
+                                    <div class="accordion-inner">
+                                        <p>
+                                        Import source code from "Beautician(Mobile Source)" folder. (File > Import > Existing Mobile Project)
+                                        
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+    
+                </div>
+                <hr />
+
+            </section>
+            <!-- ========================= SECTION: Import >> END ========================= -->
+                
+            
+                
+            
+             
+
+
+            <!-- ========================= SECTION: API Link >> START ========================= -->
+            <section id="apiconfig">
+                <div class="page-header">
+                    <h1>API Link Config <small>{How to change the link to fire API?}</small></h1>
+                </div>
+            
+               
+            
+                <div class="row">
+                    <div class="span3">
+                        <h3>API Link</h3>
+                        <p>
+                        You have to change your API link according your domain name.
+                        </p>
+                    </div>
+                    <div class="span9">
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>File Name</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><code>config.json</code></td>
+                                    <td>
+                                    Please find these config values under "Urls" and change it according your domain.
+                                    <br>
+                                    "domain" : "http://yourdomain.com/beautician/index.php/"
+                                    <br>
+                                    "imageUploadURL" : "http://yourdomain.com/beautician/uploads/"
+                                    
+                                    </td>
+                                </tr>
+                                
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <hr />
+                
+                
+                
+            </section>
+            <!-- ========================= SECTION: API Link >> END ========================= -->
+            
+            <!-- ========================= SECTION: Theme >> START ========================= -->
+            <section id="theme">
+                <div class="page-header">
+                    <h1>Theme Colors Config <small>{How to adjust the value for app theme?}</small></h1>
+                </div>
+            
+               
+            
+                <div class="row">
+                    <div class="span3">
+                        <h3>Color Config</h3>
+                        <p>
+                        You could adjust color config value for your app theme color. 
+                        </p>
+                    </div>
+                    <div class="span9">
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>File Name</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><code>config.json</code></td>
+                                    <td>
+                                    Please find these config values under "Colors" and change it according your domain. 
+                                    <br><br>
+                                 
+                                    
+                                    <span class="glyphicon glyphicon-arrow-right"></span>
+                                    Changing Main Colors<br>
+                                    "MainColor" : "#6BD662" //to support the main color <br>
+                                    "MainColor_Dark" : "#40803B" <br><br>
+                                    
+                                    <span class="glyphicon glyphicon-arrow-right"></span> Changing Profile Colors  <br>
+                                    "BackgroundColor" : "#FFFFFF" <br>
+                                    "ProfileTabColor" : "#CCCCCC" <br><br>
+                                    
+                                    <span class="glyphicon glyphicon-arrow-right"></span> Changing Validation Color   <br>
+                                    "BackgroundColor" : "#FFFFFF" <br><br>
+                                   
+                                    <span class="glyphicon glyphicon-arrow-right"></span> Changing Icons Colors  <br>
+                                    "IconColor" : "#454545" <br>
+                                    "ItemIconColor_Dark" : "#888888" <br>
+                                    "ItemIconColor" : "#DDDDDD" <br>
+                                    "SideMenuIconColor" : "#6BD662" <br>
+                                    "IconWhite":"#FFFFFF" <br><br>
+                                    
+                                    <span class="glyphicon glyphicon-arrow-right"></span> Changing Text Colors <br>
+                                    "TextColor" : "#FFFFFF"<br>
+                                    "TextColor2" : "#333333"<br><br>
+                                    
+                                    
+                                    </td>
+                                </tr>
+                                
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <hr />
+                
+                
+                
+            </section>
+            <!-- ========================= SECTION: Theme >> END ========================= -->
+            
+            
+            <!-- ========================= SECTION: Language >> START ========================= -->
+            <section id="language">
+                <div class="page-header">
+                    <h1>Language Setting <small>{How to change another language?}</small></h1>
+                </div>
+            
+               
+            
+                <div class="row">
+                    <div class="span3">
+                        <h3>Language Config</h3>
+                        <p>
+                        You could able to add your native language for your mobile app.
+                        </p>
+                    </div>
+                    <div class="span9">
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>File Name</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><code>config.json</code></td>
+                                    <td>
+                                    Default language is English so please find these config values under "Languages". 
+                                    <br><br>
+                                 
+                                    
+                                    <span class="glyphicon glyphicon-arrow-right"></span>
+                                    Change Another Language<br>
+                                    <br><br>
+                                    
+<pre class="prettyprint">
+
+"Languages":{
+	"lblUserName" : "XXXXXXX",
+	"lblPassword" : "YYYYYYY",
+}
+</pre>
+                                    
+                                    
+                                    
+                                    
+                                    </td>
+                                </tr>
+                                
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <hr />
+                
+                
+                
+            </section>
+            <!-- ========================= SECTION: Language >> END ========================= -->
+            
+     <!-- ========================= SECTION: Replace Icon >> START ========================= -->
+            <section id="iconreplace">
+                <div class="page-header">
+                    <h1>How to replace another icon? <small>{Replace another font icon}</small></h1>
+                </div>
+                
+                <div class="row">
+                    <div class="span3">
+                        <h3>Replace Icon</h3>
+                        <p>
+                        	If you wish to replace another font icon, here is how to do.
+                        </p>
+                    </div>
+    
+                    <div class="span9">
+                        <div class="accordion" id="accordion2">
+                            <div class="accordion-group">
+                                <div class="accordion-heading"> <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne"> 1. Available Fonts Icon List </a> </div>
+                                <div id="collapseOne" class="accordion-body collapse">
+                                    <div class="accordion-inner">
+                                        <p>
+                                       There is “FontIcon” folder inside our main files. When you open demo.html file, you will see something like this. 
+                                        </p>
+                                        <img src="assets/img/demo_html.png">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-group">
+                                <div class="accordion-heading"> <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo"> 2. Copy Font Icon Name </a> </div>
+                                <div id="collapseTwo" class="accordion-body collapse">
+                                    <div class="accordion-inner">
+                                        <p>
+                                        You need to copy that icon name to change another icon.
+                                        </p>
+                                        <img src="assets/img/fonticon_name.png">
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="accordion-group">
+                                <div class="accordion-heading"> <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo"> 3. Example </a> </div>
+                                <div id="collapseTwo" class="accordion-body collapse">
+                                    <div class="accordion-inner">
+                                        <p>
+                                       If you want to change “Profile” icon( From Side Menu) to another icon, you need to change at here. 
+                                        
+                                        </p>
+                                        <img src="assets/img/side_menu.png">
+                                        <p>
+                                        var profileIcon = fontIconLoader.getIcon("panacea","profile",35,{color:Alloy.CFG.Colors.SideMenuIconColor});
+                                        <br><br>
+                                        profile is icon name, so you need to replace that icon name which you copy at step 2. 
+                                        <br><br>
+                                        Let’s say if you copy “profile2” at step 2. It will be like this.
+                                        <br><br>
+                                        var profileIcon = fontIconLoader.getIcon("panacea","profile2”,35,{color:Alloy.CFG.Colors.SideMenuIconColor});
+                                        <br><br>
+                                        <b>Note : If you new icon is not refresh, please uninstall and install your app.
+                                        </b>
+                                        </p>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+    
+                </div>
+                <hr />
+
+            </section>
+            <!-- ========================= SECTION: Replace Icon >> END ========================= -->
+			
+ <!-- ========================= SECTION: Replace Icon >> START ========================= -->
+            <section id="iconaddnew">
+                <div class="page-header">
+                    <h1>How to add new icon? <small>{Add new font icon}</small></h1>
+                </div>
+                
+                <div class="row">
+                    <div class="span3">
+                        <h3>New Icon</h3>
+                        <p>
+                        	Actually, you can get a lot of icons at our “panacea” font. But if you want to add new icon, here is the step.
+                        </p>
+                    </div>
+    
+                    <div class="span9">
+                        <div class="accordion" id="accordion2">
+                            <div class="accordion-group">
+                                <div class="accordion-heading"> <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne"> 1. Import "selection.json" </a> </div>
+                                <div id="collapseOne" class="accordion-body collapse">
+                                    <div class="accordion-inner">
+                                        <p>
+                                      There is “selection.json” at “FontIcon” folder. You can import *selection.json* back to the IcoMoon app using the *Import Icons* button (or via Main Menu > Manage Projects) to retrieve your icon selection. This is font icon generating website https://icomoon.io/
+                                        </p>
+                                        <img src="assets/img/selection_json.png">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-group">
+                                <div class="accordion-heading"> <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo"> 2. Playing at icomoon.io </a> </div>
+                                <div id="collapseTwo" class="accordion-body collapse">
+                                    <div class="accordion-inner">
+                                        <p>
+                                        Assume that you already import your icons at icomoon.io. Then you need to download that new font icon. Please click to “Download” button at bottom of page. 
+                                        </p>
+                                         <img src="assets/img/icomoon_io.png"> 
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="accordion-group">
+                                <div class="accordion-heading"> <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo"> 3. selection.json to panacea.json</a> </div>
+                                <div id="collapseTwo" class="accordion-body collapse">
+                                    <div class="accordion-inner">
+                                        <p>
+                                      After download and unzip, you will see like our “FontIcon”. You copy that “selection.json” file into Ti project folder (app\assets\fontmaps). Then you replace file name as “panacea.json”.  
+                                        </p>
+                                        <img src="assets/img/panacea_json.png">
+                                                                                
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="accordion-group">
+                                <div class="accordion-heading"> <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo"> 4. panacea.ttf</a> </div>
+                                <div id="collapseTwo" class="accordion-body collapse">
+                                    <div class="accordion-inner">
+                                        <p>
+                                     You need to copy “panacea.ttf” from “fonts” folder into “app\assets\fonts”. If already have, you can override it.  
+                                        </p>
+                                        <img src="assets/img/panacea_font.png">
+                                                                                
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="accordion-group">
+                                <div class="accordion-heading"> <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo"> 5. Checking</a> </div>
+                                <div id="collapseTwo" class="accordion-body collapse">
+                                    <div class="accordion-inner">
+                                        <p>
+                                    You can make sure you imported font inside or not. So, please open “panacea.json” from “app\assets\fontmaps”
+                                    You can search by typing your icon name.  
+                                        </p>
+                                      
+                                                                                
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="accordion-group">
+                                <div class="accordion-heading"> <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo"> 6. New Font Icon </a> </div>
+                                <div id="collapseTwo" class="accordion-body collapse">
+                                    <div class="accordion-inner">
+                                        <p>
+                                   Assume that everything is going well and you can see your new icon also inside. Then you just need to replace at that line.
+                                    <br><br> 
+                                    var profileIcon = fontIconLoader.getIcon("panacea","oldicon”,35,{color:Alloy.CFG.Colors.SideMenuIconColor});
+                                    <br><br>
+                                   
+                                    var profileIcon = fontIconLoader.getIcon("panacea”,”newicon”,35,{color:Alloy.CFG.Colors.SideMenuIconColor});     </p>
+                                        
+                                                                                
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+    
+                </div>
+                <hr />
+
+            </section>
+            <!-- ========================= SECTION: Replace Icon >> END ========================= -->		
+            
+              <!-- ========================= SECTION: 323 >> START ========================= -->
+            <section id="ti323">
+                <div class="page-header">
+                    <h1>With Ti SDK 3.2.3 GA <small> {To work well with Ti SDK 3.2.3}</small></h1>
+                </div>
+                
+				<div class="row">
+	                <div class="span3">
+	                    <h3>Ti SDK 3.2.3</h3>
+	                    <p>
+	                    	Beautician version 1.1.0 was implemented to work well with Ti latest SDK 3.3.0.
+	                    	But if you want to work previous 3.2.3, please take a look.
+	                    
+	             
+	                    </p>
+	                </div>
+	
+	                <div class="span9">
+	                    <div class="accordion" id="accordion2">
+	                        <div class="accordion-group">
+	                            <div class="accordion-heading"> <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne"> 1. Replace tiapp.xml </a> </div>
+	                            <div id="collapseOne" class="accordion-body collapse">
+	                                <div class="accordion-inner">
+	                                    <p>
+	                                   You need to replace tiapp.xml file. Please download from here. <br>
+	                                   https://dl.dropboxusercontent.com/u/5222311/Beautician/TiSDK3.2.3/tiapp.xml
+	                                    </p>
+	                                </div>
+	                            </div>
+	                        </div>
+	                        <div class="accordion-group">
+	                            <div class="accordion-heading"> <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo"> 2. Delete "platform" folder </a> </div>
+	                            <div id="collapseTwo" class="accordion-body collapse">
+	                                <div class="accordion-inner">
+	                                    <p>
+	                                    You need to delete "platform" folder from Beautician Project. After delete it, please make sure to refresh project. (Right Click -> Refresh)
+	                                    </p>
+	                                    <img src="assets/img/platform.png">
+	                                    
+	                                    <br><br>
+	                                    
+	                                    Please <b>clean</b> your project also. (Project->Clean->Beautician)
+	                                     
+	                                </div>
+	                            </div>
+	                        </div>
+	                        
+	                        
+	                        
+	                    </div>
+	                </div>
+
+            	</div>                
+                <hr />
+                
+            </section>
+            <!-- ========================= SECTION: 323 >> END ========================= -->
+            
+           <!-- ========================= SECTION: 330 >> START ========================= -->
+            <section id="ti330">
+                <div class="page-header">
+                    <h1>With Ti SDK 3.3.0 GA <small> {To work well with Ti SDK 3.3.0}</small></h1>
+                </div>
+                
+				<div class="row">
+	                <div class="span3">
+	                    <h3>Ti SDK 3.3.0</h3>
+	                    <p>
+	                    Assume that you are using with Ti SDK 3.2.3 GA. So, you want to use with latest Ti SDK 3.3.0 GA. 
+	                    Yes, there are some issues especially android theme and navbar. So, I would like to share about it.	
+	                    </p>
+	                </div>
+	
+	                <div class="span9">
+	                    <div class="accordion" id="accordion2">
+	                        <div class="accordion-group">
+	                            <div class="accordion-heading"> <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne"> 1. Replace tiapp.xml </a> </div>
+	                            <div id="collapseOne" class="accordion-body collapse">
+	                                <div class="accordion-inner">
+	                                    <p>
+	                                   You need to replace tiapp.xml file. Please download from here. <br>
+	                                   https://dl.dropboxusercontent.com/u/5222311/Beautician/TiSDK3.3.0/tiapp.xml
+	                                    </p>
+	                                </div>
+	                            </div>
+	                        </div>
+	                        <div class="accordion-group">
+	                            <div class="accordion-heading"> <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo"> 2. Add "platform" folder </a> </div>
+	                            <div id="collapseTwo" class="accordion-body collapse">
+	                                <div class="accordion-inner">
+	                                    <p>
+	                                    You need to add "platform" folder into Beautician Project.  Please download from here.
+	                                    <br>
+	                                    https://dl.dropboxusercontent.com/u/5222311/Beautician/TiSDK3.3.0/platform.zip
+	                                    <br><br>
+	                                    After added it, please make sure to refresh project. (Right Click -> Refresh)
+	                                    </p>
+	                                    <img src="assets/img/platform.png">
+	                                    
+	                                    <br><br>
+	                                    
+	                                    Please <b>clean</b> your project also. (Project->Clean->Beautician)
+	                                     
+	                                </div>
+	                            </div>
+	                        </div>
+	                        
+	                        
+	                        
+	                    </div>
+	                </div>
+
+            	</div>                
+                <hr />
+                
+            </section>
+            <!-- ========================= SECTION: 323 >> END ========================= -->
+            
+            <!-- ========================= SECTION: Bonus >> START ========================= -->
+            <section id="bonus">
+                <div class="page-header">
+                    <h1>Bonus Files <small>{PSD files as Bonus}</small></h1>
+                </div>
+                
+                <span class="glyphicon glyphicon-gift"></span> App Logo (1024 x 1024) <br>
+                <span class="glyphicon glyphicon-gift"></span> Splash Screen <br>
+                <span class="glyphicon glyphicon-gift"></span> App Design Pages <br>
+                
+                <hr />
+                
+            </section>
+            <!-- ========================= SECTION: Bonus >> END ========================= -->
+            
+            <!-- ========================= SECTION: Configuration >> START ========================= -->
+            <section id="ciconfig">
+                <div class="page-header">
+                    <h1>CI Configuration <small>{How to change configuration?}</small></h1>
+                </div>
+            
+               
+            
+                <div class="row">
+                    <div class="span3">
+                        <h3>Configuration</h3>
+                        <p>
+                        You have to change some configuration at CodeIgniter.
+                        </p>
+                    </div>
+                    <div class="span9">
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>File Name</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><code>config.php</code></td>
+                                    <td>
+                                    You have to change email config for for sending email like forgot password, the system will use the following email address.(Path : application/config/config.php) <br><br>
+                                    
+                                    $config['sender_email'] = your hosting email address;<br>
+                                    $config['sender_name'] = sender name;
+                                    
+                                    </td>
+                                </tr>
+                                
+                                <tr>
+                                    <td><code>database.php</code></td>
+                                    <td>
+                                    You have to change database configuration according your environment.(Path : application/config/database.php) <br><br>
+                                    
+                                    $db['default']['hostname'] = database host name;<br>
+                                    $db['default']['username'] = database username;<br>
+                                    $db['default']['password'] = database password;<br>
+                                    $db['default']['database'] = database name;<br>
+                                    
+                                    </td>
+                                </tr>
+                                
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <hr />
+                
+                
+                
+            </section>
+            <!-- ========================= SECTION: Configuration >> END ========================= -->
+            
+             <!-- ========================= SECTION: Import >> START ========================= -->
+            <section id="import">
+                <div class="page-header">
+                    <h1>Import Sample Database <small>{How to import sample database?}</small></h1>
+                </div>
+                
+                <div class="row">
+                    <div class="span3">
+                        <h3>Import Database</h3>
+                        <p>
+                        	You have to import sample data into your MySQL database. 
+                        </p>
+                    </div>
+    
+                    <div class="span9">
+                        <div class="accordion" id="accordion2">
+                            <div class="accordion-group">
+                                <div class="accordion-heading"> <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne"> 1. Create Database </a> </div>
+                                <div id="collapseOne" class="accordion-body collapse">
+                                    <div class="accordion-inner">
+                                        <p>
+                                       Please go to your MySQL DB and create new database so called "beautician" 
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-group">
+                                <div class="accordion-heading"> <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo"> 2. Select Script File </a> </div>
+                                <div id="collapseTwo" class="accordion-body collapse">
+                                    <div class="accordion-inner">
+                                        <p>
+                                        Go to "Import Tab". Then please click "Browse" button to select sample data sql script. 
+                                        
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="accordion-group">
+                                <div class="accordion-heading"> <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo"> 3. Import </a> </div>
+                                <div id="collapseTwo" class="accordion-body collapse">
+                                    <div class="accordion-inner">
+                                        <p>
+                                        You may need to select "sample_data.sql" from "Sample Data" fodler. Finally you click to "Go" button to import data into your database. 
+                                        
+                                        </p>
+                                        <img src="assets/img/importsql.jpg">
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+    
+                </div>
+                <hr />
+
+            </section>
+            <!-- ========================= SECTION: Import >> END ========================= -->
+			 
+			 <!-- ========================= SECTION: Login >> START ========================= -->
+			 <section id="login">
+			     <div class="page-header">
+			         <h1>Login To Backend <small>{About Login Credential?}</small></h1>
+			     </div>
+			 
+			    
+			 
+			     <div class="row">
+			         <div class="span3">
+			             <h3>Login Credential</h3>
+			             <p>
+			             After you setup successfully, you can login to backend with different user role. Please type : http://yourdomain.com/beautician/
+			             </p>
+			         </div>
+			         <div class="span9">
+			             <table class="table table-bordered table-striped">
+			                 <thead>
+			                     <tr>
+			                         <th>User Role</th>
+			                         <th>Description</th>
+			                     </tr>
+			                 </thead>
+			                 <tbody>
+			                     <tr>
+			                         <td><code>Admin User</code></td>
+			                         <td>
+			                         You can login with admin user into system.
+			                         
+			                         <br><br>
+			                         
+			                         username : admin <br>
+			                         password : admin <br>
+			                         
+			                         </td>
+			                     </tr>
+			                     
+			                     <tr>
+			                         <td><code>Manager User</code></td>
+			                         <td>
+			                         You can login with manager user into system.
+			                         
+			                         <br><br>
+			                         
+			                         username : manager <br>
+			                         password : manager <br>
+			                         
+			                         </td>
+			                     </tr>
+			                     
+			                 </tbody>
+			             </table>
+			         </div>
+			     </div>
+			     
+			     <hr />
+			     
+			     
+			     
+			 </section>
+			 <!-- ========================= SECTION: Login >> END ========================= -->
+			 
+
+            <!-- ========================= SECTION: Role >> START ========================= -->
+            <section id="role">
+                <div class="page-header">
+                    <h1>User Role & Access <small>{About different user role and access right?}</small></h1>
+                </div>
+                <p>There are <b>Three</b> types of user roles. They are </p>
+                <ul class="thumbnails">
+                    <li class="span4">
+                        <div class="thumbnail"> 
+                            <div class="thumb-info">
+                                <span class="glyphicon glyphicon-user"></span>
+                                <b>  Administrator</b> <br>
+                                Full access for system such as add, edit, delete, publish and ban.
+                            </div>
+                        </div>
+                    </li>
+                    <li class="span4">
+                        <div class="thumbnail">
+                            <div class="thumb-info">
+                                <span class="glyphicon glyphicon-user"></span>
+                                <b>  Manager</b> <br>
+                                Partial access for system such as add, edit, delete and publish.
+                            </div>
+                        </div>
+                    </li>
+                    <li class="span4">
+                        <div class="thumbnail"> 
+                            <div class="thumb-info">
+                                <span class="glyphicon glyphicon-user"></span>
+                                 <b>  User</b> <br>
+                                 Basic access for system such as add and edit.
+                                </div>
+                        </div>
+                    </li>
+                    
+                </ul>
+                <hr>                
+            </section>
+            <!-- ========================= SECTION: Role >> START ========================= -->
+            		 
+            
+            <!-- ========================= SECTION: CRUD >> START ========================= -->
+            <section id="modulecrud">
+                <div class="page-header">
+                    <h1>Modules & CRUD <small>{Module Overview and CRUD?}</small></h1>
+                </div>
+                After login successfully to Backend, you may see Dashboard Menu at right side. <br>
+                <span class="glyphicon glyphicon-arrow-right"></span> You could manage and CRUD the content for "Categories", "Items", "Feeds" and "Shop Information".
+                 <br>
+                 <span class="glyphicon glyphicon-arrow-right"></span> You could edit and delete for "Item Likes", "Item Reviews"  "Item Favourites" and "Registered User" because those data will come from Mobile App.<br> 
+                 <span class="glyphicon glyphicon-arrow-right"></span> You could create system user and set their specific role & access for system.<br>
+                 <span class="glyphicon glyphicon-arrow-right"></span> You could analyses for your data using Google Charts. (For Eg; What is the most interesting item?)<br>
+                 <span class="glyphicon glyphicon-arrow-right"></span> You could export and backup for your database.
+                 
+                 <br><br>
+                 
+                 
+                 <div class="row">
+                     <div class="span3">
+                         <b>Example</b><br>
+                         <p>
+                         	I would like to show you one of example for module CRUD.
+                         </p>
+                     </div>
+     
+                     <div class="span9">
+                         <div class="accordion" id="accordion2">
+                             <div class="accordion-group">
+                                 <div class="accordion-heading"> <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne"> 1. Listview </a> </div>
+                                 <div id="collapseOne" class="accordion-body collapse">
+                                     <div class="accordion-inner">
+                                         <p>
+                                         When you click "Items" from menu, you will see Items Listview. You can easily search and filter from on that page. Moreover, you can do publish/unpublish, edit and delete item also.
+                                         </p>
+                                         <img src="assets/img/list.png">
+                                     </div>
+                                 </div>
+                             </div>
+                             <div class="accordion-group">
+                                 <div class="accordion-heading"> <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo"> 2. Add New </a> </div>
+                                 <div id="collapseTwo" class="accordion-body collapse">
+                                     <div class="accordion-inner">
+                                         <p>
+                                         If you want to add new item, please click "+ Add New Item" button. Then the page will redirect to entry form. After you filled all necessary data, please click "Submit" button to save into system.
+                                         
+                                         </p>
+                                          <img src="assets/img/add.png">
+                                     </div>
+                                 </div>
+                             </div>
+                             
+                         </div>
+                     </div>
+     
+                 </div>
+                 
+                 
+                <hr>                
+            </section>
+            <!-- ========================= SECTION: CRUD >> START ========================= -->
+            		 
+            
+            <!-- ========================= SECTION: Analytic >> START ========================= -->
+           <section id="analytics">
+               <div class="page-header">
+                   <h1>Data Analytics <small>{Data Vistualization With Google Charts API?}</small></h1>
+               </div>
+               When user touch item from app, we captured for those user interesting because it will useful for your business analysis. <br>
+                <br>
+                <div class="row">
+                    <div class="span3">
+                        <b>Analytics</b><br>
+                        <p>
+                        	For Eg; Most Popular Item From "Men" Category.
+                        </p>
+                    </div>
+    
+                    <div class="span9">
+                        <div class="accordion" id="accordion2">
+                            <div class="accordion-group">
+                                <div class="accordion-heading"> <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne"> 1. Most Popular Item </a> </div>
+                                <div id="collapseOne" class="accordion-body collapse">
+                                    <div class="accordion-inner">
+                                        <p>
+                                        Please click "Analytic" from menu and then select category from dropdown menu. After that, click to "Generate Report" button to see the result.
+                                        </p>
+                                        <img src="assets/img/analytics.png">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            
+                        </div>
+                    </div>
+    
+                </div>
+                
+                
+               <hr>                
+           </section>
+           <!-- ========================= SECTION: Analytic >> START ========================= -->
+           	
+           	
+      <!-- ========================= SECTION: Module >> START ========================= -->
+         <section id="moduledev">
+             <div class="page-header">
+                 <h1>Module Development<small>{How to customize?}</small></h1>
+             </div>
+             If you want more than our default module, you may need to customize on it. so we would like to share how you can extend from your system.
+             <br>
+              <br>
+              <div class="row">
+                  <div class="span3">
+                      <b>Module Access</b><br>
+                      <p>
+                      	For Eg; You can access module access.
+                      </p>
+                  </div>
+  
+                  <div class="span9">
+                      <div class="accordion" id="accordion2">
+                          <div class="accordion-group">
+                              <div class="accordion-heading"> <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne"> 1. Create Module Data </a> </div>
+                              <div id="collapseOne" class="accordion-body collapse">
+                                  <div class="accordion-inner">
+                                      <p>
+                                      Please add your module name(Controller Name) and module description(Description at Sidebar Menu) at modules table.
+                                      </p>
+                                  </div>
+                              </div>
+                          </div>
+                          
+                          <div class="accordion-group">
+                              <div class="accordion-heading"> <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne"> 2. Set Module Permission </a> </div>
+                              <div id="collapseOne" class="accordion-body collapse">
+                                  <div class="accordion-inner">
+                                      <p>
+                                      Please create controller with module name under beautician/application/controllers folder. <br><br>
+                                       
+                                      </p>
+                                      <span class="glyphicon glyphicon-arrow-right"></span> require permission.php <br>
+                                      <span class="glyphicon glyphicon-arrow-right"></span> extends permission class <br>
+                                      <span class="glyphicon glyphicon-arrow-right"></span> call parent::__construct() at constructor with module name as a parameter <br>
+                                      <span class="glyphicon glyphicon-arrow-right"></span> for add function, call $this->check_access('add'); <br>
+                                      <span class="glyphicon glyphicon-arrow-right"></span> for edit function, call $this->check_access('edit');<br>
+                                      <span class="glyphicon glyphicon-arrow-right"></span> for delete function, call $this->check_access('delete');<br>
+                                      <span class="glyphicon glyphicon-arrow-right"></span> for publish function, call $this->check_access('publish');<br>
+                                      <span class="glyphicon glyphicon-arrow-right"></span> for ban function, call $this->check_access('ban');<br>
+                                      <span class="glyphicon glyphicon-arrow-right"></span> for view function, you can use template system like $this->load->view('template',$data);<br>
+                                      
+                                  </div>
+                              </div>
+                          </div>
+                          
+                      </div>
+                  </div>
+  				 
+  				
+              </div>
+              
+              <div class="row">
+                  <div class="span3">
+                      <b>Create New Module</b>
+                      <p>
+                      For Eg; Let's create new book module.
+                      </p>
+                  </div>
+                  <div class="span9">
+                      <table class="table table-bordered table-striped">
+                          <thead>
+                              <tr>
+                                  <th>Name</th>
+                                  <th>Description</th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                              <tr>
+                                  <td><code>modules</code></td>
+                                  <td>Please insert at Module Table from Database. <br>
+                                  	module_name = 'books'
+                                  	module_description = 'Books'
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <td><code>Controllers</code></td>
+                                  <td>
+                                  Please create Books <b>Controller</b>(books.php) under beautician/application/controllers folder. <br><br>
+<pre class="prettyprint js linenums:1">
+require_once('permission.php');
+class Books extends permission{
+ function __construct(){
+     parent::__construct('books');
+ }
+  
+ function add(){
+     $this->check_access('add');
+     //you code here
+ }
+  
+ function index(){
+     //parameter must be array and key must be 'content'
+     $this->load->view('template',
+     array('content'=>'Hello, World!'));
+ }
+
+ function edit(){
+     $this->check_access('edit');
+     //you code here
+ }
+}
+});</pre>
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <td><code>Views</code></td>
+                                  <td>
+                                  You could create all your view files under "application/views/books/" folder<br>
+                                  
+                                  </td>
+                              </tr>
+                              
+                              <tr>
+                                  <td><code>Models</code></td>
+                                  <td>
+                                  You could create all your view files under "application/models" folder<br>
+                                  
+                                  </td>
+                              </tr>
+                              
+                              <tr>
+                                  <td><code>Permission</code></td>
+                                  <td>Please give Permission yourself for that module.To access the module, go to the backend. Edit yourself at System Users Module and give permission for that module.</td>
+                              </tr>
+                              
+                              <tr>
+                                  <td><code>autoload.php</code></td>
+                                  <td>Please make sure to load your model at config\autoload.php</td>
+                              </tr>
+                              
+                              
+                              
+                          </tbody>
+                      </table>
+                  </div>
+              </div>
+              
+              
+             <hr>                
+         </section>
+         <!-- ========================= SECTION: Module >> START ========================= -->
+         		
+       	<!-- ========================= SECTION: API >> START ========================= -->
+       	<section id="apidev">
+       	    <div class="page-header">
+       	        <h1>API Management <small>{How to manage APIs?}</small></h1>
+       	    </div>
+       	    <p>
+       	    There is RESTFUL API in between mobile app and backend system. So we would like to point where is it for our API stuff. All the api classes are located under beautician/application/controllers/api folder.
+       	    </p>
+       	    
+       	    <hr>                
+       	</section>
+       	<!-- ========================= SECTION: API >> START ========================= -->
+       	
+       	<!-- ========================= SECTION: BC110 >> Start ========================= -->
+       	<section id="bc110">
+       	    <div class="page-header">
+       	        <h1>Beautician(1.1.0) <small>{What's update in version 1.1.0?}</small></h1>
+       	    </div>
+       	    <p>
+       	    
+       	    <span class="glyphicon glyphicon glyphicon-bullhorn"></span> <b>Version : 1.1.0 </b> <br><br>
+       	    
+       	    <span class="glyphicon glyphicon glyphicon-bullhorn"></span> <b>Released Date : 11 Sept 2014</b> <br><br>
+       	    
+       	    <span class="glyphicon glyphicon glyphicon-bullhorn"></span> <b>What’s New Feature?</b> <br>
+       	    1) Top 10 (Popular Items) 
+       	    
+       	    <br><br>
+       	    <span class="glyphicon glyphicon glyphicon-bullhorn"></span> <b>What’s Improvement?</b><br>
+       	    1) {Android} SideMenu click event bug with Ti SDK 3.3.0 GA <br> 
+       	    2) {Android} Hide Navbar using custom theme at SDK 3.3.0 GA<br>     	    
+       	    3) To Support For Latest SDK 3.3.0 GA <br>
+       	
+       	    <br><br>
+       	    <span class="glyphicon glyphicon glyphicon-bullhorn"></span> <b>Bug Fixed</b><br>
+       	    1) Logout Bug <br>
+       	    2) Profile Bugs <br>
+       	    3) User already exist bug <br>
+       	    <br><br>
+       	   
+       	    
+       	    </p>
+       	    
+       	    <hr>                
+       	</section>
+       	<!-- ========================= SECTION: BC110 >> END ========================= -->
+       	
+       			 	
+         
+        
+            <footer>
+                <a href="http://panacea-soft.com"><p>&copy; Panacea-Soft 2014</p></a>
+            </footer>
+            
+        </div>
+        <!-- ========================= MAIN CONTAINER >> END ========================= -->
+         
+       
+      
+
+        <!-- loading javascripts -->
+		<script src="assets/js/jquery.js"></script> 
+        <script src="assets/js/bootstrap.min.js"></script>
+        <script src="assets/js/google-code-prettify/prettify.js"></script>
+        
+        <!-- init javascripts -->
+        <script src="assets/js/init.js"></script>
+         
+    </body>
+    
+</html>

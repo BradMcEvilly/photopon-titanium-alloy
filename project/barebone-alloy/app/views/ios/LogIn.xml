@@ -1,0 +1,19 @@
+<Alloy>
+	<Window id="winLogIn" title="Log In" onOpen="winLogInOpenHandler">
+		<TableView id="logInTable">
+			<TableViewRow id="row">
+				<TextField id="emailField" onChange="validateLogIn" onReturn="focusNext"/>
+			</TableViewRow>
+			<TableViewRow id="row">
+				<TextField id="passwordField" onChange="validateLogIn" passwordMask="true" onReturn="submitBtnHandler"/>
+			</TableViewRow>
+			<TableViewRow id="row">
+				<View id="btnLogIn" visible="false">
+					<Label id="lblLogIn" />
+					<ActivityIndicator id="ind">
+					</ActivityIndicator>
+				</View>
+			</TableViewRow>
+		</TableView>
+	</Window>
+</Alloy>

@@ -1,0 +1,23 @@
+<Alloy>
+	<Window id="winMainTabGroup">
+		<TabGroup id="mainTabGroup" navBarHidden="true" class="container">
+	        <Tab id="tab1" title="Tab 1">
+	            <Window id="winLeft" title="Tab 1">
+	               <Label id="label1" color="#999">I am Window 1</Label>
+	            </Window>
+	        </Tab>
+	        <Tab id="tab2" title="Tab 2">
+	            <Window id="winCenter" title="Tab 2">
+	                <Label id="label2" color="#999">I am Window 2</Label>
+	            </Window>
+	        </Tab>
+	        <Tab id="tab3" title="Tab 3">
+	            <Window id="winRight" title="Tab 2">
+	                <Label id="label2" color="#999">I am Window 3</Label>
+	            </Window>
+	        </Tab>
+	        
+	        <!-- Use the Require tag to include external Ti.UI.Tab views -->
+	    </TabGroup>
+	</Window>
+</Alloy>

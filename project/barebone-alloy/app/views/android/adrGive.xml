@@ -1,0 +1,8 @@
+<Alloy>
+	<View id="winGive">
+		<TableView id="giveTable">
+		</TableView>
+		<ActivityIndicator id="ind">
+		</ActivityIndicator>
+	</View>
+</Alloy>

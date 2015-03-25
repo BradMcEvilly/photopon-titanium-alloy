@@ -1,0 +1,14 @@
+eclipse.preferences.version=1
+iosLaunchConfigurationAttributes/ATTR_MINIFY=true
+iosLaunchConfigurationAttributes/ATTR_PROJECT_NAME=barebone-alloy
+iosLaunchConfigurationAttributes/appid=com.titaniumtemplates.barebonealloy
+iosLaunchConfigurationAttributes/certificate=Brad McEvilly (C869KW9YK3)
+iosLaunchConfigurationAttributes/keychain=
+iosLaunchConfigurationAttributes/sdk_version=8.0.0
+iosLaunchConfigurationAttributes/uuid=97F955FC-A9BD-43A6-9119-F42C4CC8D52B
+provisioning_profiles/development/97F955FC-A9BD-43A6-9119-F42C4CC8D52B/appid=*
+provisioning_profiles/development/97F955FC-A9BD-43A6-9119-F42C4CC8D52B/name=iOS Team Provisioning Profile\: *
+provisioning_profiles/development/97F955FC-A9BD-43A6-9119-F42C4CC8D52B/uuid=97F955FC-A9BD-43A6-9119-F42C4CC8D52B
+provisioning_profiles/development/D6B548D8-39A8-474D-9184-97A1B9057654/appid=com.photopon.Photopon
+provisioning_profiles/development/D6B548D8-39A8-474D-9184-97A1B9057654/name=PhotoponAppDevelopment
+provisioning_profiles/development/D6B548D8-39A8-474D-9184-97A1B9057654/uuid=D6B548D8-39A8-474D-9184-97A1B9057654

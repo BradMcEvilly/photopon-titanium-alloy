@@ -1,0 +1,111 @@
+".container" : {
+	backgroundColor : "#EEE",
+	//allowsSelection : 'none',
+	//hasChild: false,
+    height: Ti.UI.FILL,
+    borderWidth: 0,
+    bubbleParent : true,
+    borderColor: 'transparent',
+    separatorStyle: Titanium.UI.iPhone.TableViewSeparatorStyle.NONE,
+	separatorColor: 'transparent',
+	scrollIndicatorStyle : 'none'
+},
+".rowContainer" : {
+	borderRadius: 5,
+	backgroundColor : "white",
+	left : 5, right : 5,
+	top : 5,
+	height : Ti.UI.SIZE
+},
+".image" : {
+	height : Ti.UI.SIZE,
+	width : Ti.UI.FILL
+},
+".title" : {
+	height : Ti.UI.SIZE,
+	width : Ti.UI.FILL,
+	textAlign : "center"
+},
+".labelStyle" : {
+	color: "#676767",
+	font : {
+		fontSize : 11,
+		fontFamily: "Monda-Regular"
+	},
+	top : 5,
+	bottom : 5,
+	height : Ti.UI.SIZE
+},
+".left_num" : {
+	left : '5',
+	textAlign : "left"
+},
+".price" : {
+	right : '5',
+	textAlign : "right"
+},
+".bottomContainer" : {
+	width : Ti.UI.FLL,
+	height : Ti.UI.SIZE
+	
+},
+".line" : {
+	backgroundImage : "/images/line.png",
+	height : 1,
+	width : Ti.UI.FILL
+},
+".icon" : {
+	width : 20,
+	height : 20,
+	left : 5,
+	right :5
+},
+".iconSmall" : {
+	width : 15,
+	height : 15,
+	left : 5,
+	right :5
+},
+".btnCategory": {
+	backgroundColor : Alloy.CFG.Colors.MainColor,
+	backgroundSelectedColor : Alloy.CFG.Colors.MainColor_Dark,
+	borderColor : Alloy.CFG.Colors.MainPressedColor,
+	color : Alloy.CFG.Colors.TextColor,
+	backgroundImage : "null",
+	selectedColor : "#AAA"
+},
+
+".categoryIcon":{
+	width : 25,
+	height : 25,
+	left : 5,
+	right : 5,
+	top: 5,
+	bottom : 5
+},
+".icon":{
+	width : 20,
+	height : 20,
+	left : 5,
+	right : 5,
+}
+".icon2":{
+	width : 30,
+	height : 30,
+	left : 5,
+	right : 5,
+},
+".rssView": {
+	backgroundColor : Alloy.CFG.Colors.rssViewBGColor,
+	borderColor : Alloy.CFG.Colors.MainPressedColor,
+	color : Alloy.CFG.Colors.TextColor,
+	backgroundImage : "null",
+	selectedColor : "#AAA"
+},
+".container2" : {
+  backgroundColor:Alloy.CFG.Colors.BackgroundColor,
+  width : Ti.UI.FILL,
+  height : Ti.UI.FILL,
+  top : 1
+}
+

@@ -1,0 +1,8 @@
+<Alloy>
+	<Window id="winWallet">
+		<TableView id="walletTable">
+		</TableView>
+		<ActivityIndicator id="ind">
+		</ActivityIndicator>
+	</Window>
+</Alloy>

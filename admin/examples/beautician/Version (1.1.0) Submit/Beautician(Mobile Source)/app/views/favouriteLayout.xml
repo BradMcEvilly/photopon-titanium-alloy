@@ -1,0 +1,29 @@
+<Alloy>
+	<View class="h-size ver" width='256' onClick='openItemDetail'>
+			
+			<View class="rowContainer h-size ver" id="rowViewContainer">
+					
+					<View id="itemImgView" layout="vertical" >
+						<ImageView class="image" id="itemImg" ></ImageView>
+					</View>	
+					
+					<View class='bottomContainer hor' id="socialView" >
+						<ImageView class="bottom0 icon top0" id="imgLike" image="/images/heart.png">
+						</ImageView>
+						<Label class="p h-size w-height" id="likeCount" color="#454545">0</Label> 
+						<ImageView class="bottom0 icon top0" id="imgReview" image="/images/comment.png" >
+						</ImageView>
+						<Label class="p h-size w-height" id="reviewCount" color="#454545">0</Label> 
+					</View>
+				
+					<View class="line"></View>
+					
+					<View class='bottomContainer'>
+						<Label class="left_num labelStyle" id="lblTitle" text="No-1" />
+						<Label class="price labelStyle" id="lblPrice"  text="S$10" />
+					</View>
+				
+			</View>
+			
+	</View>
+</Alloy>

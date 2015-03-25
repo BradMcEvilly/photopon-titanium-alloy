@@ -1,0 +1,99 @@
+<Alloy>
+	
+		
+		<ScrollView id="midContainer" class="ver h-fill w-fill" backgroundColor="white">
+			
+			<View class="h-size w-size productImgView">
+				<ImageView class="itemImages" id="itemImagesView" onClick="openSlider">
+						
+				</ImageView>
+			
+				<View class="h-size w-size left0 hor" bottom="0" id="socialView">
+					<View class="imagesLabel" layout="horizontal" id="descView">
+						<Label class="white p h-size left1" height="15" id="lblImgDesc">0</Label> 
+					</View>
+				</View>
+			</View>
+			
+			<!--
+			<View id="thumbContainerView" class="hor" borderWidth="0" height="50">
+				<ImageView class="iconNav" id="imgLeft" image="/images/backward.png" onClick='gotoLeftMost'></ImageView>
+						
+					<ScrollView id="thumbImagesScrollView" class="hor" width="255" borderWidth='0'>
+					</ScrollView>
+				
+				<ImageView class="iconNav" id="imgRight" image="/images/forward.png" onClick='gotoRightMost'></ImageView>
+				
+			</View>
+			-->
+			
+			<View id="thumbContainerView" class="hor top2 w-size" height="55">
+				
+				<ImageView class="iconNav" id="imgLeft" image="/images/backward.png" onClick='gotoLeftMost'></ImageView>
+				
+				<ScrollView id="thumbImagesScrollView" class="thumbImgScrollView" >
+				</ScrollView>
+				
+				<ImageView class="iconNav" id="imgRight" image="/images/forward.png" onClick='gotoRightMost'></ImageView>
+				
+			</View>
+			
+			
+			<View id="infoContainer" class="ver h-size w-fill">
+				<Label id="lblTitle" class="w-fill p-strong top2 text-left h-size" color="#464646"></Label>
+				
+				<ImageView class="strike top1 bottom2" ></ImageView>
+				
+				<Label id="lblDescription" class="w-fill p text-left h-size" color="#464646">
+				</Label>
+				
+				<View class="h-size w-size hor top2" left="0" id="phoneView">
+					<ImageView class="left0 icon" id="imgPhone">
+					</ImageView>
+					<Label class="w-fill p text-left h-size" color="#464646" id="lblPhoneNo">
+						Phone No 
+					</Label>
+				</View>
+				
+				<View class="h-size w-size hor top2" left="0" id="locationView">
+					<ImageView class="left0 icon" id="imgLocation">
+					</ImageView>
+					<Label class="w-fill p text-left h-size" color="#464646" id="lblLocation">
+						Location 
+					</Label>
+				</View>
+				<View class="line top1"></View>
+				<View  class="h-size w-size hor top1" left="0">
+						<ImageView class="top3 icon" id="imgInquiryMessage">
+						</ImageView>
+						<Label class="p text-left h-size" top="13" color="#464646" id="lblInquiryMessage">
+							Your Contact Message
+						</Label>
+				</View>
+				<TextArea class="txtArea span12 txtborder top1" id="txtMessage" hintText="Inquiry Message" ></TextArea>
+				
+				<View  class="h-size w-size hor top1" left="0">
+					<ImageView class="top3 icon" id="imgInquiryName">
+					</ImageView>
+					<Label class="p text-left h-size" top="13" color="#464646" id="lblYourName">
+						Your Name
+					</Label>
+				</View>
+				<TextField class="txt span12 txtborder top1" id="txtName" hintText="User Name" ></TextField>
+				
+				<View  class="h-size w-size hor top1" left="0">
+					<ImageView class="iconSmall" id="imgInquiryEmail">
+					</ImageView>
+					<Label class="p text-left h-size" top="3" color="#464646" id="lblEmail">
+						Email
+					</Label>
+				</View>
+				
+				<TextField class="txt span12 txtborder top1" id="txtEmail" hintText="Email" ></TextField>
+				
+				<Button id="btnSubmit" class=" p top4 bottom2 span12 btnInquiry" title=" Submit " onClick="doContactProcess"/>
+				
+			</View>
+			
+		</ScrollView>
+</Alloy>

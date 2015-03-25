@@ -1,0 +1,10 @@
+android/ATTR_MINIFY=true
+android/ATTR_PROJECT_NAME=Photopon
+android/abi=armeabi-v7a
+android/distribute_path=/Users/brad/android-market
+android/keystore_alias=photopon30
+android/keystore_password=photopon21
+android/keystore_path=/Users/brad/android.keystore
+android/recent_output=/Users/brad/android-market
+android/sdk_version=4.3
+eclipse.preferences.version=1

@@ -1,0 +1,16 @@
+<Alloy>
+	<Window class="container" >
+		<View  class="title-bg">
+	    	<View class="h-size" id="AppWrapper">
+			    <Label id="mainTitle" class="title links" text="Feeds" left="30"  onClick="closeWindow"></Label>
+				<ImageView id="imgBack" class="icon left0" onClick="closeWindow" ></ImageView>
+			</View>
+		</View>
+		
+		<ScrollView id="midContainer" class="ver h-fill w-fill">
+			<View class="h-size w-size ver bottom5" id="feedListView" >
+			</View>
+		</ScrollView>
+		
+	</Window>
+</Alloy>

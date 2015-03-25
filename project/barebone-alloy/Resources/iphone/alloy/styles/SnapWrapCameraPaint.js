@@ -1,0 +1,1 @@
+module.exports = [{"isId":true,"priority":100100.0137,"key":"winPaint","style":{backgroundColor:Alloy.Globals.ThemeStyles.win.backgroundColor,title:"Paint",navTintColor:Alloy.Globals.ThemeStyles.win.navTintColor,barColor:Alloy.Globals.ThemeStyles.win.barColor,translucent:false,}}];

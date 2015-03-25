@@ -1,0 +1,6 @@
+<Alloy>
+	<View id="winFacebook">
+		<LoginButton ns="Ti.Facebook" />
+		</ActivityIndicator>
+	</View>
+</Alloy>

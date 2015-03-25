@@ -1,0 +1,6 @@
+<Alloy>
+	<ScrollView id="midContainer" class="ver h-fill w-fill" backgroundColor="white">
+		<View class="h-size w-size ver bottom5" id="feedListView" >
+		</View>
+	</ScrollView>
+</Alloy>

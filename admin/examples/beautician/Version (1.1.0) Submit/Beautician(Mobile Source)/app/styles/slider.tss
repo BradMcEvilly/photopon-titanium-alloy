@@ -1,0 +1,15 @@
+".menu" : {
+	//backgroundImage :"/images/back.png",
+	//backgroundSelectedImage : "/images/back.png",
+	width : 20,
+	height : 40,
+	left : 5
+},
+".iconBig" : {
+	width : 30,
+	height : 30,
+	left : 5,
+	right :5
+
+}
+

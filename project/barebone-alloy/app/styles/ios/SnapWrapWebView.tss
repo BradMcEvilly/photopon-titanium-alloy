@@ -1,0 +1,11 @@
+"#winSnapWrapWebView": {
+	backgroundColor: Alloy.Globals.ThemeStyles.win.backgroundColor,
+	barColor : Alloy.Globals.ThemeStyles.win.barColor,
+	translucent : false,
+	navTintColor :  Alloy.Globals.ThemeStyles.win.navTintColor,
+	backButtonTitle: 'Back'
+},
+"#snapWrapWebView":{
+	width:Ti.UI.FILL,
+	height:Ti.UI.FILL
+}

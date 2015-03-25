@@ -1,0 +1,4 @@
+<Alloy>
+		<ScrollView id="categoryView" class="categoryView" backgroundColor="#EEE">
+		</ScrollView>
+</Alloy>

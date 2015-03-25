@@ -1,0 +1,50 @@
+".rowContainer" : {
+	borderRadius: 5,
+	backgroundColor : "white",
+	left : 5, right : 5,
+	top : 5,
+	height : Ti.UI.SIZE
+},
+".image" : {
+	height : Ti.UI.SIZE,
+	width : Ti.UI.FILL
+},
+".title" : {
+	height : Ti.UI.SIZE,
+	width : Ti.UI.FILL,
+	textAlign : "center"
+},
+".labelStyle" : {
+	color: "#676767",
+	font : {
+		fontSize : 11,
+		fontFamily: "Monda-Regular"
+	},
+	top : 5,
+	bottom : 5,
+	height : Ti.UI.SIZE
+},
+".left_num" : {
+	left : '5',
+	textAlign : "left"
+},
+".price" : {
+	right : '5',
+	textAlign : "right"
+},
+".bottomContainer" : {
+	width : Ti.UI.FLL,
+	height : Ti.UI.SIZE
+	
+},
+".line" : {
+	backgroundImage : "/images/line.png",
+	height : 1,
+	width : Ti.UI.FILL
+},
+".icon" : {
+	width : 20,
+	height : 20,
+	left : 5,
+	right :5
+}

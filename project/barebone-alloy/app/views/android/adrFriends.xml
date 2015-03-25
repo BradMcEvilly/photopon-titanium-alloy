@@ -1,0 +1,8 @@
+<Alloy>
+	<View id="winFriends">
+		<TableView id="friendsTable">
+		</TableView>
+		<ActivityIndicator id="ind">
+		</ActivityIndicator>
+	</View>
+</Alloy>

@@ -1,0 +1,1 @@
+module.exports = [{"isId":true,"priority":100100.0042,"key":"btnCustom","style":{top:0,height:34,width:34,backgroundColor:Alloy.Globals.ThemeStyles.home_button.backgroundColor,borderRadius:4,}},{"isId":true,"priority":100100.0043,"key":"icon","style":{height:34,width:34,hires:true,}}];

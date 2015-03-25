@@ -1,0 +1,19 @@
+<Alloy>
+	
+	<View layout='vertical'>
+	
+		<View  class="container hor" >
+			
+			<View class="h-size hor rssView" id="viewRSS" top="2" onClick="openFeedsList">
+				<ImageView class="iconSmall" id="imgRSS">
+				</ImageView>
+				<Label class="p text-left w-fill" height="25" top="2" id="lblRSS" color="#fff" >
+					For RSS
+				</Label>
+			</View>
+	      
+		</View>
+	    <ScrollView class="containerScroll" layout="vertical" id="homeScrollView" ></ScrollView>
+    </View>
+   
+</Alloy>

@@ -1,0 +1,13 @@
+<Alloy>
+	<Window class="container" >
+		<View  class="title-bg">
+	    	<View class="h-size" id="AppWrapper">
+			    <Label id="mainTitle" class="title links" text="Category" left="30"  onClick="closeWindow"></Label>
+				<ImageView id="imgBack" class="icon" onClick="closeWindow" ></ImageView>
+			</View>
+		</View>
+		
+		<ScrollView id="categoryView" class="categoryView" backgroundColor="#EEE">
+		</ScrollView>
+	</Window>
+</Alloy>

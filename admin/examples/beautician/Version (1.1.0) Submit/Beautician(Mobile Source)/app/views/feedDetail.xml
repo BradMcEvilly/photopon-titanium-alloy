@@ -1,0 +1,63 @@
+<Alloy>
+	<Window class="container" >
+		<View  class="title-bg">
+	    	<View class="h-size" id="AppWrapper">
+			    <Label id="mainTitle" class="title links" text="Feed Detail" left="30"  onClick="closeWindow"></Label>
+				<ImageView id="imgBack" class="icon left0" onClick="closeWindow" ></ImageView>
+			</View>
+		</View>
+		
+		<ScrollView id="midContainer" class="ver h-fill w-fill">
+			
+			<View class="h-size w-fill productImgView" id="itemImagesViewContainer">
+				<ImageView class="itemImages" id="itemImagesView" onClick="openSlider">
+						
+				</ImageView>
+				
+				<View class="h-size w-size left0 hor" bottom="0" id="socialView">
+					<View class="imagesLabel" layout="horizontal" id="descView">
+						<Label class="white p h-size left1" height="15" id="lblImgDesc">0</Label> 
+					</View>
+				</View>
+			</View>
+			<View class="ver h-fill w-fill" backgroundColor = "white">
+				<View id="thumbContainerView" class="hor top2 w-size" height="55">
+					
+					<ImageView class="iconNav" id="imgLeft" image="/images/backward.png" onClick='gotoLeftMost'></ImageView>
+					
+					<ScrollView id="thumbImagesScrollView" class="thumbImgScrollView" borderWidth='0'>
+					</ScrollView>
+					
+					
+					<ImageView class="iconNav" id="imgRight" image="/images/forward.png" onClick='gotoRightMost'></ImageView>
+					
+				</View>
+				
+				<!--
+				<View id="thumbContainerView" class="hor" borderWidth="0" height="50">
+					<ImageView class="iconNav" id="imgLeft" image="/images/backward.png" onClick='gotoLeftMost'></ImageView>
+							
+						<ScrollView id="thumbImagesScrollView" class="hor" width="255" borderWidth='0'>
+						</ScrollView>
+					
+					<ImageView class="iconNav" id="imgRight" image="/images/forward.png" onClick='gotoRightMost'></ImageView>
+					
+				</View>
+				-->
+				
+				<View id="infoContainer" class="ver h-size w-fill">
+					<Label id="lblTitle" class="w-fill p-strong top2 text-left h-size" color="#464646"></Label>
+					
+					<ImageView class="strike top1 bottom2" ></ImageView>
+					
+					<Label id="lblDescription" class="w-fill p text-left h-size" color="#464646">
+					</Label>
+					
+					<View class="line top1"></View>
+					
+						
+				</View>
+			</View>
+		</ScrollView>
+	</Window>
+</Alloy>

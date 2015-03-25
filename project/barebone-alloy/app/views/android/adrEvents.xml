@@ -1,0 +1,8 @@
+<Alloy>
+	<View id="winEvents">
+		<TableView id="eventsTable">
+		</TableView>
+		<ActivityIndicator id="ind">
+		</ActivityIndicator>
+	</View>
+</Alloy>

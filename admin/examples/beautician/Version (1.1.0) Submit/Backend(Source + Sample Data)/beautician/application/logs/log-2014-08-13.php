@@ -1,0 +1,31 @@
+<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed'); ?>
+
+ERROR - 2014-08-13 00:36:20 --> Query error: Column 'appuser_id' cannot be null
+ERROR - 2014-08-13 05:27:34 --> Query error: Column 'appuser_id' cannot be null
+ERROR - 2014-08-13 05:49:19 --> Query error: Column 'appuser_id' cannot be null
+ERROR - 2014-08-13 05:53:15 --> Query error: Column 'appuser_id' cannot be null
+ERROR - 2014-08-13 05:55:42 --> Query error: Column 'appuser_id' cannot be null
+ERROR - 2014-08-13 05:59:07 --> Query error: Column 'appuser_id' cannot be null
+ERROR - 2014-08-13 06:01:41 --> Query error: Column 'appuser_id' cannot be null
+ERROR - 2014-08-13 06:03:48 --> Query error: Column 'appuser_id' cannot be null
+ERROR - 2014-08-13 06:13:35 --> Query error: Column 'appuser_id' cannot be null
+ERROR - 2014-08-13 06:18:53 --> Query error: Column 'appuser_id' cannot be null
+ERROR - 2014-08-13 13:06:39 --> Query error: Column 'appuser_id' cannot be null
+ERROR - 2014-08-13 13:11:02 --> Query error: Column 'appuser_id' cannot be null
+ERROR - 2014-08-13 13:37:18 --> Query error: Column 'appuser_id' cannot be null
+ERROR - 2014-08-13 13:41:17 --> Query error: Column 'appuser_id' cannot be null
+ERROR - 2014-08-13 13:44:15 --> Query error: Column 'appuser_id' cannot be null
+ERROR - 2014-08-13 13:47:16 --> Query error: Column 'appuser_id' cannot be null
+ERROR - 2014-08-13 15:48:18 --> Query error: Column 'appuser_id' cannot be null
+ERROR - 2014-08-13 15:52:56 --> Query error: Column 'appuser_id' cannot be null
+ERROR - 2014-08-13 15:55:06 --> Query error: Column 'appuser_id' cannot be null
+ERROR - 2014-08-13 15:57:11 --> Query error: Column 'appuser_id' cannot be null
+ERROR - 2014-08-13 15:59:32 --> Query error: Column 'appuser_id' cannot be null
+ERROR - 2014-08-13 16:01:35 --> Query error: Column 'appuser_id' cannot be null
+ERROR - 2014-08-13 16:03:47 --> Query error: Column 'appuser_id' cannot be null
+ERROR - 2014-08-13 16:07:38 --> Query error: Column 'appuser_id' cannot be null
+ERROR - 2014-08-13 16:11:49 --> Query error: Column 'appuser_id' cannot be null
+ERROR - 2014-08-13 16:15:53 --> Query error: Column 'appuser_id' cannot be null
+ERROR - 2014-08-13 16:22:06 --> Query error: Column 'appuser_id' cannot be null
+ERROR - 2014-08-13 16:22:56 --> Query error: Column 'appuser_id' cannot be null
+ERROR - 2014-08-13 16:57:15 --> Query error: Column 'appuser_id' cannot be null

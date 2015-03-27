@@ -29,8 +29,8 @@ function Controller() {
     var paintOverlayView;
     var img;
     var btnClose = Titanium.UI.createButton({
-        backgroundImage: "../images/PhotoponButtonNewPhotoponCancel.png",
-        backgroundSelectedImage: "../images/PhotoponButtonNewPhotoponCancelNoFill.png",
+        backgroundImage: "/images/PhotoponButtonNewPhotoponCancel.png",
+        backgroundSelectedImage: "/images/PhotoponButtonNewPhotoponCancelNoFill.png",
         top: 10,
         left: 10,
         width: 34,
@@ -39,10 +39,8 @@ function Controller() {
     btnClose.addEventListener("click", function() {
         alert("btnClose clicked!");
         Titanium.Media.hideCamera();
-        var currWindow = Titanium.UI.currentWindow;
+        Titanium.UI.currentWindow;
         Ti.API.info("got click event");
-        Ti.API.info(currWindow.rootWindow);
-        currWindow.navGroup.close(currWindow);
     });
     var btnCamera = Alloy.createController("CustomCameraButton", {
         image: "/images/PhotoponButtonNewPhotoponCameraFullCircle.png",

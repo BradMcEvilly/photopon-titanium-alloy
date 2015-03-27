@@ -1,11 +1,11 @@
 eclipse.preferences.version=1
 iosLaunchConfigurationAttributes/ATTR_MINIFY=true
-iosLaunchConfigurationAttributes/ATTR_PROJECT_NAME=barebone-alloy
-iosLaunchConfigurationAttributes/appid=com.titaniumtemplates.barebonealloy
-iosLaunchConfigurationAttributes/certificate=Brad McEvilly (C869KW9YK3)
+iosLaunchConfigurationAttributes/ATTR_PROJECT_NAME=Photopon
+iosLaunchConfigurationAttributes/appid=com.photopon.Photopon
+iosLaunchConfigurationAttributes/certificate=Hayk Hayotsyan (B22BD97GU5)
 iosLaunchConfigurationAttributes/keychain=
-iosLaunchConfigurationAttributes/sdk_version=8.0.0
-iosLaunchConfigurationAttributes/uuid=97F955FC-A9BD-43A6-9119-F42C4CC8D52B
+iosLaunchConfigurationAttributes/sdk_version=8.2
+iosLaunchConfigurationAttributes/uuid=4aa99b1a-23f3-4ed9-a5b5-8265d93daa0b
 provisioning_profiles/development/97F955FC-A9BD-43A6-9119-F42C4CC8D52B/appid=*
 provisioning_profiles/development/97F955FC-A9BD-43A6-9119-F42C4CC8D52B/name=iOS Team Provisioning Profile\: *
 provisioning_profiles/development/97F955FC-A9BD-43A6-9119-F42C4CC8D52B/uuid=97F955FC-A9BD-43A6-9119-F42C4CC8D52B

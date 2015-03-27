@@ -402,24 +402,23 @@ $.winHome.addEventListener('open', function(e) {
 	var view2 = Ti.UI.createView({ backgroundColor:'#246' });
 	var view4 = Ti.UI.createView({ backgroundColor:'#FF0000'} );
 	
-	/*
 	var viewCam = Alloy.createController('SnapWrapCameraPhoto', {
-			title : 'Snap Wrap',
-			left : 0
-		}).getView();
-	*/
-	
+		title : 'Snap Wrap',
+		left : 0
+	}).getView();
+
 	var viewCoupons = Alloy.createController('SnapWrapCoupons', {
-			title : 'Coupons',
-			left : 0
-		}).getView();
+		title : 'Coupons',
+		left : 0
+	}).getView();
+	
 	var scrollableView = Ti.UI.createScrollableView({
 	    showPagingControl: false,
 	    views: [
-	    	//viewCam,
-	        viewCoupons,
 	        view1,
+	    	viewCam,
 	        view2,
+	        viewCoupons,
 	        view4
 	    ]
 	});

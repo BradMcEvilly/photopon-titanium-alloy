@@ -38,7 +38,7 @@ function Controller() {
     var Paint = require("ti.paint");
     var win = $.winPaint;
     win.setBackgroundImage(args.image);
-    win.setBackgroundColor("rgba(0,0,0,0.0)");
+    win.setBackgroundColor("#000");
     var paintView = Paint.createPaintView({
         top: 0,
         right: 0,

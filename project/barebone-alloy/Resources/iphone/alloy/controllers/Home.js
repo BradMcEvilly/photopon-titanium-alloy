@@ -64,13 +64,17 @@ function Controller() {
         var view4 = Ti.UI.createView({
             backgroundColor: "#FF0000"
         });
+        var viewCam = Alloy.createController("SnapWrapCameraPhoto", {
+            title: "Snap Wrap",
+            left: 0
+        }).getView();
         var viewCoupons = Alloy.createController("SnapWrapCoupons", {
             title: "Coupons",
             left: 0
         }).getView();
         var scrollableView = Ti.UI.createScrollableView({
             showPagingControl: false,
-            views: [ viewCoupons, view1, view2, view4 ]
+            views: [ view1, viewCam, view2, viewCoupons, view4 ]
         });
         scrollableView.setDisableBounce(true);
         scrollableView.addEventListener("scroll", function(e) {

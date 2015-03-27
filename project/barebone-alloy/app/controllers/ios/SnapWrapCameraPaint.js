@@ -4,7 +4,8 @@ var Paint = require('ti.paint');
 //$.winPaint.open();
 var win = $.winPaint;
 win.setBackgroundImage(args.image);
-win.setBackgroundColor('rgba(0,0,0,0.0)');
+//win.setBackgroundColor('rgba(0,0,0,0.0)');
+win.setBackgroundColor('#000');
 
 //var win = Ti.UI.createWindow({ backgroundImage:args.image, backgroundColor: 'rgba(0,0,0,0.0)' });
 var paintView = Paint.createPaintView({

@@ -37,8 +37,8 @@ var btnClose = Titanium.UI.createButton({
 	
 	//color : '#fff',
 	
-	backgroundImage : '../images/PhotoponButtonNewPhotoponCancel.png',
-	backgroundSelectedImage : '../images/PhotoponButtonNewPhotoponCancelNoFill.png',
+	backgroundImage : '/images/PhotoponButtonNewPhotoponCancel.png',
+	backgroundSelectedImage : '/images/PhotoponButtonNewPhotoponCancelNoFill.png',
 	//backgroundImage : '../images/BUTT_grn_on.png',
 	//backgroundSelectedImage : '../images/BUTT_grn_off.png',
 	//backgroundDisabledImage : '../images/BUTT_gry_on.png',
@@ -69,11 +69,11 @@ btnClose.addEventListener('click', function() {
 	var currWindow = Titanium.UI.currentWindow;
 	
 	Ti.API.info("got click event");
-	Ti.API.info(currWindow.rootWindow);
+	//Ti.API.info(currWindow.rootWindow);
 		
 	// close the parent, then self to pop back to top
 	//currWindow.navGroup.close(currWindow._parent);
-	currWindow.navGroup.close(currWindow);
+	//currWindow.navGroup.close(currWindow);
 
 	
 	

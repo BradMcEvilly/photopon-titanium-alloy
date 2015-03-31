@@ -10,6 +10,8 @@
 
  */
 
+
+
 var jsonLength = -1;
 
 var results = [];
@@ -80,154 +82,28 @@ function reloadInBackground () {
 	if (Titanium.Network.online) {
 		$.ind.show();
 		
-		
-		
-		//apiHelper.APIGetRequest(Alloy.Globals.URLS.coupons8_url, function(e) {
-		apiHelper.APIGetRequest(Alloy.Globals.build8CouponsQueryString(), function(e) {
-			var status = this.status;
-			if (status == 200) {
-				//alert('status 200!! YAY');
-				
-				//alert('responseText='+ this.responseText);
-				
+		//apiHelper.APIGetRequest(Alloy.Globals.build8CouponsQueryString(), function(e) {
+		apiHelper.GetSimpleCoupons(Alloy.Globals.build8CouponsQueryString(), function(Json) {
 			
+			jsonLength = Json.length;
+			var rows = [];
+			
+			var checkLength = (jsonLength>60) ? 60 : jsonLength;
 				
-				
-				
-				//var jsonObj = JSON.parse(this.responseText); //eval('(' + this.responseText + ')');
-				
-				//var Json = eval('(' + this.responseText + ')');
-				var Json = JSON.parse(this.responseText);
-				
-				jsonLength = Json.length;
-				
-				var rows = [];
-				
-					try{
+			for (var i = 0; i < checkLength; i++) {
+			
+					Alloy.Globals.couponsResults[i] = Json[i];
 					
-					var checkLength = (jsonLength>60) ? 60 : jsonLength;
+					rows.push(Alloy.createController('CouponsRow', {
+						CouponsItem : Alloy.Globals.couponsResults[i], //Json[i], //couponsItemTestData//Json[i]
+						tag:i
+					}).getView());
 					
-					//alert('ttttt');
-					
-					// name (business Name)
-					// address
-					// homepage
-					// phone
-					// state
-					// city
-					// ZIP
-					// URL (redeem url via apiout call)
-					
-					// dealSource
-					// dealTitle
-					// disclaimer
-					// dealInfo
-					// postDate
-					// expirationDate
-					// showImage
-					// showImageStandardBig
-					// showImageStandardSmall
-					// showLogo
-					// providerName
-					// distance
-					// dealOriginalPrice
-					// dealPrice
-					// dealDiscountPercent
-					// 
-					
-					for (var i = 0; i < checkLength; i++) {
-						/*
-						var couponsItemTestData = {
-							name:'',
-							address:'',
-							homepage:'',
-							phone:'',
-							state:'',
-							city:'',
-							ZIP:'',
-							URL:'',
-							
-							dealSource:'',
-							dealTitle:'',
-							disclaimer:'',
-							dealInfo:'',
-							postDate:'',
-							expirationDate:'',
-							showImage:'',
-							showImageStandardBig:'',
-							showImageStandardSmall:'',
-							showLogo:'',
-							providerName:'',
-							distance:'',
-							dealOriginalPrice:'',
-							dealPrice:'',
-							dealDiscountPercent:'',
-							picture:'',
-							title: 'No data', //+ Json[i].affiliate,//'TEST TITLE',
-							tags:[],
-							body: 'No data' //Json[i].dealTitle //'BODY TEST TEXT SAMPLES RANDOM HERE - BODY TEST TEXT SAMPLES RANDOM HERE - BODY TEST TEXT SAMPLES RANDOM HERE - BODY TEST TEXT SAMPLES RANDOM HERE - BODY TEST TEXT SAMPLES RANDOM HERE - BODY TEST TEXT SAMPLES RANDOM HERE - BODY TEST TEXT SAMPLES RANDOM HERE'
-						};
-							try{
-								couponsItemTestData = {
-									
-									name:'' + Json[i].name,
-									address:'' + Json[i].address,
-									homepage:'' + Json[i].homepage,
-									phone:'' + Json[i].phone,
-									state:'' + Json[i].state,
-									city:'' + Json[i].city,
-									ZIP:'' + Json[i].ZIP,
-									URL:'' + Json[i].URL,
-									
-									dealSource:'' + Json[i].dealSource,
-									dealTitle:'' + Json[i].dealTitle,
-									disclaimer:'' + Json[i].disclaimer,
-									dealInfo:'' + Json[i].dealInfo,
-									postDate:'' + Json[i].postDate,
-									expirationDate:'' + Json[i].expirationDate,
-									showImage:'' + Json[i].showImage,
-									showImageStandardBig:'' + Json[i].showImageStandardBig,
-									showImageStandardSmall:'' + Json[i].showImageStandardSmall,
-									showLogo:'' + Json[i].showLogo,
-									providerName:'' + Json[i].providerName,
-									distance:'' + Json[i].distance,
-									dealOriginalPrice:'' + Json[i].dealOriginalPrice,
-									dealPrice:'' + Json[i].dealPrice,
-									dealDiscountPercent:'' + Json[i].dealDiscountPercent,
-									picture:'' + Json[i].picture,
-									title: '' + Json[i].title,//'TEST TITLE',
-									tags:[
-										'TEST TAG 3',
-										'TEST TAG 4'
-									],
-									body: 'Json[i].dealTitle' + Json[i].dealTitle //'BODY TEST TEXT SAMPLES RANDOM HERE - BODY TEST TEXT SAMPLES RANDOM HERE - BODY TEST TEXT SAMPLES RANDOM HERE - BODY TEST TEXT SAMPLES RANDOM HERE - BODY TEST TEXT SAMPLES RANDOM HERE - BODY TEST TEXT SAMPLES RANDOM HERE - BODY TEST TEXT SAMPLES RANDOM HERE'
-								};
-								
-							}catch(e){
-								alert('OOPS! Inner Json.length error for coupon # ' + i);
-							}*/
-							
-							Alloy.Globals.couponsResults[i] = Json[i];
-							
-							rows.push(Alloy.createController('CouponsRow', {
-								CouponsItem : Alloy.Globals.couponsResults[i], //Json[i], //couponsItemTestData//Json[i]
-								tag:i
-							}).getView());
-							
-					}
-					
-					//alert('rows.length=' + rows.length);
-					
-				}catch(e){
-					
-					alert('Error! Json.length breaking: ' + e.error);
-	        		alert('message: ' + e.message);
-					
-				}
-				$.snapWrapCouponsTable.setData(rows);
-				$.ind.hide();
 			}
 			
+
+			$.snapWrapCouponsTable.setData(rows);
+			$.ind.hide();
 		}, function(err) {
 			$.ind.hide();
 			alert('Check connection - Unknow error from api');

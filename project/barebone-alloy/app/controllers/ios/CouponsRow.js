@@ -1,17 +1,6 @@
 /**
  * @author Brad McEvilly
  */
-/*
-<Alloy>
-	<TableViewRow id="row">
-		<ImageView id="imgCoupons" />
-		<View id="outerContainer">
-			<Label id="lblName" />
-			<View id="tagView" />
-			<Label id="lblDetail" />
-		</View>
-	</TableViewRow>
-</Alloy>*/
 
 var args = arguments[0] || {};
 

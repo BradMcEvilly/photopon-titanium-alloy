@@ -33,6 +33,7 @@ Titanium.Media.showCamera({
 */
 
 
+
 var btnClose = Titanium.UI.createButton({
 	
 	//color : '#fff',
@@ -58,6 +59,8 @@ var btnClose = Titanium.UI.createButton({
 	title : 'Take Picture'*/
 	
 });
+
+
 btnClose.addEventListener('click', function() {
 	
 	alert('btnClose clicked!');
@@ -74,10 +77,6 @@ btnClose.addEventListener('click', function() {
 	// close the parent, then self to pop back to top
 	//currWindow.navGroup.close(currWindow._parent);
 	//currWindow.navGroup.close(currWindow);
-
-	
-	
-	
 });
 
 
@@ -108,10 +107,10 @@ btnClose.addEventListener('click', function() {
    
    
 var btnCamera = Alloy.createController('CustomCameraButton', {
-		image : '/images/PhotoponButtonNewPhotoponCameraFullCircle.png',
-		width : '74dp',
-		height : '74dp'
-	}).getView();
+	image : '/images/PhotoponButtonNewPhotoponCameraFullCircle.png',
+	width : '74dp',
+	height : '74dp'
+}).getView();
 	
 btnCamera.addEventListener('click', function() {
 	scanner.borderColor = 'blue';
@@ -195,12 +194,48 @@ var message = Titanium.UI.createLabel({
 });
 messageView.add(message);
 
+
+
+
+
+
+
+var rows = [];
+
+for (var i = 0; i < Alloy.Globals.couponsResults.length; i++) {
+	rows.push(Alloy.createController('TemplateOverlay', {
+		CouponsItem : Alloy.Globals.couponsResults[i], //Json[i], //couponsItemTestData//Json[i]
+		tag:i
+	}).getView());
+}
+		
+var scrollableView = Ti.UI.createScrollableView({
+    showPagingControl: false,
+    currentPage: Alloy.Globals.newComposition.couponsIndex,
+    views: rows
+});
+
+scrollableView.setDisableBounce(true);
+scrollableView.addEventListener('scroll', function (e) {
+    currentPage = e.currentPage;
+});
+
+scrollableView.addEventListener('scrollend', function (e) {
+	console.log('---------------------------');
+	Ti.API.info('---->	currentPage: ' + currentPage);
+	console.log('---------------------------');
+});
+
+
+
 var overlay = Titanium.UI.createView({
 	height : Alloy.Globals.Frames.per100Height,
 	width : Alloy.Globals.Frames.per100Width
 });
+
 overlay.add(flashView);
 overlay.add(scanner);
+overlay.add(scrollableView);
 //overlay.add(button);
 overlay.add(btnCamera);
 overlay.add(btnClose);

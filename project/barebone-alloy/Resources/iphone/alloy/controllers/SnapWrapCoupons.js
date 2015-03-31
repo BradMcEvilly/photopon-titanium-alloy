@@ -29,28 +29,19 @@ function Controller() {
         console.log("---------------------------");
         if (Titanium.Network.online) {
             $.ind.show();
-            apiHelper.APIGetRequest(Alloy.Globals.build8CouponsQueryString(), function(e) {
-                var status = this.status;
-                if (200 == status) {
-                    var Json = JSON.parse(this.responseText);
-                    jsonLength = Json.length;
-                    var rows = [];
-                    try {
-                        var checkLength = jsonLength > 60 ? 60 : jsonLength;
-                        for (var i = 0; checkLength > i; i++) {
-                            Alloy.Globals.couponsResults[i] = Json[i];
-                            rows.push(Alloy.createController("CouponsRow", {
-                                CouponsItem: Alloy.Globals.couponsResults[i],
-                                tag: i
-                            }).getView());
-                        }
-                    } catch (e) {
-                        alert("Error! Json.length breaking: " + e.error);
-                        alert("message: " + e.message);
-                    }
-                    $.snapWrapCouponsTable.setData(rows);
-                    $.ind.hide();
+            apiHelper.GetSimpleCoupons(Alloy.Globals.build8CouponsQueryString(), function(Json) {
+                jsonLength = Json.length;
+                var rows = [];
+                var checkLength = jsonLength > 60 ? 60 : jsonLength;
+                for (var i = 0; checkLength > i; i++) {
+                    Alloy.Globals.couponsResults[i] = Json[i];
+                    rows.push(Alloy.createController("CouponsRow", {
+                        CouponsItem: Alloy.Globals.couponsResults[i],
+                        tag: i
+                    }).getView());
                 }
+                $.snapWrapCouponsTable.setData(rows);
+                $.ind.hide();
             }, function() {
                 $.ind.hide();
                 alert("Check connection - Unknow error from api");

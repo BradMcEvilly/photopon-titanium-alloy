@@ -100,12 +100,32 @@ function Controller() {
         height: "auto"
     });
     messageView.add(message);
+    var rows = [];
+    for (var i = 0; i < Alloy.Globals.couponsResults.length; i++) rows.push(Alloy.createController("TemplateOverlay", {
+        CouponsItem: Alloy.Globals.couponsResults[i],
+        tag: i
+    }).getView());
+    var scrollableView = Ti.UI.createScrollableView({
+        showPagingControl: false,
+        currentPage: Alloy.Globals.newComposition.couponsIndex,
+        views: rows
+    });
+    scrollableView.setDisableBounce(true);
+    scrollableView.addEventListener("scroll", function(e) {
+        currentPage = e.currentPage;
+    });
+    scrollableView.addEventListener("scrollend", function() {
+        console.log("---------------------------");
+        Ti.API.info("---->	currentPage: " + currentPage);
+        console.log("---------------------------");
+    });
     var overlay = Titanium.UI.createView({
         height: Alloy.Globals.Frames.per100Height,
         width: Alloy.Globals.Frames.per100Width
     });
     overlay.add(flashView);
     overlay.add(scanner);
+    overlay.add(scrollableView);
     overlay.add(btnCamera);
     overlay.add(btnClose);
     overlay.add(messageView);

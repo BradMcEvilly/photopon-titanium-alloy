@@ -1,15 +1,4 @@
 
-
-
-
-
-
-
-
-
-
-
-
 /*
 // ----------------------------------------------
 https://developer.appcelerator.com/question/163852/animation-not-moving-image-on-iphone
@@ -143,6 +132,8 @@ Alloy.Globals.APIKeys = {
 	com_8coupons:'02fbfdcae460b422ba93ca0de753e2ac566a290f92e6a03bd8eb3b5c5beb6fbcec933468b156b3b6050939c1cb7ea653'
 };
 
+var Cloud = require('ti.cloud');
+
 Alloy.Globals.couponsResults = [];
 
 Alloy.Globals.log = function (outputString){
@@ -159,21 +150,8 @@ Alloy.Globals.log = function (outputString){
 
 Alloy.Globals.getLocation = function (){
 	
-	Ti.API.info('---------------------------------');
-	Ti.API.info('---------------------------------');
-	Ti.API.info('BEGIN	Alloy.Globals.getLocation');
-	Ti.API.info('---------------------------------');
-	Ti.API.info('---------------------------------');
-	
 	//Get the current position and set it to the mapview
-	if(Ti.Network.online){
-			
-		Ti.API.info('---------------------------------');
-		Ti.API.info('---------------------------------');
-		Ti.API.info('YES	Alloy.Globals.getLocation	if(Ti.Network.online){');
-		Ti.API.info('---------------------------------');
-		Ti.API.info('---------------------------------');
-		
+	if(Ti.Network.online) {
 		
 		Titanium.Geolocation.getCurrentPosition(function(e){
 			if (!e.success || e.error)
@@ -393,6 +371,43 @@ Alloy.Globals.logOut = function(){
 	          //  ((e.error && e.message) || JSON.stringify(e)));
 	    }
 	});
+};
+
+
+
+Alloy.Globals.logIn = function(username, password) {
+	Cloud.Users.login({
+        login: username,
+        password: password
+    }, function (e) {
+	    	
+    	if(e.success){
+	    			
+    		var user = e.users[0];
+    		Titanium.App.Properties.setObject('username', username);
+    		Titanium.App.Properties.setObject('password', password);
+    		Titanium.App.Properties.setObject('uid', user.id);
+    		Titanium.App.Properties.setObject('sessionid', user.id);
+    		Titanium.App.Properties.setObject('role', user.role);
+    		
+    		if(user.role=='merchant')
+    			alert('Merchant!');
+    		
+    		
+		    Titanium.App.fireEvent("app:didLogIn", {
+		    	"detail":{
+		    		"didLogIn":true
+		    	}
+		    });
+		       
+    	} else {
+    		Titanium.App.fireEvent("app:loginError", {
+		    	"message": Alloy.Globals.ErrorMessages.logInIncorrect
+		    });
+    		
+        }
+        Titanium.API.info('--- User '+ (e.success ? 'logged in' : 'not logged in')+' ---');
+    });
 };
 
 Alloy.Globals.initNavGroup = function(options){
@@ -705,6 +720,9 @@ Alloy.Globals.checkedLoggedIn = function () {
 	sid = Alloy.Globals.sessionID();
 	return (!sid) ? false : true;
 };
+
+
+
 
 Alloy.Globals.defaultUser = {
 	id:null,

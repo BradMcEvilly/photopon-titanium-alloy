@@ -9,17 +9,7 @@ function __processArg(obj, key) {
 
 function Controller() {
     function startListening() {
-        console.log("---------------------------");
-        console.log("---------------------------");
-        console.log("BEGIN	SnapWrapCoupons.js		startListening");
-        console.log("---------------------------");
-        console.log("---------------------------");
         Alloy.Globals.latitude ? reloadInBackground() : setTimeout(startListening, 5e3);
-        console.log("---------------------------");
-        console.log("---------------------------");
-        console.log("END	SnapWrapCoupons.js		startListening");
-        console.log("---------------------------");
-        console.log("---------------------------");
     }
     function reloadInBackground() {
         console.log("---------------------------");

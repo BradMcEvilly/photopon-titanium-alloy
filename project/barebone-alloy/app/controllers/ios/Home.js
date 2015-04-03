@@ -400,7 +400,6 @@ $.winHome.addEventListener('open', function(e) {
 	
 	var view1 = Ti.UI.createView({ backgroundColor:'#123' });
 	var view2 = Ti.UI.createView({ backgroundColor:'#246' });
-	var view4 = Ti.UI.createView({ backgroundColor:'#FF0000'} );
 /*	
 	var viewCam = Alloy.createController('SnapWrapCameraPhoto', {
 		title : 'Snap Wrap',
@@ -412,6 +411,10 @@ $.winHome.addEventListener('open', function(e) {
 		left : 0
 	}).getView();
 	
+	var viewFriends = Alloy.createController('PhotoponFriends', {
+		title : 'Your Friends'
+	}).getView();
+	
 	var scrollableView = Ti.UI.createScrollableView({
 	    showPagingControl: false,
 	    views: [
@@ -419,7 +422,7 @@ $.winHome.addEventListener('open', function(e) {
 	    	//viewCam,
 	        view2,
 	        viewCoupons,
-	        view4
+	        viewFriends
 	    ]
 	});
 	scrollableView.setDisableBounce(true);

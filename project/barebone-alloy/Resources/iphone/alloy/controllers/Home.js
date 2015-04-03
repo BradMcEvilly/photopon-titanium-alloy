@@ -61,16 +61,16 @@ function Controller() {
         var view2 = Ti.UI.createView({
             backgroundColor: "#246"
         });
-        var view4 = Ti.UI.createView({
-            backgroundColor: "#FF0000"
-        });
         var viewCoupons = Alloy.createController("SnapWrapCoupons", {
             title: "Coupons",
             left: 0
         }).getView();
+        var viewFriends = Alloy.createController("PhotoponFriends", {
+            title: "Your Friends"
+        }).getView();
         var scrollableView = Ti.UI.createScrollableView({
             showPagingControl: false,
-            views: [ view1, view2, viewCoupons, view4 ]
+            views: [ view1, view2, viewCoupons, viewFriends ]
         });
         scrollableView.setDisableBounce(true);
         scrollableView.addEventListener("scroll", function(e) {

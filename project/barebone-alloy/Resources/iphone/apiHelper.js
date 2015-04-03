@@ -24,6 +24,16 @@ exports.APIGetRequestImage = function(url, imgView, actInd, callback) {
     loader.send();
 };
 
+exports.GetSimpleFriends = function(url, callback) {
+    callback([ {
+        name: "Joe Black",
+        img: "http://lorempixel.com/output/people-q-c-480-480-5.jpg"
+    }, {
+        name: "Jimmy Joe",
+        img: "http://lorempixel.com/output/people-q-c-480-480-6.jpg"
+    } ]);
+};
+
 exports.GetSimpleCoupons = function(url, callback) {
     callback([ {
         name: "McDonalds 10% off",

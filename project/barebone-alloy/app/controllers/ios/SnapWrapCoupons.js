@@ -49,24 +49,12 @@ $.winSnapWrapCoupons.rightNavButton = Alloy.createController('rightMenuButton', 
 */
 
 function startListening (argument) {
-
-	console.log('---------------------------');
-	console.log('---------------------------');
-	console.log('BEGIN	SnapWrapCoupons.js		startListening');
-	console.log('---------------------------');
-	console.log('---------------------------');
 	
 	// just keep checking for latitude
 	if(!Alloy.Globals.latitude)
 		setTimeout(startListening, 5000);
 	else
 		reloadInBackground();
-	
-	console.log('---------------------------');
-	console.log('---------------------------');
-	console.log('END	SnapWrapCoupons.js		startListening');
-	console.log('---------------------------');
-	console.log('---------------------------');
 		
 	
 }

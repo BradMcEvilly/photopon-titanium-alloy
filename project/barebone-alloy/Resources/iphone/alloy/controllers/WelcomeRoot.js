@@ -9,11 +9,6 @@ function __processArg(obj, key) {
 
 function Controller() {
     function showWelcomeWindow() {
-        console.log("---------------------------");
-        console.log("---------------------------");
-        console.log("BEGIN  $.winWelcomeRoot	showWelcomeWindow");
-        console.log("---------------------------");
-        console.log("---------------------------");
         args.context.currentWindow = "_welcome";
         welcomeController = Alloy.createController("Welcome", {
             title: "Welcome",
@@ -88,55 +83,26 @@ function Controller() {
     console.log("---------------------------");
     var homeWindow, homeController, welcomeController, welcomeWindow, args = arguments[0] || {};
     $.winWelcomeRoot.addEventListener("open", function() {
-        console.log("---------------------------");
-        console.log("---------------------------");
-        console.log("BEGIN  $.winWelcomeRoot	$.winWelcomeRoot.addEventListener(open");
-        console.log("---------------------------");
-        console.log("---------------------------");
-        console.log("---------------------------");
-        console.log("	Alloy.Globals.isLoggedIn = " + Alloy.Globals.isLoggedIn);
-        console.log("---------------------------");
-        Alloy.Globals.isLoggedIn ? showHomeWindow() : showWelcomeWindow();
+        var uname = Titanium.App.Properties.getObject("username");
+        var upass = Titanium.App.Properties.getObject("password");
+        console.log("*******");
+        console.log(uname);
+        console.log(upass);
+        console.log("*******");
+        uname && upass ? Alloy.Globals.logIn(uname, upass) : showWelcomeWindow();
         Titanium.App.addEventListener("app:didLogIn", function() {
-            console.log("---------------------------");
-            console.log("---------------------------");
-            console.log("BEGIN  $.winWelcomeRoot	Titanium.App.addEventListener( app:didLogIn");
-            console.log("---------------------------");
-            console.log("---------------------------");
             try {
-                console.log("---------------------------");
-                console.log("---------------------------");
-                console.log("$.winWelcomeRoot	Titanium.App.addEventListener( app:didLogIn	...		try{");
-                console.log("---------------------------");
-                console.log("---------------------------");
                 Alloy.Globals.navGroup.closeWindow(welcomeWindow);
-            } catch (e) {
-                console.log("---------------------------");
-                console.log("---------------------------");
-                console.log("$.winWelcomeRoot	Titanium.App.addEventListener( app:didLogIn	...		catch(e){}");
-                console.log("---------------------------");
-                console.log("---------------------------");
-            }
+            } catch (e) {}
             showHomeWindow();
-            console.log("---------------------------");
-            console.log("---------------------------");
-            console.log("BEGIN  $.winWelcomeRoot	Titanium.App.addEventListener( app:didLogIn");
-            console.log("---------------------------");
-            console.log("---------------------------");
         });
         Titanium.App.addEventListener("app:didLogOut", function() {
             Alloy.Globals.stopLocationManager();
             try {
                 Alloy.Globals.navGroup.closeWindow(homeWindow);
             } catch (e) {}
-            alert("app:didLogOut");
             showWelcomeWindow();
         });
-        console.log("---------------------------");
-        console.log("---------------------------");
-        console.log("END  $.winWelcomeRoot	$.winWelcomeRoot.addEventListener(open");
-        console.log("---------------------------");
-        console.log("---------------------------");
     });
     _.extend($, exports);
 }

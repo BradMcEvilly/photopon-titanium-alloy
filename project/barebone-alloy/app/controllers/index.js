@@ -8,17 +8,13 @@ $.acslogin.init({callback: function(e){
 var Cloud = require('ti.cloud');
 
 var that = this;
-/* 
-<View id="menuview">
-	<TableView id="flyoutTable"></TableView>
-</View>
 
 
 
 
 
 
-
+/*
 
 
 
@@ -37,8 +33,6 @@ var zoomMatrix = Ti.UI.create2DMatrix();
 		        duration: 400
 		    });
 		});
-		
-		
 		
 		
 		

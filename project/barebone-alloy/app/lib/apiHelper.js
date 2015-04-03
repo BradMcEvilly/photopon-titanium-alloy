@@ -25,6 +25,24 @@ exports.APIGetRequestImage = function(url, imgView, actInd, callback) {
 };
 
 
+
+
+exports.GetSimpleFriends = function(url, callback, errorCallback) {
+	callback([
+		{
+			name:'Joe Black',
+			img: 'http://lorempixel.com/output/people-q-c-480-480-5.jpg'
+			
+		},{
+			name:'Jimmy Joe',
+			img: 'http://lorempixel.com/output/people-q-c-480-480-6.jpg'
+		},
+	]);
+};
+
+
+
+
 exports.GetSimpleCoupons = function(url, callback, errorCallback) {
 	callback([
 		{

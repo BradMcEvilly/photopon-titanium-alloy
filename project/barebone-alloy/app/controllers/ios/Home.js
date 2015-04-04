@@ -415,10 +415,16 @@ $.winHome.addEventListener('open', function(e) {
 		title : 'Your Friends'
 	}).getView();
 	
+	
+	var viewAddFriend = Alloy.createController('PhotoponAddFriend', {
+		title : 'Add Friend'
+	}).getView();
+	
+	
 	var scrollableView = Ti.UI.createScrollableView({
 	    showPagingControl: false,
 	    views: [
-	        view1,
+	        viewAddFriend,
 	    	//viewCam,
 	        view2,
 	        viewCoupons,

@@ -55,7 +55,7 @@ function Controller() {
             Right_Menu: $.Right_Menu,
             context: that
         }).getView();
-        var view1 = Ti.UI.createView({
+        Ti.UI.createView({
             backgroundColor: "#123"
         });
         var view2 = Ti.UI.createView({
@@ -68,9 +68,12 @@ function Controller() {
         var viewFriends = Alloy.createController("PhotoponFriends", {
             title: "Your Friends"
         }).getView();
+        var viewAddFriend = Alloy.createController("PhotoponAddFriend", {
+            title: "Add Friend"
+        }).getView();
         var scrollableView = Ti.UI.createScrollableView({
             showPagingControl: false,
-            views: [ view1, view2, viewCoupons, viewFriends ]
+            views: [ viewAddFriend, view2, viewCoupons, viewFriends ]
         });
         scrollableView.setDisableBounce(true);
         scrollableView.addEventListener("scroll", function(e) {

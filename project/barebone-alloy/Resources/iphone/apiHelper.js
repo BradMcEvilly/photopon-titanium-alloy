@@ -24,6 +24,49 @@ exports.APIGetRequestImage = function(url, imgView, actInd, callback) {
     loader.send();
 };
 
+exports.GetAllFriends = function(callback, errorCallback) {
+    Cloud.sendRequest({
+        url: "friends/query.json",
+        method: "GET"
+    }, function(e) {
+        if (!e.success) {
+            errorCallback && errorCallback({
+                message: e.error && e.message
+            });
+            return;
+        }
+        callback(e.users);
+    });
+};
+
+exports.AddFriend = function(id, callback, errorCallback) {
+    Cloud.Friends.add({
+        user_ids: id
+    }, function(e) {
+        if (!e.success) {
+            errorCallback && errorCallback({
+                message: e.error && e.message
+            });
+            return;
+        }
+        callback();
+    });
+};
+
+exports.SearchUser = function(query, callback, errorCallback) {
+    Cloud.Users.search({
+        q: query
+    }, function(e) {
+        if (!e.success) {
+            errorCallback && errorCallback({
+                message: e.error && e.message
+            });
+            return;
+        }
+        callback(e.users);
+    });
+};
+
 exports.GetSimpleFriends = function(url, callback) {
     callback([ {
         name: "Joe Black",

@@ -52,13 +52,13 @@ function Controller() {
         id: "winWelcome"
     });
     $.__views.winWelcome && $.addTopLevelView($.__views.winWelcome);
-    var __alloyId25 = [];
+    var __alloyId26 = [];
     $.__views.logoRow = Ti.UI.createTableViewRow({
         selectionStyle: "none",
         height: Alloy.Globals.Frames.per60Height,
         id: "logoRow"
     });
-    __alloyId25.push($.__views.logoRow);
+    __alloyId26.push($.__views.logoRow);
     $.__views.logoView = Ti.UI.createView({
         backgroundColor: "transparent",
         layout: "vertical",
@@ -79,7 +79,7 @@ function Controller() {
         width: Alloy.Globals.Frames.per100Width,
         id: "buttonRowLogIn"
     });
-    __alloyId25.push($.__views.buttonRowLogIn);
+    __alloyId26.push($.__views.buttonRowLogIn);
     $.__views.logInBtn = Ti.UI.createButton({
         color: Alloy.Globals.ThemeStyles.button.color,
         backgroundColor: Alloy.Globals.ThemeStyles.button.backgroundColor,
@@ -103,7 +103,7 @@ function Controller() {
         width: Alloy.Globals.Frames.per100Width,
         id: "buttonRowSignUp"
     });
-    __alloyId25.push($.__views.buttonRowSignUp);
+    __alloyId26.push($.__views.buttonRowSignUp);
     $.__views.signUpBtn = Ti.UI.createButton({
         color: Alloy.Globals.ThemeStyles.button.color,
         backgroundColor: Alloy.Globals.ThemeStyles.buttonBlue.backgroundColor,
@@ -127,7 +127,7 @@ function Controller() {
         backgroundColor: "transparent",
         separatorStyle: "none",
         borderWidth: 0,
-        data: __alloyId25,
+        data: __alloyId26,
         id: "welcomeTable",
         scrollable: "false"
     });

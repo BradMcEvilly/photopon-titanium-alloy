@@ -92,70 +92,17 @@ function Controller() {
         return "" == txt;
     }
     function createCloudUser(username, password) {
-        Ti.API.info("---------------------------------");
-        Ti.API.info("---------------------------------");
-        Ti.API.info("BEGIN	$.winSignUp 	createCloudUser");
-        Ti.API.info("---------------------------------");
-        Ti.API.info("---------------------------------");
         showIndicator();
         Titanium.Cloud.Users.create({
             username: username,
             password: password,
             password_confirmation: password
         }, function(e) {
-            if (e.success) logIn(username, password); else {
+            if (e.success) apiHelper.Login(username, password); else {
                 hideIndicator();
                 displayErrorMessage(Alloy.Globals.ErrorMessages.userNameTaken);
             }
         });
-    }
-    function logIn(username, password) {
-        Ti.API.info("---------------------------------");
-        Ti.API.info("---------------------------------");
-        Ti.API.info("BEGIN	$.winSignUp 	logIn");
-        Ti.API.info("---------------------------------");
-        Ti.API.info("---------------------------------");
-        Titanium.API.info("--- Running loginCloudUser ---");
-        Titanium.Cloud.Users.login({
-            login: username,
-            password: password
-        }, function(e) {
-            Ti.API.info("---------------------------------");
-            Ti.API.info("---------------------------------");
-            Ti.API.info("BEGIN	$.winSignUp 	logIn");
-            Ti.API.info("---------------------------------");
-            Ti.API.info("---------------------------------");
-            hideIndicator();
-            if (e.success) {
-                Ti.API.info("---------------------------------");
-                Ti.API.info("---------------------------------");
-                Ti.API.info("	$.winSignUp 	if(e.success){");
-                Ti.API.info("---------------------------------");
-                Ti.API.info("---------------------------------");
-                alert("login success");
-                Titanium.App.Properties.setObject("username", username);
-                var loginEvent;
-                loginEvent = new Object({
-                    detail: {
-                        didLogIn: true
-                    }
-                });
-                Titanium.App.fireEvent("app:didLogIn", loginEvent);
-            } else {
-                Ti.API.info("---------------------------------");
-                Ti.API.info("---------------------------------");
-                Ti.API.info("	$.winSignUp 	if(e.success){		else");
-                Ti.API.info("---------------------------------");
-                Ti.API.info("---------------------------------");
-                displayErrorMessage(Alloy.Globals.ErrorMessages.logInIncorrect);
-            }
-            Titanium.API.info("--- User " + (e.success ? "logged in" : "not logged in") + " ---");
-        });
-        Ti.API.info("---------------------------------");
-        Ti.API.info("---------------------------------");
-        Ti.API.info("END	$.winSignUp 	logIn");
-        Ti.API.info("---------------------------------");
-        Ti.API.info("---------------------------------");
     }
     function displayErrorMessage(msg) {
         Ti.API.info("---------------------------------");

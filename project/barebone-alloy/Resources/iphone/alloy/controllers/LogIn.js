@@ -53,7 +53,7 @@ function Controller() {
     function submitBtnHandler() {
         if (Titanium.Network.online) {
             showIndicator();
-            Alloy.Globals.logIn($.emailField.value, $.passwordField.value);
+            apiHelper.Login($.emailField.value, $.passwordField.value);
         } else alert("Check Internet Connection");
     }
     function displayErrorMessage(msg) {
@@ -224,6 +224,7 @@ function Controller() {
     exports.destroy = function() {};
     _.extend($, $.__views);
     var Cloud = require("ti.cloud");
+    var apiHelper = require("apiHelper");
     var un;
     Titanium.Cloud = Cloud;
     var args = {

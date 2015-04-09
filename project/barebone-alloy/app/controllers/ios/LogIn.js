@@ -4,6 +4,8 @@
 
 
 var Cloud = require('ti.cloud');
+var apiHelper = require('apiHelper');
+
 var un;
 
 Titanium.Cloud = Cloud;
@@ -116,7 +118,7 @@ function submitBtnHandler(e){
 	
 	if (Titanium.Network.online) {
 		showIndicator();
-		Alloy.Globals.logIn($.emailField.value, $.passwordField.value);
+		apiHelper.Login($.emailField.value, $.passwordField.value);
 	} else {
 		alert('Check Internet Connection');
 	}

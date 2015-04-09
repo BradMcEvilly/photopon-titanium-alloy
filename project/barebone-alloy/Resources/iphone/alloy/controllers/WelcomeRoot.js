@@ -76,11 +76,7 @@ function Controller() {
     $.__views.winWelcomeRoot && $.addTopLevelView($.__views.winWelcomeRoot);
     exports.destroy = function() {};
     _.extend($, $.__views);
-    console.log("---------------------------");
-    console.log("---------------------------");
-    console.log("--->		TOP OF FILE.JS	-	WelcomeRoot.js");
-    console.log("---------------------------");
-    console.log("---------------------------");
+    var apiHelper = require("apiHelper");
     var homeWindow, homeController, welcomeController, welcomeWindow, args = arguments[0] || {};
     $.winWelcomeRoot.addEventListener("open", function() {
         var uname = Titanium.App.Properties.getObject("username");
@@ -89,7 +85,7 @@ function Controller() {
         console.log(uname);
         console.log(upass);
         console.log("*******");
-        uname && upass ? Alloy.Globals.logIn(uname, upass) : showWelcomeWindow();
+        uname && upass ? apiHelper.Login(uname, upass) : showWelcomeWindow();
         Titanium.App.addEventListener("app:didLogIn", function() {
             try {
                 Alloy.Globals.navGroup.closeWindow(welcomeWindow);

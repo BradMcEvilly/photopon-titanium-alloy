@@ -205,62 +205,8 @@ function assertFieldTxt (txt) {
 
 
 
-
-
-
-
-/*
-var imin = 0;
-var imax = 10000;
-
 function createCloudUser(username, password) {
-	
-	Ti.API.info('---------------------------------');
-	Ti.API.info('---------------------------------');
-	Ti.API.info('BEGIN	$.winSignUp 	createCloudUser');
-	Ti.API.info('---------------------------------');
-	Ti.API.info('---------------------------------');
-	
-	imin++;
-	showIndicator();
-	// example assumes you have a set of text fields named username, password, etc.
-	Titanium.Cloud.Users.create({
-	    username: username,
-	    password: password,
-	    password_confirmation: password
-	}, function (e) {
-		
-		hideIndicator();
-		// user created successfully
-        if(imin < imax){
-        	var w = Alloy.Globals.generateRandomWord();
-        	createCloudUser(w, password);
-        }
-        / *
-		if ( e.success ) {
-	        // user created successfully
-	    	logIn(username, password);
-	    
-	    } else {
-	        // oops, something went wrong
-			// alert('error: ' + e.error);
-	        // alert('message: ' + e.message);
-	        displayErrorMessage(Alloy.Globals.ErrorMessages.userNameTaken);
-	    }* /
-	});
-}
-*/
 
-
-
-function createCloudUser(username, password) {
-	
-	Ti.API.info('---------------------------------');
-	Ti.API.info('---------------------------------');
-	Ti.API.info('BEGIN	$.winSignUp 	createCloudUser');
-	Ti.API.info('---------------------------------');
-	Ti.API.info('---------------------------------');
-	
 	showIndicator();
 	// example assumes you have a set of text fields named username, password, etc.
 	Titanium.Cloud.Users.create({
@@ -274,7 +220,7 @@ function createCloudUser(username, password) {
         
 		if ( e.success ) {
 	        // user created successfully
-	    	logIn(username, password);
+	    	apiHelper.Login(username, password);
 	    
 	    } else {
 	        // oops, something went wrong
@@ -286,69 +232,6 @@ function createCloudUser(username, password) {
 	    
 	    }
 	});
-}
-
-function logIn(username, password) {
-	
-	Ti.API.info('---------------------------------');
-	Ti.API.info('---------------------------------');
-	Ti.API.info('BEGIN	$.winSignUp 	logIn');
-	Ti.API.info('---------------------------------');
-	Ti.API.info('---------------------------------');
-	
-	Titanium.API.info('--- Running loginCloudUser ---');
-	//showIndicator();
-	Titanium.Cloud.Users.login({
-        login: username,
-        password: password
-    }, function (e) {
-	    	
-		Ti.API.info('---------------------------------');
-		Ti.API.info('---------------------------------');
-		Ti.API.info('BEGIN	$.winSignUp 	logIn');
-		Ti.API.info('---------------------------------');
-		Ti.API.info('---------------------------------');
-		
-
-    	hideIndicator();
-    	if(e.success){
-		    		
-			Ti.API.info('---------------------------------');
-			Ti.API.info('---------------------------------');
-			Ti.API.info('	$.winSignUp 	if(e.success){');
-			Ti.API.info('---------------------------------');
-			Ti.API.info('---------------------------------');
-			
-    		alert('login success');
-    		
-    		Titanium.App.Properties.setObject('username', username);
-    		
-    		var loginEvent; // The custom event that will be created
-		    loginEvent = new Object({
-		    					"detail":{
-		    						"didLogIn":true
-		    					}
-		    				});
-		    Titanium.App.fireEvent("app:didLogIn", loginEvent);
-    	}else{
-    				
-			Ti.API.info('---------------------------------');
-			Ti.API.info('---------------------------------');
-			Ti.API.info('	$.winSignUp 	if(e.success){		else');
-			Ti.API.info('---------------------------------');
-			Ti.API.info('---------------------------------');
-			
-    		displayErrorMessage(Alloy.Globals.ErrorMessages.logInIncorrect);
-    	}
-        Titanium.API.info('--- User '+ (e.success ? 'logged in' : 'not logged in')+' ---');
-    });
-    
-	Ti.API.info('---------------------------------');
-	Ti.API.info('---------------------------------');
-	Ti.API.info('END	$.winSignUp 	logIn');
-	Ti.API.info('---------------------------------');
-	Ti.API.info('---------------------------------');
-	
 }
 
 function displayErrorMessage(msg){

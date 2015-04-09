@@ -1,17 +1,8 @@
-/*
-$.acslogin.init({callback: function(e){
-	alert('stuff');
-	//login success callback
-	}});
-*/
+
 
 var Cloud = require('ti.cloud');
 
 var that = this;
-
-
-
-
 
 
 /*
@@ -214,42 +205,6 @@ if (Titanium.Platform.Android) {
 		Alloy.Globals.log('END	index.js	$.winParent.addEventListener( open ');
 	});
 	
-	/*
-	 * Our Main Parent Window open event
-	 * /
-	$.winParent.addEventListener('open', function(e) {
-		
-		Alloy.Globals.initNavGroup({
-			left:0
-		});
-		
-		
-		
-		//Alloy.Globals.presentWelcomeController();
-		// first check if logged in
-		
-		if(Alloy.Globals.isLoggedIn){
-			
-			Alloy.Globals.presentHomeController();
-			
-		}else{
-			Alloy.Globals.presentWelcomeController();
-		}
-			
-		
-		
-	});
-	*/
-	
-	
-	/*
-	 * Our Main Parent Window navgroup swap listener from
-	 * user login/logout event
-	 * /
-	$.winParent.addEventListener('app:didLogIn', function(e) {
-		
-	});
-	*/
 	
 	// set a variable for menu visibility
 	Alloy.Globals.isMenuVisible = false;

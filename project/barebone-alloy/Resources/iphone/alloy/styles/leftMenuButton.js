@@ -1,1 +1,1 @@
-module.exports = [{"isId":true,"priority":100100.0217,"key":"btnMenu","style":{image:"/images/icon_menu.png",}}];
+module.exports = [{"isId":true,"priority":100100.0219,"key":"btnMenu","style":{image:"/images/icon_menu.png",}}];

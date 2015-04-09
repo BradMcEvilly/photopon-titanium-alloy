@@ -2,11 +2,9 @@
  * @author Brad McEvilly
  */
 
-console.log('---------------------------');
-console.log('---------------------------');
-console.log('--->		TOP OF FILE.JS	-	WelcomeRoot.js');
-console.log('---------------------------');
-console.log('---------------------------');
+
+var apiHelper = require('apiHelper');
+
 
 //var currentWindow,
 var args = arguments[0] || {},
@@ -26,7 +24,7 @@ $.winWelcomeRoot.addEventListener('open', function (e) {
     
 	if (uname && upass) {
 		 
-		Alloy.Globals.logIn(uname, upass);
+		apiHelper.Login(uname, upass);
 	} else {
 		showWelcomeWindow();
 	}

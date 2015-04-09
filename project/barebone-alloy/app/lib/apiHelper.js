@@ -25,6 +25,56 @@ exports.APIGetRequestImage = function(url, imgView, actInd, callback) {
 };
 
 
+exports.Login = function(username, password) {
+	Cloud.Users.login({
+        login: username,
+        password: password
+    }, function (e) {
+	    	
+    	if(e.success){
+	    			
+    		var user = e.users[0];
+    		Titanium.App.Properties.setObject('username', username);
+    		Titanium.App.Properties.setObject('password', password);
+    		Titanium.App.Properties.setObject('uid', user.id);
+    		Titanium.App.Properties.setObject('sessionid', user.id);
+    		Titanium.App.Properties.setObject('role', user.role);
+    		
+    		if(user.role == 'merchant')
+    			alert('Merchant!');
+    		
+    		
+		    Titanium.App.fireEvent("app:didLogIn", {
+		    	"detail":{
+		    		"didLogIn":true
+		    	}
+		    });
+		       
+    	} else {
+    		Titanium.App.fireEvent("app:loginError", {
+		    	"message": Alloy.Globals.ErrorMessages.logInIncorrect
+		    });
+    		
+        }
+        //Titanium.API.info('--- User '+ (e.success ? 'logged in' : 'not logged in')+' ---');
+    });
+};
+
+
+exports.GetFriendRequests = function(callback, errorCallback) {
+	Cloud.Friends.requests(function (e) {
+		if (!e.success) {
+			if (errorCallback) {
+				errorCallback({
+					message: e.error && e.message
+				});
+			}
+			return;	
+		}
+        callback(e.friend_requests); 
+	});
+};
+
 
 exports.GetAllFriends = function(callback, errorCallback) {
 	Cloud.sendRequest({

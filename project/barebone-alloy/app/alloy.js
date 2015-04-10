@@ -334,47 +334,6 @@ Alloy.Globals.newComposition = {
 		
 };
 
-Alloy.Globals.logOut = function(){
-	
-	console.log('---------------------------');
-	console.log('---------------------------');
-	console.log('BEGIN	Alloy.Globals.logOut');
-	console.log('---------------------------');
-	console.log('---------------------------');
-	
-	Titanium.Cloud.Users.logout(function (e) {
-	    if (e.success) {
-	    	
-			console.log('---------------------------');
-			console.log('---------------------------');
-			console.log('SUCCESS	Alloy.Globals.logOut	Titanium.Cloud.Users.logout(function (e)');
-			console.log('---------------------------');
-			console.log('---------------------------');
-			
-	    	var logOutEvent; // The custom event that will be created
-		    logOutEvent = new Object({
-		    					"detail":{
-		    						"didLogOut":true
-		    					}
-		    				});
-		    Titanium.App.fireEvent(Alloy.Globals.EventNames.logOut, logOutEvent);
-	    } else {
-	    	
-			console.log('---------------------------');
-			console.log('---------------------------');
-			console.log('ERROR	Alloy.Globals.logOut	Titanium.Cloud.Users.logout(function (e)');
-			console.log('---------------------------');
-			console.log('JSON.stringify(e) = ' + JSON.stringify(e));
-			console.log('---------------------------');
-			
-	        //alert('Logout Error:\n' +
-	          //  ((e.error && e.message) || JSON.stringify(e)));
-	    }
-	});
-};
-
-
-
 
 Alloy.Globals.initNavGroup = function(options){
 	

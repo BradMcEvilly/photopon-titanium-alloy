@@ -1,27 +1,27 @@
-exports.APIGetRequest = function(url, callback, errorCallback) {
-    Ti.API.info("Get Request is called");
-    var req = Titanium.Network.createHTTPClient({
-        onload: callback,
-        onerror: errorCallback,
-        timeout: 6e4
+var Cloud = require("ti.cloud");
+
+exports.Logout = function() {
+    Cloud.Users.logout(function() {});
+    Titanium.App.Properties.removeProperty("username");
+    Titanium.App.Properties.removeProperty("password");
+    Titanium.App.Properties.removeProperty("uid");
+    Titanium.App.Properties.removeProperty("sessionid");
+    Titanium.App.Properties.removeProperty("role");
+    Titanium.App.fireEvent(Alloy.Globals.EventNames.logOut, {
+        detail: {
+            didLogOut: true
+        }
     });
-    req.open("GET", url);
-    req.setRequestHeader("Content-Type", "application/json");
-    req.send();
 };
 
-exports.APIGetRequestImage = function(url, imgView, actInd, callback) {
-    var loader = Titanium.Network.createHTTPClient({
-        onload: callback,
-        onerror: function(e) {
-            Ti.API.debug(e.error);
-        },
-        timeout: 1e4
+exports.Signup = function(username, password, callback, errorCallback) {
+    Cloud.Users.create({
+        username: username,
+        password: password,
+        password_confirmation: password
+    }, function(e) {
+        e.success ? callback(username, password) : errorCallback(e);
     });
-    loader.imgView = imgView;
-    loader.ind = actInd;
-    loader.open("GET", url);
-    loader.send();
 };
 
 exports.Login = function(username, password) {

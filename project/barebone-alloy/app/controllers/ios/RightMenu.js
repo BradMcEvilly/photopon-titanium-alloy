@@ -1,4 +1,5 @@
 var args = arguments[0] || {};
+var apiHelper = require('apiHelper');
 
 var data = [];
 
@@ -15,10 +16,7 @@ for (var i = 0; i < Alloy.Globals.rightMenuItems.length; i++) {
 
 	row.addEventListener('click', function(e) {
 		if (e.index == logOutIndex) {
-			
 			logOutBtnHandler(e);
-			
-			
 		}
 		args.context.isMenuShown = false;
 		args.context.Right_Menu.animate(Alloy.Globals.animations.slide_out_top);
@@ -45,30 +43,15 @@ for (var i = 0; i < Alloy.Globals.rightMenuItems.length; i++) {
 };
 
 function logOutBtnHandler (e) {
+
+	Ti.API.info('---------------------------------');
+	Ti.API.info('---------------------------------');
+	Ti.API.info('--->	Alloy.Globals.logOut();');
+	Ti.API.info('---------------------------------');
+	Ti.API.info('---------------------------------');
 	
-	
-	
-	
-	
-	//alert('');
-			
-	if (Ti.Platform.Android) {
-		//
-	} else {
-		Ti.API.info('---------------------------------');
-		Ti.API.info('---------------------------------');
-		Ti.API.info('--->	Alloy.Globals.logOut();');
-		Ti.API.info('---------------------------------');
-		Ti.API.info('---------------------------------');
-		
-		Alloy.Globals.stopLocationManager();
-		Alloy.Globals.logOut();
-		
-		
-	}
-	
-	
-	 
+	Alloy.Globals.stopLocationManager();
+	apiHelper.Logout();	 
 }
 
 function settingsBtnHandler (e) {

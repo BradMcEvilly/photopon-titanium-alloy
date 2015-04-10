@@ -1,3 +1,4 @@
+/*
 exports.APIGetRequest = function(url, callback, errorCallback) {
 	Ti.API.info('Get Request is called');
 	var req = Titanium.Network.createHTTPClient({
@@ -23,7 +24,41 @@ exports.APIGetRequestImage = function(url, imgView, actInd, callback) {
 	loader.open("GET", url);
 	loader.send();
 };
+*/
 
+var Cloud = require('ti.cloud');
+
+exports.Logout = function() {
+	Cloud.Users.logout(function() {});
+	
+	Titanium.App.Properties.removeProperty('username');
+	Titanium.App.Properties.removeProperty('password');
+	Titanium.App.Properties.removeProperty('uid');
+	Titanium.App.Properties.removeProperty('sessionid');
+	Titanium.App.Properties.removeProperty('role');
+	
+	
+	Titanium.App.fireEvent(Alloy.Globals.EventNames.logOut, {
+		"detail":{
+			"didLogOut":true
+		}
+	});
+};
+
+exports.Signup = function(username, password, callback, errorCallback) {
+	Cloud.Users.create({
+	    username: username,
+	    password: password,
+	    password_confirmation: password
+	}, function (e) {
+		
+		if ( e.success ) {
+	        callback(username, password);
+	    } else {
+	        errorCallback(e);
+	    }
+	});
+};
 
 exports.Login = function(username, password) {
 	Cloud.Users.login({

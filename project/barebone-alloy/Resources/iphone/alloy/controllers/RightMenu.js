@@ -9,15 +9,13 @@ function __processArg(obj, key) {
 
 function Controller() {
     function logOutBtnHandler() {
-        if (Ti.Platform.Android) ; else {
-            Ti.API.info("---------------------------------");
-            Ti.API.info("---------------------------------");
-            Ti.API.info("--->	Alloy.Globals.logOut();");
-            Ti.API.info("---------------------------------");
-            Ti.API.info("---------------------------------");
-            Alloy.Globals.stopLocationManager();
-            Alloy.Globals.logOut();
-        }
+        Ti.API.info("---------------------------------");
+        Ti.API.info("---------------------------------");
+        Ti.API.info("--->	Alloy.Globals.logOut();");
+        Ti.API.info("---------------------------------");
+        Ti.API.info("---------------------------------");
+        Alloy.Globals.stopLocationManager();
+        apiHelper.Logout();
     }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     this.__controllerPath = "RightMenu";
@@ -59,6 +57,7 @@ function Controller() {
     exports.destroy = function() {};
     _.extend($, $.__views);
     var args = arguments[0] || {};
+    var apiHelper = require("apiHelper");
     var data = [];
     var logOutIndex = Alloy.Globals.rightMenuItems.length - 1;
     for (var i = 0; i < Alloy.Globals.rightMenuItems.length; i++) {

@@ -9,60 +9,20 @@ function __processArg(obj, key) {
 
 function Controller() {
     function winSignUpOpenHandler() {
-        Ti.API.info("---------------------------------");
-        Ti.API.info("---------------------------------");
-        Ti.API.info("BEGIN	$.winSignUp 	winSignUpOpenHandler");
-        Ti.API.info("---------------------------------");
-        Ti.API.info("---------------------------------");
         init();
         focusTextFields();
         validateSignUp();
-        Ti.API.info("---------------------------------");
-        Ti.API.info("---------------------------------");
-        Ti.API.info("END	$.winSignUp 	winSignUpOpenHandler");
-        Ti.API.info("---------------------------------");
-        Ti.API.info("---------------------------------");
     }
     function focusTextFields() {
-        Ti.API.info("---------------------------------");
-        Ti.API.info("---------------------------------");
-        Ti.API.info("BEGIN	$.winSignUp 	focusTextFields");
-        Ti.API.info("---------------------------------");
-        Ti.API.info("---------------------------------");
         "" == $.emailField.value ? $.emailField.focus() : $.passwordField.focus();
-        Ti.API.info("---------------------------------");
-        Ti.API.info("---------------------------------");
-        Ti.API.info("END	$.winSignUp 	focusTextFields");
-        Ti.API.info("---------------------------------");
-        Ti.API.info("---------------------------------");
     }
     function init() {
-        Ti.API.info("---------------------------------");
-        Ti.API.info("---------------------------------");
-        Ti.API.info("BEGIN	$.winSignUp 	init");
-        Ti.API.info("---------------------------------");
-        Ti.API.info("---------------------------------");
         $.winSignUp.setTitleControl(Alloy.createController("titleControl", {
             title: "Sign Up"
         }).getView());
         Titanium.App.addEventListener("app:didLogIn", function() {
-            Ti.API.info("---------------------------------");
-            Ti.API.info("---------------------------------");
-            Ti.API.info("BEGIN	$.winSignUp 	Titanium.App.addEventListener( app:didLogIn");
-            Ti.API.info("---------------------------------");
-            Ti.API.info("---------------------------------");
             $.winSignUp.close();
-            Ti.API.info("---------------------------------");
-            Ti.API.info("---------------------------------");
-            Ti.API.info("END	$.winSignUp 	Titanium.App.addEventListener( app:didLogIn");
-            Ti.API.info("---------------------------------");
-            Ti.API.info("---------------------------------");
         });
-        Ti.API.info("---------------------------------");
-        Ti.API.info("---------------------------------");
-        Ti.API.info("END	$.winSignUp 	init");
-        Ti.API.info("---------------------------------");
-        Ti.API.info("---------------------------------");
     }
     function focusNext() {
         $.passwordField.focus();
@@ -71,11 +31,6 @@ function Controller() {
         $.btnSignUp.setVisible(isValid() ? true : false);
     }
     function submitBtnHandler() {
-        Ti.API.info("---------------------------------");
-        Ti.API.info("---------------------------------");
-        Ti.API.info("BEGIN	$.winSignUp 	submitBtnHandler");
-        Ti.API.info("---------------------------------");
-        Ti.API.info("---------------------------------");
         Titanium.Network.online ? createCloudUser($.emailField.value, $.passwordField.value) : alert("Check Internet Connection");
     }
     function isValid() {
@@ -84,48 +39,24 @@ function Controller() {
         return isValid;
     }
     function assertFieldTxt(txt) {
-        Ti.API.info("---------------------------------");
-        Ti.API.info("---------------------------------");
-        Ti.API.info("BEGIN	$.winSignUp 	submitBtnHandler");
-        Ti.API.info("---------------------------------");
-        Ti.API.info("---------------------------------");
         return "" == txt;
     }
     function createCloudUser(username, password) {
         showIndicator();
-        Titanium.Cloud.Users.create({
-            username: username,
-            password: password,
-            password_confirmation: password
-        }, function(e) {
-            if (e.success) apiHelper.Login(username, password); else {
-                hideIndicator();
-                displayErrorMessage(Alloy.Globals.ErrorMessages.userNameTaken);
-            }
+        apiHelper.Signup(username, password, function() {
+            apiHelper.Login(username, password);
+        }, function() {
+            hideIndicator();
+            displayErrorMessage(Alloy.Globals.ErrorMessages.userNameTaken);
         });
     }
     function displayErrorMessage(msg) {
-        Ti.API.info("---------------------------------");
-        Ti.API.info("---------------------------------");
-        Ti.API.info("BEGIN	$.winSignUp 	displayErrorMessage");
-        Ti.API.info("---------------------------------");
-        Ti.API.info("---------------------------------");
         $.lblSignUp.setText(msg);
         setTimeout(function() {
             $.lblSignUp.setText(args.title);
         }, 5e3);
-        Ti.API.info("---------------------------------");
-        Ti.API.info("---------------------------------");
-        Ti.API.info("END	$.winSignUp 	displayErrorMessage");
-        Ti.API.info("---------------------------------");
-        Ti.API.info("---------------------------------");
     }
     function lockUnlockFields(isLock) {
-        Ti.API.info("---------------------------------");
-        Ti.API.info("---------------------------------");
-        Ti.API.info("BEGIN	$.winSignUp 	lockUnlockFields");
-        Ti.API.info("---------------------------------");
-        Ti.API.info("---------------------------------");
         if (isLock) {
             $.emailField.setEditable(false);
             $.passwordField.setEditable(false);
@@ -133,11 +64,6 @@ function Controller() {
             $.emailField.setEditable(true);
             $.passwordField.setEditable(true);
         }
-        Ti.API.info("---------------------------------");
-        Ti.API.info("---------------------------------");
-        Ti.API.info("END	$.winSignUp 	lockUnlockFields");
-        Ti.API.info("---------------------------------");
-        Ti.API.info("---------------------------------");
     }
     function showIndicator() {
         $.ind.show();
@@ -283,23 +209,12 @@ function Controller() {
     $.__views.winSignUp.add($.__views.signUpTable);
     exports.destroy = function() {};
     _.extend($, $.__views);
-    var Cloud = require("ti.cloud");
-    Titanium.Cloud = Cloud;
+    var apiHelper = require("apiHelper");
     var args = {
         title: "SIGN UP"
     };
     $.winSignUp.addEventListener("close", function() {
-        Ti.API.info("---------------------------------");
-        Ti.API.info("---------------------------------");
-        Ti.API.info("BEGIN	$.winSignUp 	$.winSignUp.addEventListener( close");
-        Ti.API.info("---------------------------------");
-        Ti.API.info("---------------------------------");
         $.destroy();
-        Ti.API.info("---------------------------------");
-        Ti.API.info("---------------------------------");
-        Ti.API.info("END	$.winSignUp 	$.winSignUp.addEventListener( close");
-        Ti.API.info("---------------------------------");
-        Ti.API.info("---------------------------------");
     });
     $.btnSignUp.addEventListener("touchstart", function() {
         $.btnSignUp.backgroundColor = Alloy.Globals.ThemeStyles.button.selectedBackgroundColor;

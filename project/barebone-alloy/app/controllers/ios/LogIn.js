@@ -37,26 +37,9 @@ $.btnLogIn.addEventListener('touchend', function(e) {
 
 
 function winLogInOpenHandler (e) {
-	
-	/* eventually check for session/current login
-	if (Alloy.Globals.username) {		
-	}*/
-	
-	Ti.API.info('---------------------------------');
-	Ti.API.info('---------------------------------');
-	Ti.API.info('BEGIN	winLogin	winLogInOpenHandler');
-	Ti.API.info('---------------------------------');
-	Ti.API.info('---------------------------------');
-	
 	init();
 	focusTextFields();
 	validateLogIn();
-	
-	Ti.API.info('---------------------------------');
-	Ti.API.info('---------------------------------');
-	Ti.API.info('END	winLogin	winLogInOpenHandler');
-	Ti.API.info('---------------------------------');
-	Ti.API.info('---------------------------------');
 }
 
 function focusTextFields () {

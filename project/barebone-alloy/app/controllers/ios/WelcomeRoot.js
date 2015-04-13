@@ -33,9 +33,7 @@ $.winWelcomeRoot.addEventListener('open', function (e) {
 	Titanium.App.addEventListener("app:didLogIn", function(e) {
 	
 		try{
-			
 			Alloy.Globals.navGroup.closeWindow(welcomeWindow);
-			
 		}catch(e){
 			
 		}

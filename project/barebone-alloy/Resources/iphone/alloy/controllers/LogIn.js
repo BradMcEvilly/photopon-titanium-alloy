@@ -9,19 +9,9 @@ function __processArg(obj, key) {
 
 function Controller() {
     function winLogInOpenHandler() {
-        Ti.API.info("---------------------------------");
-        Ti.API.info("---------------------------------");
-        Ti.API.info("BEGIN	winLogin	winLogInOpenHandler");
-        Ti.API.info("---------------------------------");
-        Ti.API.info("---------------------------------");
         init();
         focusTextFields();
         validateLogIn();
-        Ti.API.info("---------------------------------");
-        Ti.API.info("---------------------------------");
-        Ti.API.info("END	winLogin	winLogInOpenHandler");
-        Ti.API.info("---------------------------------");
-        Ti.API.info("---------------------------------");
     }
     function focusTextFields() {
         "" == $.emailField.value ? $.emailField.focus() : $.passwordField.focus();

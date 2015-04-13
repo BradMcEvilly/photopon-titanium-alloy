@@ -3,10 +3,10 @@
 	width : Ti.UI.SIZE
 },
 "#lblTitle": {
-	color : '#fff',
+	color : '#000',
 	font : {
 		fontSize : 18,
 		fontFamily : 'Montserrat',
 		fontWeight : 'Bold'
-		}
+	}
 }

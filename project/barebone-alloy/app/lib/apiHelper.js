@@ -1,32 +1,4 @@
-/*
-exports.APIGetRequest = function(url, callback, errorCallback) {
-	Ti.API.info('Get Request is called');
-	var req = Titanium.Network.createHTTPClient({
-		onload : callback,
-		onerror : errorCallback,
-		timeout : 60000
-	});
-	req.open("GET", url);
-	req.setRequestHeader('Content-Type', 'application/json');
-	req.send();
-};
-
-exports.APIGetRequestImage = function(url, imgView, actInd, callback) {
-	var loader = Titanium.Network.createHTTPClient({
-		onload : callback,
-		onerror : function(e) {
-			Ti.API.debug(e.error);
-		},
-		timeout : 10000
-	});
-	loader.imgView = imgView;
-	loader.ind = actInd;
-	loader.open("GET", url);
-	loader.send();
-};
-*/
-
-var Cloud = require('ti.cloud');
+Cloud = require('ti.cloud');
 
 exports.Logout = function() {
 	Cloud.Users.logout(function() {});
@@ -76,8 +48,8 @@ exports.Login = function(username, password) {
     		Titanium.App.Properties.setObject('sessionid', user.id);
     		Titanium.App.Properties.setObject('role', user.role);
     		
-    		if(user.role == 'merchant')
-    			alert('Merchant!');
+    		//if(user.role == 'merchant')
+    		//	alert('Merchant!');
     		
     		
 		    Titanium.App.fireEvent("app:didLogIn", {

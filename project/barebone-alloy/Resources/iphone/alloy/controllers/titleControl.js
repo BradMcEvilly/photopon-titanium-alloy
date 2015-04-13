@@ -30,7 +30,7 @@ function Controller() {
     });
     $.__views.titleView && $.addTopLevelView($.__views.titleView);
     $.__views.lblTitle = Ti.UI.createLabel({
-        color: "#fff",
+        color: "#000",
         font: {
             fontSize: 18,
             fontFamily: "Montserrat",

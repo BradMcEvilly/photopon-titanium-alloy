@@ -1,4 +1,4 @@
-var Cloud = require("ti.cloud");
+Cloud = require("ti.cloud");
 
 exports.Logout = function() {
     Cloud.Users.logout(function() {});
@@ -36,7 +36,6 @@ exports.Login = function(username, password) {
             Titanium.App.Properties.setObject("uid", user.id);
             Titanium.App.Properties.setObject("sessionid", user.id);
             Titanium.App.Properties.setObject("role", user.role);
-            "merchant" == user.role && alert("Merchant!");
             Titanium.App.fireEvent("app:didLogIn", {
                 detail: {
                     didLogIn: true

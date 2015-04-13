@@ -1,151 +1,32 @@
+Titanium.include('frames.js');
+Cloud = require('ti.cloud');
 
-/*
-// ----------------------------------------------
-https://developer.appcelerator.com/question/163852/animation-not-moving-image-on-iphone
-// ----------------------------------------------
-
-///////////////////////////////
-
-<Alloy>
-    <TabGroup id="nav" navBarHidden="True">
-        <Tab id="tab1" title="Tab 1">
-            <Window title="Window 1" backgroundColor="#fff">
-                <TextField id="tempo"></TextField>
-                <Button id="btn" color="#000" title="Press Me"></Button>
-            </Window>
-        </Tab>
-    </TabGroup>
-</Alloy>
-// ...
-$.btn.addEventListener('click', function (e) {
-    var zoomMatrix = Ti.UI.create2DMatrix();
-    zoomMatrix = zoomMatrix.scale(2);
- 
-    $.btn.animate({
-        center: {
-            x: 10,
-            y: 10
-        },
-        duration: 400
-    }, function () {
-        $.btn.animate({
-            transform: zoomMatrix,
-            duration: 400
-        });
-    });
-});
-$.nav.open();
-
-///////////////////////////////
-
-
-
-
-
-
-
-
-
-
-///////////////////////////////
-
-var animate = Ti.UI.createButton({
-    title : 'animate',
-    top : 10,
-});
- 
-win.add(animate);
- 
-view = Ti.UI.createImageView({
-    backgroundColor : 'red',
-    image : '/images/pin.png',
-    width : 200,
-    height : 200,
-    top : 100,
-    left : 100,
-});
-win.add(view);
- 
-animate.addEventListener('click', function(e) {
- 
-    view.animate({
-        top : 200,
-        right : 300,
-        duration : 500
-    }, function() {
-        view.animate({
-            top : 100,
-            left : 10,
-            duration : 500
-        });
-    });
-});
- 
-win.open();
-*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// The contents of this file will be executed before any of
-// your view controllers are ever executed, including the index.
-// You have access to all functionality on the `Alloy` namespace.
-//
-// This is a great place to do any initialization for your app
-// or create any global variables/functions that you'd like to
-// make available throughout your app. You can easily make things
-// accessible globally by attaching them to the `Alloy.Globals`
-// object. For example:
-//
-// Alloy.Globals.someGlobalFunction = function(){};
-
-
-// set defaults
 
 Alloy.Globals.navGroup 		= null;
 Alloy.Globals.homeNavGroup 	= null;
 Alloy.Globals.currentWindow	= null;
-
-//	Alloy.Globals.homeController 			= null;
-//	Alloy.Globals.welcomeController 		= null;
-//	Alloy.Globals.welcomeRootController 	= null;
-
+Alloy.Globals.menuVisible   = false;
 Alloy.Globals.isDebug 		= true;
-
 Alloy.Globals.latitude 		= null;
 Alloy.Globals.longitude 	= null;
 
+
 Alloy.Globals.SnapWrapComposition = null;
-
-Alloy.Globals.APIKeys = {
-	com_8coupons:'02fbfdcae460b422ba93ca0de753e2ac566a290f92e6a03bd8eb3b5c5beb6fbcec933468b156b3b6050939c1cb7ea653'
-};
-
-var Cloud = require('ti.cloud');
-
 Alloy.Globals.couponsResults = [];
 
+
+
+
 Alloy.Globals.log = function (outputString){
-	
 	if(!Alloy.Globals.isDebug)
 		return;
 		
-	Ti.API.info('----------------------------------------');
-	Ti.API.info('----------------------------------------');
 	Ti.API.info('--->	' + outputString );
-	Ti.API.info('----------------------------------------');
-	Ti.API.info('----------------------------------------');
+};
+
+Alloy.Globals.showError = function(str) {
+	alert(str);
+	console.log("!!!!!-> ", str);
 };
 
 Alloy.Globals.getLocation = function (){
@@ -156,54 +37,30 @@ Alloy.Globals.getLocation = function (){
 		Titanium.Geolocation.getCurrentPosition(function(e){
 			if (!e.success || e.error)
             {
-                alert('Could not find the device location');
+                Alloy.Globals.showError('Could not find the device location');
                 return;
             }
             var longitude = e.coords.longitude;
             var latitude = e.coords.latitude;
-
-            //alert("latitude: " + latitude + "longitude: " + longitude);
-            
-			Alloy.Globals.cacheCurrentCoords(e.coords.latitude, e.coords.longitude);
-		});
-	}else{
 			
-		Ti.API.info('---------------------------------');
-		Ti.API.info('---------------------------------');
-		Ti.API.info('FALSE	Alloy.Globals.getLocation	if(Ti.Network.online){}		else{}');
-		Ti.API.info('---------------------------------');
-		Ti.API.info('---------------------------------');
-		
-		
-        alert("Internet connection is required to use localization features");
+			Alloy.Globals.log(longitude + " " + latitude);
+			            
+			Alloy.Globals.cacheCurrentCoords(latitude, longitude);
+		});
+	} else {
+        Alloy.Globals.showError("Internet connection is required to use localization features");
     }
     
-	Ti.API.info('---------------------------------');
-	Ti.API.info('---------------------------------');
-	Ti.API.info('END	Alloy.Globals.getLocation');
-	Ti.API.info('---------------------------------');
-	Ti.API.info('---------------------------------');
-	
 };
 
-Alloy.Globals.startLocationManager = function (){
+Alloy.Globals.locationCallback = function(ev) {
+	console.log("ev from LOCATION callback");
+	console.log(ev);
+    Alloy.Globals.getLocation();
+};
 
-	Ti.API.info('---------------------------------');
-	Ti.API.info('---------------------------------');
-	Ti.API.info('--->	BEGIN	Alloy.Globals.startLocationManager');
-	Ti.API.info('---------------------------------');
-	Ti.API.info('---------------------------------');
-	
-	
-	/*
-	//	way 1
-	var fName = arguments.callee.toString();
-	console.log(fName);
-	fName = fName.substr('function '.length);
-	console.log(fName);
-	fName = fName.substr(0, fName.indexOf('('));
-	console.log(fName);
-	*/
+
+Alloy.Globals.startLocationManager = function (){
 
 	//alert('Titanium.Geolocation.locationServicesAuthorization = ' + Titanium.Geolocation.locationServicesAuthorization);
 	
@@ -216,99 +73,20 @@ Alloy.Globals.startLocationManager = function (){
 	
 	
 	if (!Ti.Geolocation.locationServicesEnabled) {
-		
-		Ti.API.info('---------------------------------');
-		Ti.API.info('---------------------------------');
-		Ti.API.info('Alloy.Globals.startLocationManager 	if (!Ti.Geolocation.locationServicesEnabled) {');
-		Ti.API.info('---------------------------------');
-		Ti.API.info('---------------------------------');
-		
-		alert('Please enable location services');
-		
-		Ti.API.info('---------------------------------');
-		Ti.API.info('---------------------------------');
-		Ti.API.info('END	Alloy.Globals.startLocationManager');
-		Ti.API.info('---------------------------------');
-		Ti.API.info('---------------------------------');
-	    // perform other operations with Ti.Geolocation
+		Alloy.Globals.showError('Please enable location services');
 	    return;
 	}
 	
-	/*
-	if( Titanium.Geolocation.locationServicesEnabled === false ) {
-	    Ti.API.debug('Your device has GPS turned off. Please turn it on.');
-	}
-	*/
 	
-	Titanium.Geolocation.addEventListener('location',function(){
-	    Alloy.Globals.getLocation();
-	});
-	
-	Ti.API.info('---------------------------------');
-	Ti.API.info('---------------------------------');
-	Ti.API.info('END	Alloy.Globals.startLocationManager');
-	Ti.API.info('---------------------------------');
-	Ti.API.info('---------------------------------');
+	Titanium.Geolocation.addEventListener('location', Alloy.Globals.locationCallback);
 	
 };
 
 Alloy.Globals.stopLocationManager = function (){
-	
-	/*
-	var selfName = arguments.callee.toString();
-    selfName = selfName.substr('function '.length);        // trim off "function "
-    selfName = selfName.substr(0, selfName.indexOf('('));        // trim off everything after the function name
-    // --->
-	Ti.API.info('---------------------------------');
-	Ti.API.info('---------------------------------');
-	Ti.API.info('--->	BEGIN	' + selfName + 'Alloy.Globals.stopLocationManager');
-	Ti.API.info('---------------------------------');
-	Ti.API.info('---------------------------------');
-	*/
-	
-	Ti.API.info('---------------------------------');
-	Ti.API.info('---------------------------------');
-	Ti.API.info('--->	BEGIN	Alloy.Globals.stopLocationManager');
-	Ti.API.info('---------------------------------');
-	Ti.API.info('---------------------------------');
-	
-	
-	
-	Titanium.Geolocation.removeEventListener('location', function(e){
-		
-		Ti.API.info('---------------------------------');
-		Ti.API.info('---------------------------------');
-		Ti.API.info('--->	Alloy.Globals.stopLocationManager	Titanium.Geolocation.removeEventListener');
-		Ti.API.info('---------------------------------');
-		Ti.API.info('---------------------------------');
-	});
-	
-	
-	Ti.API.info('---------------------------------');
-	Ti.API.info('---------------------------------');
-	Ti.API.info('END	Alloy.Globals.stopLocationManager');
-	Ti.API.info('---------------------------------');
-	Ti.API.info('---------------------------------');
-	
-	
+	Titanium.Geolocation.removeEventListener('location', Alloy.Globals.locationCallback);
 };
 
 
-
-//Alloy.Globals.SnapWrapComposition.coupon = null;
-
-/*
-Alloy.Globals.SnapWrapComposition.coupon = {
-	
-	id:1, // ACS coupon obj id
-	place_id:1, // ACS place obj id
-	is_external:true, // whether or not coupon is our own or came from a third party via 8coupons API
-	did_like:true
-	
-};
-*/
-
-Titanium.include('frames.js');
 
 
 
@@ -336,157 +114,13 @@ Alloy.Globals.newComposition = {
 
 
 Alloy.Globals.initNavGroup = function(options){
-	
-	console.log('---------------------------');
-	console.log('---------------------------');
-	console.log('BEGIN	Alloy.Globals.initNavGroup');
-	console.log('---------------------------');
-	console.log('---------------------------');
-	
-	
-	//if(!Alloy.Globals.navGroup){
-		Alloy.Globals.navGroup = Titanium.UI.iOS.createNavigationWindow(options);
-		Alloy.Globals.navGroup.width = Alloy.Globals.Frames.per100Width;
-	//}
-	
-	
-	console.log('---------------------------');
-	console.log('---------------------------');
-	console.log('END	Alloy.Globals.initNavGroup');
-	console.log('---------------------------');
-	console.log('---------------------------');
-	
-	
-};
-/*
-Alloy.Globals.presentHomeController = function(){
-	
-	try{
-		//Alloy.Globals.navGroup.close();
-		//Alloy.Globals.welcomeController = null;
-		//Alloy.Globals.welcomeController.visible
-	}catch(e){
-		
-	}
-	
-	//if(!Alloy.Globals.homeController){
-		Alloy.Globals.homeController = Alloy.createController('Home', {
-				title: 'SnapWrap.me',
-				name: '_home',
-				isFlyout:true
-			}).getView();
-	//}
-	
-	//Alloy.Globals.navGroup.open();
-	
-	Alloy.Globals.navGroup.window = Alloy.Globals.homeController;
-	//Alloy.Globals.navGroup.open();
-	
-	
-	
-	/*
-	Alloy.Globals.navGroup.openWindow( Alloy.Globals.homeController, {
-		//animated: false
-	});
-	* /
-	
-	Alloy.Globals.navGroup.window = Alloy.Globals.homeController;
-	Alloy.Globals.navGroup.open();
-	
-	
-	/*
-	Alloy.Globals.navGroup.openWindow(homeController, {
-		animated: true
-	});
-	* /
-	
-	
-	
-	
-	
-	
-	/*
-	if(Alloy.Globals.welcomeController){
-		try{
-			Alloy.Globals.navGroup.closeWindow(Alloy.Globals.welcomeController);
-			
-		}catch(e){
-			alert('Error: closeWindow homeController');
-		}
-		Alloy.Globals.welcomeController = null;
-	}* /
-	
-	try{
-		Alloy.Globals.navGroup.close;
-		
-	}catch(e){
-		alert('Error: closeWindow homeController');
-	}
-	
-	if(!Alloy.Globals.homeController)
-		Alloy.Globals.homeController = Alloy.createController('Home', {
-				title : 'Home',
-				name : '_home',
-				isFlyout : true
-			}).getView();
-	
-	Alloy.Globals.navGroup.window = Alloy.Globals.homeController;
-	Alloy.Globals.navGroup.open();
-	* /
-	
+	Alloy.Globals.navGroup = Titanium.UI.iOS.createNavigationWindow(options);
+	Alloy.Globals.navGroup.width = Alloy.Globals.Frames.per100Width;	
 };
 
 
-Alloy.Globals.presentWelcomeController = function(){
-	
-	try{
-		//Alloy.Globals.navGroup.close();
-		Alloy.Globals.navGroup.close();
-		Alloy.Globals.homeController = null;
-	}catch(e){
-	}
-	
-	//if(!Alloy.Globals.welcomeController){
-		Alloy.Globals.welcomeController = Alloy.createController('Welcome', {
-				title: 'Welcome',
-				name: '_welcome',
-				isFlyout:true
-			}).getView();
-	//}
-	
-	
-	
-	Alloy.Globals.navGroup.window = Alloy.Globals.welcomeController;
-	Alloy.Globals.navGroup.open();
-	
-	/*
-	if(Alloy.Globals.homeController){
-		try{
-			Alloy.Globals.navGroup.closeWindow(Alloy.Globals.homeController);
-		}catch(e){
-			alert('Error: closeWindow homeController');
-		}
-		Alloy.Globals.homeController = null;
-	}
-	
-	if(!Alloy.Globals.welcomeController)
-		Alloy.Globals.welcomeController = Alloy.createController('Welcome', {
-			title: 'Welcome',
-			name: '_welcome',
-			isFlyout:true
-		}).getView();
-	
-	Alloy.Globals.navGroup.window = Alloy.Globals.welcomeController;
-	Alloy.Globals.navGroup.open();* /
-};			
-*/
 
 Alloy.Globals.FontNames = {
-	
-	// Adelle-Regular,	Adelle-Bold,	
-	// Comfortaa-Regular,	Comfortaa-Bold,	Comfortaa-Light,	
-	// JosefinSans,	JosefinSans-Bold,	JosefinSans-Light,	JosefinSans-Thin
-	// Lemon-Regular
 	
 	adelle : 'Adelle-Regular',
 	adelle_bold : 'Adelle-Bold',
@@ -502,7 +136,6 @@ Alloy.Globals.FontNames = {
 	
 	lemon : 'Lemon-Regular',
 	montserrat: 'Montserrat-Regular' // PostScript name (Full name is also 'Montserrat-Regular')
-	
 };
 
 Alloy.Globals.FontFamilyNames = {
@@ -515,7 +148,6 @@ Alloy.Globals.FontFamilyNames = {
 };
 
 Alloy.Globals.Frames = {
-	
 	per100Width : per100w,
 	per90Width : per90w,
 	per80Width : per80w,
@@ -546,92 +178,15 @@ Alloy.Globals.Frames = {
 };
 
 Alloy.Globals.uid = function () {
-	
-	var uid;
-	uid = null;
-	
-	try{
-		// see if username exists
-		uid = Titanium.App.Properties.getObject('uid');
-    	//Titanium.App.Properties.getObject('sessionid');
-    		
-		if (uid === 'undefined')
-			uid = null;
-			
-	}catch(e){
-	}
-	return uid;
-};
-
-Alloy.Globals.coupons8InitialLoadFlag = function () {
-	
-	var c8flag;
-	c8flag = null;
-	
-	try{
-		// see if username exists
-		c8flag = Titanium.App.Properties.getObject('coupons8flag');
-    	//Titanium.App.Properties.getObject('sessionid');
-    		
-		if (c8flag === 'undefined')
-			c8flag = null;
-			
-	}catch(e){
-	}
-	return c8flag;
-};
-
-Alloy.Globals.registerCoupons8InitialLoadFlag = function(){
-	
-	console.log('-----------------------------------------');
-	console.log('BEGIN		Alloy.Globals.registerCoupons8InitialLoadFlag	');//Alloy.Globals.currentWindow = ' + Alloy.Globals.currentWindow);
-	console.log('-----------------------------------------');
-	
-	var coupons8flag = true;
-	Titanium.App.Properties.setObject('coupons8flag', coupons8flag);
-	
-	console.log('-----------------------------------------');
-	console.log('END		Alloy.Globals.registerCoupons8InitialLoadFlag	');//Alloy.Globals.currentWindow = ' + Alloy.Globals.currentWindow);
-	console.log('-----------------------------------------');
-	
-	/*
-	function someFunct(){
-		return '----- HERE----- ';
-	};
-	alert('Alloy.Globals.registerCoupons8InitialLoadFlag		someFunct() = ' + someFunct());
-	*/
+	return Titanium.App.Properties.getObject('uid');
 };
 
 Alloy.Globals.username = function () {
-	
-	var un, definedUsername;
-	un = null;
-	
-	try{
-		// see if username exists
-		definedUsername = Titanium.App.Properties.getObject('username');
-    	//Titanium.App.Properties.getObject('sessionid');
-    		
-		if (definedUsername !== 'undefined')
-			un = definedUsername;
-			
-	}catch(e){
-	}
-	return un;
+	return Titanium.App.Properties.getObject('username');
 };
 
 Alloy.Globals.sessionID = function () {
-	
-	var sid, definedSID;
-	sid = null;
-	try{
-		// see if sessionid exists
-		definedSID = Titanium.App.Properties.getObject('sessionid');
-    	if (definedSID !== 'undefined')
-			sid = definedSID;
-	}catch(e){
-	}
-	return sid;
+	return Titanium.App.Properties.getObject('sessionid');
 };
 
 Alloy.Globals.checkSessionID = function () {
@@ -649,182 +204,19 @@ Alloy.Globals.checkedLoggedIn = function () {
 
 
 
-Alloy.Globals.defaultUser = {
-	id:null,
-	username:null,
-	email:null,
-	phone:null,
-	isVerified:false,
-	password:null
-};
-
-Alloy.Globals.currentUser = function(){
-	
-	var curUser = Alloy.Globals.defaultUser;
-	
-	// TO DO:
-	// check cache for uid
-	// 
-	// if uid exists, overwrite/populate curUser id, username, etc
-	//
-	
-	return curUser;
-};
-
-/*
-Alloy.Globals.CONFIG = {
-
-//http://api.8coupons.com/v1/getdeals?key=02fbfdcae460b422ba93ca0de753e2ac566a290f92e6a03bd8eb3b5c5beb6fbcec933468b156b3b6050939c1cb7ea653&zip=18302&mileradius=20&limit=500&dealtypeid=1
-	
-	// partner api keys
-	
-	
-	
-	API_KEYS:{
-		COM_8COUPONS:'02fbfdcae460b422ba93ca0de753e2ac566a290f92e6a03bd8eb3b5c5beb6fbcec933468b156b3b6050939c1cb7ea653'
-	},
-	
-	API:{
-		
-		// 8Coupons
-		COM_8COUPONS:{
-			
-			ENDPOINTS:{
-				GET_DEALS:'http://api.8coupons.com/v1/getdeals',
-				REDEEM_DEAL:''
-			},
-			PARAMS:{
-				KEY:'key',
-				RADIUS:'radius',
-				LIMIT:'limit',
-				ZIP:'zip',
-				LAT:'',
-				LON:''
-			},
-			DATA_KEYS:{
-				
-				
-				
-			}
-				
-		}
-			
-	},
-	URLS:{
-		
-		coupons_8coupons_url:'',
-		coupons_photopon_url:'',
-		
-		news_url: 'http://photopon.com/api/v1/users/me/news',
-		products_url: 'http://skounis.s3.amazonaws.com/mobile-apps/barebone/products.json'
-	}
-	
-};
-*/
-
-
-//Alloy.Globals.currentUser = new Array();
-//Alloy.Globals.currentUser.id = null;
-//Alloy.Globals.currentUser.fbid = null;
-//Alloy.Globals.currentUser.isLoggedIn = false;
-//Alloy.Globals.currentUser.friends = new Array();
-//Alloy.Globals.currentUser.phone = null;
-//Alloy.Globals.currentUser.didConfirm = null;
-
-
-/*
- * Check IOS platform
- */
 Alloy.Globals.isIOS7 = function() {
 	var version = Titanium.Platform.version.split(".");
 	return version[0];
 };
 
-Alloy.Globals.syncFBFriends = function() {
-	
-	
-	
-	
-	/*
-	Titanium.Cloud.SocialIntegrations.searchFacebookFriends(function (e){
-		
-	    if (e.success) {
-	    		
-	    	var uids;
-	    	
-	        alert('Success:\n' +
-	            'Count: ' + e.users.length);
-			
-			for (var i = 0; i < e.users.length; i++) {
-	        	var user = e.users[i];
-	            uids[i] = user.id;
-	            
-	        	/ *
-	            if(i<4){
-		            alert('id: ' + user.id + '\n' +
-		                'first name: ' + user.first_name + '\n' +
-		                'last name: ' + user.last_name);
-	        	}* /
-	 		}
-	 		if(uids.length>0){
-	 			
-				Titanium.Cloud.Friends.add({
-				    user_ids: checked.join(",")
-				}, function (e) {
-				    if (e.success) {
-				        alert('Friend(s) added');
-				    } else {
-				        alert('Error:\n' +
-				            ((e.error && e.message) || JSON.stringify(e)));
-				    }
-				});
-			}
-	         
-	         
-	    } else {
-	        alert('Error:\n' +
-	            ((e.error && e.message) || JSON.stringify(e)));
-	    }
-	});
-	
-	//return version[0];
-	
-	* /
-	
-	
-	
-	
-	
-	var query = "SELECT uid, name, pic_square, hometown_location  FROM user ";
-    query += "where uid IN (SELECT uid2 FROM friend WHERE uid1 = " + fb.uid + ")";
-    query += "order by last_name limit 1000";
-    Titanium.API.info("user id " + fb.uid);
-    Titanium.Facebook.request("fql.query", {
-        query : query
-    }, function(r) {
-        if (r.success) {
-            createListView(JSON.parse(r.result));
-        } else {
-            alert('error happened!');
-        }
-    });
-    
-    */
-	
-	
-	
-};
 
-/*
- * Set Display pixel variable for android (in ios it will be 1)
- */
+
 if (Titanium.Platform.Android) {
 	Alloy.Globals.dp = (Ti.Platform.displayCaps.dpi / 160);
 } else {
 	Alloy.Globals.dp = 1;
 }
 
-Alloy.Globals.menuVisible = false;
 
 
 /*
@@ -1494,7 +886,7 @@ Alloy.Globals.FlyoutMenu = [
 }, {
 	title : 'My Friends',
 	name : '_friends',
-	controller : (Ti.Platform.Android) ? 'adrHome' : 'Friends',
+	controller : (Ti.Platform.Android) ? 'adrHome' : 'PhotoponFriends',
 	color : Alloy.Globals.ThemeColors.black,
 	icon : '/images/ic_more_option.png',
 	iconAndroid : '/images/ic_more_option.png',
@@ -1502,7 +894,7 @@ Alloy.Globals.FlyoutMenu = [
 }, {
 	title : 'Wallet',
 	name : '_wallet',
-	controller : (Ti.Platform.Android) ? 'adrWallet' : 'Wallet',
+	controller : (Ti.Platform.Android) ? 'adrWallet' : 'PhotoponWallet',
 	color : Alloy.Globals.ThemeColors.black,
 	icon : '/images/ic_wallet.png',
 	iconAndroid : '/images/ic_wallet.png',
@@ -1510,163 +902,11 @@ Alloy.Globals.FlyoutMenu = [
 }];
 
 
-/*
-Alloy.Globals.FlyoutMenu = [{
-	title : 'Home',
-	name : '_home',
-	controller : (Ti.Platform.Android) ? 'adrHome' : 'Home',
-	color : Alloy.Globals.ThemeColors.white,
-	icon : '/images/ic_home.png',
-	iconAndroid : '/images/ic_home.png',
-	rowBackgroundColor : Alloy.Globals.generateRandomColor(),
-	isHeader: true
-}, {
-	title : 'Events',
-	name : '_events',
-	controller : (Titanium.Platform.Android) ? 'adrEvents' : 'Events',
-	color : '#040404',
-	icon : '/images/ic_events.png',
-	iconAndroid : '/images/ic_events.png',
-	rowBackgroundColor : Alloy.Globals.generateRandomColor()
-}, {
-	title : 'Give',
-	name : '_give',
-	controller : (Ti.Platform.Android) ? 'adrGive' : 'Give',
-	color : '#040404',
-	icon : '/images/ic_give.png',
-	iconAndroid : '/images/ic_give.png',
-	rowBackgroundColor : Alloy.Globals.generateRandomColor()
-}, {
-	title : 'Brands',
-	name : '_brands',
-	controller : (Titanium.Platform.Android) ? 'adrBrands' : 'Brands',
-	color : '#040404',
-	icon : '/images/ic_brands.png',
-	iconAndroid : '/images/ic_brands.png',
-	rowBackgroundColor : Alloy.Globals.generateRandomColor()
-}, {
-	title : 'Wallet',
-	name : '_wallet',
-	controller : (Titanium.Platform.Android) ? 'adrWallet' : 'Wallet',
-	color : '#040404',
-	icon : '/images/ic_wallet.png',
-	iconAndroid : '/images/ic_wallet.png',
-	rowBackgroundColor : Alloy.Globals.generateRandomColor()
-}, {
-	title : 'News',
-	name : '_news',
-	controller : (Ti.Platform.Android) ? 'adrNews' : 'News',
-	color : '#040404',
-	icon : '/images/ic_news.png',
-	iconAndroid : '/images/ic_news.png',
-	rowBackgroundColor : Alloy.Globals.generateRandomColor()
-}, {
-	title : 'More Options',
-	name : '_options',
-	controller : '',
-	color : Alloy.Globals.ThemeColors.black,
-	icon : '/images/ic_more_option.png',
-	iconAndroid : '/images/ic_more_option.png',
-	rowBackgroundColor : Alloy.Globals.generateRandomColor(),
-	isHeader : true
-}, {
-	title : 'Settings',
-	name : '_setting',
-	controller : (Ti.Platform.Android) ? 'adrSetting' : 'Setting',
-	color : Alloy.Globals.ThemeColors.black,
-	icon : '/images/ic_settings.png',
-	iconAndroid : '/images/ic_settings.png',
-	rowBackgroundColor : Alloy.Globals.generateRandomColor()
-}]; 
-*/
-
 Alloy.Globals.rightMenuItems = [
 {
 	title : 'Log Out',
 	color : Alloy.Globals.ThemeColors.black
-}
-
-/*
-{
-	title : 'Like It',
-	color : Alloy.Globals.ThemeColors.black
-}, {
-	title : 'Share App',
-	color : Alloy.Globals.ThemeColors.black
-}, {
-	title : 'Rate App',
-	color : Alloy.Globals.ThemeColors.black
-}, {
-	title : 'Contact Us',
-	color : Alloy.Globals.ThemeColors.black
-}, {
-	title : 'Settings',
-	color : Alloy.Globals.ThemeColors.black
-}
-*/
-];
-
-/*
-Alloy.Globals.WindowNames = {
-	
-	// Alloy.Globals.currentWindow
-	welcome			: '_welcome',
-	logIn			: '_log_in',
-	signUp			: '_sign_up',
-	home			: '_home',
-	coupons			: '_coupons',
-	camera			: '_camera', // new
-	friends			: '_friends',
-	addFriends		: '_add_friends',
-		/ **  
-		addFriends sections
-			1. addFriendsWhoAddedMe
-			2. phoneContacts
-			3. search usernames
-		* /
-	
-	unwrap			: '_unwrap',
-	wallet			: '_wallet',
-	chat			: '_chat',
-	news			: '_news',
-	settings		: '_settings',
-	help			: '_help'
-	
-};
-* /
-
-Alloy.Globals.newCompositionObject = function (){
-	
-	
-	
-};
-*/
-
-Alloy.Globals.saveNewComposition = function(newComp){
-	
-	console.log('-----------------------------------------');
-	console.log('BEGIN		Alloy.Globals.saveNewComposition	');//Alloy.Globals.currentWindow = ' + Alloy.Globals.currentWindow);
-	console.log('-----------------------------------------');
-	
-	if(newComp==='undefined' || newComp==null)
-		return;
-	
-	//Alloy.Globals.ThemeColors.black = '#00FF00';
-	Titanium.App.Properties.setObject('newComp', newComp);
-	
-	
-	
-	console.log('-----------------------------------------');
-	console.log('END		Alloy.Globals.saveNewComposition	');//Alloy.Globals.currentWindow = ' + Alloy.Globals.currentWindow);
-	console.log('-----------------------------------------');
-	
-	/*
-	function someFunct(){
-		return '----- HERE----- ';
-	};
-	alert('Alloy.Globals.registerCoupons8InitialLoadFlag		someFunct() = ' + someFunct());
-	*/
-};
+}];
 
 Alloy.Globals.newCompositionObject = function (){
 	
@@ -1687,28 +927,7 @@ Alloy.Globals.newCompositionObject = function (){
 
 Alloy.Globals.initApp = function () {
 	
-	console.log('-----------------------------------------');
-	console.log('BEGIN		Alloy.Globals.initApp	');//Alloy.Globals.currentWindow = ' + Alloy.Globals.currentWindow);
-	console.log('-----------------------------------------');
-	
-	/*
 	Alloy.Globals.isLoggedIn = Alloy.Globals.checkedLoggedIn();
-	//Alloy.Globals.initCoords();
-	Alloy.Globals.currentWindow = ((Alloy.Globals.isLoggedIn) ? Alloy.Globals.WindowNames.home : Alloy.Globals.WindowNames.welcome);
-	console.log('END		Alloy.Globals.initApp	Alloy.Globals.currentWindow = ' + Alloy.Globals.currentWindow);
-	*/
-	
-	//Alloy.Globals.newComposition = null;
-	
-	Alloy.Globals.isLoggedIn = Alloy.Globals.checkedLoggedIn();
-	//Alloy.Globals.initCoords();
-	//Alloy.Globals.saveNewComposition({test:'test'});
-	//alert('Alloy.Globals.ThemeColors.black = ' + Alloy.Globals.ThemeColors.black);
-};
-
-Alloy.Globals.couponsFromCache = function () {
-	
-	
 	
 };
 
@@ -1739,123 +958,9 @@ Alloy.Globals.initCoords = function (){
 
 
 Alloy.Globals.cacheCurrentCoords = function (lat, lon){
-	
 	Alloy.Globals.latitude = lat;
 	Alloy.Globals.longitude = lon;
 	Titanium.App.Properties.setObject('lat', lat);
     Titanium.App.Properties.setObject('lon', lon);
-    
-    //alert("Alloy.Globals.cacheCurrentCoords ------>		lat: " + lat + ", lon: " + lon + ', ______ Alloy.Globals.latitude :' + Alloy.Globals.latitude + ', Alloy.Globals.longitude: ' + Alloy.Globals.longitude);
 };
 
-Alloy.Globals.letterForInt = function (int){
-	
-	switch(int){
-		case 1:
-			return 'a';
-			break;
-		case 2:
-			return 'b';
-			break;
-		case 3:
-			return 'c';
-			break;
-		case 4:
-			return 'd';
-			break;
-		case 5:
-			return 'e';
-			break;
-		case 6:
-			return 'f';
-			break;
-		case 7:
-			return 'g';
-			break;
-		case 8:
-			return 'h';
-			break;
-		case 9:
-			return 'i';
-			break;
-		case 10:
-			return 'j';
-			break;
-		case 11:
-			return 'k';
-			break;
-		case 12:
-			return 'l';
-			break;
-		case 13:
-			return 'm';
-			break;
-		case 14:
-			return 'n';
-			break;
-		case 15:
-			return 'o';
-			break;
-		case 16:
-			return 'p';
-			break;
-		case 17:
-			return 'q';
-			break;
-		case 18:
-			return 'r';
-			break;
-		case 19:
-			return 's';
-			break;
-		case 20:
-			return 't';
-			break;
-		case 21:
-			return 'u';
-			break;
-		case 22:
-			return 'v';
-			break;
-		case 23:
-			return 'w';
-			break;
-		case 24:
-			return 'x';
-			break;
-		case 25:
-			return 'y';
-			break;
-		case 26:
-			return 'z';
-			break;
-		default:
-			return '-';
-	}
-	
-};
-
-Alloy.Globals.currentWordLength = 0;
-
-Alloy.Globals.generateRandomWordLength = function (len) {
-	return Alloy.Globals.generateRandomInt(1,len);;
-};
-
-Alloy.Globals.generateRandomLetter = function () {
-	var letter;
-	letter = Alloy.Globals.letterForInt(Alloy.Globals.generateRandomInt(1,26));	
-	return letter;
-};
-
-Alloy.Globals.generateRandomWord = function () {
-	
-	var curWordLength = Alloy.Globals.generateRandomWordLength(10);
-	var word = '';
-	var i;
-	for( i=0; i<curWordLength; i++){
-		var rLet = Alloy.Globals.generateRandomLetter();
-		word = word + '' + rLet + '';
-	}
-	//alert(word);
-	return word;
-};

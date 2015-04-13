@@ -68,12 +68,15 @@ function Controller() {
         var viewFriends = Alloy.createController("PhotoponFriends", {
             title: "Your Friends"
         }).getView();
+        var viewWallet = Alloy.createController("PhotoponWallet", {
+            title: "Wallet"
+        }).getView();
         var viewAddFriend = Alloy.createController("PhotoponAddFriend", {
             title: "Add Friend"
         }).getView();
         var scrollableView = Ti.UI.createScrollableView({
             showPagingControl: false,
-            views: [ viewAddFriend, view2, viewCoupons, viewFriends ]
+            views: [ viewAddFriend, viewWallet, view2, viewCoupons, viewFriends ]
         });
         scrollableView.setDisableBounce(true);
         scrollableView.addEventListener("scroll", function(e) {

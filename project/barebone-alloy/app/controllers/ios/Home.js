@@ -416,6 +416,11 @@ $.winHome.addEventListener('open', function(e) {
 	}).getView();
 	
 	
+	var viewWallet = Alloy.createController('PhotoponWallet', {
+		title : 'Wallet'
+	}).getView();
+	
+	
 	var viewAddFriend = Alloy.createController('PhotoponAddFriend', {
 		title : 'Add Friend'
 	}).getView();
@@ -426,6 +431,7 @@ $.winHome.addEventListener('open', function(e) {
 	    views: [
 	        viewAddFriend,
 	    	//viewCam,
+	    	viewWallet,
 	        view2,
 	        viewCoupons,
 	        viewFriends

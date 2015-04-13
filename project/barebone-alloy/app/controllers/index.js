@@ -4,63 +4,6 @@ var Cloud = require('ti.cloud');
 
 var that = this;
 
-
-/*
-
-
-
-var zoomMatrix = Ti.UI.create2DMatrix();
-		zoomMatrix = zoomMatrix.scale(2);
- 
-		$.RouletteBack.animate({
-		    center: {
-		        x: 10,
-		        y: 10
-		    },
-		    duration: 400
-		}, function () {
-		    $.btn.animate({
-		        transform: zoomMatrix,
-		        duration: 400
-		    });
-		});
-		
-		
-		
-		
-		
-		
-		
-		
-		
-
-var fb = require('facebook');
-fb.appid = "315234305202948";
-fb.permissions = ['read_stream', 'read_friendlists'];
-fb.authorize();
-*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-
-
-
-
-
 var currentWindow;
 
 Alloy.Globals.initApp();
@@ -227,3 +170,44 @@ if (Titanium.Platform.Android) {
 	Ti.API.info('---------------------------------');
 	
 }
+
+
+
+
+
+/*
+
+
+
+var zoomMatrix = Ti.UI.create2DMatrix();
+		zoomMatrix = zoomMatrix.scale(2);
+ 
+		$.RouletteBack.animate({
+		    center: {
+		        x: 10,
+		        y: 10
+		    },
+		    duration: 400
+		}, function () {
+		    $.btn.animate({
+		        transform: zoomMatrix,
+		        duration: 400
+		    });
+		});
+		
+		
+		
+		
+		
+		
+		
+		
+		
+
+var fb = require('facebook');
+fb.appid = "315234305202948";
+fb.permissions = ['read_stream', 'read_friendlists'];
+fb.authorize();
+*/
+
+

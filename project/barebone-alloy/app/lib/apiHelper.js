@@ -60,6 +60,7 @@ exports.Signup = function(username, password, callback, errorCallback) {
 	});
 };
 
+
 exports.Login = function(username, password) {
 	Cloud.Users.login({
         login: username,
@@ -165,6 +166,19 @@ exports.SearchUser = function(query, callback, errorCallback) {
 	});
 };
 
+
+exports.GetWalletItemsSim = function(callback) {
+	callback([
+		{
+			name:'McDonalds 3 for 2 Deal',
+			img: 'http://lorempixel.com/output/food-q-c-480-480-5.jpg'
+			
+		},{
+			name:'1 FREE Topping',
+			img: 'http://lorempixel.com/output/food-q-c-480-480-6.jpg'
+		},
+	]);
+};
 
 exports.GetSimpleFriends = function(url, callback, errorCallback) {
 	callback([

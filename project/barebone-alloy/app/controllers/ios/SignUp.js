@@ -1,42 +1,9 @@
-/**
- * @author Brad McEvilly
- */
-
-/*
- function closeWin(e){
- $.winSignUp.close(Alloy.Globals.animations.slide_out_top);
- }
- */
-
 var apiHelper = require('apiHelper');
 
-var args = {
-	title : 'SIGN UP'
-};
-
-/*
- $.winSignUp.addEventListener('open', function(){
-
- $.winSignUp.setTitleControl(Alloy.createController('titleControl', {
- title : 'Sign Up'
- }).getView());
-
- validateSignUp();
-
- });
- */
 
 $.winSignUp.addEventListener("close", function() {
 	$.destroy();
 });
-
-/*
- * <View id="submitBtnContainer" backgroundColor="#0099CC" width="320" height="90" visible="false">
- <Button id="submitBtn" onClick="submitBtnHandler" top="0" width="320" height="90">SIGN UP</Button>
- <ActivityIndicator id="ind">
- </ActivityIndicator>
- </View>
- */
 
 function winSignUpOpenHandler(e) {
 
@@ -55,7 +22,7 @@ function init() {
 		title : 'Sign Up'
 	}).getView());
 
-	Titanium.App.addEventListener('app:didLogIn', function(e) {
+	Titanium.App.addEventListener('DID_LOGIN', function(e) {
 		$.winSignUp.close();
 	});
 }
@@ -85,25 +52,14 @@ function validateSignUp(e) {
 }
 
 function submitBtnHandler() {
-	if (Titanium.Network.online)
-		createCloudUser($.emailField.value, $.passwordField.value);
-	else
-		alert('Check Internet Connection');
-};
-
-function isValid() {
-	var isValid = true;
-	if (assertFieldTxt($.emailField.value) || assertFieldTxt($.passwordField.value))
-		isValid = false;
-	return isValid;
-}
-
-function assertFieldTxt(txt) {
-	return txt == "";
-}
-
-function createCloudUser(username, password) {
-
+	if (!Titanium.Network.online) {
+		Alloy.Globals.showError('Check Internet Connection');
+		return;
+	}
+	
+	var username = $.emailField.value;
+	var password = $.passwordField.value;
+	
 	showIndicator();
 	apiHelper.Signup(username, password, function() {
 		apiHelper.Login(username, password);
@@ -111,6 +67,14 @@ function createCloudUser(username, password) {
 		hideIndicator();
 		displayErrorMessage(Alloy.Globals.ErrorMessages.userNameTaken);
 	});
+};
+
+
+function isValid () {
+	if (UTL.isBlankString($.emailField.value) || UTL.isBlankString($.passwordField.value)) {
+		return false;
+	}
+	return true;
 }
 
 function displayErrorMessage(msg) {
@@ -120,9 +84,6 @@ function displayErrorMessage(msg) {
 	}, 5000);
 }
 
-/*
- * Activity State Sequence
- */
 function lockUnlockFields(isLock) {
 	if (isLock) {
 		$.emailField.setEditable(false);

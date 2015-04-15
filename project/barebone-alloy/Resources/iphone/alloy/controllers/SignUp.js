@@ -20,7 +20,7 @@ function Controller() {
         $.winSignUp.setTitleControl(Alloy.createController("titleControl", {
             title: "Sign Up"
         }).getView());
-        Titanium.App.addEventListener("app:didLogIn", function() {
+        Titanium.App.addEventListener("DID_LOGIN", function() {
             $.winSignUp.close();
         });
     }
@@ -31,17 +31,12 @@ function Controller() {
         $.btnSignUp.setVisible(isValid() ? true : false);
     }
     function submitBtnHandler() {
-        Titanium.Network.online ? createCloudUser($.emailField.value, $.passwordField.value) : alert("Check Internet Connection");
-    }
-    function isValid() {
-        var isValid = true;
-        (assertFieldTxt($.emailField.value) || assertFieldTxt($.passwordField.value)) && (isValid = false);
-        return isValid;
-    }
-    function assertFieldTxt(txt) {
-        return "" == txt;
-    }
-    function createCloudUser(username, password) {
+        if (!Titanium.Network.online) {
+            Alloy.Globals.showError("Check Internet Connection");
+            return;
+        }
+        var username = $.emailField.value;
+        var password = $.passwordField.value;
         showIndicator();
         apiHelper.Signup(username, password, function() {
             apiHelper.Login(username, password);
@@ -49,6 +44,10 @@ function Controller() {
             hideIndicator();
             displayErrorMessage(Alloy.Globals.ErrorMessages.userNameTaken);
         });
+    }
+    function isValid() {
+        if (UTL.isBlankString($.emailField.value) || UTL.isBlankString($.passwordField.value)) return false;
+        return true;
     }
     function displayErrorMessage(msg) {
         $.lblSignUp.setText(msg);
@@ -210,9 +209,6 @@ function Controller() {
     exports.destroy = function() {};
     _.extend($, $.__views);
     var apiHelper = require("apiHelper");
-    var args = {
-        title: "SIGN UP"
-    };
     $.winSignUp.addEventListener("close", function() {
         $.destroy();
     });

@@ -86,13 +86,13 @@ function Controller() {
         console.log(upass);
         console.log("*******");
         uname && upass ? apiHelper.Login(uname, upass) : showWelcomeWindow();
-        Titanium.App.addEventListener("app:didLogIn", function() {
+        Titanium.App.addEventListener("DID_LOGIN", function() {
             try {
                 Alloy.Globals.navGroup.closeWindow(welcomeWindow);
             } catch (e) {}
             showHomeWindow();
         });
-        Titanium.App.addEventListener("app:didLogOut", function() {
+        Titanium.App.addEventListener("DID_LOGOUT", function() {
             Alloy.Globals.stopLocationManager();
             try {
                 Alloy.Globals.navGroup.closeWindow(homeWindow);

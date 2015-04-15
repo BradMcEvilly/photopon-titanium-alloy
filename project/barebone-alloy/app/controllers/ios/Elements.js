@@ -1,14 +1,10 @@
-var args = arguments[0] || {};
-// set title control
-$.winElements.setTitleControl(Alloy.createController('titleControl', {
-	title : args.title
-}).getView());
+var UTL = require('utl');
 
-if (!args.isFlyout) {
-	$.winElements.backButtonTitle = 'Back';
-} else {
-	$.winElements.leftNavButton = Alloy.createController('leftMenuButton').getView();
-}
+
+var args = arguments[0] || {};
+
+UTL.defaultTitle($.winElements, args);
+
 
 $.customSlider.addEventListener('change', function(e) {
 	Ti.API.info(Math.round(e.source.value));

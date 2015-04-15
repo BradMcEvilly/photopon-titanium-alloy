@@ -42,14 +42,12 @@ function Controller() {
     $.__views.winBrands.add($.__views.ind);
     exports.destroy = function() {};
     _.extend($, $.__views);
-    var args = arguments[0] || {};
     var apiHelper = require("apiHelper");
+    var UTL = require("utl");
+    var args = arguments[0] || {};
     var that = this;
     this.isMenuShown = false;
-    $.winBrands.setTitleControl(Alloy.createController("titleControl", {
-        title: args.title
-    }).getView());
-    args.isFlyout ? $.winBrands.leftNavButton = Alloy.createController("leftMenuButton").getView() : $.winBrands.backButtonTitle = "Back";
+    UTL.defaultTitle($.winBrands, args);
     $.Right_Menu = Alloy.createController("RightMenu", {
         context: that
     }).getView();

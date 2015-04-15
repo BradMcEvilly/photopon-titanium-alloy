@@ -34,19 +34,13 @@ function Controller() {
     $.__views.winHome && $.addTopLevelView($.__views.winHome);
     exports.destroy = function() {};
     _.extend($, $.__views);
+    var UTL = require("utl");
     var currentPage = -1;
     var args = arguments[0] || {};
     var that = this;
     this.isMenuShown = false;
+    UTL.defaultTitle($.winHome, args);
     $.winHome.addEventListener("open", function() {
-        console.log("---------------------------");
-        console.log("---------------------------");
-        console.log("BEGIN  $.winHome.addEventListener(open ...");
-        console.log("---------------------------");
-        $.winHome.setTitleControl(Alloy.createController("titleControl", {
-            title: args.title
-        }).getView());
-        $.winHome.leftNavButton = Alloy.createController("leftMenuButton").getView();
         $.Right_Menu = Alloy.createController("RightMenu", {
             context: that
         }).getView();
@@ -91,23 +85,9 @@ function Controller() {
         });
         $.winHome.setTabBarHidden(true);
         $.winHome.add(scrollableView);
-        console.log("---------------------------");
-        console.log("END  $.winHome.addEventListener(open ...");
-        console.log("---------------------------");
-        console.log("---------------------------");
     });
     $.winHome.addEventListener("close", function() {
-        Ti.API.info("---------------------------------");
-        Ti.API.info("---------------------------------");
-        Ti.API.info("BEGIN	$.winHome	$.winHome.addEventListener(	close");
-        Ti.API.info("---------------------------------");
-        Ti.API.info("---------------------------------");
         $.destroy();
-        Ti.API.info("---------------------------------");
-        Ti.API.info("---------------------------------");
-        Ti.API.info("END	$.winHome	$.winHome.addEventListener(	close");
-        Ti.API.info("---------------------------------");
-        Ti.API.info("---------------------------------");
     });
     _.extend($, exports);
 }

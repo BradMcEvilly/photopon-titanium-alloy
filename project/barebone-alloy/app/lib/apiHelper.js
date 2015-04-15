@@ -10,11 +10,7 @@ exports.Logout = function() {
 	Titanium.App.Properties.removeProperty('role');
 	
 	
-	Titanium.App.fireEvent(Alloy.Globals.EventNames.logOut, {
-		"detail":{
-			"didLogOut":true
-		}
-	});
+	Titanium.App.fireEvent("DID_LOGOUT");
 };
 
 exports.Signup = function(username, password, callback, errorCallback) {
@@ -52,14 +48,10 @@ exports.Login = function(username, password) {
     		//	alert('Merchant!');
     		
     		
-		    Titanium.App.fireEvent("app:didLogIn", {
-		    	"detail":{
-		    		"didLogIn":true
-		    	}
-		    });
+		    Titanium.App.fireEvent("DID_LOGIN");
 		       
     	} else {
-    		Titanium.App.fireEvent("app:loginError", {
+    		Titanium.App.fireEvent("LOGIN_ERROR", {
 		    	"message": Alloy.Globals.ErrorMessages.logInIncorrect
 		    });
     		
@@ -168,7 +160,7 @@ exports.GetSimpleFriends = function(url, callback, errorCallback) {
 
 
 
-exports.GetSimpleCoupons = function(url, callback, errorCallback) {
+exports.GetSimpleCoupons = function(callback, errorCallback) {
 	callback([
 		{
 			name:'McDonalds 10% off',

@@ -1,11 +1,23 @@
 var args = arguments[0] || {};
 var apiHelper = require('apiHelper');
 
+
+var RightMenuItems = [{
+	title : 'Settings',
+	action: "settings",
+	color : Alloy.Globals.ThemeColors.black
+}, {
+	title : 'Log Out',
+	action: "logout",
+	color : Alloy.Globals.ThemeColors.black
+}];
+
+
 var data = [];
 
 // "Log Out" button will always be the last menu item
-var logOutIndex = Alloy.Globals.rightMenuItems.length - 1;
-for (var i = 0; i < Alloy.Globals.rightMenuItems.length; i++) {
+var logOutIndex = RightMenuItems.length - 1;
+for (var i = 0; i < RightMenuItems.length; i++) {
 	var row = Ti.UI.createTableViewRow({
 		backgroundColor : Alloy.Globals.ThemeStyles.right_menu.backgroundColor,
 		backgroundSelectedColor : Alloy.Globals.ThemeStyles.right_menu.selectedBackgroundColor,
@@ -13,18 +25,24 @@ for (var i = 0; i < Alloy.Globals.rightMenuItems.length; i++) {
 		height : Alloy.Globals.ThemeStyles.right_menu.rowHeight,
 		width : Alloy.Globals.ThemeStyles.right_menu.width
 	});
+	
+	row.action = RightMenuItems[i].action;
 
 	row.addEventListener('click', function(e) {
-		if (e.index == logOutIndex) {
-			logOutBtnHandler(e);
+		if (e.row.action == "logout") {
+			Alloy.Globals.stopLocationManager();
+			apiHelper.Logout();
+		} else if (e.row.action == "settings") {
+			showSettingsWindow(e);
 		}
+		
 		args.context.isMenuShown = false;
 		args.context.Right_Menu.animate(Alloy.Globals.animations.slide_out_top);
 	});
 
 	var lblTitle = Ti.UI.createLabel({
-		text : Alloy.Globals.rightMenuItems[i].title,
-		color : Alloy.Globals.rightMenuItems[i].color,
+		text : RightMenuItems[i].title,
+		color : RightMenuItems[i].color,
 		left : 14,
 		font : Alloy.Globals.ThemeStyles.right_menu.font,
 		touchEnabled : false
@@ -42,45 +60,17 @@ for (var i = 0; i < Alloy.Globals.rightMenuItems.length; i++) {
 	data.push(row);
 };
 
-function logOutBtnHandler (e) {
+function showSettingsWindow(e) {
 
-	Ti.API.info('---------------------------------');
-	Ti.API.info('---------------------------------');
-	Ti.API.info('--->	Alloy.Globals.logOut();');
-	Ti.API.info('---------------------------------');
-	Ti.API.info('---------------------------------');
-	
-	Alloy.Globals.stopLocationManager();
-	apiHelper.Logout();	 
-}
-
-function settingsBtnHandler (e) {
-	
-	Ti.API.info('---------------------------------');
-	Ti.API.info('---------------------------------');
-	Ti.API.info('BEGIN $.RightMenu		settingsBtnHandler');
-	Ti.API.info('---------------------------------');
-	Ti.API.info('---------------------------------');
-	
-	if (Ti.Platform.Android) {
-		
-	} else {
-		
-		// var SettingWin = require('/ui/handheld/ios/Setting');
-		// SettingWin = new SettingWin(null, {
-		// title : 'Setting'
-		// });
-		// context.navGroup.openWindow(SettingWin);
-		var controller = Alloy.createController('Setting', {
-			title : 'Setting',
-			isFlyout : false
-		});
-		var Setting = controller.getView();
-		Alloy.Globals.navGroup.openWindow(Setting, {
-			animated : true
-		});
-		Alloy.Globals.navGroup.window = Setting;
-	} 
+	var controller = Alloy.createController('Setting', {
+		title : 'Setting',
+		isFlyout : false
+	});
+	var Setting = controller.getView();
+	Alloy.Globals.navGroup.openWindow(Setting, {
+		animated : true
+	});
+	Alloy.Globals.navGroup.window = Setting; 
 }
 
 $.rightMenuTable.height = data.length * Alloy.Globals.ThemeStyles.right_menu.rowHeight;

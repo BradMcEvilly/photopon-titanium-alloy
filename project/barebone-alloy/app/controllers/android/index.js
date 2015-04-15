@@ -3,10 +3,6 @@ var that = this;
 this.win2open = null;
 this.selectedIndex = 0;
 
-Ti.App.addEventListener("app:didLogIn", function(e) {
-    // Do something with e.field1, e.field2 and so forth...
-});
-
 $.winParent.addEventListener('android:back', function(e) {
 	if (Alloy.Globals.navWindows.length == 0) {
 		$.winParent.close();

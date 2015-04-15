@@ -1,20 +1,16 @@
 /**
  * @author Brad McEvilly
  */
-var args = arguments[0] || {};
+
 var apiHelper = require('apiHelper');
+var UTL = require('utl');
+
+var args = arguments[0] || {};
+
 var that = this;
 this.isMenuShown = false;
 
-$.winBrands.setTitleControl(Alloy.createController('titleControl', {
-	title : args.title
-}).getView());
-
-if (!args.isFlyout) {
-	$.winBrands.backButtonTitle = 'Back';
-} else {
-	$.winBrands.leftNavButton = Alloy.createController('leftMenuButton').getView();
-}
+UTL.defaultTitle($.winBrands, args);
 
 // set right menu
 $.Right_Menu = Alloy.createController('RightMenu', {

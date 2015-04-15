@@ -7,11 +7,7 @@ exports.Logout = function() {
     Titanium.App.Properties.removeProperty("uid");
     Titanium.App.Properties.removeProperty("sessionid");
     Titanium.App.Properties.removeProperty("role");
-    Titanium.App.fireEvent(Alloy.Globals.EventNames.logOut, {
-        detail: {
-            didLogOut: true
-        }
-    });
+    Titanium.App.fireEvent("DID_LOGOUT");
 };
 
 exports.Signup = function(username, password, callback, errorCallback) {
@@ -36,12 +32,8 @@ exports.Login = function(username, password) {
             Titanium.App.Properties.setObject("uid", user.id);
             Titanium.App.Properties.setObject("sessionid", user.id);
             Titanium.App.Properties.setObject("role", user.role);
-            Titanium.App.fireEvent("app:didLogIn", {
-                detail: {
-                    didLogIn: true
-                }
-            });
-        } else Titanium.App.fireEvent("app:loginError", {
+            Titanium.App.fireEvent("DID_LOGIN");
+        } else Titanium.App.fireEvent("LOGIN_ERROR", {
             message: Alloy.Globals.ErrorMessages.logInIncorrect
         });
     });
@@ -122,7 +114,7 @@ exports.GetSimpleFriends = function(url, callback) {
     } ]);
 };
 
-exports.GetSimpleCoupons = function(url, callback) {
+exports.GetSimpleCoupons = function(callback) {
     callback([ {
         name: "McDonalds 10% off",
         address: "350 Fifth avenue",

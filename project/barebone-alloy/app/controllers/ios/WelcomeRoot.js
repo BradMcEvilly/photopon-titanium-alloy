@@ -30,8 +30,7 @@ $.winWelcomeRoot.addEventListener('open', function (e) {
 	}
 	
 	// LOG IN / LOG OUT
-	Titanium.App.addEventListener("app:didLogIn", function(e) {
-	
+	Titanium.App.addEventListener("DID_LOGIN", function(e) {
 		try{
 			Alloy.Globals.navGroup.closeWindow(welcomeWindow);
 		}catch(e){
@@ -40,7 +39,7 @@ $.winWelcomeRoot.addEventListener('open', function (e) {
 		showHomeWindow();
 	});
 	
-	Titanium.App.addEventListener("app:didLogOut", function(e) {
+	Titanium.App.addEventListener("DID_LOGOUT", function(e) {
 		
 		Alloy.Globals.stopLocationManager();
 		try{

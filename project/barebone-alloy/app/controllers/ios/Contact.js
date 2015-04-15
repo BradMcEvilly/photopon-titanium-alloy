@@ -8,7 +8,7 @@ $.winContact.setTitleControl(Alloy.createController('titleControl', {
 if (!args.isFlyout) {
 	$.winContact.backButtonTitle = 'Back';
 } else {
-	$.winContact.leftNavButton = Alloy.createController('leftMenuButton').getView();
+	$.winContact.leftNavButton = Alloy.createController('LeftMenuButton').getView();
 }
 
 $.btnSendMessage.addEventListener('touchstart', function(e) {

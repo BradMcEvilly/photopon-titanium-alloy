@@ -19,7 +19,7 @@ function Controller() {
         console.log("---------------------------");
         if (Titanium.Network.online) {
             $.ind.show();
-            apiHelper.GetSimpleCoupons(Alloy.Globals.build8CouponsQueryString(), function(Json) {
+            apiHelper.GetSimpleCoupons(function(Json) {
                 jsonLength = Json.length;
                 var rows = [];
                 var checkLength = jsonLength > 60 ? 60 : jsonLength;

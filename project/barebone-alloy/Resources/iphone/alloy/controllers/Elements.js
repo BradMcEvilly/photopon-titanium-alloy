@@ -235,11 +235,9 @@ function Controller() {
     $.__views.winElements.add($.__views.elementsTable);
     exports.destroy = function() {};
     _.extend($, $.__views);
+    var UTL = require("utl");
     var args = arguments[0] || {};
-    $.winElements.setTitleControl(Alloy.createController("titleControl", {
-        title: args.title
-    }).getView());
-    args.isFlyout ? $.winElements.leftNavButton = Alloy.createController("leftMenuButton").getView() : $.winElements.backButtonTitle = "Back";
+    UTL.defaultTitle($.winElements, args);
     $.customSlider.addEventListener("change", function(e) {
         Ti.API.info(Math.round(e.source.value));
     });

@@ -1,24 +1,14 @@
-/**
- * @author Brad McEvilly
- */
-
 
 var Cloud = require('ti.cloud');
 var apiHelper = require('apiHelper');
-
-var un;
+var UTL = require('utl');
 
 Titanium.Cloud = Cloud;
-
-var args = {
-	title: 'LOG IN'
-};
 
 $.winLogIn.backButtonTitle = '';
 
 $.winLogIn.addEventListener("close", function(){
-	$.destroy();
-    
+	$.destroy();    
 });
 
 $.btnLogIn.addEventListener('touchstart', function(e) {
@@ -51,37 +41,27 @@ function focusTextFields () {
 
 function init() {
 	
-	
 	$.winLogIn.setTitleControl(Alloy.createController('titleControl', {
-		title : args.title
+		title : "Log In"
 	}).getView());
 	
 	
-	Titanium.App.addEventListener('app:loginError', function(e) {
+	Titanium.App.addEventListener('LOGIN_ERROR', function(e) {
 		displayErrorMessage(e.message);
 	});
 	
 	
-	Titanium.App.addEventListener('app:didLogIn', function(e) {
-			
+	Titanium.App.addEventListener('DID_LOGIN', function(e) {
 		hideIndicator();
-		
-		if(!Alloy.Globals.coupons8InitialLoadFlag()){
-			alert('Photopon works by using your current location to provide you with coupons and coupon templates for your Photopons');
-			Alloy.Globals.registerCoupons8InitialLoadFlag();
-		}else{
-			//alert('not first time opening - already registered');
-		}
-		
 		$.winLogIn.close();
 	});
 	
 	
 	
-	un = Alloy.Globals.username();
-	if(un)
+	var un = Alloy.Globals.username();
+	if (un) {
 		$.emailField.setValue(un);
-	
+	}
 }
 
 function focusNext (e) {
@@ -103,7 +83,7 @@ function submitBtnHandler(e){
 		showIndicator();
 		apiHelper.Login($.emailField.value, $.passwordField.value);
 	} else {
-		alert('Check Internet Connection');
+		Alloy.Globals.showError('Check Internet Connection');
 	}
 	
 };
@@ -113,24 +93,17 @@ function displayErrorMessage(msg){
 	$.lblLogIn.setText(msg);
 	setTimeout(function(){
 		$.lblLogIn.setText(args.title);
-	}, 5000 );
+	}, 5000);
 	
 }
 
 function isValid () {
-	var isValid = true;
-	if( assertFieldTxt( $.emailField.value ) || assertFieldTxt( $.passwordField.value ))
-    	isValid=false;
-    return isValid;
+	if (UTL.isBlankString($.emailField.value) || UTL.isBlankString($.passwordField.value)) {
+		return false;
+	}
+	return true;
 }
 
-function assertFieldTxt (txt) {
-	return txt=="";
-}
-
-/*
- * Activity State Sequence
- */
 function lockUnlockFields(isLock){
 	if(isLock){
 		$.emailField.setEditable(false);

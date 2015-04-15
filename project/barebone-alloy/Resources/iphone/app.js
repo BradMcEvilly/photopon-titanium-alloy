@@ -74,11 +74,6 @@ Alloy.Globals.ErrorMessages = {
     userNameTaken: "USERNAME TAKEN"
 };
 
-Alloy.Globals.EventNames = {
-    logIn: "app:didLogIn",
-    logOut: "app:didLogOut"
-};
-
 Alloy.Globals.newComposition = {
     couponsIndex: null,
     couponJSON: {},
@@ -171,31 +166,7 @@ Alloy.Globals.isIOS7 = function() {
 
 Alloy.Globals.dp = Titanium.Platform.Android ? Ti.Platform.displayCaps.dpi / 160 : 1;
 
-Alloy.Globals.build8CouponsKeyQueryString = function() {
-    var apiKeyQueryString = "?key=";
-    apiKeyQueryString += Alloy.Globals.APIKeys.com_8coupons;
-    return apiKeyQueryString;
-};
-
-Alloy.Globals.build8CouponsQueryString = function() {
-    Alloy.Globals.latitude || alert("Alloy.Globals.latitude NOT SET!!!!!! BUILD QUERY ERROR!");
-    var urlString;
-    urlString = "http://";
-    urlString += "api.8coupons.com/v1/getdeals";
-    urlString += Alloy.Globals.build8CouponsKeyQueryString();
-    urlString += "&lat=";
-    urlString += "" + Alloy.Globals.latitude;
-    urlString += "&lon=";
-    urlString += "" + Alloy.Globals.longitude;
-    urlString += "&mileradius=20";
-    urlString += "&limit=500";
-    return urlString;
-};
-
 Alloy.Globals.URLS = {
-    coupons8_url: function() {
-        return Alloy.Globals.build8CouponsQueryString();
-    },
     news_url: "http://photopon.com/api/v1/users/me/news",
     products_url: "http://skounis.s3.amazonaws.com/mobile-apps/barebone/products.json"
 };
@@ -728,11 +699,6 @@ Alloy.Globals.FlyoutMenu = [ {
     icon: "/images/ic_wallet.png",
     iconAndroid: "/images/ic_wallet.png",
     rowBackgroundColor: Alloy.Globals.generateRandomColor()
-} ];
-
-Alloy.Globals.rightMenuItems = [ {
-    title: "Log Out",
-    color: Alloy.Globals.ThemeColors.black
 } ];
 
 Alloy.Globals.newCompositionObject = function() {

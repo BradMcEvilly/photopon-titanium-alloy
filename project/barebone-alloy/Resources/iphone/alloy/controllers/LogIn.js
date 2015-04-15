@@ -18,20 +18,16 @@ function Controller() {
     }
     function init() {
         $.winLogIn.setTitleControl(Alloy.createController("titleControl", {
-            title: args.title
+            title: "Log In"
         }).getView());
-        Titanium.App.addEventListener("app:loginError", function(e) {
+        Titanium.App.addEventListener("LOGIN_ERROR", function(e) {
             displayErrorMessage(e.message);
         });
-        Titanium.App.addEventListener("app:didLogIn", function() {
+        Titanium.App.addEventListener("DID_LOGIN", function() {
             hideIndicator();
-            if (!Alloy.Globals.coupons8InitialLoadFlag()) {
-                alert("Photopon works by using your current location to provide you with coupons and coupon templates for your Photopons");
-                Alloy.Globals.registerCoupons8InitialLoadFlag();
-            }
             $.winLogIn.close();
         });
-        un = Alloy.Globals.username();
+        var un = Alloy.Globals.username();
         un && $.emailField.setValue(un);
     }
     function focusNext() {
@@ -44,7 +40,7 @@ function Controller() {
         if (Titanium.Network.online) {
             showIndicator();
             apiHelper.Login($.emailField.value, $.passwordField.value);
-        } else alert("Check Internet Connection");
+        } else Alloy.Globals.showError("Check Internet Connection");
     }
     function displayErrorMessage(msg) {
         $.lblLogIn.setText(msg);
@@ -53,12 +49,8 @@ function Controller() {
         }, 5e3);
     }
     function isValid() {
-        var isValid = true;
-        (assertFieldTxt($.emailField.value) || assertFieldTxt($.passwordField.value)) && (isValid = false);
-        return isValid;
-    }
-    function assertFieldTxt(txt) {
-        return "" == txt;
+        if (UTL.isBlankString($.emailField.value) || UTL.isBlankString($.passwordField.value)) return false;
+        return true;
     }
     function lockUnlockFields(isLock) {
         if (isLock) {
@@ -215,11 +207,8 @@ function Controller() {
     _.extend($, $.__views);
     var Cloud = require("ti.cloud");
     var apiHelper = require("apiHelper");
-    var un;
+    var UTL = require("utl");
     Titanium.Cloud = Cloud;
-    var args = {
-        title: "LOG IN"
-    };
     $.winLogIn.backButtonTitle = "";
     $.winLogIn.addEventListener("close", function() {
         $.destroy();

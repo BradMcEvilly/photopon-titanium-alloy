@@ -152,7 +152,7 @@ function Controller() {
     $.winContact.setTitleControl(Alloy.createController("titleControl", {
         title: args.title
     }).getView());
-    args.isFlyout ? $.winContact.leftNavButton = Alloy.createController("leftMenuButton").getView() : $.winContact.backButtonTitle = "Back";
+    args.isFlyout ? $.winContact.leftNavButton = Alloy.createController("LeftMenuButton").getView() : $.winContact.backButtonTitle = "Back";
     $.btnSendMessage.addEventListener("touchstart", function() {
         $.btnSendMessage.backgroundColor = Alloy.Globals.ThemeStyles.button.selectedBackgroundColor;
     });

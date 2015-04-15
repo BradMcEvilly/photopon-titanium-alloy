@@ -8,14 +8,16 @@ function __processArg(obj, key) {
 }
 
 function Controller() {
-    function logOutBtnHandler() {
-        Ti.API.info("---------------------------------");
-        Ti.API.info("---------------------------------");
-        Ti.API.info("--->	Alloy.Globals.logOut();");
-        Ti.API.info("---------------------------------");
-        Ti.API.info("---------------------------------");
-        Alloy.Globals.stopLocationManager();
-        apiHelper.Logout();
+    function showSettingsWindow() {
+        var controller = Alloy.createController("Setting", {
+            title: "Setting",
+            isFlyout: false
+        });
+        var Setting = controller.getView();
+        Alloy.Globals.navGroup.openWindow(Setting, {
+            animated: true
+        });
+        Alloy.Globals.navGroup.window = Setting;
     }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     this.__controllerPath = "RightMenu";
@@ -58,9 +60,18 @@ function Controller() {
     _.extend($, $.__views);
     var args = arguments[0] || {};
     var apiHelper = require("apiHelper");
+    var RightMenuItems = [ {
+        title: "Settings",
+        action: "settings",
+        color: Alloy.Globals.ThemeColors.black
+    }, {
+        title: "Log Out",
+        action: "logout",
+        color: Alloy.Globals.ThemeColors.black
+    } ];
     var data = [];
-    var logOutIndex = Alloy.Globals.rightMenuItems.length - 1;
-    for (var i = 0; i < Alloy.Globals.rightMenuItems.length; i++) {
+    RightMenuItems.length - 1;
+    for (var i = 0; i < RightMenuItems.length; i++) {
         var row = Ti.UI.createTableViewRow({
             backgroundColor: Alloy.Globals.ThemeStyles.right_menu.backgroundColor,
             backgroundSelectedColor: Alloy.Globals.ThemeStyles.right_menu.selectedBackgroundColor,
@@ -68,14 +79,18 @@ function Controller() {
             height: Alloy.Globals.ThemeStyles.right_menu.rowHeight,
             width: Alloy.Globals.ThemeStyles.right_menu.width
         });
+        row.action = RightMenuItems[i].action;
         row.addEventListener("click", function(e) {
-            e.index == logOutIndex && logOutBtnHandler(e);
+            if ("logout" == e.row.action) {
+                Alloy.Globals.stopLocationManager();
+                apiHelper.Logout();
+            } else "settings" == e.row.action && showSettingsWindow(e);
             args.context.isMenuShown = false;
             args.context.Right_Menu.animate(Alloy.Globals.animations.slide_out_top);
         });
         var lblTitle = Ti.UI.createLabel({
-            text: Alloy.Globals.rightMenuItems[i].title,
-            color: Alloy.Globals.rightMenuItems[i].color,
+            text: RightMenuItems[i].title,
+            color: RightMenuItems[i].color,
             left: 14,
             font: Alloy.Globals.ThemeStyles.right_menu.font,
             touchEnabled: false

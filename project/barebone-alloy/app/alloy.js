@@ -97,11 +97,6 @@ Alloy.Globals.ErrorMessages = {
 	userNameTaken:'USERNAME TAKEN'	
 };
 
-Alloy.Globals.EventNames = {
-	
-	logIn:'app:didLogIn',
-	logOut:'app:didLogOut'
-};
 
 Alloy.Globals.newComposition = {
 		
@@ -217,74 +212,13 @@ if (Titanium.Platform.Android) {
 	Alloy.Globals.dp = 1;
 }
 
-
-
-/*
- * Data sources urls
- */
-
-//var currentUserName = Titanium.App.Properties.getObject('username');
-
-//Alloy.Globals.username = (currentUserName) ? currentUserName : '';
-
-Alloy.Globals.build8CouponsKeyQueryString = function(){
-	var apiKeyQueryString = '?key=';
-	apiKeyQueryString += Alloy.Globals.APIKeys.com_8coupons;
-	return apiKeyQueryString;
-};
-
-Alloy.Globals.build8CouponsQueryString = function (){
-	
-	// REAL TIME CHAIN DEALS
-	// http://api.8coupons.com/v1/getrealtimechaindeals
-	
-	if(!Alloy.Globals.latitude)
-		alert('Alloy.Globals.latitude NOT SET!!!!!! BUILD QUERY ERROR!');
-	
-	var urlString;
-	
-	urlString = 'http://';
-	urlString += 'api.8coupons.com/v1/getdeals';
-	
-	urlString += Alloy.Globals.build8CouponsKeyQueryString();
-	urlString += '&lat=';
-	urlString += '' + Alloy.Globals.latitude + ''; 
-	urlString += '&lon=';
-	urlString += '' + Alloy.Globals.longitude + '';
-	
-	// &zip=18302
-	
-	urlString += '&mileradius=20';
-	urlString += '&limit=500';
-	
-	//urlString += '&mileradius=20&limit=500&dealtypeid=1';
-	
-	
-	
-	//return 'http://api.8coupons.com/v1/getdeals?key=02fbfdcae460b422ba93ca0de753e2ac566a290f92e6a03bd8eb3b5c5beb6fbcec933468b156b3b6050939c1cb7ea653&zip=18302&mileradius=20&limit=500&dealtypeid=1';
-	
-	//alert('urlString = ' + urlString);
-	
-	return urlString;
-};
-
 Alloy.Globals.URLS = {
-	
-	coupons8_url : function (){
-		return Alloy.Globals.build8CouponsQueryString();
-	},
 	news_url : 'http://photopon.com/api/v1/users/me/news',
 	products_url : 'http://skounis.s3.amazonaws.com/mobile-apps/barebone/products.json'
 };
 
-/*
- * Controller Stack for Android only
- */
 Alloy.Globals.navWindows = [];
-/*
- * Loads the map module
- * which can be referenced by Alloy.Globals.Map
- */
+
 
 if (OS_IOS || OS_ANDROID) {
 	Ti.Map = require('ti.map');
@@ -902,11 +836,6 @@ Alloy.Globals.FlyoutMenu = [
 }];
 
 
-Alloy.Globals.rightMenuItems = [
-{
-	title : 'Log Out',
-	color : Alloy.Globals.ThemeColors.black
-}];
 
 Alloy.Globals.newCompositionObject = function (){
 	

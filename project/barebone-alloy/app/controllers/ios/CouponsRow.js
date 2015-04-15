@@ -28,21 +28,8 @@ if (Alloy.Globals.isIOS7() == "7") {
 	});
 	$.row.add(seprator);
 }
-/*
-function getBtnHandler (e) {
-	
-	alert('getBtnHandler url = ' + $.row.CouponsItem.URL + Alloy.Globals.build8CouponsKeyQueryString() );
-	var getWin = Alloy.createController('SnapWrapWebView', {
-		CouponsItem: $.row.CouponsItem
-		//url : $.row.CouponsItem.URL
-	}).getView();
-	Alloy.Globals.navGroup.openWindow(getWin);
-}
 
-function giveBtnHandler (e) {
-	
-}
-*/
+
 
 
 /*

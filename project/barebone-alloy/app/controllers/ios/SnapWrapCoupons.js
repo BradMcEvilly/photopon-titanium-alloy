@@ -70,8 +70,7 @@ function reloadInBackground () {
 	if (Titanium.Network.online) {
 		$.ind.show();
 		
-		//apiHelper.APIGetRequest(Alloy.Globals.build8CouponsQueryString(), function(e) {
-		apiHelper.GetSimpleCoupons(Alloy.Globals.build8CouponsQueryString(), function(Json) {
+		apiHelper.GetSimpleCoupons(function(Json) {
 			
 			jsonLength = Json.length;
 			var rows = [];

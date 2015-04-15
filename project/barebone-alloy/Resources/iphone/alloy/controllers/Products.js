@@ -68,11 +68,9 @@ function Controller() {
     _.extend($, $.__views);
     var args = arguments[0] || {};
     var apiHelper = require("apiHelper");
-    $.winProduct.setTitleControl(Alloy.createController("titleControl", {
-        title: args.title
-    }).getView());
-    args.isFlyout ? $.winProduct.leftNavButton = Alloy.createController("leftMenuButton").getView() : $.winProduct.backButtonTitle = "Back";
+    var UTL = require("utl");
     $.winProduct.addEventListener("open", function(e) {
+        UTL.defaultTitle(args);
         if (Titanium.Network.online) {
             $.ind.show();
             apiHelper.APIGetRequest(Alloy.Globals.URLS.products_url, function(e) {

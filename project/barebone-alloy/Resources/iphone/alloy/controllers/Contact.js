@@ -148,11 +148,9 @@ function Controller() {
     $.__views.winContact.add($.__views.contactTable);
     exports.destroy = function() {};
     _.extend($, $.__views);
+    var UTL = require("utl");
     var args = arguments[0] || {};
-    $.winContact.setTitleControl(Alloy.createController("titleControl", {
-        title: args.title
-    }).getView());
-    args.isFlyout ? $.winContact.leftNavButton = Alloy.createController("LeftMenuButton").getView() : $.winContact.backButtonTitle = "Back";
+    UTL.defaultTitle(args);
     $.btnSendMessage.addEventListener("touchstart", function() {
         $.btnSendMessage.backgroundColor = Alloy.Globals.ThemeStyles.button.selectedBackgroundColor;
     });

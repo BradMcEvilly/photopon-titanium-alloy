@@ -1,13 +1,13 @@
 var args = arguments[0] || {};
+var UTL = require("utl");
 
-$.winSetting.setTitleControl(Alloy.createController('titleControl', {
-	title : args.title
-}).getView());
 
-if (!args.isFlyout) {
-	$.winSetting.backButtonTitle = 'Back';
-} else {
-	$.winSetting.leftNavButton = Alloy.createController('leftMenuButton').getView();
-}
+$.winSetting.addEventListener('open', function(e) {
+	UTL.defaultTitle(args);
+		
+});
 
-$.lblTest.text = 'dp / dpi: ' + Ti.Platform.displayCaps.dpi / 160 + ' / ' + Ti.Platform.displayCaps.dpi;
+$.btnRequestMerchant.addEventListener("click", function() {
+	
+	console.log("Become merchant")
+});

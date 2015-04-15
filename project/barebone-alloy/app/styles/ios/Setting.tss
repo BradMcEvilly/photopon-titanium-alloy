@@ -5,9 +5,28 @@
 	layout : 'vertical',
 	translucent : false
 },
-"#lblTest": {
-	textAlign : 'left',
-	left : 18,
-	color : '#ffffff',
-	font : Alloy.Globals.ThemeStyles.flyout_menu_item.font
+"#btnRequestMerchant": {
+	top : Alloy.Globals.ThemeStyles.button.padding,
+	left : Alloy.Globals.ThemeStyles.button.padding,
+	right : Alloy.Globals.ThemeStyles.button.padding,
+	width : Ti.UI.FILL,
+	height : Alloy.Globals.ThemeStyles.buttonPurple.height,
+	color : Alloy.Globals.ThemeStyles.buttonPurple.color,
+	backgroundColor : Alloy.Globals.ThemeStyles.buttonPurple.backgroundColor,
+	borderColor : Alloy.Globals.ThemeStyles.buttonPurple.borderColor,
+	borderStyle: Alloy.Globals.ThemeStyles.buttonPurple.borderStyle,
+	borderRadius:Alloy.Globals.ThemeStyles.buttonPurple.borderRadius,
+	borderWidth: Alloy.Globals.ThemeStyles.buttonPurple.borderWidth,
+	font: Alloy.Globals.ThemeStyles.buttonPurple.font
+},
+"#lblRequestMerchant": {
+	text : 'BECOME MERCHANT',
+	textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
+	verticalAlign: Ti.UI.TEXT_VERTICAL_ALIGNMENT_CENTER,
+	color : Alloy.Globals.ThemeStyles.button.color,
+	font : Alloy.Globals.ThemeStyles.button.font,	
+	width : 'auto',
+	height : 'auto',
+	touchEnabled : false
 }
+

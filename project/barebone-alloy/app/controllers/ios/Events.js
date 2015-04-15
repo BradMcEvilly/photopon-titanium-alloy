@@ -3,18 +3,16 @@
  */
 var args = arguments[0] || {};
 var apiHelper = require('apiHelper');
+var UTL = require("utl");
 var that = this;
 this.isMenuShown = false;
 
-$.winEvents.setTitleControl(Alloy.createController('titleControl', {
-	title : args.title
-}).getView());
 
-if (!args.isFlyout) {
-	$.winEvents.backButtonTitle = 'Back';
-} else {
-	$.winEvents.leftNavButton = Alloy.createController('leftMenuButton').getView();
-}
+
+var args = arguments[0] || {};
+
+UTL.defaultTitle(args);
+
 
 // set right menu
 $.Right_Menu = Alloy.createController('RightMenu', {

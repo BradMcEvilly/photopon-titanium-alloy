@@ -1,8 +1,0 @@
-<Alloy>
-	<View id="winProduct">
-		<TableView id="productTable">
-		</TableView>
-		<ActivityIndicator id="ind">
-		</ActivityIndicator>
-	</View>
-</Alloy>

@@ -1,8 +1,0 @@
-<Alloy>
-	<View id="winProduct">
-		<ScrollView id="productScroll">
-			<View id="scrollViewContainer"/>
-		</ScrollView>
-		<ActivityIndicator id="ind" />
-	</View>
-</Alloy>

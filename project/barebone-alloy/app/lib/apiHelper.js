@@ -17,7 +17,8 @@ exports.Signup = function(username, password, callback, errorCallback) {
 	Cloud.Users.create({
 	    username: username,
 	    password: password,
-	    password_confirmation: password
+	    password_confirmation: password,
+	    role: "user"
 	}, function (e) {
 		
 		if ( e.success ) {
@@ -43,9 +44,6 @@ exports.Login = function(username, password) {
     		Titanium.App.Properties.setObject('uid', user.id);
     		Titanium.App.Properties.setObject('sessionid', user.id);
     		Titanium.App.Properties.setObject('role', user.role);
-    		
-    		//if(user.role == 'merchant')
-    		//	alert('Merchant!');
     		
     		
 		    Titanium.App.fireEvent("DID_LOGIN");

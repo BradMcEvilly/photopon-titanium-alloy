@@ -14,7 +14,8 @@ exports.Signup = function(username, password, callback, errorCallback) {
     Cloud.Users.create({
         username: username,
         password: password,
-        password_confirmation: password
+        password_confirmation: password,
+        role: "user"
     }, function(e) {
         e.success ? callback(username, password) : errorCallback(e);
     });

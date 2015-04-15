@@ -32,22 +32,45 @@ function Controller() {
         id: "winSetting"
     });
     $.__views.winSetting && $.addTopLevelView($.__views.winSetting);
-    $.__views.lblTest = Ti.UI.createLabel({
-        textAlign: "left",
-        left: 18,
-        color: "#ffffff",
-        font: Alloy.Globals.ThemeStyles.flyout_menu_item.font,
-        id: "lblTest"
+    $.__views.btnRequestMerchant = Ti.UI.createView({
+        top: Alloy.Globals.ThemeStyles.button.padding,
+        left: Alloy.Globals.ThemeStyles.button.padding,
+        right: Alloy.Globals.ThemeStyles.button.padding,
+        width: Ti.UI.FILL,
+        height: Alloy.Globals.ThemeStyles.buttonPurple.height,
+        color: Alloy.Globals.ThemeStyles.buttonPurple.color,
+        backgroundColor: Alloy.Globals.ThemeStyles.buttonPurple.backgroundColor,
+        borderColor: Alloy.Globals.ThemeStyles.buttonPurple.borderColor,
+        borderStyle: Alloy.Globals.ThemeStyles.buttonPurple.borderStyle,
+        borderRadius: Alloy.Globals.ThemeStyles.buttonPurple.borderRadius,
+        borderWidth: Alloy.Globals.ThemeStyles.buttonPurple.borderWidth,
+        font: Alloy.Globals.ThemeStyles.buttonPurple.font,
+        id: "btnRequestMerchant",
+        visible: "false"
     });
-    $.__views.winSetting.add($.__views.lblTest);
+    $.__views.winSetting.add($.__views.btnRequestMerchant);
+    $.__views.lblRequestMerchant = Ti.UI.createLabel({
+        text: "BECOME MERCHANT",
+        textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
+        verticalAlign: Ti.UI.TEXT_VERTICAL_ALIGNMENT_CENTER,
+        color: Alloy.Globals.ThemeStyles.button.color,
+        font: Alloy.Globals.ThemeStyles.button.font,
+        width: "auto",
+        height: "auto",
+        touchEnabled: false,
+        id: "lblRequestMerchant"
+    });
+    $.__views.btnRequestMerchant.add($.__views.lblRequestMerchant);
     exports.destroy = function() {};
     _.extend($, $.__views);
     var args = arguments[0] || {};
-    $.winSetting.setTitleControl(Alloy.createController("titleControl", {
-        title: args.title
-    }).getView());
-    args.isFlyout ? $.winSetting.leftNavButton = Alloy.createController("leftMenuButton").getView() : $.winSetting.backButtonTitle = "Back";
-    $.lblTest.text = "dp / dpi: " + Ti.Platform.displayCaps.dpi / 160 + " / " + Ti.Platform.displayCaps.dpi;
+    var UTL = require("utl");
+    $.winSetting.addEventListener("open", function() {
+        UTL.defaultTitle(args);
+    });
+    $.btnRequestMerchant.addEventListener("click", function() {
+        console.log("Become merchant");
+    });
     _.extend($, exports);
 }
 

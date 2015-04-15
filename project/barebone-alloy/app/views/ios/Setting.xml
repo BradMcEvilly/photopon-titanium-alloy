@@ -1,5 +1,9 @@
 <Alloy>
 	<Window id="winSetting">
-		<Label id="lblTest" />
+		
+		
+		<View id="btnRequestMerchant" visible="false">
+			<Label id="lblRequestMerchant" />
+		</View>
 	</Window>
 </Alloy>

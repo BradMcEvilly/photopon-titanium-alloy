@@ -10,7 +10,6 @@ var args = arguments[0] || {};
 var that = this;
 this.isMenuShown = false;
 
-UTL.defaultTitle($.winBrands, args);
 
 // set right menu
 $.Right_Menu = Alloy.createController('RightMenu', {
@@ -25,6 +24,8 @@ $.winBrands.rightNavButton = Alloy.createController('rightMenuButton', {
 }).getView();
 
 $.winBrands.addEventListener('open', function(e) {
+	UTL.defaultTitle(args);
+
 	// call api function
 	if (Titanium.Network.online) {
 		$.ind.show();

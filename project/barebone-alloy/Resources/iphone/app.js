@@ -677,7 +677,7 @@ Alloy.Globals.SwipeNavPages = [ {
 Alloy.Globals.FlyoutMenu = [ {
     title: "Photopon",
     name: "_home",
-    controller: Ti.Platform.Android ? "adrHome" : "Home",
+    controller: "Home",
     color: Alloy.Globals.ThemeColors.black,
     icon: "/images/ic_give.png",
     iconAndroid: "/images/ic_give.png",
@@ -686,7 +686,7 @@ Alloy.Globals.FlyoutMenu = [ {
 }, {
     title: "My Friends",
     name: "_friends",
-    controller: Ti.Platform.Android ? "adrHome" : "PhotoponFriends",
+    controller: "PhotoponFriends",
     color: Alloy.Globals.ThemeColors.black,
     icon: "/images/ic_more_option.png",
     iconAndroid: "/images/ic_more_option.png",
@@ -694,7 +694,7 @@ Alloy.Globals.FlyoutMenu = [ {
 }, {
     title: "Wallet",
     name: "_wallet",
-    controller: Ti.Platform.Android ? "adrWallet" : "PhotoponWallet",
+    controller: "PhotoponWallet",
     color: Alloy.Globals.ThemeColors.black,
     icon: "/images/ic_wallet.png",
     iconAndroid: "/images/ic_wallet.png",

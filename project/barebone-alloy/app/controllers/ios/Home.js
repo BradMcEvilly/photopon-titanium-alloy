@@ -6,9 +6,8 @@ var args = arguments[0] || {};
 var that = this;
 this.isMenuShown = false;
 
-UTL.defaultTitle($.winHome, args);
-
-$.winHome.addEventListener('open', function(e) {
+$.winHome.addEventListener('open', function(e) {	
+	UTL.defaultTitle($.winHome, args);
 
 	
 	// set right menu button
@@ -79,8 +78,20 @@ $.winHome.addEventListener('open', function(e) {
 	$.winHome.add(scrollableView);
 });
 
-
-
+Titanium.App.addEventListener("SET_TITLE", function(e) {
+	if (e.title) {
+		$.winHome.setTitleControl(Alloy.createController('titleControl', {
+			title : e.title
+		}).getView());
+	}
+	
+	//if (e.isFlyout) {
+	//	$.winHome.leftNavButton = Alloy.createController('LeftMenuButton').getView();
+	//} else {
+	//	$.winHome.backButtonTitle = 'Back';
+	//}
+});
+	
 	
 $.winHome.addEventListener("close", function(){
 	$.destroy();

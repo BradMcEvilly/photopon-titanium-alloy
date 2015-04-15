@@ -1,15 +1,8 @@
+var UTL = require("utl");
+
 var args = arguments[0] || {};
 
-// set title control
-$.winContact.setTitleControl(Alloy.createController('titleControl', {
-	title : args.title
-}).getView());
-
-if (!args.isFlyout) {
-	$.winContact.backButtonTitle = 'Back';
-} else {
-	$.winContact.leftNavButton = Alloy.createController('LeftMenuButton').getView();
-}
+UTL.defaultTitle(args);
 
 $.btnSendMessage.addEventListener('touchstart', function(e) {
 	$.btnSendMessage.backgroundColor = Alloy.Globals.ThemeStyles.button.selectedBackgroundColor;

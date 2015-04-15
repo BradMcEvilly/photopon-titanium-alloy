@@ -44,12 +44,11 @@ function Controller() {
     _.extend($, $.__views);
     var args = arguments[0] || {};
     var apiHelper = require("apiHelper");
+    var UTL = require("utl");
     var that = this;
     this.isMenuShown = false;
-    $.winEvents.setTitleControl(Alloy.createController("titleControl", {
-        title: args.title
-    }).getView());
-    args.isFlyout ? $.winEvents.leftNavButton = Alloy.createController("leftMenuButton").getView() : $.winEvents.backButtonTitle = "Back";
+    var args = arguments[0] || {};
+    UTL.defaultTitle(args);
     $.Right_Menu = Alloy.createController("RightMenu", {
         context: that
     }).getView();

@@ -47,7 +47,6 @@ function Controller() {
     var args = arguments[0] || {};
     var that = this;
     this.isMenuShown = false;
-    UTL.defaultTitle($.winBrands, args);
     $.Right_Menu = Alloy.createController("RightMenu", {
         context: that
     }).getView();
@@ -57,6 +56,7 @@ function Controller() {
         context: that
     }).getView();
     $.winBrands.addEventListener("open", function(e) {
+        UTL.defaultTitle(args);
         if (Titanium.Network.online) {
             $.ind.show();
             apiHelper.APIGetRequest(Alloy.Globals.URLS.news_url, function(e) {

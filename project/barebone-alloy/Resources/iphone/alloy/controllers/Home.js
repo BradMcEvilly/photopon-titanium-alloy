@@ -39,8 +39,8 @@ function Controller() {
     var args = arguments[0] || {};
     var that = this;
     this.isMenuShown = false;
-    UTL.defaultTitle($.winHome, args);
     $.winHome.addEventListener("open", function() {
+        UTL.defaultTitle($.winHome, args);
         $.Right_Menu = Alloy.createController("RightMenu", {
             context: that
         }).getView();
@@ -85,6 +85,11 @@ function Controller() {
         });
         $.winHome.setTabBarHidden(true);
         $.winHome.add(scrollableView);
+    });
+    Titanium.App.addEventListener("SET_TITLE", function(e) {
+        e.title && $.winHome.setTitleControl(Alloy.createController("titleControl", {
+            title: e.title
+        }).getView());
     });
     $.winHome.addEventListener("close", function() {
         $.destroy();

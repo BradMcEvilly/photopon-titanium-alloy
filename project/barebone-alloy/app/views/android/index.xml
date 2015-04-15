@@ -1,5 +1,0 @@
-<Alloy>
-	<Window id="winParent" backgroundColor="#fff">
-		<TableView id="flyoutTable" />
-	</Window>
-</Alloy>

@@ -1,7 +1,0 @@
-<Alloy>
-	<View id="winMap">
-			<View id="mapView" ns="Ti.Map"
-			onClick="report">
-		</View>
-	</View>
-</Alloy>

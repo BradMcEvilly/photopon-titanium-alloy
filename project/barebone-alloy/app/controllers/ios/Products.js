@@ -1,18 +1,11 @@
 var args = arguments[0] || {};
 var apiHelper = require('apiHelper');
+var UTL = require("utl");
 
-// set title control
-$.winProduct.setTitleControl(Alloy.createController('titleControl', {
-	title : args.title
-}).getView());
-
-if (!args.isFlyout) {
-	$.winProduct.backButtonTitle = 'Back';
-} else {
-	$.winProduct.leftNavButton = Alloy.createController('leftMenuButton').getView();
-}
 
 $.winProduct.addEventListener('open', function(e) {
+	UTL.defaultTitle(args);
+
 	// call api function
 	if (Titanium.Network.online) {
 		$.ind.show();

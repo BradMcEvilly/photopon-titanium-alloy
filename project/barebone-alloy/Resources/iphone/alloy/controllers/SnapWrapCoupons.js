@@ -96,7 +96,7 @@ function Controller() {
     var __defers = {};
     $.__views.winSnapWrapCoupons = Ti.UI.createWindow({
         backgroundColor: Alloy.Globals.ThemeStyles.win.backgroundColor,
-        title: "SnapWrap.me",
+        title: "Coupons",
         navTintColor: Alloy.Globals.ThemeStyles.win.navTintColor,
         barColor: Alloy.Globals.ThemeStyles.win.barColor,
         translucent: false,

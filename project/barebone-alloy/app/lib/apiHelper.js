@@ -8,9 +8,21 @@ exports.Logout = function() {
 	Titanium.App.Properties.removeProperty('uid');
 	Titanium.App.Properties.removeProperty('sessionid');
 	Titanium.App.Properties.removeProperty('role');
-	
-	
+
 	Titanium.App.fireEvent("DID_LOGOUT");
+};
+
+
+exports.ConvertToMerchant = function() {
+	Cloud.Users.update({
+		role: "merchant"
+	}, function(e) {
+		if (!e.success) {
+			return Alloy.Globals.showError("Failed to make user merchant");
+		}
+		
+		alert("You are merchant now!");
+	});
 };
 
 exports.Signup = function(username, password, callback, errorCallback) {
@@ -36,15 +48,13 @@ exports.Login = function(username, password) {
         password: password
     }, function (e) {
 	    	
-    	if(e.success){
-	    			
+    	if(e.success){		
     		var user = e.users[0];
     		Titanium.App.Properties.setObject('username', username);
     		Titanium.App.Properties.setObject('password', password);
     		Titanium.App.Properties.setObject('uid', user.id);
     		Titanium.App.Properties.setObject('sessionid', user.id);
     		Titanium.App.Properties.setObject('role', user.role);
-    		
     		
 		    Titanium.App.fireEvent("DID_LOGIN");
 		       

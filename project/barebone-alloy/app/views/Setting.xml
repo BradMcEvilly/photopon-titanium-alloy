@@ -1,0 +1,9 @@
+<Alloy>
+	<Window id="winSetting" title="Settings">
+		
+		<View id="btnRequestMerchant" class="big-button">
+			<Label text="BECOME MERCHANT" class="big-button-label"/>
+		</View>
+		
+	</Window>
+</Alloy>

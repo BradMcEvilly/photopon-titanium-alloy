@@ -1,5 +1,0 @@
-<Alloy>
-	<View id="btnCustom">
-		<ImageView id="icon" />
-	</View>
-</Alloy>

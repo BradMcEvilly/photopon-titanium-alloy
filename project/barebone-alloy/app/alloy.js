@@ -1,5 +1,8 @@
 Titanium.include('frames.js');
 Cloud = require('ti.cloud');
+Dialogs = require('alloy/dialogs');
+UTL = require("utl");
+API = require("apiHelper");
 
 
 Alloy.Globals.navGroup 		= null;
@@ -803,35 +806,6 @@ Alloy.Globals.SwipeNavPages = [{
 	}
 ];
 
-Alloy.Globals.FlyoutMenu = [{
-	// Home will be "Coupons" with giftbox & ribbon logo
-	
-	title : 'Photopon',
-	name : '_home',
-	controller : 'Home',
-	color : Alloy.Globals.ThemeColors.black,
-	icon : '/images/ic_give.png',
-	iconAndroid : '/images/ic_give.png',
-	rowBackgroundColor : Alloy.Globals.ThemeColors.yellow,//.generateRandomColor(),
-	isHeader: true
-}, {
-	title : 'My Friends',
-	name : '_friends',
-	controller : 'PhotoponFriends',
-	color : Alloy.Globals.ThemeColors.black,
-	icon : '/images/ic_more_option.png',
-	iconAndroid : '/images/ic_more_option.png',
-	rowBackgroundColor : Alloy.Globals.generateRandomColor()
-}, {
-	title : 'Wallet',
-	name : '_wallet',
-	controller : 'PhotoponWallet',
-	color : Alloy.Globals.ThemeColors.black,
-	icon : '/images/ic_wallet.png',
-	iconAndroid : '/images/ic_wallet.png',
-	rowBackgroundColor : Alloy.Globals.generateRandomColor()
-}];
-
 
 
 Alloy.Globals.newCompositionObject = function (){
@@ -851,11 +825,7 @@ Alloy.Globals.newCompositionObject = function (){
 	return newComp;
 };
 
-Alloy.Globals.initApp = function () {
-	
-	Alloy.Globals.isLoggedIn = Alloy.Globals.checkedLoggedIn();
-	
-};
+
 
 Alloy.Globals.initCoords = function (){
 	

@@ -7,8 +7,6 @@ var that = this;
 this.isMenuShown = false;
 
 $.winHome.addEventListener('open', function(e) {	
-	UTL.defaultTitle($.winHome, args);
-
 	
 	// set right menu button
 	$.Right_Menu = Alloy.createController('RightMenu', {
@@ -20,6 +18,8 @@ $.winHome.addEventListener('open', function(e) {
 		Right_Menu : $.Right_Menu,
 		context : that
 	}).getView();
+	
+	$.winHome.leftNavButton = Alloy.createController('LeftMenuButton').getView();
 	
 	
 	var view1 = Ti.UI.createView({ backgroundColor:'#123' });
@@ -61,35 +61,25 @@ $.winHome.addEventListener('open', function(e) {
 	        viewFriends
 	    ]
 	});
+	
 	scrollableView.setDisableBounce(true);
 	scrollableView.addEventListener('scroll', function (e) {
 	    currentPage = e.currentPage;
 	});
+	
 	scrollableView.addEventListener('scrollend', function (e) {
+		var v = scrollableView.views[e.currentPage];
 		
-		console.log('---------------------------');
-		console.log('---->	scrollableView.addEventListener(scrollend, function (e) {');
-		console.log('---------------------------');
-		Ti.API.info('---->	currentPage: ' + currentPage);
-		console.log('---------------------------');
-		
+		if (v) {
+			$.winHome.setTitleControl(Alloy.createController('titleControl', {
+				title : v.title || "<None>"
+			}).getView());
+		}
+			
 	});
+	
 	$.winHome.setTabBarHidden(true);
 	$.winHome.add(scrollableView);
-});
-
-Titanium.App.addEventListener("SET_TITLE", function(e) {
-	if (e.title) {
-		$.winHome.setTitleControl(Alloy.createController('titleControl', {
-			title : e.title
-		}).getView());
-	}
-	
-	//if (e.isFlyout) {
-	//	$.winHome.leftNavButton = Alloy.createController('LeftMenuButton').getView();
-	//} else {
-	//	$.winHome.backButtonTitle = 'Back';
-	//}
 });
 	
 	

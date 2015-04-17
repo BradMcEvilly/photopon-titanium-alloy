@@ -1,5 +1,0 @@
-<Alloy>
-    <Window id="winSnapWrapWebView" onOpen="onOpenSnapWrapWebViewHandler" >
-    	<WebView onLoad="onLoadHandler" onBeforeload="onBeforeloadHandler" id="snapWrapWebView" />
-    </Window>
-</Alloy>

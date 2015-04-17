@@ -1,5 +1,0 @@
-<Alloy>
-	<View id="titleView">
-		<Label id="lblTitle"/>
-	</View>
-</Alloy>

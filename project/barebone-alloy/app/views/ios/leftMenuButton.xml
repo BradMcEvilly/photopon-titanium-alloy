@@ -1,3 +1,0 @@
-<Alloy>
-	<Button id="btnMenu" onClick="btnMenuClicked" ></Button>
-</Alloy>

@@ -29,7 +29,8 @@ function Controller() {
         navTintColor: Alloy.Globals.ThemeStyles.win.navTintColor,
         layout: "vertical",
         translucent: false,
-        id: "winSetting"
+        id: "winSetting",
+        title: "Settings"
     });
     $.__views.winSetting && $.addTopLevelView($.__views.winSetting);
     $.__views.btnRequestMerchant = Ti.UI.createView({
@@ -45,12 +46,10 @@ function Controller() {
         borderRadius: Alloy.Globals.ThemeStyles.buttonPurple.borderRadius,
         borderWidth: Alloy.Globals.ThemeStyles.buttonPurple.borderWidth,
         font: Alloy.Globals.ThemeStyles.buttonPurple.font,
-        id: "btnRequestMerchant",
-        visible: "false"
+        id: "btnRequestMerchant"
     });
     $.__views.winSetting.add($.__views.btnRequestMerchant);
-    $.__views.lblRequestMerchant = Ti.UI.createLabel({
-        text: "BECOME MERCHANT",
+    $.__views.__alloyId26 = Ti.UI.createLabel({
         textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
         verticalAlign: Ti.UI.TEXT_VERTICAL_ALIGNMENT_CENTER,
         color: Alloy.Globals.ThemeStyles.button.color,
@@ -58,18 +57,26 @@ function Controller() {
         width: "auto",
         height: "auto",
         touchEnabled: false,
-        id: "lblRequestMerchant"
+        text: "BECOME MERCHANT",
+        id: "__alloyId26"
     });
-    $.__views.btnRequestMerchant.add($.__views.lblRequestMerchant);
+    $.__views.btnRequestMerchant.add($.__views.__alloyId26);
     exports.destroy = function() {};
     _.extend($, $.__views);
     var args = arguments[0] || {};
-    var UTL = require("utl");
     $.winSetting.addEventListener("open", function() {
         UTL.defaultTitle(args);
+        var role = UTL.userInfo().role;
+        "merchant" == role && $.btnRequestMerchant.hide();
     });
     $.btnRequestMerchant.addEventListener("click", function() {
-        console.log("Become merchant");
+        Dialogs.confirm({
+            title: "Confirm",
+            message: "Do you want to become Mercahnt?",
+            callback: function() {
+                API.ConvertToMerchant();
+            }
+        });
     });
     _.extend($, exports);
 }

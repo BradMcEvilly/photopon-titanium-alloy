@@ -10,6 +10,15 @@ exports.Logout = function() {
     Titanium.App.fireEvent("DID_LOGOUT");
 };
 
+exports.ConvertToMerchant = function() {
+    Cloud.Users.update({
+        role: "merchant"
+    }, function(e) {
+        if (!e.success) return Alloy.Globals.showError("Failed to make user merchant");
+        alert("You are merchant now!");
+    });
+};
+
 exports.Signup = function(username, password, callback, errorCallback) {
     Cloud.Users.create({
         username: username,

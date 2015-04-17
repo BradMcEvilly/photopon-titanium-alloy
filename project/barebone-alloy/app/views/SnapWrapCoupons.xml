@@ -1,5 +1,5 @@
 <Alloy>
-	<Window id="winSnapWrapCoupons" title="SnapWrap.me" onOpen="winSnapWrapCouponsOpenHandler">
+	<Window id="winSnapWrapCoupons" title="Coupons" onOpen="winSnapWrapCouponsOpenHandler">
 		<TableView id="snapWrapCouponsTable">
 		</TableView>
 		

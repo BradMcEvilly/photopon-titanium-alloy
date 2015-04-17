@@ -34,13 +34,12 @@ function Controller() {
     $.__views.winHome && $.addTopLevelView($.__views.winHome);
     exports.destroy = function() {};
     _.extend($, $.__views);
-    var UTL = require("utl");
+    require("utl");
     var currentPage = -1;
-    var args = arguments[0] || {};
+    arguments[0] || {};
     var that = this;
     this.isMenuShown = false;
     $.winHome.addEventListener("open", function() {
-        UTL.defaultTitle($.winHome, args);
         $.Right_Menu = Alloy.createController("RightMenu", {
             context: that
         }).getView();
@@ -49,6 +48,7 @@ function Controller() {
             Right_Menu: $.Right_Menu,
             context: that
         }).getView();
+        $.winHome.leftNavButton = Alloy.createController("LeftMenuButton").getView();
         Ti.UI.createView({
             backgroundColor: "#123"
         });
@@ -76,20 +76,14 @@ function Controller() {
         scrollableView.addEventListener("scroll", function(e) {
             currentPage = e.currentPage;
         });
-        scrollableView.addEventListener("scrollend", function() {
-            console.log("---------------------------");
-            console.log("---->	scrollableView.addEventListener(scrollend, function (e) {");
-            console.log("---------------------------");
-            Ti.API.info("---->	currentPage: " + currentPage);
-            console.log("---------------------------");
+        scrollableView.addEventListener("scrollend", function(e) {
+            var v = scrollableView.views[e.currentPage];
+            v && $.winHome.setTitleControl(Alloy.createController("titleControl", {
+                title: v.title || "<None>"
+            }).getView());
         });
         $.winHome.setTabBarHidden(true);
         $.winHome.add(scrollableView);
-    });
-    Titanium.App.addEventListener("SET_TITLE", function(e) {
-        e.title && $.winHome.setTitleControl(Alloy.createController("titleControl", {
-            title: e.title
-        }).getView());
     });
     $.winHome.addEventListener("close", function() {
         $.destroy();

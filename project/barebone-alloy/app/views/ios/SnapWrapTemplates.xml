@@ -1,7 +1,0 @@
-<Alloy>
-	<Window id="winSnapWrapTemplates" title="SnapWrap.me" onOpen="winSnapWrapTemplatesOpenHandler">
-		
-		<ActivityIndicator id="ind">
-		</ActivityIndicator>
-	</Window>
-</Alloy>

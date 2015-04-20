@@ -61,6 +61,92 @@ exports.GetFriendRequests = function(callback, errorCallback) {
     });
 };
 
+exports.NewLocation = function(info, callback, errorCallback) {
+    Cloud.Places.create(info, function(e) {
+        if (!e.success) {
+            errorCallback && errorCallback({
+                message: e.error && e.message
+            });
+            return;
+        }
+        callback(e.places);
+    });
+};
+
+exports.GetMerchantLocations = function(callback) {
+    Cloud.Places.query({
+        limit: 100
+    }, function(e) {
+        if (!e.success) {
+            errorCallback && errorCallback({
+                message: e.error && e.message
+            });
+            return;
+        }
+        callback(e.places);
+    });
+};
+
+exports.GetMerchantCoupons = function(callback) {
+    callback([ {
+        name: "McDonalds 10% off",
+        address: "350 Fifth avenue",
+        homepage: "http://www.mcdonalds.gov",
+        phone: "9174995917",
+        state: "NY",
+        city: "New York",
+        ZIP: "10118",
+        URL: "http://www.mcdonalds.gov",
+        dealSource: "",
+        dealTitle: "",
+        disclaimer: "",
+        dealInfo: "",
+        postDate: "",
+        expirationDate: "",
+        showImage: "",
+        showImageStandardBig: "",
+        showImageStandardSmall: "",
+        showLogo: "",
+        providerName: "",
+        distance: "",
+        dealOriginalPrice: "",
+        dealPrice: "",
+        dealDiscountPercent: "",
+        picture: "",
+        title: "No data",
+        tags: [],
+        body: "No data"
+    }, {
+        name: "Chipotlie Buy 2 get 1 Free",
+        address: "666 6th avenue",
+        homepage: "http://www.mcdonalds.gov",
+        phone: "80066666666",
+        state: "NY",
+        city: "New York",
+        ZIP: "10098",
+        URL: "http://www.chipotlie.edu",
+        dealSource: "",
+        dealTitle: "",
+        disclaimer: "",
+        dealInfo: "",
+        postDate: "",
+        expirationDate: "",
+        showImage: "",
+        showImageStandardBig: "",
+        showImageStandardSmall: "",
+        showLogo: "",
+        providerName: "",
+        distance: "",
+        dealOriginalPrice: "",
+        dealPrice: "",
+        dealDiscountPercent: "",
+        picture: "",
+        title: "No data",
+        tags: [],
+        body: "No data"
+    } ]);
+};
+
 exports.GetAllFriends = function(callback, errorCallback) {
     Cloud.sendRequest({
         url: "friends/query.json",
@@ -121,65 +207,5 @@ exports.GetSimpleFriends = function(url, callback) {
     }, {
         name: "Jimmy Joe",
         img: "http://lorempixel.com/output/people-q-c-480-480-6.jpg"
-    } ]);
-};
-
-exports.GetSimpleCoupons = function(callback) {
-    callback([ {
-        name: "McDonalds 10% off",
-        address: "350 Fifth avenue",
-        homepage: "http://www.mcdonalds.gov",
-        phone: "9174995917",
-        state: "NY",
-        city: "New York",
-        ZIP: "10118",
-        URL: "http://www.mcdonalds.gov",
-        dealSource: "",
-        dealTitle: "",
-        disclaimer: "",
-        dealInfo: "",
-        postDate: "",
-        expirationDate: "",
-        showImage: "",
-        showImageStandardBig: "",
-        showImageStandardSmall: "",
-        showLogo: "",
-        providerName: "",
-        distance: "",
-        dealOriginalPrice: "",
-        dealPrice: "",
-        dealDiscountPercent: "",
-        picture: "",
-        title: "No data",
-        tags: [],
-        body: "No data"
-    }, {
-        name: "Chipotlie Buy 2 get 1 Free",
-        address: "666 6th avenue",
-        homepage: "http://www.mcdonalds.gov",
-        phone: "80066666666",
-        state: "NY",
-        city: "New York",
-        ZIP: "10098",
-        URL: "http://www.chipotlie.edu",
-        dealSource: "",
-        dealTitle: "",
-        disclaimer: "",
-        dealInfo: "",
-        postDate: "",
-        expirationDate: "",
-        showImage: "",
-        showImageStandardBig: "",
-        showImageStandardSmall: "",
-        showLogo: "",
-        providerName: "",
-        distance: "",
-        dealOriginalPrice: "",
-        dealPrice: "",
-        dealDiscountPercent: "",
-        picture: "",
-        title: "No data",
-        tags: [],
-        body: "No data"
     } ]);
 };

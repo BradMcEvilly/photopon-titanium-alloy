@@ -27,7 +27,7 @@ function Controller() {
         id: "winMainTabGroup"
     });
     $.__views.winMainTabGroup && $.addTopLevelView($.__views.winMainTabGroup);
-    var __alloyId18 = [];
+    var __alloyId30 = [];
     $.__views.winLeft = Ti.UI.createWindow({
         id: "winLeft",
         title: "Tab 1"
@@ -43,7 +43,7 @@ function Controller() {
         id: "tab1",
         title: "Tab 1"
     });
-    __alloyId18.push($.__views.tab1);
+    __alloyId30.push($.__views.tab1);
     $.__views.winCenter = Ti.UI.createWindow({
         id: "winCenter",
         title: "Tab 2"
@@ -59,7 +59,7 @@ function Controller() {
         id: "tab2",
         title: "Tab 2"
     });
-    __alloyId18.push($.__views.tab2);
+    __alloyId30.push($.__views.tab2);
     $.__views.winRight = Ti.UI.createWindow({
         id: "winRight",
         title: "Tab 2"
@@ -75,9 +75,9 @@ function Controller() {
         id: "tab3",
         title: "Tab 3"
     });
-    __alloyId18.push($.__views.tab3);
+    __alloyId30.push($.__views.tab3);
     $.__views.mainTabGroup = Ti.UI.createTabGroup({
-        tabs: __alloyId18,
+        tabs: __alloyId30,
         id: "mainTabGroup",
         navBarHidden: "true"
     });

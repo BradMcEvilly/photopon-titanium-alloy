@@ -75,14 +75,24 @@ function Controller() {
             iconAndroid: "/images/ic_wallet.png",
             rowBackgroundColor: Alloy.Globals.generateRandomColor()
         } ];
-        "merchant" == UTL.userInfo().role && FlyoutMenuItmes.push({
-            title: "Locations",
-            controller: "MerchantLocations",
-            color: Alloy.Globals.ThemeColors.black,
-            icon: "/images/ic_wallet.png",
-            iconAndroid: "/images/ic_wallet.png",
-            rowBackgroundColor: Alloy.Globals.generateRandomColor()
-        });
+        if ("merchant" == UTL.userInfo().role) {
+            FlyoutMenuItmes.push({
+                title: "Locations",
+                controller: "MerchantLocations",
+                color: Alloy.Globals.ThemeColors.black,
+                icon: "/images/ic_wallet.png",
+                iconAndroid: "/images/ic_wallet.png",
+                rowBackgroundColor: Alloy.Globals.generateRandomColor()
+            });
+            FlyoutMenuItmes.push({
+                title: "Coupons",
+                controller: "MerchantCoupons",
+                color: Alloy.Globals.ThemeColors.black,
+                icon: "/images/ic_wallet.png",
+                iconAndroid: "/images/ic_wallet.png",
+                rowBackgroundColor: Alloy.Globals.generateRandomColor()
+            });
+        }
         var rows = [];
         _.each(FlyoutMenuItmes, function(item) {
             rows.push(Alloy.createController("FlyoutRow", {

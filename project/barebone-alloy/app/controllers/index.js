@@ -38,6 +38,15 @@ Titanium.App.addEventListener("DID_LOGIN", function() {
 			iconAndroid : '/images/ic_wallet.png',
 			rowBackgroundColor : Alloy.Globals.generateRandomColor()
 		});
+		
+		FlyoutMenuItmes.push({
+			title : 'Coupons',
+			controller : 'MerchantCoupons',
+			color : Alloy.Globals.ThemeColors.black,
+			icon : '/images/ic_wallet.png',
+			iconAndroid : '/images/ic_wallet.png',
+			rowBackgroundColor : Alloy.Globals.generateRandomColor()
+		});
 	}
 	
 	var rows = [];

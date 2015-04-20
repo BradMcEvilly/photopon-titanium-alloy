@@ -22,8 +22,6 @@ $.winHome.addEventListener('open', function(e) {
 	$.winHome.leftNavButton = Alloy.createController('LeftMenuButton').getView();
 	
 	
-	var view1 = Ti.UI.createView({ backgroundColor:'#123' });
-	var view2 = Ti.UI.createView({ backgroundColor:'#246' });
 /*	
 	var viewCam = Alloy.createController('SnapWrapCameraPhoto', {
 		title : 'Snap Wrap',
@@ -56,7 +54,6 @@ $.winHome.addEventListener('open', function(e) {
 	        viewAddFriend,
 	    	//viewCam,
 	    	viewWallet,
-	        view2,
 	        viewCoupons,
 	        viewFriends
 	    ]

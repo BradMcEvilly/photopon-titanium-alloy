@@ -49,12 +49,6 @@ function Controller() {
             context: that
         }).getView();
         $.winHome.leftNavButton = Alloy.createController("LeftMenuButton").getView();
-        Ti.UI.createView({
-            backgroundColor: "#123"
-        });
-        var view2 = Ti.UI.createView({
-            backgroundColor: "#246"
-        });
         var viewCoupons = Alloy.createController("SnapWrapCoupons", {
             title: "Coupons",
             left: 0
@@ -70,7 +64,7 @@ function Controller() {
         }).getView();
         var scrollableView = Ti.UI.createScrollableView({
             showPagingControl: false,
-            views: [ viewAddFriend, viewWallet, view2, viewCoupons, viewFriends ]
+            views: [ viewAddFriend, viewWallet, viewCoupons, viewFriends ]
         });
         scrollableView.setDisableBounce(true);
         scrollableView.addEventListener("scroll", function(e) {

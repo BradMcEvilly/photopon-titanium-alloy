@@ -19,7 +19,7 @@ function Controller() {
         console.log("---------------------------");
         if (Titanium.Network.online) {
             $.ind.show();
-            apiHelper.GetSimpleCoupons(function(Json) {
+            apiHelper.GetMerchantCoupons(function(Json) {
                 jsonLength = Json.length;
                 var rows = [];
                 var checkLength = jsonLength > 60 ? 60 : jsonLength;

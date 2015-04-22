@@ -120,9 +120,35 @@ exports.GetMerchantLocations = function(callback) {
 
 };
 
+exports.NewCoupon = function(info, callback, errorCallback) {
+	Cloud.Objects.create({
+		classname: "Coupon",
+		fields: info
+	}, function (e) {
+	    if (!e.success) {
+	    	if (errorCallback) {
+				errorCallback({
+					message: e.error && e.message
+				});
+			}
+			return;	
+	    }
+	   
+	   	callback(e.places);
+	});	
+};
+
 
 
 exports.GetMerchantCoupons = function(callback) {
+	Cloud.Objects.query({
+	    classname: 'Coupon',
+	    page: 1,
+	    per_page: 100
+	}, function (e) {
+		callback(e.Coupon);
+	});
+/*
 	callback([
 		{
 			name:'McDonalds 10% off',
@@ -185,7 +211,6 @@ exports.GetMerchantCoupons = function(callback) {
 		},
 	]);
 	
-	/*
 	Cloud.Places.query({
 	    limit: 100
 	}, function (e) {

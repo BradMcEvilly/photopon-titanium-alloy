@@ -148,7 +148,7 @@ function Controller() {
     $.lblName.text = args.CouponsItem.name;
     $.row.CouponsItem = args.CouponsItem;
     $.row.tag = args.tag;
-    $.lblDetail.text = args.CouponsItem.dealTitle.length > 100 ? args.CouponsItem.dealTitle.substring(0, 100) + "..." : args.CouponsItem.dealTitle;
+    $.lblDetail.text = args.CouponsItem.title.length > 100 ? args.CouponsItem.title.substring(0, 100) + "..." : args.CouponsItem.title;
     if ("7" == Alloy.Globals.isIOS7()) {
         var seprator = Ti.UI.createView({
             height: 1,

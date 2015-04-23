@@ -102,6 +102,37 @@ exports.NewCoupon = function(info, callback, errorCallback) {
     });
 };
 
+exports.DeleteCoupon = function(id, callback) {
+    Cloud.Objects.remove({
+        classname: "Coupon",
+        id: id
+    }, function(e) {
+        if (!e.success) {
+            errorCallback && errorCallback({
+                message: e.error && e.message
+            });
+            return;
+        }
+        callback();
+    });
+};
+
+exports.EditCoupon = function(id, info, callback, errorCallback) {
+    Cloud.Objects.update({
+        classname: "Coupon",
+        id: id,
+        fields: info
+    }, function(e) {
+        if (!e.success) {
+            errorCallback && errorCallback({
+                message: e.error && e.message
+            });
+            return;
+        }
+        callback(e.places);
+    });
+};
+
 exports.GetMerchantCoupons = function(callback) {
     Cloud.Objects.query({
         classname: "Coupon",

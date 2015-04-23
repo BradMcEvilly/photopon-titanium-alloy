@@ -31,13 +31,13 @@ function Controller() {
         id: "winContact"
     });
     $.__views.winContact && $.addTopLevelView($.__views.winContact);
-    var __alloyId12 = [];
+    var __alloyId13 = [];
     $.__views.row = Ti.UI.createTableViewRow({
         height: Ti.UI.SIZE,
         selectionStyle: "none",
         id: "row"
     });
-    __alloyId12.push($.__views.row);
+    __alloyId13.push($.__views.row);
     $.__views.tfname = Ti.UI.createTextField({
         color: Alloy.Globals.ThemeStyles.textfield.color,
         borderColor: Alloy.Globals.ThemeStyles.textfield.borderColor,
@@ -57,7 +57,7 @@ function Controller() {
         selectionStyle: "none",
         id: "row"
     });
-    __alloyId12.push($.__views.row);
+    __alloyId13.push($.__views.row);
     $.__views.tfEmail = Ti.UI.createTextField({
         color: Alloy.Globals.ThemeStyles.textfield.color,
         borderColor: Alloy.Globals.ThemeStyles.textfield.borderColor,
@@ -77,7 +77,7 @@ function Controller() {
         selectionStyle: "none",
         id: "row"
     });
-    __alloyId12.push($.__views.row);
+    __alloyId13.push($.__views.row);
     $.__views.tfSubject = Ti.UI.createTextField({
         color: Alloy.Globals.ThemeStyles.textfield.color,
         borderColor: Alloy.Globals.ThemeStyles.textfield.borderColor,
@@ -97,7 +97,7 @@ function Controller() {
         selectionStyle: "none",
         id: "row"
     });
-    __alloyId12.push($.__views.row);
+    __alloyId13.push($.__views.row);
     $.__views.taMessage = Ti.UI.createTextArea({
         color: Alloy.Globals.ThemeStyles.textarea.color,
         borderColor: Alloy.Globals.ThemeStyles.textarea.borderColor,
@@ -118,7 +118,7 @@ function Controller() {
         selectionStyle: "none",
         id: "row"
     });
-    __alloyId12.push($.__views.row);
+    __alloyId13.push($.__views.row);
     $.__views.btnSendMessage = Ti.UI.createView({
         backgroundColor: Alloy.Globals.ThemeStyles.button.backgroundColor,
         height: Alloy.Globals.ThemeStyles.button.height,
@@ -142,7 +142,7 @@ function Controller() {
         height: "auto",
         backgroundColor: "transparent",
         separatorStyle: "none",
-        data: __alloyId12,
+        data: __alloyId13,
         id: "contactTable"
     });
     $.__views.winContact.add($.__views.contactTable);

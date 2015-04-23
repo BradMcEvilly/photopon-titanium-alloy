@@ -72,9 +72,10 @@ Titanium.App.addEventListener("DID_LOGIN", function() {
 		Alloy.Globals.isMenuVisible = false;
 		Alloy.Globals.navGroup.animate(Alloy.Globals.animations.right);
 		
-		if (e.row.name == Alloy.Globals.CurrentWindow) {
-			return;
-		} 
+		// TODO fix this later
+		//if (e.row.name == Alloy.Globals.CurrentWindow) {
+		//	return;
+		//} 
 
 		Titanium.API.info('Current Controller: ' + Alloy.Globals.CurrentWindow);
 		Titanium.API.info('Selected Controller: ' + e.row.name);

@@ -138,6 +138,44 @@ exports.NewCoupon = function(info, callback, errorCallback) {
 	});	
 };
 
+exports.DeleteCoupon = function(id, callback) {
+	Cloud.Objects.remove({
+		classname: "Coupon",
+		id: id
+	}, function(e) {
+		if (!e.success) {
+	    	if (errorCallback) {
+				errorCallback({
+					message: e.error && e.message
+				});
+			}
+			return;	
+	    }
+	    callback();
+	});
+	
+};
+
+exports.EditCoupon = function(id, info, callback, errorCallback) {
+	
+	Cloud.Objects.update({
+		classname: "Coupon",
+		id: id,
+		fields: info
+	}, function (e) {
+	    if (!e.success) {
+	    	if (errorCallback) {
+				errorCallback({
+					message: e.error && e.message
+				});
+			}
+			return;	
+	    }
+	   
+	   	callback(e.places);
+	});	
+};
+
 
 
 exports.GetMerchantCoupons = function(callback) {
@@ -148,84 +186,6 @@ exports.GetMerchantCoupons = function(callback) {
 	}, function (e) {
 		callback(e.Coupon);
 	});
-/*
-	callback([
-		{
-			name:'McDonalds 10% off',
-			address:'350 Fifth avenue',
-			homepage:'http://www.mcdonalds.gov',
-			phone:'9174995917',
-			state:'NY',
-			city:'New York',
-			ZIP:'10118',
-			URL:'http://www.mcdonalds.gov',
-			
-			dealSource:'',
-			dealTitle:'',
-			disclaimer:'',
-			dealInfo:'',
-			postDate:'',
-			expirationDate:'',
-			showImage:'',
-			showImageStandardBig:'',
-			showImageStandardSmall:'',
-			showLogo:'',
-			providerName:'',
-			distance:'',
-			dealOriginalPrice:'',
-			dealPrice:'',
-			dealDiscountPercent:'',
-			picture:'',
-			title: 'No data',
-			tags:[],
-			body: 'No data'
-		},{
-			name:'Chipotlie Buy 2 get 1 Free',
-			address:'666 6th avenue',
-			homepage:'http://www.mcdonalds.gov',
-			phone:'80066666666',
-			state:'NY',
-			city:'New York',
-			ZIP:'10098',
-			URL:'http://www.chipotlie.edu',
-			
-			dealSource:'',
-			dealTitle:'',
-			disclaimer:'',
-			dealInfo:'',
-			postDate:'',
-			expirationDate:'',
-			showImage:'',
-			showImageStandardBig:'',
-			showImageStandardSmall:'',
-			showLogo:'',
-			providerName:'',
-			distance:'',
-			dealOriginalPrice:'',
-			dealPrice:'',
-			dealDiscountPercent:'',
-			picture:'',
-			title: 'No data',
-			tags:[],
-			body: 'No data'
-		},
-	]);
-	
-	Cloud.Places.query({
-	    limit: 100
-	}, function (e) {
-	    if (!e.success) {
-	    	if (errorCallback) {
-				errorCallback({
-					message: e.error && e.message
-				});
-			}
-			return;	
-	    }
-	    
-	    callback(e.places);
-	});
-	*/
 };
 
 

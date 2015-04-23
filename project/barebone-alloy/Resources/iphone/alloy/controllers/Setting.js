@@ -49,7 +49,7 @@ function Controller() {
         id: "btnRequestMerchant"
     });
     $.__views.winSetting.add($.__views.btnRequestMerchant);
-    $.__views.__alloyId45 = Ti.UI.createLabel({
+    $.__views.__alloyId46 = Ti.UI.createLabel({
         textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
         verticalAlign: Ti.UI.TEXT_VERTICAL_ALIGNMENT_CENTER,
         color: Alloy.Globals.ThemeStyles.button.color,
@@ -58,9 +58,9 @@ function Controller() {
         height: "auto",
         touchEnabled: false,
         text: "BECOME MERCHANT",
-        id: "__alloyId45"
+        id: "__alloyId46"
     });
-    $.__views.btnRequestMerchant.add($.__views.__alloyId45);
+    $.__views.btnRequestMerchant.add($.__views.__alloyId46);
     exports.destroy = function() {};
     _.extend($, $.__views);
     var args = arguments[0] || {};

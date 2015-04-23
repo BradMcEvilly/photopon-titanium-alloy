@@ -31,7 +31,7 @@ function Controller() {
         id: "winMap"
     });
     $.__views.winMap && $.addTopLevelView($.__views.winMap);
-    var __alloyId31 = [];
+    var __alloyId32 = [];
     $.__views.mapview = Ti.Map.createView({
         region: {
             latitude: Alloy.Globals.MapData.origin.latitude,
@@ -42,7 +42,7 @@ function Controller() {
         animate: true,
         regionFit: true,
         userLocation: true,
-        annotations: __alloyId31,
+        annotations: __alloyId32,
         id: "mapview"
     });
     $.__views.winMap.add($.__views.mapview);

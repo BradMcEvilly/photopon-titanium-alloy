@@ -9,8 +9,8 @@ var welcomeWindow = null;
 
 $.winWelcomeRoot.addEventListener('open', function (e) {
 	
-	var uname = Titanium.App.Properties.getObject('username');
-    var upass = Titanium.App.Properties.getObject('password');
+	var uname = UTL.userInfo().username;
+    var upass = UTL.userInfo().password;
     
 	if (uname && upass) {	 
 		API.Login(uname, upass);

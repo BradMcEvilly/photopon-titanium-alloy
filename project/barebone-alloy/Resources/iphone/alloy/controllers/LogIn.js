@@ -27,7 +27,7 @@ function Controller() {
             hideIndicator();
             $.winLogIn.close();
         });
-        var un = Alloy.Globals.username();
+        var un = UTL.userInfo().username;
         un && $.emailField.setValue(un);
     }
     function focusNext() {

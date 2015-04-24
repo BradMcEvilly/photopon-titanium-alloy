@@ -2,20 +2,44 @@ Cloud = require("ti.cloud");
 
 exports.Logout = function() {
     Cloud.Users.logout(function() {});
-    Titanium.App.Properties.removeProperty("username");
-    Titanium.App.Properties.removeProperty("password");
-    Titanium.App.Properties.removeProperty("uid");
-    Titanium.App.Properties.removeProperty("sessionid");
-    Titanium.App.Properties.removeProperty("role");
+    Titanium.App.Properties.removeProperty("userinfo");
     Titanium.App.fireEvent("DID_LOGOUT");
 };
 
-exports.ConvertToMerchant = function() {
+exports.ConvertToMerchant = function(userid, callback) {
     Cloud.Users.update({
-        role: "merchant"
+        role: "merchant",
+        su_id: userid
     }, function(e) {
         if (!e.success) return Alloy.Globals.showError("Failed to make user merchant");
-        alert("You are merchant now!");
+        callback();
+    });
+};
+
+exports.MerchantRequests = function(callback) {
+    Cloud.Objects.query({
+        classname: "MerchantRequest",
+        page: 1,
+        per_page: 100
+    }, function(e) {
+        callback(e.MerchantRequest);
+    });
+};
+
+exports.AskToBecomeMerchant = function(callback) {
+    Cloud.Objects.create({
+        classname: "MerchantRequest",
+        fields: {
+            userId: UTL.userInfo().uid
+        }
+    }, function(e) {
+        if (!e.success) {
+            errorCallback && errorCallback({
+                message: e.error && e.message
+            });
+            return;
+        }
+        callback();
     });
 };
 
@@ -37,11 +61,15 @@ exports.Login = function(username, password) {
     }, function(e) {
         if (e.success) {
             var user = e.users[0];
-            Titanium.App.Properties.setObject("username", username);
-            Titanium.App.Properties.setObject("password", password);
-            Titanium.App.Properties.setObject("uid", user.id);
-            Titanium.App.Properties.setObject("sessionid", user.id);
-            Titanium.App.Properties.setObject("role", user.role);
+            console.log(user);
+            Titanium.App.Properties.setObject("userinfo", {
+                username: username,
+                password: password,
+                uid: user.id,
+                sessionid: user.is,
+                role: user.role,
+                admin: "true" == user.admin
+            });
             Titanium.App.fireEvent("DID_LOGIN");
         } else Titanium.App.fireEvent("LOGIN_ERROR", {
             message: Alloy.Globals.ErrorMessages.logInIncorrect

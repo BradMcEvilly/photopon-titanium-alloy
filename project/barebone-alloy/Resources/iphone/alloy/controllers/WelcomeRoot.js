@@ -69,8 +69,8 @@ function Controller() {
     var welcomeController = null;
     var welcomeWindow = null;
     $.winWelcomeRoot.addEventListener("open", function() {
-        var uname = Titanium.App.Properties.getObject("username");
-        var upass = Titanium.App.Properties.getObject("password");
+        var uname = UTL.userInfo().username;
+        var upass = UTL.userInfo().password;
         uname && upass ? API.Login(uname, upass) : showWelcomeWindow();
         Titanium.App.addEventListener("DID_LOGIN", function() {
             if (welcomeWindow) {

@@ -15,7 +15,10 @@ $.btnRequestMerchant.addEventListener("click", function() {
 		title: "Confirm",
 		message: "Do you want to become Mercahnt?",
 		callback: function() {
-			API.ConvertToMerchant();
+			//API.ConvertToMerchant();
+			API.AskToBecomeMerchant(function() {
+				alert("Request was sent to administrators!");
+			});
 		}
 	});
 });

@@ -19,6 +19,17 @@ function Controller() {
         });
         Alloy.Globals.navGroup.window = Setting;
     }
+    function showUploaderWindow() {
+        var controller = Alloy.createController("Uploader", {
+            title: "Uploader",
+            isFlyout: false
+        });
+        var Uploader = controller.getView();
+        Alloy.Globals.navGroup.openWindow(Uploader, {
+            animated: true
+        });
+        Alloy.Globals.navGroup.window = Uploader;
+    }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     this.__controllerPath = "RightMenu";
     if (arguments[0]) {
@@ -61,6 +72,10 @@ function Controller() {
     var args = arguments[0] || {};
     var apiHelper = require("apiHelper");
     var RightMenuItems = [ {
+        title: "Uploader Test",
+        action: "uploader",
+        color: Alloy.Globals.ThemeColors.black
+    }, {
         title: "Settings",
         action: "settings",
         color: Alloy.Globals.ThemeColors.black
@@ -84,7 +99,7 @@ function Controller() {
             if ("logout" == e.row.action) {
                 Alloy.Globals.stopLocationManager();
                 apiHelper.Logout();
-            } else "settings" == e.row.action && showSettingsWindow(e);
+            } else "settings" == e.row.action ? showSettingsWindow(e) : "uploader" == e.row.action && showUploaderWindow(e);
             args.context.isMenuShown = false;
             args.context.Right_Menu.animate(Alloy.Globals.animations.slide_out_top);
         });

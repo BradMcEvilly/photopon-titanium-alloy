@@ -49,7 +49,7 @@ function Controller() {
             context: that
         }).getView();
         $.winHome.leftNavButton = Alloy.createController("LeftMenuButton").getView();
-        var viewCoupons = Alloy.createController("SnapWrapCoupons", {
+        var viewCoupons = Alloy.createController("PhotoponCoupons", {
             title: "Coupons",
             left: 0
         }).getView();

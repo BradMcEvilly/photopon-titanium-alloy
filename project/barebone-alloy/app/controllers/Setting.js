@@ -36,7 +36,7 @@ $.winSetting.addEventListener('open', function(e) {
 	
 	var role = UTL.userInfo().role;
 	if (role == "merchant") {
-		//requestMerchant.hide();	
+		requestMerchant.hide();	
 	}
 	
 	$.winSetting.add(requestMerchant);

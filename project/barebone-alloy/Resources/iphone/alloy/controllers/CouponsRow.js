@@ -104,6 +104,7 @@ function Controller() {
     $.__views.outerContainer.add($.__views.lblDetail);
     $.__views.btnContainer = Ti.UI.createView({
         height: Ti.UI.SIZE,
+        width: Alloy.Globals.Frames.per40Width,
         left: 0,
         bottom: 0,
         layout: "horizontal",
@@ -112,6 +113,7 @@ function Controller() {
     $.__views.outerContainer.add($.__views.btnContainer);
     $.__views.getBtn = Ti.UI.createButton({
         color: Alloy.Globals.ThemeStyles.button.color,
+        width: Ti.UI.FILL,
         backgroundColor: Alloy.Globals.ThemeColors.mainGreen,
         height: Alloy.Globals.ThemeStyles.textfield.height,
         top: Alloy.Globals.ThemeStyles.button.padding,
@@ -125,6 +127,7 @@ function Controller() {
     });
     $.__views.btnContainer.add($.__views.getBtn);
     $.__views.giveBtn = Ti.UI.createButton({
+        width: Ti.UI.FILL,
         color: Alloy.Globals.ThemeStyles.button.color,
         backgroundColor: Alloy.Globals.ThemeColors.mainYellow,
         height: Alloy.Globals.ThemeStyles.textfield.height,

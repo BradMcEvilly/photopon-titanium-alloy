@@ -28,7 +28,7 @@ $.winHome.addEventListener('open', function(e) {
 		left : 0
 	}).getView();
 */
-	var viewCoupons = Alloy.createController('SnapWrapCoupons', {
+	var viewCoupons = Alloy.createController('PhotoponCoupons', {
 		title : 'Coupons',
 		left : 0
 	}).getView();

@@ -693,12 +693,10 @@ Alloy.Globals.newCompositionObject = function() {
 Alloy.Globals.initCoords = function() {
     var lat, lon;
     lat = lon = null;
-    try {
-        lat = Titanium.App.Properties.getObject("lat");
-        lon = Titanium.App.Properties.getObject("lon");
-        "undefined" === lat && (lat = null);
-        "undefined" === lon && (lon = null);
-    } catch (e) {}
+    lat = Titanium.App.Properties.getObject("lat");
+    lon = Titanium.App.Properties.getObject("lon");
+    "undefined" === lat && (lat = null);
+    "undefined" === lon && (lon = null);
     Alloy.Globals.latitude = lat;
     Alloy.Globals.longitude = lon;
     alert("Alloy.Globals.initCoords : lat = " + Alloy.Globals.latitude + ", lon = " + Alloy.Globals.longitude);

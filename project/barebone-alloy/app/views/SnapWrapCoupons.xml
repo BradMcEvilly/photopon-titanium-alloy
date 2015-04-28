@@ -1,9 +1,0 @@
-<Alloy>
-	<Window id="winSnapWrapCoupons" title="Coupons" onOpen="winSnapWrapCouponsOpenHandler">
-		<TableView id="snapWrapCouponsTable">
-		</TableView>
-		
-		<ActivityIndicator id="ind">
-		</ActivityIndicator>
-	</Window>
-</Alloy>

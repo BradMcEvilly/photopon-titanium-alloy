@@ -833,20 +833,15 @@ Alloy.Globals.initCoords = function (){
 	var lat, lon;
 	lat = lon = null;
 	
-	try{
-		// see if coords exists
-		lat = Titanium.App.Properties.getObject('lat');
-    	lon = Titanium.App.Properties.getObject('lon');
-    	
-		if (lat === 'undefined')
-			lat = null;
-		
-		if (lon === 'undefined')
-			lon = null;
-			
-	}catch(e){
-	}
+	lat = Titanium.App.Properties.getObject('lat');
+	lon = Titanium.App.Properties.getObject('lon');
 	
+	if (lat === 'undefined')
+		lat = null;
+	
+	if (lon === 'undefined')
+		lon = null;
+
 	Alloy.Globals.latitude = lat;
 	Alloy.Globals.longitude = lon;
 	alert('Alloy.Globals.initCoords : lat = ' + Alloy.Globals.latitude + ', lon = ' + Alloy.Globals.longitude );

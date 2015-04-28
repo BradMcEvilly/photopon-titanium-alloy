@@ -63,7 +63,7 @@ function Controller() {
             });
         });
         var role = UTL.userInfo().role;
-        "merchant" == role;
+        "merchant" == role && requestMerchant.hide();
         $.winSetting.add(requestMerchant);
         $.winSetting.add(uploadPhoto);
     });

@@ -225,6 +225,17 @@ exports.GetMerchantCoupons = function(callback) {
 	});
 };
 
+exports.GetCouponsByLocation = function(coords, callback) {
+	//TODO: add coordinates later removed for easy debugging
+	Cloud.Objects.query({
+	    classname: 'Coupon',
+	    page: 1,
+	    per_page: 100
+	}, function (e) {
+		callback(e.Coupon);
+	});
+};
+
 
 exports.GetAllFriends = function(callback, errorCallback) {
 	Cloud.sendRequest({
@@ -239,8 +250,7 @@ exports.GetAllFriends = function(callback, errorCallback) {
 			}
 			return;	
 		}
-		
-		callback(e.users);
+		callback(e.users || {});
 	});
 };
 

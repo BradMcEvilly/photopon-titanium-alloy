@@ -171,6 +171,16 @@ exports.GetMerchantCoupons = function(callback) {
     });
 };
 
+exports.GetCouponsByLocation = function(coords, callback) {
+    Cloud.Objects.query({
+        classname: "Coupon",
+        page: 1,
+        per_page: 100
+    }, function(e) {
+        callback(e.Coupon);
+    });
+};
+
 exports.GetAllFriends = function(callback, errorCallback) {
     Cloud.sendRequest({
         url: "friends/query.json",
@@ -182,7 +192,7 @@ exports.GetAllFriends = function(callback, errorCallback) {
             });
             return;
         }
-        callback(e.users);
+        callback(e.users || {});
     });
 };
 

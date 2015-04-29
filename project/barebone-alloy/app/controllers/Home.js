@@ -22,12 +22,12 @@ $.winHome.addEventListener('open', function(e) {
 	$.winHome.leftNavButton = Alloy.createController('LeftMenuButton').getView();
 	
 	
-/*	
-	var viewCam = Alloy.createController('SnapWrapCameraPhoto', {
+	var viewCam = Alloy.createController('PhotoponCamera', {
 		title : 'Snap Wrap',
 		left : 0
 	}).getView();
-*/
+	
+	
 	var viewCoupons = Alloy.createController('PhotoponCoupons', {
 		title : 'Coupons',
 		left : 0

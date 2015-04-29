@@ -49,6 +49,10 @@ function Controller() {
             context: that
         }).getView();
         $.winHome.leftNavButton = Alloy.createController("LeftMenuButton").getView();
+        Alloy.createController("PhotoponCamera", {
+            title: "Snap Wrap",
+            left: 0
+        }).getView();
         var viewCoupons = Alloy.createController("PhotoponCoupons", {
             title: "Coupons",
             left: 0

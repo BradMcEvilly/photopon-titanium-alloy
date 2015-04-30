@@ -54,7 +54,7 @@ function Controller() {
     $.winMap.setTitleControl(Alloy.createController("titleControl", {
         title: args.title
     }).getView());
-    args.isFlyout ? $.winMap.leftNavButton = Alloy.createController("leftMenuButton").getView() : $.winMap.backButtonTitle = "Back";
+    args.isFlyout ? $.winMap.leftNavButton = Alloy.createController("LeftMenuButton1").getView() : $.winMap.backButtonTitle = "Back";
     $.Right_Menu = Alloy.createController("RightMenu", {
         context: that
     }).getView();

@@ -64,7 +64,7 @@ Titanium.App.addEventListener("DID_LOGIN", function() {
 	
 	var rows = [];
 	_.each(FlyoutMenuItmes, function(item) {
-		rows.push(Alloy.createController('FlyoutRow', {
+		rows.push(Alloy.createController('FlyoutRow1', {
 			image : item.icon,
 			title : item.title,
 			name : item.controller,

@@ -97,7 +97,7 @@ function Controller() {
     $.winSnapWrapTemplates.setTitleControl(Alloy.createController("titleControl", {
         title: args.title
     }).getView());
-    args.isFlyout ? $.winSnapWrapTemplates.leftNavButton = Alloy.createController("leftMenuButton").getView() : $.winSnapWrapTemplates.backButtonTitle = "Back";
+    args.isFlyout ? $.winSnapWrapTemplates.leftNavButton = Alloy.createController("LeftMenuButton1").getView() : $.winSnapWrapTemplates.backButtonTitle = "Back";
     __defers["$.__views.winSnapWrapTemplates!open!winSnapWrapTemplatesOpenHandler"] && $.__views.winSnapWrapTemplates.addEventListener("open", winSnapWrapTemplatesOpenHandler);
     _.extend($, exports);
 }

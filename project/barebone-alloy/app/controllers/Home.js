@@ -19,7 +19,7 @@ $.winHome.addEventListener('open', function(e) {
 		context : that
 	}).getView();
 	
-	$.winHome.leftNavButton = Alloy.createController('LeftMenuButton').getView();
+	$.winHome.leftNavButton = Alloy.createController('LeftMenuButton1').getView();
 	
 	
 	var viewCam = Alloy.createController('PhotoponCamera', {
@@ -52,10 +52,10 @@ $.winHome.addEventListener('open', function(e) {
 	    showPagingControl: false,
 	    views: [
 	        viewAddFriend,
-	    	//viewCam,
 	    	viewWallet,
 	        viewCoupons,
-	        viewFriends
+	        viewFriends,
+	        viewCam
 	    ]
 	});
 	

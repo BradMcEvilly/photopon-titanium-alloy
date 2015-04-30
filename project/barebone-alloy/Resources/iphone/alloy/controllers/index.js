@@ -106,7 +106,7 @@ function Controller() {
         }
         var rows = [];
         _.each(FlyoutMenuItmes, function(item) {
-            rows.push(Alloy.createController("FlyoutRow", {
+            rows.push(Alloy.createController("FlyoutRow1", {
                 image: item.icon,
                 title: item.title,
                 name: item.controller,

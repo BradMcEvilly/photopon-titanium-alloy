@@ -126,7 +126,7 @@ exports.NewCoupon = function(info, callback, errorCallback) {
             });
             return;
         }
-        callback(e.places);
+        callback(e.Coupons);
     });
 };
 
@@ -242,4 +242,36 @@ exports.GetSimpleFriends = function(url, callback) {
         name: "Jimmy Joe",
         img: "http://lorempixel.com/output/people-q-c-480-480-6.jpg"
     } ]);
+};
+
+exports.UploadPhoto = function(photo, callback, errorCallback) {
+    Cloud.Photos.create({
+        photo: photo
+    }, function(e) {
+        console.log(e);
+        if (e.success) {
+            var photo = e.photos[0];
+            callback && callback(photo);
+        } else errorCallback && errorCallback(e);
+    });
+};
+
+exports.NewPhotopon = function(coupon, camPhoto, overlayPhoto, callback, errorCallback) {
+    Cloud.Objects.create({
+        classname: "Photopon",
+        fields: {
+            coupon_id: coupon.id,
+            cam_photo_id: camPhoto,
+            overlay_photo_id: overlayPhoto
+        }
+    }, function(e) {
+        if (!e.success) {
+            errorCallback && errorCallback({
+                message: e.error && e.message
+            });
+            return;
+        }
+        console.log(e);
+        callback(e.Photopon[0]);
+    });
 };

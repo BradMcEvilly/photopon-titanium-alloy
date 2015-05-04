@@ -171,7 +171,7 @@ exports.NewCoupon = function(info, callback, errorCallback) {
 			return;	
 	    }
 	   
-	   	callback(e.places);
+	   	callback(e.Coupons);
 	});	
 };
 
@@ -319,5 +319,49 @@ exports.GetSimpleFriends = function(url, callback, errorCallback) {
 
 
 
+exports.UploadPhoto = function(photo, callback, errorCallback) {	
+	
+	Cloud.Photos.create({
+		photo: photo
+	}, function (e) {
+		console.log(e);
+	    if (e.success) {
+	        var photo = e.photos[0];
+	        if (callback) {
+	        	callback(photo);
+	        }
+	    } else {
+	       if (errorCallback) {
+	       		errorCallback(e);
+	       }
+	    }
+	});
 
+};
+
+
+
+
+
+exports.NewPhotopon = function(coupon, camPhoto, overlayPhoto, callback, errorCallback) {
+	Cloud.Objects.create({
+		classname: "Photopon",
+		fields: {
+			coupon_id: coupon.id,
+			cam_photo_id: camPhoto,
+			overlay_photo_id: overlayPhoto
+		}
+	}, function (e) {
+	    if (!e.success) {
+	    	if (errorCallback) {
+				errorCallback({
+					message: e.error && e.message
+				});
+			}
+			return;	
+	    }
+	   	console.log(e);
+	   	callback(e.Photopon[0]);
+	});	
+};
 

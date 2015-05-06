@@ -71,6 +71,8 @@ exports.Login = function(username, password) {
                 admin: "true" == user.admin
             });
             Titanium.App.fireEvent("DID_LOGIN");
+            exports.GetAllFriends(UTL.EmptyFn);
+            exports.GetCouponsByLocation({}, UTL.EmptyFn);
         } else Titanium.App.fireEvent("LOGIN_ERROR", {
             message: Alloy.Globals.ErrorMessages.logInIncorrect
         });
@@ -172,16 +174,25 @@ exports.GetMerchantCoupons = function(callback) {
 };
 
 exports.GetCouponsByLocation = function(coords, callback) {
+    if (Alloy.Globals.CachedCoupons) {
+        callback(Alloy.Globals.CachedCoupons);
+        return;
+    }
     Cloud.Objects.query({
         classname: "Coupon",
         page: 1,
         per_page: 100
     }, function(e) {
         callback(e.Coupon);
+        Alloy.Globals.CachedCoupons = e.Coupon;
     });
 };
 
 exports.GetAllFriends = function(callback, errorCallback) {
+    if (Alloy.Globals.CachedFriends) {
+        callback(Alloy.Globals.CachedFriends);
+        return;
+    }
     Cloud.sendRequest({
         url: "friends/query.json",
         method: "GET"
@@ -192,6 +203,7 @@ exports.GetAllFriends = function(callback, errorCallback) {
             });
             return;
         }
+        Alloy.Globals.CachedFriends = e.users || {};
         callback(e.users || {});
     });
 };
@@ -256,13 +268,14 @@ exports.UploadPhoto = function(photo, callback, errorCallback) {
     });
 };
 
-exports.NewPhotopon = function(coupon, camPhoto, overlayPhoto, callback, errorCallback) {
+exports.NewPhotopon = function(coupon, camPhoto, overlayPhoto, message, callback, errorCallback) {
     Cloud.Objects.create({
         classname: "Photopon",
         fields: {
             coupon_id: coupon.id,
             cam_photo_id: camPhoto,
-            overlay_photo_id: overlayPhoto
+            overlay_photo_id: overlayPhoto,
+            message: message
         }
     }, function(e) {
         if (!e.success) {

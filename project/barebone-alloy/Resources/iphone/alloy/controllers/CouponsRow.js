@@ -144,8 +144,8 @@ function Controller() {
     exports.destroy = function() {};
     _.extend($, $.__views);
     var args = arguments[0] || {};
-    $.getBtn.clickName = Alloy.Globals.ButtonClickNames.getCoupon;
-    $.giveBtn.clickName = Alloy.Globals.ButtonClickNames.giveCoupon;
+    $.getBtn.clickName = "GET";
+    $.giveBtn.clickName = "GIVE";
     $.imgProviderLogo.image = args.CouponsItem.showLogo;
     $.imgCoupons.image = args.CouponsItem.showImageStandardBig;
     $.lblName.text = args.CouponsItem.name;

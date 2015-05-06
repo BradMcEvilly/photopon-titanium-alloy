@@ -49,13 +49,8 @@ function Controller() {
             context: that
         }).getView();
         $.winHome.leftNavButton = Alloy.createController("LeftMenuButton1").getView();
-        var viewCam = Alloy.createController("PhotoponCamera", {
-            title: "Snap Wrap",
-            left: 0
-        }).getView();
         var viewCoupons = Alloy.createController("PhotoponCoupons", {
-            title: "Coupons",
-            left: 0
+            title: "Coupons"
         }).getView();
         var viewFriends = Alloy.createController("PhotoponFriends", {
             title: "Your Friends"
@@ -68,7 +63,7 @@ function Controller() {
         }).getView();
         var scrollableView = Ti.UI.createScrollableView({
             showPagingControl: false,
-            views: [ viewAddFriend, viewWallet, viewCoupons, viewFriends, viewCam ]
+            views: [ viewAddFriend, viewWallet, viewCoupons, viewFriends ]
         });
         scrollableView.setDisableBounce(true);
         scrollableView.addEventListener("scroll", function(e) {

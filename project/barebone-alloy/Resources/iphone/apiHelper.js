@@ -203,7 +203,12 @@ exports.GetAllFriends = function(callback, errorCallback) {
             });
             return;
         }
+        console.log("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&");
+        console.log(e);
+        console.log(e.users);
         Alloy.Globals.CachedFriends = e.users || {};
+        console.log(Alloy.Globals.CachedFriends);
+        console.log("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&");
         callback(e.users || {});
     });
 };

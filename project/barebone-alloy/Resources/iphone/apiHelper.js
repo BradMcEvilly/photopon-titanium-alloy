@@ -117,6 +117,37 @@ exports.GetMerchantLocations = function(callback) {
     });
 };
 
+exports.GetWalletItems = function(userId, callback) {
+    Cloud.Objects.query({
+        classname: "WalletItem",
+        page: 1,
+        per_page: 100,
+        where: {
+            receiver: userId
+        }
+    }, function(e) {
+        callback(e.WalletItem);
+    });
+};
+
+exports.NewWalletItem = function(photoponId, userId, callback) {
+    Cloud.Objects.create({
+        classname: "WalletItem",
+        fields: {
+            photopon: photoponId,
+            receiver: userId
+        }
+    }, function(e) {
+        if (!e.success) {
+            errorCallback && errorCallback({
+                message: e.error && e.message
+            });
+            return;
+        }
+        callback(e.WalletItem);
+    });
+};
+
 exports.NewCoupon = function(info, callback, errorCallback) {
     Cloud.Objects.create({
         classname: "Coupon",

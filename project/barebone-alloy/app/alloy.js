@@ -664,6 +664,25 @@ Alloy.Globals.ThemeStyles = {
 		borderRadius:'8dp',
 		padding:14
 	},
+	
+	
+	buttonPurpleSmall : {
+		color : Alloy.Globals.ThemeColors.white,
+		backgroundColor : Alloy.Globals.ThemeColors.purple,
+		selectedBackgroundColor : Alloy.Globals.ThemeColors.darkPurple,
+		height : '60dp',
+		font : {
+			fontSize : '16dp',
+			fontFamily : 'Montserrat',
+			fontWeight : 'Bold'
+		},
+		borderColor : '#dedede',
+		borderStyle: Titanium.UI.INPUT_BORDERSTYLE_ROUNDED,
+		borderRadius:'8dp',
+		padding: 4
+	},
+	
+	
 	buttonPink : {
 		color : Alloy.Globals.ThemeColors.white,
 		backgroundColor : Alloy.Globals.ThemeColors.pink,

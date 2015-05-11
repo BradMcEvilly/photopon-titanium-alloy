@@ -74,6 +74,8 @@ exports.Signup = function(username, password, callback, errorCallback) {
 
 
 exports.Login = function(username, password) {
+	console.log("Logging in...");
+	
 	Cloud.Users.login({
         login: username,
         password: password
@@ -81,16 +83,14 @@ exports.Login = function(username, password) {
 	    	
     	if(e.success){		
     		var user = e.users[0];
-    		
-    		console.log(user);
-    		
     		Titanium.App.Properties.setObject('userinfo', {
     			username: username,
     			password: password,
     			uid: user.id,
     			sessionid: user.is,
     			role: user.role,
-    			admin: user.admin == "true"
+    			admin: user.admin == "true",
+    			photo: user.photo
     		});
     		
 		    Titanium.App.fireEvent("DID_LOGIN");
@@ -102,6 +102,7 @@ exports.Login = function(username, password) {
     		Titanium.App.fireEvent("LOGIN_ERROR", {
 		    	"message": Alloy.Globals.ErrorMessages.logInIncorrect
 		    });
+		    console.log(Alloy.Globals.ErrorMessages.logInIncorrect);
     		
         }
         //Titanium.API.info('--- User '+ (e.success ? 'logged in' : 'not logged in')+' ---');
@@ -434,3 +435,36 @@ exports.NewPhotopon = function(coupon, camPhoto, overlayPhoto, message, callback
 	});	
 };
 
+
+
+
+exports.UpdateProfilePhoto = function(photoid, callback) {
+	Cloud.Users.update({
+		photo_id: photoid
+	}, function(e) {
+		if (e.success) {
+	        if (callback) {
+	        	callback(e.users[0]);
+	        }
+	    } else {
+	        alert('Error:\n' +
+	            ((e.error && e.message) || JSON.stringify(e)));
+	    }
+	});
+};
+
+exports.ChangePassword = function(newpassword, callback) {
+	Cloud.Users.update({
+		password: newpassword,
+		password_confirmation: newpassword 
+	}, function(e) {
+		if (e.success) {
+	        if (callback) {
+	        	callback(e.users[0]);
+	        }
+	    } else {
+	        alert('Error:\n' +
+	            ((e.error && e.message) || JSON.stringify(e)));
+	    }
+	});
+};

@@ -35,24 +35,26 @@ function Controller() {
     $.__views.winSetting && $.addTopLevelView($.__views.winSetting);
     exports.destroy = function() {};
     _.extend($, $.__views);
-    var args = arguments[0] || {};
+    arguments[0] || {};
     $.winSetting.addEventListener("open", function() {
-        UTL.defaultTitle(args);
+        var url = "/images/PhotoponNavBarBtnInfo.png";
+        UTL.userInfo().photo && (url = UTL.userInfo().photo.urls.square_75);
         var profilePic = Ti.UI.createImageView({
-            image: "/images/PhotoponNavBarBtnInfo.png",
+            image: url,
             width: 100,
             height: 100,
             top: 10
         });
-        var choosePhoto = UTL.createPhotoponButton("Choose Photo");
+        var choosePhoto = UTL.createPhotoponButtonSmall("Choose Photo");
         choosePhoto.right = Alloy.Globals.ThemeStyles.button.padding;
         choosePhoto.left = Alloy.Globals.ThemeStyles.button.padding;
         choosePhoto.addEventListener("click", function() {
             UTL.UploadPhoto(function(photo) {
                 profilePic.setImage(photo.urls.square_75);
+                API.UpdateProfilePhoto(photo.id);
             });
         });
-        var requestMerchant = UTL.createPhotoponButton("Become Merchant");
+        var requestMerchant = UTL.createPhotoponButtonSmall("Become Merchant");
         requestMerchant.right = Alloy.Globals.ThemeStyles.button.padding;
         requestMerchant.left = Alloy.Globals.ThemeStyles.button.padding;
         requestMerchant.addEventListener("click", function() {
@@ -66,11 +68,30 @@ function Controller() {
                 }
             });
         });
-        var role = UTL.userInfo().role;
-        "merchant" == role && requestMerchant.hide();
+        var oldPass = UTL.createPhotoponInputSmall("Old Password");
+        var newPass = UTL.createPhotoponInputSmall("New Password");
+        oldPass.passwordMask = true;
+        newPass.passwordMask = true;
+        var changePassword = UTL.createPhotoponButtonSmall("Change Password");
+        changePassword.right = Alloy.Globals.ThemeStyles.button.padding;
+        changePassword.left = Alloy.Globals.ThemeStyles.button.padding;
+        changePassword.addEventListener("click", function() {
+            if (UTL.userInfo().password != oldPass.value) {
+                oldPass.value = "";
+                alert("Wrong password");
+                return;
+            }
+            API.ChangePassword(newPass.value, function() {
+                alert("Password changed!");
+            });
+        });
         $.winSetting.add(profilePic);
         $.winSetting.add(choosePhoto);
-        $.winSetting.add(requestMerchant);
+        $.winSetting.add(oldPass);
+        $.winSetting.add(newPass);
+        $.winSetting.add(changePassword);
+        var role = UTL.userInfo().role;
+        "merchant" != role && $.winSetting.add(requestMerchant);
     });
     _.extend($, exports);
 }

@@ -11,9 +11,12 @@ $.winWelcomeRoot.addEventListener('open', function (e) {
 	
 	var uname = UTL.userInfo().username;
     var upass = UTL.userInfo().password;
+    var autoLogin = false;
     
-	if (uname && upass) {	 
+	if (uname && upass) {
+		autoLogin = true;	 
 		API.Login(uname, upass);
+		
 	} else {
 		showWelcomeWindow();
 	}
@@ -26,6 +29,14 @@ $.winWelcomeRoot.addEventListener('open', function (e) {
 		}
 		
 		showHomeWindow();
+	});
+	
+	Titanium.App.addEventListener("LOGIN_ERROR", function(e) {		
+		if (autoLogin) {
+			showWelcomeWindow();
+			autoLogin = false;
+		}
+		
 	});
 	
 	Titanium.App.addEventListener("DID_LOGOUT", function(e) {

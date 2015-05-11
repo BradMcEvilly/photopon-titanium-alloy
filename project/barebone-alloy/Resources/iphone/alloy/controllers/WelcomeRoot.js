@@ -71,13 +71,23 @@ function Controller() {
     $.winWelcomeRoot.addEventListener("open", function() {
         var uname = UTL.userInfo().username;
         var upass = UTL.userInfo().password;
-        uname && upass ? API.Login(uname, upass) : showWelcomeWindow();
+        var autoLogin = false;
+        if (uname && upass) {
+            autoLogin = true;
+            API.Login(uname, upass);
+        } else showWelcomeWindow();
         Titanium.App.addEventListener("DID_LOGIN", function() {
             if (welcomeWindow) {
                 Alloy.Globals.navGroup.closeWindow(welcomeWindow);
                 welcomeWindow = null;
             }
             showHomeWindow();
+        });
+        Titanium.App.addEventListener("LOGIN_ERROR", function() {
+            if (autoLogin) {
+                showWelcomeWindow();
+                autoLogin = false;
+            }
         });
         Titanium.App.addEventListener("DID_LOGOUT", function() {
             Alloy.Globals.stopLocationManager();

@@ -1,0 +1,25 @@
+"#winMerchantLocations": {
+	backgroundColor: Alloy.Globals.ThemeStyles.win.backgroundColor,
+	barColor : Alloy.Globals.ThemeStyles.win.barColor,
+	navTintColor :  Alloy.Globals.ThemeStyles.win.navTintColor,
+	layout : 'vertical',
+	translucent : false
+},
+
+"#merchantLocationsTable": {
+	scrollable: false,
+	showVerticalScrollIndicator : false,
+	height : 'auto',
+	backgroundColor : 'transparent',
+	separatorStyle : 'none',
+	borderWidth : 0
+},
+
+"#locationsListTable": {
+	scrollable: false,
+	showVerticalScrollIndicator : false,
+	height : 'auto',
+	backgroundColor : 'transparent',
+	separatorStyle : 'none',
+	borderWidth : 0
+},

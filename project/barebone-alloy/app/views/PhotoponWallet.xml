@@ -1,0 +1,9 @@
+<Alloy>
+	<Window id="winPhotoponWallet" title="Wallet">
+		<TableView id="photoponWalletTable">
+		</TableView>
+		
+		<ActivityIndicator id="ind">
+		</ActivityIndicator>
+	</Window>
+</Alloy>

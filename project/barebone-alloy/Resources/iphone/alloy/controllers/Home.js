@@ -49,21 +49,12 @@ function Controller() {
             context: that
         }).getView();
         $.winHome.leftNavButton = Alloy.createController("LeftMenuButton1").getView();
-        var viewCoupons = Alloy.createController("PhotoponCoupons", {
-            title: "Coupons"
-        }).getView();
-        var viewFriends = Alloy.createController("PhotoponFriends", {
-            title: "Your Friends"
-        }).getView();
-        var viewWallet = Alloy.createController("PhotoponWallet", {
-            title: "Wallet"
-        }).getView();
-        var viewAddFriend = Alloy.createController("PhotoponAddFriend", {
-            title: "Add Friend"
-        }).getView();
+        var viewCoupons = Alloy.createController("PhotoponCoupons").getView();
+        var viewFriends = Alloy.createController("PhotoponFriendMan").getView();
+        var viewWallet = Alloy.createController("PhotoponWallet").getView();
         var scrollableView = Ti.UI.createScrollableView({
             showPagingControl: false,
-            views: [ viewAddFriend, viewWallet, viewCoupons, viewFriends ]
+            views: [ viewFriends, viewWallet, viewCoupons ]
         });
         scrollableView.setDisableBounce(true);
         scrollableView.addEventListener("scroll", function(e) {

@@ -1,0 +1,16 @@
+"#winAddLocation": {
+	backgroundColor: Alloy.Globals.ThemeStyles.win.backgroundColor,
+	title : 'Sign Up',
+	titleAttributes: Alloy.Globals.ThemeStyles.win.titleAttributes,
+	navTintColor :  Alloy.Globals.ThemeStyles.win.navTintColor,
+	barColor : Alloy.Globals.ThemeStyles.win.barColor,
+	translucent : Alloy.Globals.ThemeStyles.win.translucent
+},
+"#locationForm": {
+	scrollable: false,
+	showVerticalScrollIndicator : false,
+	height : 'auto',
+	backgroundColor : 'transparent',
+	separatorStyle : 'none',
+	borderWidth : 0
+},

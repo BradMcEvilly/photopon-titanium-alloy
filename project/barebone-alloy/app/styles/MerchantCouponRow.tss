@@ -1,0 +1,28 @@
+"#MerchantCouponRow" :{
+	height: 60,	
+	selectionStyle : 'none'
+},
+
+"#leftContainer" : {
+	width : 50,
+	height : 50,
+	left: 5
+}
+
+"#rightContainer" : {
+	left: 60,
+	right: 60
+},
+
+"#btnViewCoupon": {
+	right : Alloy.Globals.ThemeStyles.buttonPink.padding,
+	width : 50,
+	height : 50,
+	color : Alloy.Globals.ThemeStyles.buttonPink.color,
+	backgroundColor : Alloy.Globals.ThemeStyles.buttonPink.backgroundColor,
+	borderColor : Alloy.Globals.ThemeStyles.buttonPink.borderColor,
+	borderStyle: Alloy.Globals.ThemeStyles.buttonPink.borderStyle,
+	borderRadius:Alloy.Globals.ThemeStyles.buttonPink.borderRadius,
+	borderWidth: Alloy.Globals.ThemeStyles.buttonPink.borderWidth,
+	font: Alloy.Globals.ThemeStyles.buttonPink.font
+}

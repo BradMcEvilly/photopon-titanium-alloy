@@ -1,0 +1,9 @@
+<Alloy>
+	<Window id="winMerchantRequests" title="Merchant Requests">
+		
+		<TableView id="merchantRequestsTable">
+					
+		</TableView>
+			
+	</Window>
+</Alloy>

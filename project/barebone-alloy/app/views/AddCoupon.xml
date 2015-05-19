@@ -1,0 +1,32 @@
+<Alloy>
+	<Window id="winAddCoupon" title="Add Coupon">
+		<TableView id="locationForm">
+			<TableViewRow class="row-noselect">
+				<TextField id="nameField" hintText="Enter Name" class="big-input"/>
+			</TableViewRow>
+			<TableViewRow class="row-noselect">
+				<TextField id="locationField" hintText="Location" class="big-input"/>
+			</TableViewRow>
+			<TableViewRow class="row-noselect">
+				<TextField id="titleField" hintText="Title" class="big-input"/>
+			</TableViewRow>
+			<TableViewRow class="row-noselect">
+				<TextField id="bodyField" hintText="Body" class="big-input"/>
+			</TableViewRow>
+			
+
+			<TableViewRow id="row">
+				<View id="btnAddCoupon" class="big-button">
+					<Label class="big-button-label" text="Add Coupon" />
+				</View>
+			</TableViewRow>
+			
+			<TableViewRow id="row">
+				<View id="btnRemoveCoupon" class="big-button">
+					<Label class="big-button-label" text="Remove Coupon" />
+				</View>
+			</TableViewRow>
+			
+		</TableView>
+	</Window>
+</Alloy>

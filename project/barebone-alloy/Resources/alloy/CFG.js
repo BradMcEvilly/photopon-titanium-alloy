@@ -1,1 +1,1 @@
-module.exports={"dependencies":{}};
+module.exports={"dependencies":{"com.mattmcfarland.fontawesome":"1.4.1"}};

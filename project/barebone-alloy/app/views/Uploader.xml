@@ -1,0 +1,4 @@
+<Alloy>
+	<Window id="winUploader" title="Upload Photo" backgroundColor="#ececec">
+	</Window>
+</Alloy>

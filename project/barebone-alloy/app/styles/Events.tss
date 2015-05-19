@@ -1,0 +1,16 @@
+"#winEvents": {
+	backgroundColor: Alloy.Globals.ThemeStyles.win.backgroundColor,
+	title : 'Events',
+	navTintColor :  Alloy.Globals.ThemeStyles.win.navTintColor,
+	barColor : Alloy.Globals.ThemeStyles.win.barColor,
+	translucent : false
+},
+"#eventsTable": {
+	showVerticalScrollIndicator : false,
+	height : 'auto',
+	backgroundColor : 'transparent',
+	separatorColor : 'transparent'
+},
+"#ind": {
+	style : Ti.UI.iPhone.ActivityIndicatorStyle.BIG
+}

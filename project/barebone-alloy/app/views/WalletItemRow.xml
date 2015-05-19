@@ -1,0 +1,19 @@
+<Alloy>
+	
+	<TableViewRow id="WalletItemRow">
+		
+		<View id="leftContainer">
+			<ImageView id="imgThumbnail" />	
+		</View>
+		
+		<View id="rightContainer">
+			<Label id="lblName" />
+		</View>
+		
+		<View id="btnSaveItem" visible="true">
+			<Label id="lblSaveItem" />
+	
+		</View>
+		
+	</TableViewRow>
+</Alloy>

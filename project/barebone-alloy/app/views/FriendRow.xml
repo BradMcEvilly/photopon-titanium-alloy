@@ -1,0 +1,12 @@
+<Alloy>
+	
+	<TableViewRow id="row">
+		
+		<View id="leftContainer">
+			<ImageView id="imgThumbnail" />	
+		</View>
+		<View id="rightContainer">
+			<Label id="lblName" />
+		</View>
+	</TableViewRow>
+</Alloy>

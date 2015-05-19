@@ -48,14 +48,14 @@ function Controller() {
         id: "winDetail"
     });
     $.__views.winDetail && $.addTopLevelView($.__views.winDetail);
-    var __alloyId14 = [];
+    var __alloyId15 = [];
     $.__views.rowImage = Ti.UI.createTableViewRow({
         height: "auto",
         selectionStyle: "none",
         backgroundColor: "transparent",
         id: "rowImage"
     });
-    __alloyId14.push($.__views.rowImage);
+    __alloyId15.push($.__views.rowImage);
     $.__views.coverImage = Ti.UI.createImageView({
         top: 14,
         right: 14,
@@ -74,7 +74,7 @@ function Controller() {
         layout: "vertical",
         id: "rowTitle"
     });
-    __alloyId14.push($.__views.rowTitle);
+    __alloyId15.push($.__views.rowTitle);
     $.__views.lblName = Ti.UI.createLabel({
         color: Alloy.Globals.ThemeStyles.detail_title.color,
         font: Alloy.Globals.ThemeStyles.detail_title.font,
@@ -98,7 +98,7 @@ function Controller() {
         backgroundColor: "transparent",
         id: "rowDetail"
     });
-    __alloyId14.push($.__views.rowDetail);
+    __alloyId15.push($.__views.rowDetail);
     $.__views.lblDetail = Ti.UI.createLabel({
         color: Alloy.Globals.ThemeStyles.detail_body.color,
         left: 14,
@@ -115,7 +115,7 @@ function Controller() {
         backgroundColor: "transparent",
         id: "rowAction"
     });
-    __alloyId14.push($.__views.rowAction);
+    __alloyId15.push($.__views.rowAction);
     $.__views.btnContainer = Ti.UI.createView({
         height: Ti.UI.FILL,
         left: 0,
@@ -158,7 +158,7 @@ function Controller() {
         height: "auto",
         backgroundColor: "transparent",
         separatorColor: "transparent",
-        data: __alloyId14,
+        data: __alloyId15,
         id: "detailTable"
     });
     $.__views.winDetail.add($.__views.detailTable);

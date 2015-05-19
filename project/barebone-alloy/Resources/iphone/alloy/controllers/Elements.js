@@ -31,13 +31,13 @@ function Controller() {
         id: "winElements"
     });
     $.__views.winElements && $.addTopLevelView($.__views.winElements);
-    var __alloyId15 = [];
+    var __alloyId16 = [];
     $.__views.rowText = Ti.UI.createTableViewRow({
         height: Ti.UI.SIZE,
         selectionStyle: 0,
         id: "rowText"
     });
-    __alloyId15.push($.__views.rowText);
+    __alloyId16.push($.__views.rowText);
     $.__views.textFname = Ti.UI.createTextField({
         color: Alloy.Globals.ThemeStyles.textfield.color,
         borderColor: Alloy.Globals.ThemeStyles.textfield.borderColor,
@@ -57,7 +57,7 @@ function Controller() {
         selectionStyle: 0,
         id: "rowSlider"
     });
-    __alloyId15.push($.__views.rowSlider);
+    __alloyId16.push($.__views.rowSlider);
     $.__views.customSlider = Ti.UI.createSlider({
         min: 0,
         max: 100,
@@ -110,7 +110,7 @@ function Controller() {
         height: 65,
         id: "rowSwitch"
     });
-    __alloyId15.push($.__views.rowSwitch);
+    __alloyId16.push($.__views.rowSwitch);
     $.__views.basicSwitch1 = Ti.UI.createSwitch({
         value: false,
         top: 24,
@@ -144,7 +144,7 @@ function Controller() {
         selectionStyle: 0,
         id: "rowButtonBar"
     });
-    __alloyId15.push($.__views.rowButtonBar);
+    __alloyId16.push($.__views.rowButtonBar);
     $.__views.bb1 = Ti.UI.createButtonBar({
         labels: [ "Active", "Label", "Label" ],
         backgroundColor: Alloy.Globals.ThemeStyles.button_bar.backgroundColor,
@@ -161,7 +161,7 @@ function Controller() {
         selectionStyle: 0,
         id: "rowTabbedBar"
     });
-    __alloyId15.push($.__views.rowTabbedBar);
+    __alloyId16.push($.__views.rowTabbedBar);
     $.__views.tb1 = Ti.UI.iOS.createTabbedBar({
         labels: [ "Active", "Label", "Label" ],
         backgroundColor: Alloy.Globals.ThemeStyles.tabbed_bar.backgroundColor,
@@ -179,7 +179,7 @@ function Controller() {
         selectionStyle: 0,
         id: "rowButtonMedium"
     });
-    __alloyId15.push($.__views.rowButtonMedium);
+    __alloyId16.push($.__views.rowButtonMedium);
     $.__views.btnSmall1 = Ti.UI.createButton({
         height: 41,
         width: 141,
@@ -209,7 +209,7 @@ function Controller() {
         selectionStyle: 0,
         id: "rowButtonLarge"
     });
-    __alloyId15.push($.__views.rowButtonLarge);
+    __alloyId16.push($.__views.rowButtonLarge);
     $.__views.btnLarge = Ti.UI.createButton({
         height: Alloy.Globals.ThemeStyles.button.height,
         width: 292,
@@ -229,7 +229,7 @@ function Controller() {
         top: 0,
         backgroundColor: "transparent",
         separatorStyle: "none",
-        data: __alloyId15,
+        data: __alloyId16,
         id: "elementsTable"
     });
     $.__views.winElements.add($.__views.elementsTable);

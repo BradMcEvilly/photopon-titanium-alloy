@@ -1,0 +1,5 @@
+<Alloy>
+	<Window id="winPickLocation" title="Pick Location">
+		<View id="mapView"></View>
+	</Window>
+</Alloy>

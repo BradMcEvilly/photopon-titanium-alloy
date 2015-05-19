@@ -1,0 +1,31 @@
+<Alloy>
+	<Window id="winPhotoponAddFriend" title="Add Friend" onOpen="winPhotoponAddFriendOpenHandler">
+
+		<TableView id="addFriendTable">
+			<TableViewRow id="row">
+				<TextField id="friendName"/>
+			</TableViewRow>
+
+			<TableViewRow id="row">
+				<View id="btnAddFriend" visible="true">
+					<Label id="lblAddFriend" />
+			
+					<ActivityIndicator id="ind">
+					</ActivityIndicator>
+				</View>
+			</TableViewRow>
+			
+			<TableViewRow id="row">
+				<View id="btnAddFromContact" visible="true">
+					<Label id="lblAddFromContact" />
+				</View>
+			</TableViewRow>
+			
+			<TableViewRow>
+				<TableView id="searchResult">
+				</TableView>
+			</TableViewRow>
+		</TableView>
+			
+	</Window>
+</Alloy>

@@ -134,6 +134,36 @@ exports.GetWalletItems = function(userId, callback) {
     });
 };
 
+exports.GetPhotopons = function(ids, callback) {
+    Cloud.Objects.query({
+        classname: "Photopon",
+        page: 1,
+        per_page: 100,
+        where: {
+            id: {
+                $in: ids
+            }
+        }
+    }, function(e) {
+        callback(e.Photopon);
+    });
+};
+
+exports.GetCoupons = function(ids, callback) {
+    Cloud.Objects.query({
+        classname: "Coupon",
+        page: 1,
+        per_page: 100,
+        where: {
+            id: {
+                $in: ids
+            }
+        }
+    }, function(e) {
+        callback(e.Coupon);
+    });
+};
+
 exports.NewWalletItem = function(photoponId, userId, callback) {
     Cloud.Objects.create({
         classname: "WalletItem",
@@ -343,5 +373,15 @@ exports.ChangePassword = function(newpassword, callback) {
         password_confirmation: newpassword
     }, function(e) {
         e.success ? callback && callback(e.users[0]) : alert("Error:\n" + (e.error && e.message || JSON.stringify(e)));
+    });
+};
+
+exports.NewMessage = function(recipients, type, message, callback) {
+    Cloud.Messages.create({
+        to_ids: recipients.join(","),
+        body: message,
+        subject: type
+    }, function(e) {
+        e.success ? callback && callback(e.message) : alert("Failed to create message");
     });
 };

@@ -1,0 +1,8 @@
+"#winPickLocation": {
+	backgroundColor: Alloy.Globals.ThemeStyles.win.backgroundColor,
+	titleAttributes: Alloy.Globals.ThemeStyles.win.titleAttributes,
+	navTintColor :  Alloy.Globals.ThemeStyles.win.navTintColor,
+	barColor : Alloy.Globals.ThemeStyles.win.barColor,
+	translucent : Alloy.Globals.ThemeStyles.win.translucent,
+	height: Ti.UI.FILL
+}

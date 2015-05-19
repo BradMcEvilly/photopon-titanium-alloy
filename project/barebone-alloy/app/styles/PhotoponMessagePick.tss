@@ -1,0 +1,7 @@
+"#winMessagePick": {
+	backgroundColor: Alloy.Globals.ThemeStyles.win.backgroundColor,
+	title : 'Pick Message',
+	navTintColor :  Alloy.Globals.ThemeStyles.win.navTintColor,
+	barColor : Alloy.Globals.ThemeStyles.win.barColor,
+	translucent : false
+}

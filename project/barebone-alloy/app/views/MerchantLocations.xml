@@ -1,0 +1,16 @@
+<Alloy>
+	<Window id="winMerchantLocations" title="Locations">
+		
+		<TableView id="merchantLocationsTable">
+		
+			<TableViewRow class="row">
+				<View id="btnNewLocation" class="big-button">
+					<Label text="NEW LOCATION" class="big-button-label"/>
+				</View>
+			</TableViewRow>
+
+			
+		</TableView>
+			
+	</Window>
+</Alloy>

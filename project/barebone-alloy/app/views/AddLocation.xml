@@ -1,0 +1,28 @@
+<Alloy>
+	<Window id="winAddLocation" title="Add Location">
+		<TableView id="locationForm">
+			<TableViewRow class="row-noselect">
+				<TextField id="nameField" hintText="Enter Name" class="big-input"/>
+			</TableViewRow>
+			<TableViewRow class="row-noselect">
+				<TextField id="cityField" hintText="City" class="big-input"/>
+			</TableViewRow>
+			<TableViewRow class="row-noselect">
+				<TextField id="zipField" hintText="Zip Code" class="big-input"/>
+			</TableViewRow>
+			<TableViewRow class="row-noselect">
+				<TextField id="addressField" hintText="Address" class="big-input"/>
+			</TableViewRow>
+			<TableViewRow>
+				<ImageView id="locationimg" width="60" height="60"></ImageView>
+			</TableViewRow>
+
+			<TableViewRow id="row">
+				<View id="btnAddLocation" class="big-button">
+					<Label class="big-button-label" text="Add Location" />
+				</View>
+			</TableViewRow>
+			
+		</TableView>
+	</Window>
+</Alloy>

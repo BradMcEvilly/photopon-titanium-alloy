@@ -1,0 +1,19 @@
+"#winPhotoponFriends": {
+	backgroundColor: Alloy.Globals.ThemeStyles.win.backgroundColor,
+	title : 'SnapWrap.me',
+	navTintColor :  Alloy.Globals.ThemeStyles.win.navTintColor,
+	barColor : Alloy.Globals.ThemeStyles.win.barColor,
+	translucent : false
+},
+"#photoponFriendsTable": {
+	showVerticalScrollIndicator : false,
+	height : 'auto',
+	backgroundColor : 'transparent',
+	separatorColor : 'transparent'
+},
+"#ind": {
+	indicatorDiameter: 160,
+	//style : Ti.UI.iPhone.ActivityIndicatorStyle.BIG,
+	indicatorColor: Alloy.Globals.ThemeColors.black,
+	color : Alloy.Globals.ThemeColors.black
+}

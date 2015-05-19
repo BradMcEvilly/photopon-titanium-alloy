@@ -1,0 +1,9 @@
+<Alloy>
+	<Window id="winPhotoponCoupons" title="Coupons">
+		<TableView id="photoponCouponsTable">
+		</TableView>
+		
+		<ActivityIndicator id="ind">
+		</ActivityIndicator>
+	</Window>
+</Alloy>

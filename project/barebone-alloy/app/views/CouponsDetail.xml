@@ -1,0 +1,24 @@
+<Alloy>
+	<Window id="winDetail">
+		<TableView id="detailTable">
+			<TableViewRow id="rowImage">
+				<ImageView id="coverImage" />
+			</TableViewRow>
+			<TableViewRow id="rowTitle">
+				<Label id="lblName" />
+				<View id="tagView" />
+			</TableViewRow>
+			<TableViewRow id="rowDetail">
+				<Label id="lblDetail" />
+			</TableViewRow>
+			<TableViewRow id="rowAction">
+				<View id="btnContainer">
+					
+					<Button id="getBtn" onClick="getBtnHandler">Get</Button>
+					<Button id="giveBtn" onClick="giveBtnHandler">Give</Button>
+					
+				</View>
+			</TableViewRow>
+		</TableView>
+	</Window>
+</Alloy>

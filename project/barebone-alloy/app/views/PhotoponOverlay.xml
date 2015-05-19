@@ -1,0 +1,7 @@
+<Alloy>
+	
+	<View id="overlay">
+		<Label id="lblName" />
+		<Label id="lblDetail" />
+	</View>
+</Alloy>

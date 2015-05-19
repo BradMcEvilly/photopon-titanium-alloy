@@ -1,0 +1,19 @@
+<Alloy>
+	
+	<TableViewRow id="AddFriendRow">
+		
+		<View id="leftContainer">
+			<ImageView id="imgThumbnail" />	
+		</View>
+		
+		<View id="rightContainer">
+			<Label id="lblName" />
+		</View>
+		
+		<View id="btnAddFriend" visible="true">
+			<Label id="lblAddFriend" />
+	
+		</View>
+		
+	</TableViewRow>
+</Alloy>

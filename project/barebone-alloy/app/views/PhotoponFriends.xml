@@ -1,0 +1,9 @@
+<Alloy>
+	<Window id="winPhotoponFriends" title="Friends">
+		<TableView id="photoponFriendsTable">
+		</TableView>
+		
+		<ActivityIndicator id="ind">
+		</ActivityIndicator>
+	</Window>
+</Alloy>

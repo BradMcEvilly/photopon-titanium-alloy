@@ -1,0 +1,97 @@
+function __processArg(obj, key) {
+    var arg = null;
+    if (obj) {
+        arg = obj[key] || null;
+        delete obj[key];
+    }
+    return arg;
+}
+
+function Controller() {
+    require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
+    this.__controllerPath = "AddFriendSearchRow";
+    if (arguments[0]) {
+        {
+            __processArg(arguments[0], "__parentSymbol");
+        }
+        {
+            __processArg(arguments[0], "$model");
+        }
+        {
+            __processArg(arguments[0], "__itemTemplate");
+        }
+    }
+    var $ = this;
+    var exports = {};
+    $.__views.AddFriendRow = Ti.UI.createTableViewRow({
+        height: 60,
+        selectionStyle: "none",
+        id: "AddFriendRow"
+    });
+    $.__views.AddFriendRow && $.addTopLevelView($.__views.AddFriendRow);
+    $.__views.leftContainer = Ti.UI.createView({
+        width: 50,
+        height: 50,
+        left: 5,
+        id: "leftContainer"
+    });
+    $.__views.AddFriendRow.add($.__views.leftContainer);
+    $.__views.imgThumbnail = Ti.UI.createImageView({
+        id: "imgThumbnail"
+    });
+    $.__views.leftContainer.add($.__views.imgThumbnail);
+    $.__views.rightContainer = Ti.UI.createView({
+        left: 60,
+        right: 60,
+        id: "rightContainer"
+    });
+    $.__views.AddFriendRow.add($.__views.rightContainer);
+    $.__views.lblName = Ti.UI.createLabel({
+        id: "lblName"
+    });
+    $.__views.rightContainer.add($.__views.lblName);
+    $.__views.btnAddFriend = Ti.UI.createView({
+        right: Alloy.Globals.ThemeStyles.buttonPink.padding,
+        width: 50,
+        height: 50,
+        color: Alloy.Globals.ThemeStyles.buttonPink.color,
+        backgroundColor: Alloy.Globals.ThemeStyles.buttonPink.backgroundColor,
+        borderColor: Alloy.Globals.ThemeStyles.buttonPink.borderColor,
+        borderStyle: Alloy.Globals.ThemeStyles.buttonPink.borderStyle,
+        borderRadius: Alloy.Globals.ThemeStyles.buttonPink.borderRadius,
+        borderWidth: Alloy.Globals.ThemeStyles.buttonPink.borderWidth,
+        font: Alloy.Globals.ThemeStyles.buttonPink.font,
+        id: "btnAddFriend",
+        visible: "true"
+    });
+    $.__views.AddFriendRow.add($.__views.btnAddFriend);
+    $.__views.lblAddFriend = Ti.UI.createLabel({
+        text: "+",
+        textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
+        verticalAlign: Ti.UI.TEXT_VERTICAL_ALIGNMENT_CENTER,
+        color: Alloy.Globals.ThemeStyles.button.color,
+        font: Alloy.Globals.ThemeStyles.button.font,
+        width: "auto",
+        height: "auto",
+        touchEnabled: false,
+        id: "lblAddFriend"
+    });
+    $.__views.btnAddFriend.add($.__views.lblAddFriend);
+    exports.destroy = function() {};
+    _.extend($, $.__views);
+    var args = arguments[0] || {};
+    var apiHelper = require("apiHelper");
+    $.imgThumbnail.image = "http://lorempixel.com/128/128/people/";
+    $.lblName.text = args.username;
+    $.btnAddFriend.addEventListener("touchend", function() {
+        apiHelper.AddFriend(args.id, function() {
+            $.btnAddFriend.visible = false;
+            alert("Friend Added!");
+        });
+    });
+    _.extend($, exports);
+}
+
+var Alloy = require("alloy"), Backbone = Alloy.Backbone, _ = Alloy._;
+
+module.exports = Controller;

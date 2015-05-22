@@ -4,12 +4,6 @@
 		
 		<TableView id="merchantCouponsTable">
 		
-			<TableViewRow class="row">
-				<View id="btnNewCoupon" class="big-button">
-					<Label text="NEW COUPON" class="big-button-label"/>
-				</View>
-			</TableViewRow>
-
 			
 		</TableView>
 			

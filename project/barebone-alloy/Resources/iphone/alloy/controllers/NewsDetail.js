@@ -32,14 +32,14 @@ function Controller() {
         id: "winDetail"
     });
     $.__views.winDetail && $.addTopLevelView($.__views.winDetail);
-    var __alloyId42 = [];
+    var __alloyId39 = [];
     $.__views.rowImage = Ti.UI.createTableViewRow({
         height: "auto",
         selectionStyle: "none",
         backgroundColor: "transparent",
         id: "rowImage"
     });
-    __alloyId42.push($.__views.rowImage);
+    __alloyId39.push($.__views.rowImage);
     $.__views.coverImage = Ti.UI.createImageView({
         top: 14,
         right: 14,
@@ -58,7 +58,7 @@ function Controller() {
         layout: "vertical",
         id: "rowTitle"
     });
-    __alloyId42.push($.__views.rowTitle);
+    __alloyId39.push($.__views.rowTitle);
     $.__views.lblName = Ti.UI.createLabel({
         color: Alloy.Globals.ThemeStyles.detail_title.color,
         font: Alloy.Globals.ThemeStyles.detail_title.font,
@@ -82,7 +82,7 @@ function Controller() {
         backgroundColor: "transparent",
         id: "rowDetail"
     });
-    __alloyId42.push($.__views.rowDetail);
+    __alloyId39.push($.__views.rowDetail);
     $.__views.lblDetail = Ti.UI.createLabel({
         color: Alloy.Globals.ThemeStyles.detail_body.color,
         left: 14,
@@ -98,7 +98,7 @@ function Controller() {
         height: "auto",
         backgroundColor: "transparent",
         separatorColor: "transparent",
-        data: __alloyId42,
+        data: __alloyId39,
         id: "detailTable"
     });
     $.__views.winDetail.add($.__views.detailTable);

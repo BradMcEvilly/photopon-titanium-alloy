@@ -40,81 +40,6 @@ exports.userInfo = function() {
     return Titanium.App.Properties.getObject("userinfo") || {};
 };
 
-exports.createPhotoponInput = function(hint) {
-    var inp = Titanium.UI.createTextField({
-        autocapitalization: false,
-        color: Alloy.Globals.ThemeStyles.textfield.color,
-        height: Alloy.Globals.ThemeStyles.textfield.height,
-        hintText: hint,
-        left: Alloy.Globals.ThemeStyles.button.padding,
-        right: Alloy.Globals.ThemeStyles.button.padding,
-        width: Ti.UI.FILL,
-        font: Alloy.Globals.ThemeStyles.textfield.font,
-        paddingLeft: Alloy.Globals.ThemeStyles.button.padding,
-        borderColor: Alloy.Globals.ThemeStyles.textfield.borderColor,
-        borderStyle: Alloy.Globals.ThemeStyles.textfield.borderStyle,
-        borderRadius: Alloy.Globals.ThemeStyles.textfield.borderRadius
-    });
-    return inp;
-};
-
-exports.createPhotoponInputSmall = function(hint) {
-    var inp = Titanium.UI.createTextField({
-        autocapitalization: false,
-        color: Alloy.Globals.ThemeStyles.textfield.color,
-        hintText: hint,
-        left: Alloy.Globals.ThemeStyles.button.padding,
-        right: Alloy.Globals.ThemeStyles.button.padding,
-        width: Ti.UI.FILL,
-        height: "45dp",
-        font: {
-            fontSize: "18dp",
-            fontFamily: "Montserrat",
-            fontWeight: "Bold"
-        },
-        paddingLeft: Alloy.Globals.ThemeStyles.button.padding,
-        borderColor: Alloy.Globals.ThemeStyles.textfield.borderColor,
-        borderStyle: Alloy.Globals.ThemeStyles.textfield.borderStyle,
-        borderRadius: Alloy.Globals.ThemeStyles.textfield.borderRadius
-    });
-    return inp;
-};
-
-exports.createPhotoponButton = function(text, theme) {
-    theme = theme || "buttonPurple";
-    var t = Alloy.Globals.ThemeStyles[theme];
-    var button = Titanium.UI.createButton({
-        left: Alloy.Globals.ThemeStyles.button.padding,
-        right: Alloy.Globals.ThemeStyles.button.padding,
-        width: Ti.UI.FILL,
-        height: t.height,
-        color: t.color,
-        backgroundColor: t.backgroundColor,
-        borderColor: t.borderColor,
-        borderStyle: t.borderStyle,
-        borderRadius: t.borderRadius,
-        borderWidth: t.borderWidth,
-        font: t.font
-    });
-    var label = Titanium.UI.createLabel({
-        textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
-        verticalAlign: Ti.UI.TEXT_VERTICAL_ALIGNMENT_CENTER,
-        color: t.color,
-        font: t.font,
-        width: "auto",
-        height: "auto",
-        touchEnabled: false,
-        text: text
-    });
-    button.label = label;
-    button.add(label);
-    return button;
-};
-
-exports.createPhotoponButtonSmall = function(text) {
-    return exports.createPhotoponButton(text, "buttonPurpleSmall");
-};
-
 exports.UploadPhoto = function(callback) {
     var WaitToProcess = function(photoid, cb) {
         Cloud.Photos.show({
@@ -129,7 +54,7 @@ exports.UploadPhoto = function(callback) {
     Titanium.Media.openPhotoGallery({
         success: function(event) {
             Ti.API.debug("Our type was: " + event.mediaType);
-            var loader = exports.ShowLoading("Uploading...");
+            var loader = PUI.ShowLoading("Uploading...");
             event.mediaType == Ti.Media.MEDIA_TYPE_PHOTO && Cloud.Photos.create({
                 photo: event.media
             }, function(e) {
@@ -151,40 +76,6 @@ exports.UploadPhoto = function(callback) {
         },
         mediaTypes: [ Ti.Media.MEDIA_TYPE_PHOTO ]
     });
-};
-
-exports.ShowLoading = function(message) {
-    var win = Ti.UI.createWindow();
-    var msg = Ti.UI.createLabel({
-        text: message,
-        left: 10,
-        right: 10,
-        top: 100,
-        color: "#fff",
-        shadowColor: "#aaa",
-        shadowOffset: {
-            x: 1,
-            y: 1
-        },
-        shadowRadius: 3,
-        textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
-        font: {
-            fontSize: 36
-        }
-    });
-    win.add(msg);
-    win.setBackgroundColor("#000000");
-    win.setOpacity(.4);
-    win.open();
-    return win;
-};
-
-exports.Awesomize = function(win) {
-    var fa = Alloy.createWidget("com.mattmcfarland.fontawesome", "widget", {
-        __parentSymbol: win
-    });
-    win.add(fa);
-    return fa;
 };
 
 exports.NavigateTo = function(controllerName, args) {

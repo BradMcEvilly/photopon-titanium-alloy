@@ -48,7 +48,7 @@ function Controller() {
     };
     $.winUploader.addEventListener("open", function() {
         UTL.defaultTitle(args);
-        var uploadButton = UTL.createPhotoponButton("Choose Photo");
+        var uploadButton = PUI.createPhotoponButton("Choose Photo");
         uploadButton.right = Alloy.Globals.ThemeStyles.button.padding;
         uploadButton.left = Alloy.Globals.ThemeStyles.button.padding;
         uploadButton.addEventListener("click", function() {

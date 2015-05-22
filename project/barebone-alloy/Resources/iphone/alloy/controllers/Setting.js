@@ -45,7 +45,7 @@ function Controller() {
             height: 100,
             top: 10
         });
-        var choosePhoto = UTL.createPhotoponButtonSmall("Choose Photo");
+        var choosePhoto = PUI.createPhotoponButtonSmall("Choose Photo");
         choosePhoto.right = Alloy.Globals.ThemeStyles.button.padding;
         choosePhoto.left = Alloy.Globals.ThemeStyles.button.padding;
         choosePhoto.addEventListener("click", function() {
@@ -54,7 +54,7 @@ function Controller() {
                 API.UpdateProfilePhoto(photo.id);
             });
         });
-        var requestMerchant = UTL.createPhotoponButtonSmall("Become Merchant");
+        var requestMerchant = PUI.createPhotoponButtonSmall("Become Merchant");
         requestMerchant.right = Alloy.Globals.ThemeStyles.button.padding;
         requestMerchant.left = Alloy.Globals.ThemeStyles.button.padding;
         requestMerchant.addEventListener("click", function() {
@@ -68,11 +68,11 @@ function Controller() {
                 }
             });
         });
-        var oldPass = UTL.createPhotoponInputSmall("Old Password");
-        var newPass = UTL.createPhotoponInputSmall("New Password");
+        var oldPass = PUI.createPhotoponInputSmall("Old Password");
+        var newPass = PUI.createPhotoponInputSmall("New Password");
         oldPass.passwordMask = true;
         newPass.passwordMask = true;
-        var changePassword = UTL.createPhotoponButtonSmall("Change Password");
+        var changePassword = PUI.createPhotoponButtonSmall("Change Password");
         changePassword.right = Alloy.Globals.ThemeStyles.button.padding;
         changePassword.left = Alloy.Globals.ThemeStyles.button.padding;
         changePassword.addEventListener("click", function() {

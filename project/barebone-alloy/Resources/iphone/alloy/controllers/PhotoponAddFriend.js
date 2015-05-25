@@ -32,23 +32,31 @@ function Controller() {
     _.extend($, $.__views);
     arguments[0] || {};
     var win = PUI.DecorateWindow($.winAddFriend);
+    var fa = PUI.Awesomize(win);
     var table = PUI.CreateTable(win);
     PUI.CreateRow(table);
     var row1 = PUI.CreateRow(table);
     var row2 = PUI.CreateRow(table);
     var row3 = PUI.CreateRow(table);
-    PUI.CreateInput(row1, "Friends Name");
-    PUI.CreateButton(row2, "Add Friend", function() {
-        var loading = PUI.ShowLoading("Searching...");
-        apiHelper.SearchUser($.friendName.value, function(users) {
-            loading.remove();
-            var rows = [];
-            for (var i = 0; i < users.length; i++) {
-                var user = users[i];
-                console.log(users);
-                for (var j = 0; 3 > j; ++j) rows.push(Alloy.createController("AddFriendSearchRow", user).getView());
+    row1.height = 60;
+    row2.height = 80;
+    row3.height = 80;
+    var friendName = PUI.CreateInput(row1, "Friends Name");
+    var addFriend = PUI.CreateButton(row2, "Add Friend", function() {});
+    friendName.addEventListener("change", function() {
+        if ("" == friendName.value.trim()) {
+            addFriend.label.text = "Add Friend";
+            return;
+        }
+        API.SearchUser(friendName.value, function(users, query) {
+            if (query != friendName.value) return;
+            if (1 == users.length) {
+                addFriend.label.text = "Add " + users[0].username;
+                fa.add(addFriend.label, "fa-plus");
+            } else {
+                addFriend.label.text = "Type Name";
+                fa.add(addFriend.label, "fa-times");
             }
-            $.searchResult.setData(rows);
         });
     });
     PUI.CreateButton(row3, "Add From Contacts", function() {

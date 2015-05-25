@@ -40,7 +40,7 @@ var Colors = {
 	darkGray		:'#363636',
 	transparent 	:'transparent'
 };
-
+exports.Colors = Colors;
 
 
 
@@ -263,6 +263,13 @@ exports.CreateRow = function(table) {
 	var row = Ti.UI.createTableViewRow();
 	table.appendRow(row);
 	return row;
+};
+
+exports.CreateLabel = function(parent, text) {
+	var label = Titanium.UI.createLabel(DefaultButtonLabel);
+	label.text = text;
+	parent.add(label);
+	return label;	
 };
 
 exports.CreateButton = function(parent, text, callback) {

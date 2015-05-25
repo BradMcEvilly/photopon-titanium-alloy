@@ -272,7 +272,7 @@ Alloy.Globals.ThemeColors = {
 		mainRed				:'#e83587',
 		mainBlue			:'#0099d3',
 		mainGreen			:'#01babc',
-		mainYellow			:'ff',
+		mainYellow			:'#ffe809',
 		
 		black			:'#000000',
 		yellow			:'#ffba1a',	// good

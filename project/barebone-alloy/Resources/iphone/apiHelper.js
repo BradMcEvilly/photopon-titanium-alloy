@@ -302,7 +302,7 @@ exports.SearchUser = function(query, callback, errorCallback) {
             });
             return;
         }
-        callback(e.users);
+        callback(e.users, query);
     });
 };
 

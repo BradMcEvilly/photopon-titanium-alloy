@@ -30,6 +30,7 @@ $.winViewFriend.addEventListener('open', function(e) {
   		font: { fontSize:36 }
 	});
 	
+
 	
 	
 	$.winViewFriend.add(profilePic);

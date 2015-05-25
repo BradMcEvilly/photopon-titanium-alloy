@@ -37,6 +37,8 @@ var Colors = {
     transparent: "transparent"
 };
 
+exports.Colors = Colors;
+
 var DefaultWindow = {
     backgroundColor: Colors.lightGray,
     barColor: Colors.white,
@@ -206,6 +208,13 @@ exports.CreateRow = function(table) {
     var row = Ti.UI.createTableViewRow();
     table.appendRow(row);
     return row;
+};
+
+exports.CreateLabel = function(parent, text) {
+    var label = Titanium.UI.createLabel(DefaultButtonLabel);
+    label.text = text;
+    parent.add(label);
+    return label;
 };
 
 exports.CreateButton = function(parent, text, callback) {

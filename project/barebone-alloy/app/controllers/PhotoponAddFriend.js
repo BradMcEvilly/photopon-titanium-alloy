@@ -1,6 +1,8 @@
 var args = arguments[0] || {};
 
 var win = PUI.DecorateWindow($.winAddFriend);
+var fa = PUI.Awesomize(win);
+
 
 var table = PUI.CreateTable(win);
 
@@ -10,30 +12,40 @@ var row1 = PUI.CreateRow(table);
 var row2 = PUI.CreateRow(table);
 var row3 = PUI.CreateRow(table);
 
+row1.height = 60;
+row2.height = 80;
+row3.height = 80;
 
 var friendName = PUI.CreateInput(row1, "Friends Name");
 
-
-
 var addFriend = PUI.CreateButton(row2, "Add Friend", function() {
-	var loading = PUI.ShowLoading("Searching...");
 
-	API.SearchUser($.friendName.value, function (users) {
-		loading.remove();
-	    var rows = [];
-	    
-	    for (var i = 0; i < users.length; i++) {
-	        var user = users[i];
-	        console.log(users);
-	        // For debugging, remove this for later
-	        for (var j = 0; j < 3; ++j) {
-	        	rows.push(Alloy.createController('AddFriendSearchRow', user).getView());
-	        }
-            
-	    }
-		$.searchResult.setData(rows);
+
+});
+
+
+friendName.addEventListener("change", function() {
+	if (friendName.value.trim() == "") {
+		addFriend.label.text = "Add Friend";
+		return;
+	}
+	
+	API.SearchUser(friendName.value, function (users, query) {
+		if (query != friendName.value) {
+			return;
+		}
+		
+		if (users.length == 1) {
+			addFriend.label.text = "Add " + users[0].username;
+			fa.add(addFriend.label,'fa-plus');
+		} else {
+			addFriend.label.text = "Type Name";
+			fa.add(addFriend.label,'fa-times');
+		}
 	});
 });
+
+
 
 
 

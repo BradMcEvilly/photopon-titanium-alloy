@@ -6,13 +6,56 @@ var createUserRow = function(user) {
     	backgroundColor: "#ffffff"
     });
     
+    	
+	var url = "/images/PhotoponNavBarBtnInfo.png";
+	if (user.photo) {
+		url = user.photo.urls.square_75;
+	}
+	
+    var profileImage = Ti.UI.createImageView({
+    	image: url,
+    	left: 5,
+    	visible: true,
+    	width: 50,
+    	height: 50
+    });
+    row.add(profileImage);
+    
+    
+    
+    
+    
     var checkImage = Ti.UI.createImageView({
     	image: "/images/PhotoponButtonNewPhotoponCheckNoFillGreen.png",
     	left: 5,
-    	visible: false
+    	visible: false,
+    	width: 50,
+    	height: 50
     });
-    
     row.add(checkImage);
+    
+
+
+
+    var messageImage = Ti.UI.createImageView({
+    	image: "/images/ic_contact.png",
+    	right: 5,
+    	visible: true,
+    	width: 30,
+    	height: 30
+    });
+    row.add(messageImage);
+    
+    messageImage.addEventListener("click", function(e) {
+    	console.log(user.username, user.id);
+    	e.cancelBubble = true;
+    	UTL.ShowPage("PhotoponChatRoom", {
+    		user: user
+    	});
+    	return true;
+    });
+
+    
     
     var title = Ti.UI.createLabel({
     	text: user.username
@@ -24,15 +67,19 @@ var createUserRow = function(user) {
     
     row.isSelected = false;
     row.selectionCheck = checkImage;
+    row.profilePicture = profileImage;
     row.user = user;
     
     if (args.selectionCallback) {
+    	messageImage.visible = false;
 	    row.addEventListener("click", function(e) {
 	    	e.row.isSelected = !e.row.isSelected;
 	    	e.row.selectionCheck.visible = e.row.isSelected;
+	    	e.row.profilePicture.visible = !e.row.isSelected;
 	    });
 	} else {
 		row.addEventListener("click", function(e) {
+			console.log(e);
 	    	UTL.ShowPage("ViewFriend", e.row.user);
 	    });
 	}

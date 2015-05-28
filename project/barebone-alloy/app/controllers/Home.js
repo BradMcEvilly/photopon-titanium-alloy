@@ -24,15 +24,18 @@ $.winHome.addEventListener('open', function(e) {
 	
 	
 	
+	var viewNotifications = Alloy.createController('PhotoponNotifications').getView();
 	
 	var viewCoupons = Alloy.createController('PhotoponCoupons').getView();
 	var viewFriends = Alloy.createController('PhotoponFriendMan').getView();
 	var viewWallet = Alloy.createController('PhotoponWallet').getView();
+
 	//var viewAddFriend = Alloy.createController('PhotoponAddFriend').getView();
 	
 	var scrollableView = Ti.UI.createScrollableView({
 	    showPagingControl: false,
 	    views: [
+	    	viewNotifications,
 	     	viewFriends,
 	    	viewWallet,
 	        viewCoupons
@@ -54,6 +57,10 @@ $.winHome.addEventListener('open', function(e) {
 		}
 			
 	});
+	
+	$.winHome.setTitleControl(Alloy.createController('titleControl', {
+		title : scrollableView.views[0].title
+	}).getView());
 	
 	$.winHome.setTabBarHidden(true);
 	$.winHome.add(scrollableView);

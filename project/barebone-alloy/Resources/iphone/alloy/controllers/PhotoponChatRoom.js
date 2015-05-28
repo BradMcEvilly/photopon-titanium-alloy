@@ -10,6 +10,7 @@ function __processArg(obj, key) {
 function Controller() {
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     this.__controllerPath = "PhotoponChatRoom";
+    this.args = arguments[0] || {};
     if (arguments[0]) {
         {
             __processArg(arguments[0], "__parentSymbol");
@@ -57,18 +58,6 @@ function Controller() {
     message.left = 5;
     message.right = null;
     message.width = Titanium.Platform.displayCaps.platformWidth - 50;
-    Cloud.Chats.query({
-        participate_ids: [ args.user.id, UTL.userInfo().uid ].join(",")
-    }, function(e) {
-        if (!e.success) {
-            console.log("Failed to get messages");
-            return;
-        }
-        for (var i = e.chats.length - 1; i >= 0; i--) {
-            var chat = e.chats[i];
-            AddNewMessage(chat.from, chat.message);
-        }
-    });
     var send = PUI.CreateButton(win, "", function() {
         var msg = message.value;
         if ("" == msg.trim()) return;
@@ -93,6 +82,47 @@ function Controller() {
     send.left = null;
     send.right = 5;
     send.bottom = 5;
+    var updateTimer = null;
+    var lastUpdate = 0;
+    var UpdateChatMessages = function() {
+        console.log("Update messages from " + lastUpdate);
+        Cloud.Chats.query({
+            participate_ids: [ args.user.id, UTL.userInfo().uid ].join(","),
+            where: {
+                updated_at: {
+                    $gt: lastUpdate
+                }
+            }
+        }, function(e) {
+            if (!e.success) {
+                console.log("Failed to get messages");
+                return;
+            }
+            for (var i = e.chats.length - 1; i >= 0; i--) {
+                var chat = e.chats[i];
+                lastUpdate = chat.updated_at;
+                AddNewMessage(chat.from, chat.message);
+            }
+        });
+    };
+    win.addEventListener("open", function() {
+        if (updateTimer) {
+            console.log("Cancelling update timer");
+            clearInterval(updateTimer);
+            updateTimer = null;
+        }
+        lastUpdate = 0;
+        console.log("Creating update timer");
+        updateTimer = setInterval(UpdateChatMessages, 3e3);
+        UpdateChatMessages();
+    });
+    win.addEventListener("close", function() {
+        if (updateTimer) {
+            console.log("Cancelling update timer");
+            clearInterval(updateTimer);
+            updateTimer = null;
+        }
+    });
     _.extend($, exports);
 }
 

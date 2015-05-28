@@ -185,7 +185,7 @@ exports.GetPhotopons = function(ids, callback) {
 	    per_page: 100,
 	    where: {id: { '$in': ids}} 
 	}, function (e) {
-		callback(e.Photopon);
+		callback(e.Photopon || []);
 	});
 };
 

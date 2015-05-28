@@ -10,6 +10,7 @@ function __processArg(obj, key) {
 function Controller() {
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     this.__controllerPath = "Home";
+    this.args = arguments[0] || {};
     if (arguments[0]) {
         {
             __processArg(arguments[0], "__parentSymbol");
@@ -49,12 +50,13 @@ function Controller() {
             context: that
         }).getView();
         $.winHome.leftNavButton = Alloy.createController("LeftMenuButton1").getView();
+        var viewNotifications = Alloy.createController("PhotoponNotifications").getView();
         var viewCoupons = Alloy.createController("PhotoponCoupons").getView();
         var viewFriends = Alloy.createController("PhotoponFriendMan").getView();
         var viewWallet = Alloy.createController("PhotoponWallet").getView();
         var scrollableView = Ti.UI.createScrollableView({
             showPagingControl: false,
-            views: [ viewFriends, viewWallet, viewCoupons ]
+            views: [ viewNotifications, viewFriends, viewWallet, viewCoupons ]
         });
         scrollableView.setDisableBounce(true);
         scrollableView.addEventListener("scroll", function(e) {
@@ -66,6 +68,9 @@ function Controller() {
                 title: v.title || "<None>"
             }).getView());
         });
+        $.winHome.setTitleControl(Alloy.createController("titleControl", {
+            title: scrollableView.views[0].title
+        }).getView());
         $.winHome.setTabBarHidden(true);
         $.winHome.add(scrollableView);
     });

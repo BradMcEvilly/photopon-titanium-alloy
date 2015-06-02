@@ -34,11 +34,11 @@ function Controller() {
         title: "Locations"
     });
     $.__views.winMerchantLocations && $.addTopLevelView($.__views.winMerchantLocations);
-    var __alloyId36 = [];
-    $.__views.__alloyId37 = Ti.UI.createTableViewRow({
-        id: "__alloyId37"
+    var __alloyId29 = [];
+    $.__views.__alloyId30 = Ti.UI.createTableViewRow({
+        id: "__alloyId30"
     });
-    __alloyId36.push($.__views.__alloyId37);
+    __alloyId29.push($.__views.__alloyId30);
     $.__views.btnNewLocation = Ti.UI.createView({
         top: Alloy.Globals.ThemeStyles.button.padding,
         left: Alloy.Globals.ThemeStyles.button.padding,
@@ -54,8 +54,8 @@ function Controller() {
         font: Alloy.Globals.ThemeStyles.buttonPurple.font,
         id: "btnNewLocation"
     });
-    $.__views.__alloyId37.add($.__views.btnNewLocation);
-    $.__views.__alloyId38 = Ti.UI.createLabel({
+    $.__views.__alloyId30.add($.__views.btnNewLocation);
+    $.__views.__alloyId31 = Ti.UI.createLabel({
         textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
         verticalAlign: Ti.UI.TEXT_VERTICAL_ALIGNMENT_CENTER,
         color: Alloy.Globals.ThemeStyles.button.color,
@@ -64,9 +64,9 @@ function Controller() {
         height: "auto",
         touchEnabled: false,
         text: "NEW LOCATION",
-        id: "__alloyId38"
+        id: "__alloyId31"
     });
-    $.__views.btnNewLocation.add($.__views.__alloyId38);
+    $.__views.btnNewLocation.add($.__views.__alloyId31);
     $.__views.merchantLocationsTable = Ti.UI.createTableView({
         scrollable: false,
         showVerticalScrollIndicator: false,
@@ -74,7 +74,7 @@ function Controller() {
         backgroundColor: "transparent",
         separatorStyle: "none",
         borderWidth: 0,
-        data: __alloyId36,
+        data: __alloyId29,
         id: "merchantLocationsTable"
     });
     $.__views.winMerchantLocations.add($.__views.merchantLocationsTable);

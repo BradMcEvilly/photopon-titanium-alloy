@@ -43,11 +43,11 @@ function Controller() {
         id: "winFacebook"
     });
     $.__views.winFacebook && $.addTopLevelView($.__views.winFacebook);
-    var __alloyId17 = [];
+    var __alloyId10 = [];
     $.__views.row = Ti.UI.createTableViewRow({
         id: "row"
     });
-    __alloyId17.push($.__views.row);
+    __alloyId10.push($.__views.row);
     $.__views.fbLoginBtn = Ti.UI.createButton({
         width: "160dp",
         height: "54dp",
@@ -61,17 +61,17 @@ function Controller() {
     $.__views.row = Ti.UI.createTableViewRow({
         id: "row"
     });
-    __alloyId17.push($.__views.row);
-    var __alloyId18 = {};
-    var __alloyId20 = {
+    __alloyId10.push($.__views.row);
+    var __alloyId11 = {};
+    var __alloyId13 = {
         properties: {
             name: "buttonItem",
             height: Ti.UI.SIZE
         }
     };
-    __alloyId18["buttonItem"] = __alloyId20;
-    var __alloyId22 = [];
-    var __alloyId23 = {
+    __alloyId11["buttonItem"] = __alloyId13;
+    var __alloyId15 = [];
+    var __alloyId16 = {
         type: "Ti.UI.ImageView",
         bindId: "pic",
         properties: {
@@ -81,12 +81,12 @@ function Controller() {
             bindId: "pic"
         }
     };
-    __alloyId22.push(__alloyId23);
-    var __alloyId24 = {
+    __alloyId15.push(__alloyId16);
+    var __alloyId17 = {
         type: "Ti.UI.View",
         childTemplates: function() {
-            var __alloyId25 = [];
-            var __alloyId26 = {
+            var __alloyId18 = [];
+            var __alloyId19 = {
                 type: "Ti.UI.Label",
                 bindId: "textLabel",
                 properties: {
@@ -99,43 +99,43 @@ function Controller() {
                     bindId: "textLabel"
                 }
             };
-            __alloyId25.push(__alloyId26);
-            return __alloyId25;
+            __alloyId18.push(__alloyId19);
+            return __alloyId18;
         }(),
         properties: {}
     };
-    __alloyId22.push(__alloyId24);
-    var __alloyId21 = {
+    __alloyId15.push(__alloyId17);
+    var __alloyId14 = {
         properties: {
             height: "56dp",
             name: "template1"
         },
-        childTemplates: __alloyId22
+        childTemplates: __alloyId15
     };
-    __alloyId18["template1"] = __alloyId21;
-    var __alloyId28 = [];
-    $.__views.__alloyId29 = {
+    __alloyId11["template1"] = __alloyId14;
+    var __alloyId21 = [];
+    $.__views.__alloyId22 = {
         template: "template1",
         properties: {
-            id: "__alloyId29"
+            id: "__alloyId22"
         }
     };
-    __alloyId28.push($.__views.__alloyId29);
+    __alloyId21.push($.__views.__alloyId22);
     $.__views.section = Ti.UI.createListSection({
         id: "section"
     });
-    $.__views.section.items = __alloyId28;
-    var __alloyId30 = [];
-    __alloyId30.push($.__views.section);
+    $.__views.section.items = __alloyId21;
+    var __alloyId23 = [];
+    __alloyId23.push($.__views.section);
     $.__views.list = Ti.UI.createListView({
-        sections: __alloyId30,
-        templates: __alloyId18,
+        sections: __alloyId23,
+        templates: __alloyId11,
         id: "list",
         defaultItemTemplate: "template1"
     });
     $.__views.row.add($.__views.list);
     $.__views.loginTable = Ti.UI.createTableView({
-        data: __alloyId17,
+        data: __alloyId10,
         id: "loginTable"
     });
     $.__views.winFacebook.add($.__views.loginTable);

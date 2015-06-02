@@ -33,15 +33,15 @@ function Controller() {
         id: "winDetail"
     });
     $.__views.winDetail && $.addTopLevelView($.__views.winDetail);
-    var __alloyId40 = [];
+    var __alloyId33 = [];
     $.__views.rowImage = Ti.UI.createTableViewRow({
         height: "auto",
         selectionStyle: "none",
         backgroundColor: "transparent",
         id: "rowImage"
     });
-    __alloyId40.push($.__views.rowImage);
-    var __alloyId41 = [];
+    __alloyId33.push($.__views.rowImage);
+    var __alloyId34 = [];
     $.__views.scrollableView = Ti.UI.createScrollableView({
         showPagingControl: true,
         pagingControlColor: Alloy.Globals.ThemeStyles.win.backgroundColor,
@@ -50,7 +50,7 @@ function Controller() {
         right: 14,
         top: 10,
         bottom: 10,
-        views: __alloyId41,
+        views: __alloyId34,
         id: "scrollableView"
     });
     $.__views.rowImage.add($.__views.scrollableView);
@@ -61,7 +61,7 @@ function Controller() {
         layout: "vertical",
         id: "rowTitle"
     });
-    __alloyId40.push($.__views.rowTitle);
+    __alloyId33.push($.__views.rowTitle);
     $.__views.lblName = Ti.UI.createLabel({
         color: Alloy.Globals.ThemeStyles.detail_title.color,
         font: Alloy.Globals.ThemeStyles.detail_title.font,
@@ -85,7 +85,7 @@ function Controller() {
         backgroundColor: "transparent",
         id: "rowDetail"
     });
-    __alloyId40.push($.__views.rowDetail);
+    __alloyId33.push($.__views.rowDetail);
     $.__views.lblDetail = Ti.UI.createLabel({
         color: Alloy.Globals.ThemeStyles.detail_body.color,
         left: 14,
@@ -101,7 +101,7 @@ function Controller() {
         height: "auto",
         backgroundColor: "transparent",
         separatorColor: "transparent",
-        data: __alloyId40,
+        data: __alloyId33,
         id: "detailTable"
     });
     $.__views.winDetail.add($.__views.detailTable);

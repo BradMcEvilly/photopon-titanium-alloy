@@ -135,7 +135,25 @@ var DefaultInput = {
 };
 
 
-
+var DefaultTextArea = {
+	color : Colors.black,
+	placeholderColor : Colors.darkGrey,
+	borderColor : Colors.grey,
+	borderStyle: Titanium.UI.INPUT_BORDERSTYLE_ROUNDED,
+	borderRadius:'8dp',
+	borderWidth:'0.5dp',
+	font : {
+		fontSize : '18dp',
+		fontFamily : Fonts.montserrat,
+		fontWeight : 'Bold'
+	},
+	
+	autocapitalization: false,
+	left : '4dp',
+	right : '4dp',
+	width : Ti.UI.FILL,
+	height : '45dp'
+};
 
 
 
@@ -295,6 +313,12 @@ exports.CreateInput = function(parent, hint) {
 	return inp;
 };
 
+exports.CreateTextArea = function(parent, hint) {
+	var inp = Titanium.UI.createTextArea(DefaultTextArea);
+	inp.hintText = hint;
+	parent.add(inp);
+	return inp;
+};
 
 exports.ShowLoading = function(message, timeout) {
 	var win = Ti.UI.createWindow();

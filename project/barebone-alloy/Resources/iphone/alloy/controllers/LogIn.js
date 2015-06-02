@@ -45,7 +45,7 @@ function Controller() {
     function displayErrorMessage(msg) {
         $.lblLogIn.setText(msg);
         setTimeout(function() {
-            $.lblLogIn.setText(args.title);
+            $.lblLogIn.setText("LOGIN");
         }, 5e3);
     }
     function isValid() {
@@ -99,13 +99,13 @@ function Controller() {
     });
     $.__views.winLogIn && $.addTopLevelView($.__views.winLogIn);
     winLogInOpenHandler ? $.__views.winLogIn.addEventListener("open", winLogInOpenHandler) : __defers["$.__views.winLogIn!open!winLogInOpenHandler"] = true;
-    var __alloyId31 = [];
+    var __alloyId24 = [];
     $.__views.row = Ti.UI.createTableViewRow({
         height: "auto",
         selectionStyle: "none",
         id: "row"
     });
-    __alloyId31.push($.__views.row);
+    __alloyId24.push($.__views.row);
     $.__views.emailField = Ti.UI.createTextField({
         autocapitalization: false,
         color: Alloy.Globals.ThemeStyles.textfield.color,
@@ -130,7 +130,7 @@ function Controller() {
         selectionStyle: "none",
         id: "row"
     });
-    __alloyId31.push($.__views.row);
+    __alloyId24.push($.__views.row);
     $.__views.passwordField = Ti.UI.createTextField({
         autocapitalization: false,
         color: Alloy.Globals.ThemeStyles.textfield.color,
@@ -156,7 +156,7 @@ function Controller() {
         selectionStyle: "none",
         id: "row"
     });
-    __alloyId31.push($.__views.row);
+    __alloyId24.push($.__views.row);
     $.__views.btnLogIn = Ti.UI.createView({
         top: Alloy.Globals.ThemeStyles.buttonPink.padding,
         left: Alloy.Globals.ThemeStyles.buttonPink.padding,
@@ -200,7 +200,7 @@ function Controller() {
         backgroundColor: "transparent",
         separatorStyle: "none",
         borderWidth: 0,
-        data: __alloyId31,
+        data: __alloyId24,
         id: "logInTable"
     });
     $.__views.winLogIn.add($.__views.logInTable);

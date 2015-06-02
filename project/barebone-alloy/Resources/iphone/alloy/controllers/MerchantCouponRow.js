@@ -65,7 +65,7 @@ function Controller() {
         id: "btnViewCoupon"
     });
     $.__views.MerchantCouponRow.add($.__views.btnViewCoupon);
-    $.__views.__alloyId34 = Ti.UI.createLabel({
+    $.__views.__alloyId27 = Ti.UI.createLabel({
         textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
         verticalAlign: Ti.UI.TEXT_VERTICAL_ALIGNMENT_CENTER,
         color: Alloy.Globals.ThemeStyles.button.color,
@@ -74,9 +74,9 @@ function Controller() {
         height: "auto",
         touchEnabled: false,
         text: ">",
-        id: "__alloyId34"
+        id: "__alloyId27"
     });
-    $.__views.btnViewCoupon.add($.__views.__alloyId34);
+    $.__views.btnViewCoupon.add($.__views.__alloyId27);
     exports.destroy = function() {};
     _.extend($, $.__views);
     var args = arguments[0] || {};

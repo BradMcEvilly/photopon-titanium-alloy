@@ -92,7 +92,7 @@ function submitBtnHandler(e){
 function displayErrorMessage(msg){  
 	$.lblLogIn.setText(msg);
 	setTimeout(function(){
-		$.lblLogIn.setText(args.title);
+		$.lblLogIn.setText("LOGIN");
 	}, 5000);
 	
 }

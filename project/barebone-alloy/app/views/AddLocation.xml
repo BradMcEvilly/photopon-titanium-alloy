@@ -1,3 +1,6 @@
+<Alloy><Window id="winAddLocation" title="Add Location"></Window></Alloy>
+
+<!--
 <Alloy>
 	<Window id="winAddLocation" title="Add Location">
 		<TableView id="locationForm">
@@ -26,3 +29,4 @@
 		</TableView>
 	</Window>
 </Alloy>
+-->

@@ -102,13 +102,13 @@ function Controller() {
     });
     $.__views.winSignUp && $.addTopLevelView($.__views.winSignUp);
     winSignUpOpenHandler ? $.__views.winSignUp.addEventListener("open", winSignUpOpenHandler) : __defers["$.__views.winSignUp!open!winSignUpOpenHandler"] = true;
-    var __alloyId42 = [];
+    var __alloyId35 = [];
     $.__views.row = Ti.UI.createTableViewRow({
         height: "auto",
         selectionStyle: "none",
         id: "row"
     });
-    __alloyId42.push($.__views.row);
+    __alloyId35.push($.__views.row);
     $.__views.emailField = Ti.UI.createTextField({
         autocapitalization: false,
         color: Alloy.Globals.ThemeStyles.textfield.color,
@@ -133,7 +133,7 @@ function Controller() {
         selectionStyle: "none",
         id: "row"
     });
-    __alloyId42.push($.__views.row);
+    __alloyId35.push($.__views.row);
     $.__views.passwordField = Ti.UI.createTextField({
         autocapitalization: false,
         color: Alloy.Globals.ThemeStyles.textfield.color,
@@ -159,7 +159,7 @@ function Controller() {
         selectionStyle: "none",
         id: "row"
     });
-    __alloyId42.push($.__views.row);
+    __alloyId35.push($.__views.row);
     $.__views.btnSignUp = Ti.UI.createView({
         top: Alloy.Globals.ThemeStyles.button.padding,
         left: Alloy.Globals.ThemeStyles.button.padding,
@@ -203,7 +203,7 @@ function Controller() {
         backgroundColor: "transparent",
         separatorStyle: "none",
         borderWidth: 0,
-        data: __alloyId42,
+        data: __alloyId35,
         id: "signUpTable"
     });
     $.__views.winSignUp.add($.__views.signUpTable);

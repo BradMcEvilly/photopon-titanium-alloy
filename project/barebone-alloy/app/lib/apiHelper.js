@@ -333,15 +333,8 @@ exports.GetAllFriends = function(callback, errorCallback) {
 			}
 			return;	
 		}
-		console.log("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&");
-		console.log(e);
-		console.log(e.users);
-		
+
 		Alloy.Globals.CachedFriends = e.users || {};
-		console.log(Alloy.Globals.CachedFriends);
-		
-		console.log("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&");
-		 
 		callback(e.users || {});
 	});
 };
@@ -416,7 +409,6 @@ exports.UploadPhoto = function(photo, callback, errorCallback) {
 	Cloud.Photos.create({
 		photo: photo
 	}, function (e) {
-		console.log(e);
 	    if (e.success) {
 	        var photo = e.photos[0];
 	        if (callback) {
@@ -453,7 +445,6 @@ exports.NewPhotopon = function(coupon, camPhoto, overlayPhoto, message, callback
 			}
 			return;	
 	    }
-	   	console.log(e);
 	   	callback(e.Photopon[0]);
 	});	
 };
@@ -493,6 +484,23 @@ exports.ChangePassword = function(newpassword, callback) {
 };
 
 
+
+exports.NewNotification = function(to, message, type) {
+	Cloud.Chats.create({
+	    to_ids: to,
+	    message: msg,
+	    custom_fields: {
+	    	type: type
+	    }
+	}, function (e) {
+	    if (!e.success) {
+	    	alert("Failed to send message");
+	    	return;
+	    }
+	    
+       
+	});
+};
 
 exports.NewMessage = function(recipients, type, message, callback) {
 	Cloud.Messages.create({

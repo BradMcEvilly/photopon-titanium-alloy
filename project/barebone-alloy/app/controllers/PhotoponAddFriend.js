@@ -19,7 +19,9 @@ row3.height = 80;
 var friendName = PUI.CreateInput(row1, "Friends Name");
 
 var addFriend = PUI.CreateButton(row2, "Add Friend", function() {
+	
 
+	NewNotification(addFriend.selid, UTL.userInfo().username + " added you!", "USER");
 
 });
 
@@ -37,6 +39,7 @@ friendName.addEventListener("change", function() {
 		
 		if (users.length == 1) {
 			addFriend.label.text = "Add " + users[0].username;
+			addFriend.selid = users[0].id;
 			fa.add(addFriend.label,'fa-plus');
 		} else {
 			addFriend.label.text = "Type Name";

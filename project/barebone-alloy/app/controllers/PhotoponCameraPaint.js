@@ -96,8 +96,10 @@ doneButton.addEventListener('click', function() {
 								numSent += 1;
 								if (numSent == selectedUsers.length) {
 									alert("Congratultaions! Photopon was sent.");
+									
 								}
 							});
+							NewNotification(selectedUsers[i].id, "New Photopon from " + UTL.userInfo().username, "PHOTOPON");
 						}
 						
 						

@@ -1,9 +1,64 @@
-module.exports = [{"isClass":true,"priority":10000.0001,"key":"big-button","style":{top:Alloy.Globals.ThemeStyles.button.padding,left:Alloy.Globals.ThemeStyles.button.padding,right:Alloy.Globals.ThemeStyles.button.padding,width:Ti.UI.FILL,height:Alloy.Globals.ThemeStyles.buttonPurple.height,color:Alloy.Globals.ThemeStyles.buttonPurple.color,backgroundColor:Alloy.Globals.ThemeStyles.buttonPurple.backgroundColor,borderColor:Alloy.Globals.ThemeStyles.buttonPurple.borderColor,borderStyle:Alloy.Globals.ThemeStyles.buttonPurple.borderStyle,borderRadius:Alloy.Globals.ThemeStyles.buttonPurple.borderRadius,borderWidth:Alloy.Globals.ThemeStyles.buttonPurple.borderWidth,font:Alloy.Globals.ThemeStyles.buttonPurple.font,}},{"isClass":true,"priority":10000.0002,"key":"big-button-label","style":{textAlign:Ti.UI.TEXT_ALIGNMENT_CENTER,verticalAlign:Ti.UI.TEXT_VERTICAL_ALIGNMENT_CENTER,color:Alloy.Globals.ThemeStyles.button.color,font:Alloy.Globals.ThemeStyles.button.font,width:"auto",height:"auto",touchEnabled:false,}},{"isClass":true,"priority":10000.0003,"key":"big-input","style":{autocapitalization:false,color:Alloy.Globals.ThemeStyles.textfield.color,height:Alloy.Globals.ThemeStyles.textfield.height,top:Alloy.Globals.ThemeStyles.button.padding,left:Alloy.Globals.ThemeStyles.button.padding,right:Alloy.Globals.ThemeStyles.button.padding,width:Ti.UI.FILL,font:Alloy.Globals.ThemeStyles.textfield.font,paddingLeft:Alloy.Globals.ThemeStyles.button.padding,borderColor:Alloy.Globals.ThemeStyles.textfield.borderColor,borderStyle:Alloy.Globals.ThemeStyles.textfield.borderStyle,borderRadius:Alloy.Globals.ThemeStyles.textfield.borderRadius,}},{"isClass":true,"priority":10000.0004,"key":"row-noselect","style":{height:"auto",selectionStyle:"none",}}];function WPATH(s) {
-	var index = s.lastIndexOf('/');
-	var path = index === -1 ?
-		'com.mattmcfarland.fontawesome/' + s :
-		s.substring(0,index) + '/com.mattmcfarland.fontawesome/' + s.substring(index+1);
-
-	// TODO: http://jira.appcelerator.org/browse/ALOY-296
-	return OS_ANDROID && path.indexOf('/') !== 0 ? '/' + path : path;
+function WPATH(s) {
+    var index = s.lastIndexOf("/");
+    var path = -1 === index ? "com.mattmcfarland.fontawesome/" + s : s.substring(0, index) + "/com.mattmcfarland.fontawesome/" + s.substring(index + 1);
+    return path;
 }
+
+module.exports = [ {
+    isClass: true,
+    priority: 10000.0001,
+    key: "big-button",
+    style: {
+        top: Alloy.Globals.ThemeStyles.button.padding,
+        left: Alloy.Globals.ThemeStyles.button.padding,
+        right: Alloy.Globals.ThemeStyles.button.padding,
+        width: Ti.UI.FILL,
+        height: Alloy.Globals.ThemeStyles.buttonPurple.height,
+        color: Alloy.Globals.ThemeStyles.buttonPurple.color,
+        backgroundColor: Alloy.Globals.ThemeStyles.buttonPurple.backgroundColor,
+        borderColor: Alloy.Globals.ThemeStyles.buttonPurple.borderColor,
+        borderStyle: Alloy.Globals.ThemeStyles.buttonPurple.borderStyle,
+        borderRadius: Alloy.Globals.ThemeStyles.buttonPurple.borderRadius,
+        borderWidth: Alloy.Globals.ThemeStyles.buttonPurple.borderWidth,
+        font: Alloy.Globals.ThemeStyles.buttonPurple.font
+    }
+}, {
+    isClass: true,
+    priority: 10000.0002,
+    key: "big-button-label",
+    style: {
+        textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
+        verticalAlign: Ti.UI.TEXT_VERTICAL_ALIGNMENT_CENTER,
+        color: Alloy.Globals.ThemeStyles.button.color,
+        font: Alloy.Globals.ThemeStyles.button.font,
+        width: "auto",
+        height: "auto",
+        touchEnabled: false
+    }
+}, {
+    isClass: true,
+    priority: 10000.0003,
+    key: "big-input",
+    style: {
+        autocapitalization: false,
+        color: Alloy.Globals.ThemeStyles.textfield.color,
+        height: Alloy.Globals.ThemeStyles.textfield.height,
+        top: Alloy.Globals.ThemeStyles.button.padding,
+        left: Alloy.Globals.ThemeStyles.button.padding,
+        right: Alloy.Globals.ThemeStyles.button.padding,
+        width: Ti.UI.FILL,
+        font: Alloy.Globals.ThemeStyles.textfield.font,
+        paddingLeft: Alloy.Globals.ThemeStyles.button.padding,
+        borderColor: Alloy.Globals.ThemeStyles.textfield.borderColor,
+        borderStyle: Alloy.Globals.ThemeStyles.textfield.borderStyle,
+        borderRadius: Alloy.Globals.ThemeStyles.textfield.borderRadius
+    }
+}, {
+    isClass: true,
+    priority: 10000.0004,
+    key: "row-noselect",
+    style: {
+        height: "auto",
+        selectionStyle: "none"
+    }
+} ];

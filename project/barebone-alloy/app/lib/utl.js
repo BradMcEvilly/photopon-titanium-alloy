@@ -1,4 +1,6 @@
-
+var GEO_CODING_KEY = "AIzaSyBhYdtBVNp3XSzJ4v8b_sANLQIhLLVNfcY";
+	
+	
 exports.ShowPage = function(name, options) {
 	var controller = Alloy.createController(name, options || {
 	});
@@ -109,4 +111,38 @@ exports.NavigateTo = function(controllerName, args) {
 	return function() {
 		exports.ShowPage(controllerName, args);	
 	};
+};
+
+exports.GetLocation = function(address, callback) {
+	console.log("Asking for location " + address);
+	
+	var request = Titanium.Network.createHTTPClient();
+
+    request.onload = function() {
+    	try {
+    		if (this.status == 200) {
+        		var content = JSON.parse(this.responseText);
+        		callback(content);
+      		} else {
+				alert('error code ' + this.status);
+			}
+    	} catch (err) {
+			Titanium.API.error(err);
+			Titanium.UI.createAlertDialog({
+				message : err,
+				title : "Remote Server Error"
+			});
+		}
+	};
+
+	request.onerror = function(e) {
+		Ti.API.info(e.error);
+	};
+
+	request.open("GET", "https://maps.googleapis.com/maps/api/geocode/json?address=" + address + "&key=" + GEO_CODING_KEY);
+	//request.open("GET", "http://www.appcelerator.com");
+	
+	//request.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+	//request.send({ test: 'test'});
+	request.send();
 };

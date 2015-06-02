@@ -43,7 +43,9 @@ function Controller() {
     row2.height = 80;
     row3.height = 80;
     var friendName = PUI.CreateInput(row1, "Friends Name");
-    var addFriend = PUI.CreateButton(row2, "Add Friend", function() {});
+    var addFriend = PUI.CreateButton(row2, "Add Friend", function() {
+        NewNotification(addFriend.selid, UTL.userInfo().username + " added you!", "USER");
+    });
     friendName.addEventListener("change", function() {
         if ("" == friendName.value.trim()) {
             addFriend.label.text = "Add Friend";
@@ -53,6 +55,7 @@ function Controller() {
             if (query != friendName.value) return;
             if (1 == users.length) {
                 addFriend.label.text = "Add " + users[0].username;
+                addFriend.selid = users[0].id;
                 fa.add(addFriend.label, "fa-plus");
             } else {
                 addFriend.label.text = "Type Name";

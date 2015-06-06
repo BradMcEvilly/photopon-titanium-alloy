@@ -279,6 +279,9 @@ exports.CreateTable = function(parent) {
 
 exports.CreateRow = function(table) {
 	var row = Ti.UI.createTableViewRow();
+	row.height = 'auto';
+	row.selectionStyle = 'none';
+	
 	table.appendRow(row);
 	return row;
 };

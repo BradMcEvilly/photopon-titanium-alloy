@@ -26,7 +26,7 @@ $.winMerchantLocations.addEventListener("open", function() {
 
 
 $.btnNewLocation.addEventListener("click", function() {
-	$.winMerchantLocations.close();
+//	$.winMerchantLocations.close();
 	UTL.ShowPage("AddLocation");
 
 });

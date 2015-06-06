@@ -95,7 +95,6 @@ function Controller() {
         });
     });
     $.btnNewLocation.addEventListener("click", function() {
-        $.winMerchantLocations.close();
         UTL.ShowPage("AddLocation");
     });
     null != args.callback && ($.btnNewLocation.visible = false);

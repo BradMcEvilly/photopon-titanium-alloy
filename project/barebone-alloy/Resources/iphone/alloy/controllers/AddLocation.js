@@ -40,14 +40,20 @@ function Controller() {
     var win = PUI.DecorateWindow($.winAddLocation);
     PUI.Awesomize(win);
     var table = PUI.CreateTable(win);
+    table.top = 20;
+    PUI.CreateRow(table);
+    var row0 = PUI.CreateRow(table);
     var row1 = PUI.CreateRow(table);
     var row2 = PUI.CreateRow(table);
     var row3 = PUI.CreateRow(table);
-    row1.height = 110;
+    var row4 = PUI.CreateRow(table);
+    row0.height = 60;
+    row1.height = 60;
     row2.height = 80;
     row3.height = 80;
-    var addressField = PUI.CreateTextArea(row1, "Enter Address");
-    addressField.height = 100;
+    row4.height = 80;
+    PUI.CreateInput(row0, "Enter Name");
+    var addressField = PUI.CreateInput(row1, "Enter Address");
     var locationImage = Titanium.UI.createImageView({
         image: "/images/PhotoponNavBarBtnInfo.png",
         width: 60,
@@ -56,18 +62,52 @@ function Controller() {
     locationImage.addEventListener("click", function() {
         UTL.UploadPhoto(function(photo) {
             win.photo = photo.id;
-            $.locationimg.image = photo.urls.square_75;
+            locationImage.image = photo.urls.square_75;
         });
     });
     row2.add(locationImage);
+    var promptLocation = function(address) {
+        var pwin = Titanium.UI.createWindow();
+        PUI.DecorateWindow(pwin);
+        pwin.title = "Choose Address";
+        var ptable = PUI.CreateTable(pwin);
+        ptable.top = 20;
+        for (var i = 0; i < Math.min(10, address.length); ++i) {
+            var prow = PUI.CreateRow(ptable);
+            prow.height = 60;
+            var plabel = PUI.CreateLabel(prow, address[i].formatted_address);
+            plabel.wordWrap = true;
+            plabel.color = "#000000";
+            prow.locationData = address[i];
+            prow.addEventListener("click", function(event) {
+                console.log(event.row.locationData);
+                addressField.value = event.row.locationData.formatted_address;
+                pwin.close();
+            });
+        }
+        Alloy.Globals.navGroup.openWindow(pwin, {
+            animated: true
+        });
+    };
     PUI.CreateButton(row3, "Add Location", function() {
         var loader = PUI.ShowLoading("Uploading...");
         UTL.GetLocation(addressField.value, function(locInfo) {
-            console.log(locInfo);
             loader.close();
+            console.log(locInfo);
+            if (0 == locInfo.results.length) {
+                alert("Address not found.");
+                return;
+            }
+            if (1 == locInfo.results.length) {
+                var loc = locInfo.results[0];
+                loc.geometry && loc.geometry.location ? console.log(loc.geometry.location) : alert("Can not resolve location");
+                return;
+            }
+            promptLocation(locInfo.results);
             for (var i = 0; i < locInfo.results.length; ++i) console.log(locInfo.results[i].formatted_address);
         });
     });
+    PUI.CreateButton(row4, "Show Map", function() {});
     _.extend($, exports);
 }
 

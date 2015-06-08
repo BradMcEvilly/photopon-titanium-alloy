@@ -41,7 +41,7 @@ function Controller() {
     $.__views.winPickLocation.add($.__views.mapView);
     exports.destroy = function() {};
     _.extend($, $.__views);
-    arguments[0] || {};
+    var args = arguments[0] || {};
     var Map = require("ti.map");
     $.winPickLocation.addEventListener("open", function() {
         UTL.defaultTitle({
@@ -74,8 +74,13 @@ function Controller() {
             console.log(e);
         });
         mapview.addEventListener("click", function(e) {
-            console.log(e);
-            console.log(e.annotation.getLongitude(), " ", e.annotation.getLatitude());
+            if ("rightButton" == e.clicksource) {
+                args.callback({
+                    lng: e.annotation.getLongitude(),
+                    lat: e.annotation.getLatitude()
+                });
+                $.winPickLocation.close();
+            }
         });
         $.mapView.add(mapview);
     });

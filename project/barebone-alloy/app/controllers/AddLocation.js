@@ -6,7 +6,6 @@ var fa = PUI.Awesomize(win);
 
 
 var table = PUI.CreateTable(win);
-table.top = 20;
 
 var rowDummy = PUI.CreateRow(table);
 var row0 = PUI.CreateRow(table);
@@ -14,13 +13,16 @@ var row1 = PUI.CreateRow(table);
 var row2 = PUI.CreateRow(table);
 var row3 = PUI.CreateRow(table);
 var row4 = PUI.CreateRow(table);
+var row5 = PUI.CreateRow(table);
 
 
 row0.height = 60;
 row1.height = 60;
 row2.height = 80;
-row3.height = 80;
-row4.height = 80;
+
+row3.height = 66;
+row4.height = 66;
+row5.height = 66;
 
 
 var nameField = PUI.CreateInput(row0, "Enter Name");
@@ -62,9 +64,13 @@ var promptLocation = function(address) {
 		
 		prow.locationData = address[i];
 		prow.addEventListener("click", function(event) {
-			console.log(event.row.locationData);
-			addressField.value = event.row.locationData.formatted_address;
-			pwin.close();
+			var loc = event.row.locationData;
+			if (loc.geometry && loc.geometry.location) {
+				win.location = loc.geometry.location;
+				addressField.value = event.row.locationData.formatted_address;
+				pwin.close();	
+			}
+			
 		});
 		
 	};
@@ -77,8 +83,8 @@ var promptLocation = function(address) {
 
 
 
-var addLocation = PUI.CreateButton(row3, "Add Location", function() {
-	var loader = PUI.ShowLoading("Uploading...");
+var addLocation = PUI.CreateButton(row3, "Check address", function() {
+	var loader = PUI.ShowLoading("Searching address...");
 	
 	UTL.GetLocation(addressField.value, function(locInfo) {
 		
@@ -93,7 +99,7 @@ var addLocation = PUI.CreateButton(row3, "Add Location", function() {
 		if (locInfo.results.length == 1) {
 			var loc = locInfo.results[0];
 			if (loc.geometry && loc.geometry.location) {
-				console.log(loc.geometry.location);
+				win.location = loc.geometry.location;
 			} else {
 				alert("Can not resolve location");
 			}
@@ -113,45 +119,32 @@ var addLocation = PUI.CreateButton(row3, "Add Location", function() {
 
 
 var pickOnMap = PUI.CreateButton(row4, "Show Map", function() {
-
-});
-
-
-
-
-
-
-/*
-
-var args = arguments[0] || {};
-
-$.winAddLocation.addEventListener("open", function() {
-	$.locationimg.image = "/images/PhotoponNavBarBtnInfo.png";	
-});
-
-$.locationimg.addEventListener("click", function() {
-	
-	UTL.UploadPhoto(function(photo) {
-		$.winAddLocation.photo = photo.id;
-		$.locationimg.image = photo.urls.square_75;
+	UTL.ShowPage("PickLocation", {
+		callback: function(location) {
+			addressField.value = "@" + location.lat + "," + location.lng;
+			win.location = location;
+		}
 	});
-	
-	
-		
-	$.btnAddLocation.addEventListener("click", function() {
-		
-		API.NewLocation({
-			name: $.nameField.value,
-			city: $.cityField.value,
-			postal_code: $.zipField.value,
-			address: $.addressField.value,
-			photo_id: $.winAddLocation.photo
-		}, function() {
-			alert("Location added!");
-			$.winAddLocation.close();
-			UTL.ShowPage("MerchantLocations");
-		}, console.error);
-	});
-
 });
-*/
+
+
+
+var addLocation = PUI.CreateButton(row5, "Add Location", function() {
+	console.log(nameField.value);
+	console.log(addressField.value);
+	console.log(win.location);
+	console.log(win.photo);
+	
+	API.NewLocation({
+		name: nameField.value,
+		address: addressField.value,
+		photo_id: win.photo,
+		latitude: win.location.lat,
+		longitude: win.location.lng
+	}, function() {
+		alert("Location added!");
+		win.close();
+	}, alert);
+		
+});
+

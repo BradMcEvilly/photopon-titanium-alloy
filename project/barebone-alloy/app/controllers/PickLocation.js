@@ -41,8 +41,15 @@ $.winPickLocation.addEventListener('open', function(e) {
 	
 	
 	mapview.addEventListener('click', function(e){
-		console.log(e);
-	    console.log(e.annotation.getLongitude(), " ", e.annotation.getLatitude());
+
+	    if (e.clicksource == "rightButton") {
+		    args.callback({
+		    	lng: e.annotation.getLongitude(),
+				lat: e.annotation.getLatitude()
+		    });
+		    $.winPickLocation.close();	
+	    }
+	    
 	}); 
 	//mapview.bottom = 150;
 

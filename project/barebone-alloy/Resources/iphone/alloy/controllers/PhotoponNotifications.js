@@ -37,7 +37,6 @@ function Controller() {
     var table = PUI.CreateTable(win);
     table.top = 40;
     table.bottom = 0;
-    var AddNewNotification = function() {};
     var updateTimer = null;
     var lastUpdate = 0;
     var UpdateNotificationsMessages = function() {
@@ -56,8 +55,9 @@ function Controller() {
             for (var i = e.chats.length - 1; i >= 0; i--) {
                 var chat = e.chats[i];
                 lastUpdate = chat.updated_at;
-                AddNewNotification(chat);
+                console.log(chat.from.username, chat.message);
             }
+            console.log(e.chats);
         });
     };
     win.addEventListener("open", function() {
@@ -67,7 +67,6 @@ function Controller() {
             updateTimer = null;
         }
         lastUpdate = 0;
-        UTL.GetLocation("10 River Road, Roosevelt Island");
         console.log("Creating update timer");
         updateTimer = setInterval(UpdateNotificationsMessages, 3e3);
         UpdateNotificationsMessages();

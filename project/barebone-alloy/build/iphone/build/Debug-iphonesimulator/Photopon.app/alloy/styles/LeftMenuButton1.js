@@ -1,1 +1,0 @@
-/Users/Hayk/photopon/repo/project/barebone-alloy/Resources/iphone/alloy/styles/LeftMenuButton1.js

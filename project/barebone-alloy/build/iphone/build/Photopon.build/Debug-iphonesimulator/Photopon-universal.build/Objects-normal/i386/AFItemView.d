@@ -1,4 +1,0 @@
-dependencies: \
-  /Users/Hayk/photopon/repo/project/barebone-alloy/build/iphone/Classes/AFOpenFlow/AFItemView.m \
-  /Users/Hayk/photopon/repo/project/barebone-alloy/build/iphone/Classes/AFOpenFlow/AFItemView.h \
-  /Users/Hayk/photopon/repo/project/barebone-alloy/build/iphone/Classes/AFOpenFlow/AFOpenFlowConstants.h

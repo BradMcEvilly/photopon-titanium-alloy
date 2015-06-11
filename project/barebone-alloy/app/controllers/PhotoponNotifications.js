@@ -53,9 +53,11 @@ var UpdateNotificationsMessages = function() {
 			var chat = e.chats[i];
 			lastUpdate = chat.updated_at;
 
-			AddNewNotification(chat);
+			//AddNewNotification(chat);
+			console.log(chat.from.username, chat.message);
 		}
-
+		
+		console.log(e.chats);
 	});
 };
 
@@ -67,8 +69,6 @@ win.addEventListener("open", function() {
 	}
 
 	lastUpdate = 0;
-
-	UTL.GetLocation("10 River Road, Roosevelt Island");
 
 	console.log("Creating update timer");
 	updateTimer = setInterval(UpdateNotificationsMessages, 3000);

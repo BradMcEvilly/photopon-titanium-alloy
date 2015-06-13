@@ -30,15 +30,15 @@
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		2412F467115C296300454E5B /* TiMediaVideoPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2412F465115C296300454E5B /* TiMediaVideoPlayer.m */; };
 		242E8E3111BA39FD0046A0D0 /* libTiCore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 242E8E3011BA39FD0046A0D0 /* libTiCore.a */; };
-		E911C778AE2849B89DDFFD19 /* libti.paint.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ED7E2703AC064576B902A3D5 /* libti.paint.a */; };
-		C2670451D2314329A1E1ADD8 /* libcom.appcelerator.urlsession.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BAACC4140E545BAB8B6D421 /* libcom.appcelerator.urlsession.a */; };
-		1738104793E149A0AB166C68 /* libfacebook.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 285200C1FF2141479DE40EB8 /* libfacebook.a */; };
-		DDA1D50FF13A4FC2A877FB9B /* libti.map.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 39F8783B1C5D4A22824B4B3F /* libti.map.a */; };
+		DE9C18E8B6EB4009B3843C8A /* libti.paint.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A19635DEFC74290A50CAEE1 /* libti.paint.a */; };
+		EC637EF767E840449D4B7DA3 /* libcom.appcelerator.urlsession.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3538DB08FC614DFDB8FA91AA /* libcom.appcelerator.urlsession.a */; };
+		A28049B2AF234ADE9E419EBD /* libfacebook.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BA480BBFBCA4610A41412CE /* libfacebook.a */; };
+		C9101ABC541C4592A4C3E05E /* libti.map.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DFE35661394D491B883D6965 /* libti.map.a */; };
 		242E8E3211BA39FE0046A0D0 /* libTiCore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 242E8E3011BA39FD0046A0D0 /* libTiCore.a */; };
-		AA97DF05932D44E7A37358B9 /* libti.paint.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ED7E2703AC064576B902A3D5 /* libti.paint.a */; };
-		290B3052B6114E4E87A1A5DD /* libcom.appcelerator.urlsession.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BAACC4140E545BAB8B6D421 /* libcom.appcelerator.urlsession.a */; };
-		2F1E6A892E004186A2629E5F /* libfacebook.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 285200C1FF2141479DE40EB8 /* libfacebook.a */; };
-		8D4EF3E51F534FAF8C87D36E /* libti.map.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 39F8783B1C5D4A22824B4B3F /* libti.map.a */; };
+		06684DD84B2C449380CE663E /* libti.paint.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A19635DEFC74290A50CAEE1 /* libti.paint.a */; };
+		1B34C3B48101452E99BD8B9E /* libcom.appcelerator.urlsession.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3538DB08FC614DFDB8FA91AA /* libcom.appcelerator.urlsession.a */; };
+		16ECBCFCAAA84F89862E8B0E /* libfacebook.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BA480BBFBCA4610A41412CE /* libfacebook.a */; };
+		D60C0E7494154F76AEE85BDA /* libti.map.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DFE35661394D491B883D6965 /* libti.map.a */; };
 		242E967711BAD2F20046A0D0 /* AsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 242E967411BAD2F20046A0D0 /* AsyncSocket.m */; };
 		242E967811BAD2F20046A0D0 /* AsyncUdpSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 242E967611BAD2F20046A0D0 /* AsyncUdpSocket.m */; };
 		242E967911BAD2F20046A0D0 /* AsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 242E967411BAD2F20046A0D0 /* AsyncSocket.m */; };
@@ -905,10 +905,10 @@
 		DABB37B412E8CB280026A6EA /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 24EB0A57111E1BAE001DC2D1 /* libxml2.dylib */; };
 		DABB37B512E8CB280026A6EA /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24597034118FF66300519F79 /* StoreKit.framework */; };
 		DABB37B612E8CB280026A6EA /* libTiCore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 242E8E3011BA39FD0046A0D0 /* libTiCore.a */; };
-		D9D70FA832DE46A69290E58A /* libti.paint.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ED7E2703AC064576B902A3D5 /* libti.paint.a */; };
-		CDBE4441361C417893C6770E /* libcom.appcelerator.urlsession.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BAACC4140E545BAB8B6D421 /* libcom.appcelerator.urlsession.a */; };
-		597796F1378B48118486CCDF /* libfacebook.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 285200C1FF2141479DE40EB8 /* libfacebook.a */; };
-		FC0E52FC83C14C07A7F80592 /* libti.map.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 39F8783B1C5D4A22824B4B3F /* libti.map.a */; };
+		5572226707534ACF84975CF8 /* libti.paint.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A19635DEFC74290A50CAEE1 /* libti.paint.a */; };
+		E09C4C6765124ECAA503C9A0 /* libcom.appcelerator.urlsession.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3538DB08FC614DFDB8FA91AA /* libcom.appcelerator.urlsession.a */; };
+		E116E8F5137C452B84E451B6 /* libfacebook.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BA480BBFBCA4610A41412CE /* libfacebook.a */; };
+		D2B4A97086784127B9C7E6A9 /* libti.map.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DFE35661394D491B883D6965 /* libti.map.a */; };
 		DABB37B712E8CB280026A6EA /* libtiverify.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 24D5C75811E6364F00F097E2 /* libtiverify.a */; };
 		DABDEB08128B5A8F00C85FEA /* AudioStreamerCUR.m in Sources */ = {isa = PBXBuildFile; fileRef = DA9FF582128A1F3600457759 /* AudioStreamerCUR.m */; };
 		DABF3ECF134D210400836137 /* TiBuffer.m in Sources */ = {isa = PBXBuildFile; fileRef = DABF3ECE134D210400836137 /* TiBuffer.m */; };
@@ -958,10 +958,10 @@
 		241EAA21118AB3BB0081A5BE /* defines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = defines.h; path = Classes/defines.h; sourceTree = SOURCE_ROOT; };
 		241EAEC5118E2BA90081A5BE /* project.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = project.xcconfig; sourceTree = "<group>"; };
 		242E8E3011BA39FD0046A0D0 /* libTiCore.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libTiCore.a; path = lib/libTiCore.a; sourceTree = SOURCE_ROOT; };
-		ED7E2703AC064576B902A3D5 /* libti.paint.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libti.paint.a; path = "/Users/Hayk/Library/Application Support/Titanium/modules/iphone/ti.paint/1.3/libti.paint.a"; sourceTree = "<absolute>"; };
-		1BAACC4140E545BAB8B6D421 /* libcom.appcelerator.urlsession.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcom.appcelerator.urlsession.a; path = "/Users/Hayk/Library/Application Support/Titanium/modules/iphone/com.appcelerator.urlSession/1.1.0/libcom.appcelerator.urlsession.a"; sourceTree = "<absolute>"; };
-		285200C1FF2141479DE40EB8 /* libfacebook.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libfacebook.a; path = "/Users/Hayk/Library/Application Support/Titanium/modules/iphone/facebook/3.2.0/libfacebook.a"; sourceTree = "<absolute>"; };
-		39F8783B1C5D4A22824B4B3F /* libti.map.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libti.map.a; path = "/Users/Hayk/Library/Application Support/Titanium/modules/iphone/ti.map/2.2.0/libti.map.a"; sourceTree = "<absolute>"; };
+		0A19635DEFC74290A50CAEE1 /* libti.paint.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libti.paint.a; path = "/Users/Hayk/Library/Application Support/Titanium/modules/iphone/ti.paint/1.3/libti.paint.a"; sourceTree = "<absolute>"; };
+		3538DB08FC614DFDB8FA91AA /* libcom.appcelerator.urlsession.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcom.appcelerator.urlsession.a; path = "/Users/Hayk/Library/Application Support/Titanium/modules/iphone/com.appcelerator.urlSession/1.1.0/libcom.appcelerator.urlsession.a"; sourceTree = "<absolute>"; };
+		2BA480BBFBCA4610A41412CE /* libfacebook.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libfacebook.a; path = "/Users/Hayk/Library/Application Support/Titanium/modules/iphone/facebook/3.2.0/libfacebook.a"; sourceTree = "<absolute>"; };
+		DFE35661394D491B883D6965 /* libti.map.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libti.map.a; path = "/Users/Hayk/Library/Application Support/Titanium/modules/iphone/ti.map/2.2.0/libti.map.a"; sourceTree = "<absolute>"; };
 		242E95C811BAC8B40046A0D0 /* TiDebugger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TiDebugger.h; path = Classes/TiDebugger.h; sourceTree = SOURCE_ROOT; };
 		242E967311BAD2F20046A0D0 /* AsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AsyncSocket.h; path = Classes/AsyncSocket.h; sourceTree = SOURCE_ROOT; };
 		242E967411BAD2F20046A0D0 /* AsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AsyncSocket.m; path = Classes/AsyncSocket.m; sourceTree = SOURCE_ROOT; };
@@ -1594,10 +1594,10 @@
 				24EB0A58111E1BAE001DC2D1 /* libxml2.dylib in Frameworks */,
 				24597035118FF66300519F79 /* StoreKit.framework in Frameworks */,
 				242E8E3111BA39FD0046A0D0 /* libTiCore.a in Frameworks */,
-				E911C778AE2849B89DDFFD19 /* libti.paint.a in Frameworks */,
-				C2670451D2314329A1E1ADD8 /* libcom.appcelerator.urlsession.a in Frameworks */,
-				1738104793E149A0AB166C68 /* libfacebook.a in Frameworks */,
-				DDA1D50FF13A4FC2A877FB9B /* libti.map.a in Frameworks */,
+				DE9C18E8B6EB4009B3843C8A /* libti.paint.a in Frameworks */,
+				EC637EF767E840449D4B7DA3 /* libcom.appcelerator.urlsession.a in Frameworks */,
+				A28049B2AF234ADE9E419EBD /* libfacebook.a in Frameworks */,
+				C9101ABC541C4592A4C3E05E /* libti.map.a in Frameworks */,
 				B606EF60190B42FB00663EFC /* libAPSHTTPClient.a in Frameworks */,
 				242EA11611BD956F0046A0D0 /* ExternalAccessory.framework in Frameworks */,
 				24D5C75911E6364F00F097E2 /* libtiverify.a in Frameworks */,
@@ -1637,10 +1637,10 @@
 				24D8E4AB119B9D8A00F8CAA6 /* libxml2.dylib in Frameworks */,
 				24D8E4AC119B9D8A00F8CAA6 /* StoreKit.framework in Frameworks */,
 				242E8E3211BA39FE0046A0D0 /* libTiCore.a in Frameworks */,
-				AA97DF05932D44E7A37358B9 /* libti.paint.a in Frameworks */,
-				290B3052B6114E4E87A1A5DD /* libcom.appcelerator.urlsession.a in Frameworks */,
-				2F1E6A892E004186A2629E5F /* libfacebook.a in Frameworks */,
-				8D4EF3E51F534FAF8C87D36E /* libti.map.a in Frameworks */,
+				06684DD84B2C449380CE663E /* libti.paint.a in Frameworks */,
+				1B34C3B48101452E99BD8B9E /* libcom.appcelerator.urlsession.a in Frameworks */,
+				16ECBCFCAAA84F89862E8B0E /* libfacebook.a in Frameworks */,
+				D60C0E7494154F76AEE85BDA /* libti.map.a in Frameworks */,
 				24D5C75A11E6364F00F097E2 /* libtiverify.a in Frameworks */,
 				DAA4B2AF134E3DBD00AB6011 /* libti_ios_debugger.a in Frameworks */,
 				DADE76D613D65C6F0079FC75 /* libicucore.dylib in Frameworks */,
@@ -1680,10 +1680,10 @@
 				DABB37B412E8CB280026A6EA /* libxml2.dylib in Frameworks */,
 				DABB37B512E8CB280026A6EA /* StoreKit.framework in Frameworks */,
 				DABB37B612E8CB280026A6EA /* libTiCore.a in Frameworks */,
-				D9D70FA832DE46A69290E58A /* libti.paint.a in Frameworks */,
-				CDBE4441361C417893C6770E /* libcom.appcelerator.urlsession.a in Frameworks */,
-				597796F1378B48118486CCDF /* libfacebook.a in Frameworks */,
-				FC0E52FC83C14C07A7F80592 /* libti.map.a in Frameworks */,
+				5572226707534ACF84975CF8 /* libti.paint.a in Frameworks */,
+				E09C4C6765124ECAA503C9A0 /* libcom.appcelerator.urlsession.a in Frameworks */,
+				E116E8F5137C452B84E451B6 /* libfacebook.a in Frameworks */,
+				D2B4A97086784127B9C7E6A9 /* libti.map.a in Frameworks */,
 				DABB37B712E8CB280026A6EA /* libtiverify.a in Frameworks */,
 				DAA4B2B0134E3DBD00AB6011 /* libti_ios_debugger.a in Frameworks */,
 				DADE76D713D65C7D0079FC75 /* libicucore.dylib in Frameworks */,
@@ -2776,10 +2776,10 @@
 				DAA4B2AD134E3DBD00AB6011 /* libti_ios_debugger.a */,
 				24D5C75811E6364F00F097E2 /* libtiverify.a */,
 				242E8E3011BA39FD0046A0D0 /* libTiCore.a */,
-				ED7E2703AC064576B902A3D5 /* libti.paint.a */,
-				1BAACC4140E545BAB8B6D421 /* libcom.appcelerator.urlsession.a */,
-				285200C1FF2141479DE40EB8 /* libfacebook.a */,
-				39F8783B1C5D4A22824B4B3F /* libti.map.a */,
+				0A19635DEFC74290A50CAEE1 /* libti.paint.a */,
+				3538DB08FC614DFDB8FA91AA /* libcom.appcelerator.urlsession.a */,
+				2BA480BBFBCA4610A41412CE /* libfacebook.a */,
+				DFE35661394D491B883D6965 /* libti.map.a */,
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
 				288765FC0DF74451002DB57D /* CoreGraphics.framework */,

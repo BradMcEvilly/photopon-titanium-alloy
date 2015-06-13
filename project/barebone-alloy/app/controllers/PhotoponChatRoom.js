@@ -61,7 +61,7 @@ var send = PUI.CreateButton(win, "", function() {
 	    
         for (var i = 0; i < e.chats.length; i++) {
             var chat = e.chats[i];
-            AddNewMessage(chat.from, chat.message);
+           // AddNewMessage(chat.from, chat.message);
         }
    
 	});

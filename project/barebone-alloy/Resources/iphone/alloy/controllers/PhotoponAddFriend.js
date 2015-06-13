@@ -44,7 +44,14 @@ function Controller() {
     row3.height = 80;
     var friendName = PUI.CreateInput(row1, "Friends Name");
     var addFriend = PUI.CreateButton(row2, "Add Friend", function() {
-        NewNotification(addFriend.selid, UTL.userInfo().username + " added you!", "USER");
+        if (!addFriend.selid) return;
+        API.AddFriend(addFriend.selid, function() {
+            API.NewNotification(addFriend.selid, UTL.userInfo().username + " added you!", "USER");
+            alert("You have added " + friendName.value);
+            addFriend.selid = null;
+            friendName.value = "";
+            addFriend.label.text = "Add Friend";
+        });
     });
     friendName.addEventListener("change", function() {
         if ("" == friendName.value.trim()) {
@@ -52,7 +59,10 @@ function Controller() {
             return;
         }
         API.SearchUser(friendName.value, function(users, query) {
-            if (query != friendName.value) return;
+            if (query != friendName.value) {
+                addFriend.selid = null;
+                return;
+            }
             if (1 == users.length) {
                 addFriend.label.text = "Add " + users[0].username;
                 addFriend.selid = users[0].id;

@@ -19,10 +19,18 @@ row3.height = 80;
 var friendName = PUI.CreateInput(row1, "Friends Name");
 
 var addFriend = PUI.CreateButton(row2, "Add Friend", function() {
+	if (!addFriend.selid) {
+		return;
+	}
 	
-
-	NewNotification(addFriend.selid, UTL.userInfo().username + " added you!", "USER");
-
+	API.AddFriend(addFriend.selid, function() {
+			
+		API.NewNotification(addFriend.selid, UTL.userInfo().username + " added you!", "USER");
+		alert("You have added " + friendName.value);
+		addFriend.selid = null;
+		friendName.value = "";
+		addFriend.label.text = "Add Friend";
+	});
 });
 
 
@@ -34,6 +42,7 @@ friendName.addEventListener("change", function() {
 	
 	API.SearchUser(friendName.value, function (users, query) {
 		if (query != friendName.value) {
+			addFriend.selid = null;
 			return;
 		}
 		

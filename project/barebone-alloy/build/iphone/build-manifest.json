@@ -1,9 +1,8 @@
 {
-	"target": "device",
-	"deployType": "test",
+	"target": "simulator",
+	"deployType": "development",
 	"iosSdkVersion": "8.3",
 	"deviceFamily": "universal",
-	"developerName": "Hayk Hayotsyan (B22BD97GU5)",
 	"iosSdkPath": "/Users/Hayk/Library/Application Support/Titanium/mobilesdk/osx/3.4.0.GA/iphone",
 	"tiCoreHash": "77157e1ffaec640cf559356a147b6a4c",
 	"modulesHash": "50c01bdcff6be01e8c8e5048bac9d0a7",
@@ -18,8 +17,8 @@
 	"description": "Photopon",
 	"copyright": "2014 by Photopon, Inc.",
 	"guid": "e4378db0-210b-4302-9dd5-16a5907f1b84",
-	"skipJSMinification": false,
+	"skipJSMinification": true,
 	"forceCopy": false,
 	"forceCopyAll": false,
-	"encryptJS": true
+	"encryptJS": false
 }

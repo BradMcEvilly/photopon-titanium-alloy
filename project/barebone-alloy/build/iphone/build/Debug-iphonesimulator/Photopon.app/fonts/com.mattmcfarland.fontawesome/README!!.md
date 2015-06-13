@@ -1,0 +1,1 @@
+/Users/Hayk/photopon/repo/project/barebone-alloy/Resources/iphone/fonts/com.mattmcfarland.fontawesome/README!!.md

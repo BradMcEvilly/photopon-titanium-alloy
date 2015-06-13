@@ -352,11 +352,28 @@ exports.AddFriend = function(id, callback, errorCallback) {
 			}
 			return;	
 		}
-		
+		Alloy.Globals.CachedFriends = null;
 		callback();
 	});
 };
 
+
+exports.ApproveFriend = function(id, callback, errorCallback) {
+	Cloud.Friends.approve({
+		user_ids: id	
+	}, function(e) {
+		if (!e.success) {
+			if (errorCallback) {
+				errorCallback({
+					message: e.error && e.message
+				});
+			}
+			return;	
+		}
+		Alloy.Globals.CachedFriends = null;
+		callback();
+	});
+};
 
 exports.SearchUser = function(query, callback, errorCallback) {
 	Cloud.Users.search({
@@ -488,7 +505,7 @@ exports.ChangePassword = function(newpassword, callback) {
 exports.NewNotification = function(to, message, type) {
 	Cloud.Chats.create({
 	    to_ids: to,
-	    message: msg,
+	    message: message,
 	    custom_fields: {
 	    	type: type
 	    }

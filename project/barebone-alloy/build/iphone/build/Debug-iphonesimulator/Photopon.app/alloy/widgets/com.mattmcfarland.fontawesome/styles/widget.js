@@ -1,0 +1,1 @@
+/Users/Hayk/photopon/repo/project/barebone-alloy/Resources/iphone/alloy/widgets/com.mattmcfarland.fontawesome/styles/widget.js

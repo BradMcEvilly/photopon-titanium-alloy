@@ -71,8 +71,7 @@ function Controller() {
                 return;
             }
             for (var i = 0; i < e.chats.length; i++) {
-                var chat = e.chats[i];
-                AddNewMessage(chat.from, chat.message);
+                e.chats[i];
             }
         });
     });

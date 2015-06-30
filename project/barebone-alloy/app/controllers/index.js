@@ -5,6 +5,14 @@ var that = this;
 Titanium.App.addEventListener("DID_LOGIN", function() {
 		
 	var FlyoutMenuItmes = [{
+		title : 'Test',
+		controller : 'PhotoponTest',
+		color : Alloy.Globals.ThemeColors.black,
+		icon : '/images/ic_give.png',
+		iconAndroid : '/images/ic_give.png',
+		rowBackgroundColor : Alloy.Globals.ThemeColors.yellow,
+		isHeader: true
+	}, {
 		title : 'Photopon',
 		controller : 'Home',
 		color : Alloy.Globals.ThemeColors.black,
@@ -51,7 +59,6 @@ Titanium.App.addEventListener("DID_LOGIN", function() {
 	
 	
 	if (UTL.userInfo().admin) {
-		console.log("I am here somehow");
 		FlyoutMenuItmes.push({
 			title : 'Merchant Requests',
 			controller : 'MerchantRequests',

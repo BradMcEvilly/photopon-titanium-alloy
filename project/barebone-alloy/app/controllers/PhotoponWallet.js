@@ -23,7 +23,10 @@ $.winPhotoponWallet.addEventListener("open", function(e) {
 			API.GetCoupons(coupons, function(couponItems) {
 					
 				for (var i = 0; i < ary.length; ++i) {
-					var v = Alloy.createController('WalletItemRow', couponItems[i]).getView();			
+					var v = Alloy.createController('WalletItemRow', {
+						coupon: couponItems[i],
+						photopon: ary[i]
+					}).getView();			
 					rows.push(v);
 				}
 				

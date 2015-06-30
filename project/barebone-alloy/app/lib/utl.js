@@ -65,7 +65,7 @@ exports.UploadPhoto = function(callback) {
 			} else {
 				setTimeout(function() {
 					WaitToProcess(photoid, cb);
-				}, 300);
+				}, 500);
 			}
 		});
 	};

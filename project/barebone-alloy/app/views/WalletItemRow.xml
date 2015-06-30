@@ -10,10 +10,6 @@
 			<Label id="lblName" />
 		</View>
 		
-		<View id="btnSaveItem" visible="true">
-			<Label id="lblSaveItem" />
-	
-		</View>
 		
 	</TableViewRow>
 </Alloy>

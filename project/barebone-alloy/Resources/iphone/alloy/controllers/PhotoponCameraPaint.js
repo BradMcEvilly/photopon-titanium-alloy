@@ -142,13 +142,12 @@ function Controller() {
                 API.UploadPhoto(args.image, function(cameraPhoto) {
                     API.UploadPhoto(paintView.toImage(), function(overlayPhoto) {
                         API.NewPhotopon(args.selectedCoupon, cameraPhoto.id, overlayPhoto.id, messageText.value, function(p) {
-                            var numSent = 0;
                             for (var i = 0; i < selectedUsers.length; ++i) {
-                                API.NewWalletItem(p.id, selectedUsers[i].id, function() {
-                                    numSent += 1;
-                                    numSent == selectedUsers.length && alert("Congratultaions! Photopon was sent.");
+                                API.NewNotification(selectedUsers[i].id, "New Photopon from " + UTL.userInfo().username, {
+                                    type: "PHOTOPON",
+                                    photoponid: p.id
                                 });
-                                NewNotification(selectedUsers[i].id, "New Photopon from " + UTL.userInfo().username, "PHOTOPON");
+                                alert("Congratultaions! Photopon was sent.");
                             }
                         });
                     });

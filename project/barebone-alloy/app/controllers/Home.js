@@ -42,6 +42,13 @@ $.winHome.addEventListener('open', function(e) {
 	    ]
 	});
 	
+	Alloy.Globals.ScrollableView = scrollableView;
+	scrollableView.notificationPage = 0;
+	scrollableView.friendsPage = 1;
+	scrollableView.walletPage = 2;
+	scrollableView.couponsPage = 3;
+	
+	
 	scrollableView.setDisableBounce(true);
 	scrollableView.addEventListener('scroll', function (e) {
 	    currentPage = e.currentPage;

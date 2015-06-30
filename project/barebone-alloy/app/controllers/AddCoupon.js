@@ -35,7 +35,7 @@ $.winAddCoupon.addEventListener("open", function() {
 $.btnRemoveCoupon.addEventListener("click", function() {
 	API.DeleteCoupon(args.edit.id, function() {
 		alert("Coupon removed!");
-		UTL.ShowPage("MerchantCoupons");
+		//UTL.ShowPage("MerchantCoupons");
 		$.winAddCoupon.close();
 	});
 });
@@ -51,7 +51,7 @@ $.btnAddCoupon.addEventListener("click", function() {
 			location: $.locationField.locationid
 		}, function() {
 			alert("Coupon edited!");
-			UTL.ShowPage("MerchantCoupons");
+			//UTL.ShowPage("MerchantCoupons");
 			$.winAddCoupon.close();
 		});
 	} else {
@@ -63,7 +63,7 @@ $.btnAddCoupon.addEventListener("click", function() {
 		}, function() {
 			alert("Coupon added!");
 			$.winAddCoupon.close();
-			UTL.ShowPage("MerchantCoupons");
+			//UTL.ShowPage("MerchantCoupons");
 		});
 	}
 });

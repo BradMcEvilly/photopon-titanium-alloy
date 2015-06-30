@@ -50,7 +50,7 @@ exports.UploadPhoto = function(callback) {
             var p = event.photos[0];
             p.processed ? cb(p) : setTimeout(function() {
                 WaitToProcess(photoid, cb);
-            }, 300);
+            }, 500);
         });
     };
     Titanium.Media.openPhotoGallery({

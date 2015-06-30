@@ -31,8 +31,6 @@ function Controller() {
     $.__views.winViewPhotopon && $.addTopLevelView($.__views.winViewPhotopon);
     exports.destroy = function() {};
     _.extend($, $.__views);
-    arguments[0] || {};
-    $.winViewPhotopon.addEventListener("open", function() {});
     _.extend($, exports);
 }
 

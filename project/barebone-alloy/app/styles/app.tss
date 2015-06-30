@@ -41,6 +41,7 @@
 	borderRadius:Alloy.Globals.ThemeStyles.textfield.borderRadius
 },
 
+
 ".row-noselect": {
 	height: 'auto',
 	selectionStyle : 'none'

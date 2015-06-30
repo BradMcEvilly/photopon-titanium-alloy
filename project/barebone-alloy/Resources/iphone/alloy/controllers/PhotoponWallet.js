@@ -68,7 +68,10 @@ function Controller() {
                 for (var i = 0; i < ary.length; ++i) coupons.push(ary[i].coupon_id);
                 API.GetCoupons(coupons, function(couponItems) {
                     for (var i = 0; i < ary.length; ++i) {
-                        var v = Alloy.createController("WalletItemRow", couponItems[i]).getView();
+                        var v = Alloy.createController("WalletItemRow", {
+                            coupon: couponItems[i],
+                            photopon: ary[i]
+                        }).getView();
                         rows.push(v);
                     }
                     if (rows.length > 0) $.photoponWalletTable.setData(rows); else {

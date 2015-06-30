@@ -109,7 +109,10 @@ exports.NewLocation = function(info, callback, errorCallback) {
 
 exports.GetMerchantLocations = function(callback) {
     Cloud.Places.query({
-        limit: 100
+        limit: 100,
+        where: {
+            user_id: UTL.userInfo().uid
+        }
     }, function(e) {
         if (!e.success) {
             errorCallback && errorCallback({
@@ -232,7 +235,10 @@ exports.GetMerchantCoupons = function(callback) {
     Cloud.Objects.query({
         classname: "Coupon",
         page: 1,
-        per_page: 100
+        per_page: 100,
+        where: {
+            user_id: UTL.userInfo().uid
+        }
     }, function(e) {
         callback(e.Coupon);
     });
@@ -317,26 +323,6 @@ exports.SearchUser = function(query, callback, errorCallback) {
     });
 };
 
-exports.GetWalletItemsSim = function(callback) {
-    callback([ {
-        name: "McDonalds 3 for 2 Deal",
-        img: "http://lorempixel.com/output/food-q-c-480-480-5.jpg"
-    }, {
-        name: "1 FREE Topping",
-        img: "http://lorempixel.com/output/food-q-c-480-480-6.jpg"
-    } ]);
-};
-
-exports.GetSimpleFriends = function(url, callback) {
-    callback([ {
-        name: "Joe Black",
-        img: "http://lorempixel.com/output/people-q-c-480-480-5.jpg"
-    }, {
-        name: "Jimmy Joe",
-        img: "http://lorempixel.com/output/people-q-c-480-480-6.jpg"
-    } ]);
-};
-
 exports.UploadPhoto = function(photo, callback, errorCallback) {
     Cloud.Photos.create({
         photo: photo
@@ -385,13 +371,14 @@ exports.ChangePassword = function(newpassword, callback) {
     });
 };
 
-exports.NewNotification = function(to, message, type) {
+exports.NewNotification = function(to, message, props) {
+    "string" == typeof props && (props = {
+        type: props
+    });
     Cloud.Chats.create({
         to_ids: to,
         message: message,
-        custom_fields: {
-            type: type
-        }
+        custom_fields: props
     }, function(e) {
         if (!e.success) {
             alert("Failed to send message");
@@ -407,5 +394,16 @@ exports.NewMessage = function(recipients, type, message, callback) {
         subject: type
     }, function(e) {
         e.success ? callback && callback(e.message) : alert("Failed to create message");
+    });
+};
+
+exports.GetPhoto = function(photoid, cb) {
+    Cloud.Photos.show({
+        photo_id: photoid
+    }, function(event) {
+        var p = event.photos[0];
+        p.processed ? cb(p) : setTimeout(function() {
+            exports.GetPhoto(photoid, cb);
+        }, 500);
     });
 };

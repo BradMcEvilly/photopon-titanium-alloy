@@ -54,6 +54,14 @@ function Controller() {
     var that = this;
     Titanium.App.addEventListener("DID_LOGIN", function() {
         var FlyoutMenuItmes = [ {
+            title: "Test",
+            controller: "PhotoponTest",
+            color: Alloy.Globals.ThemeColors.black,
+            icon: "/images/ic_give.png",
+            iconAndroid: "/images/ic_give.png",
+            rowBackgroundColor: Alloy.Globals.ThemeColors.yellow,
+            isHeader: true
+        }, {
             title: "Photopon",
             controller: "Home",
             color: Alloy.Globals.ThemeColors.black,
@@ -94,17 +102,14 @@ function Controller() {
                 rowBackgroundColor: Alloy.Globals.generateRandomColor()
             });
         }
-        if (UTL.userInfo().admin) {
-            console.log("I am here somehow");
-            FlyoutMenuItmes.push({
-                title: "Merchant Requests",
-                controller: "MerchantRequests",
-                color: Alloy.Globals.ThemeColors.black,
-                icon: "/images/ic_wallet.png",
-                iconAndroid: "/images/ic_wallet.png",
-                rowBackgroundColor: Alloy.Globals.generateRandomColor()
-            });
-        }
+        UTL.userInfo().admin && FlyoutMenuItmes.push({
+            title: "Merchant Requests",
+            controller: "MerchantRequests",
+            color: Alloy.Globals.ThemeColors.black,
+            icon: "/images/ic_wallet.png",
+            iconAndroid: "/images/ic_wallet.png",
+            rowBackgroundColor: Alloy.Globals.generateRandomColor()
+        });
         var rows = [];
         _.each(FlyoutMenuItmes, function(item) {
             rows.push(Alloy.createController("FlyoutRow1", {

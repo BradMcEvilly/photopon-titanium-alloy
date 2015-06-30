@@ -33,10 +33,50 @@ function Controller() {
     _.extend($, $.__views);
     arguments[0] || {};
     var win = PUI.DecorateWindow($.winNotifications);
-    PUI.Awesomize(win);
+    var fa = PUI.Awesomize(win);
     var table = PUI.CreateTable(win);
-    table.top = 40;
+    table.top = 0;
     table.bottom = 0;
+    table.addEventListener("click", function(event) {
+        if ("PHOTOPON" == event.row.type) {
+            var photoponid = event.row.props.photoponid;
+            var dialog = Ti.UI.createAlertDialog({
+                buttonNames: [ "Sure!", "Nope" ],
+                message: "Do you want to save Photopon in your wallet?",
+                title: "Save"
+            });
+            dialog.addEventListener("click", function(e) {
+                console.log(e);
+                0 === e.index && API.NewWalletItem(photoponid, UTL.userInfo().uid, function() {
+                    alert("Photopon saved");
+                    Alloy.Globals.ScrollableView.scrollToView(Alloy.Globals.ScrollableView.walletPage);
+                });
+            });
+            dialog.show();
+        }
+        console.log(event.row.type, event.row.props);
+    });
+    var AddNewNotification = function(chat) {
+        var type = "CHAT";
+        chat.custom_fields && chat.custom_fields.type && (type = chat.custom_fields.type);
+        if (chat.from.id == UTL.userInfo().uid) return;
+        console.log(chat.from.username, chat.message, type);
+        var row = PUI.CreateRow(table);
+        row.height = 36;
+        row.type = type;
+        row.props = chat.custom_fields;
+        var icon = PUI.CreateLabel(row, "");
+        "USER" == type ? fa.add(icon, "fa-user-plus") : "CHAT" == type ? fa.add(icon, "fa-comments") : "PHOTOPON" == type && fa.add(icon, "fa-rocket");
+        icon.width = 20;
+        icon.height = 20;
+        icon.left = 5;
+        var label = PUI.CreateLabel(row, chat.from.username + ": " + chat.message);
+        label.width = Titanium.Platform.displayCaps.platformWidth - 10;
+        label.left = 20;
+        label.font.fontSize = 4;
+        label.color = "#000";
+        table.setData(table.data);
+    };
     var updateTimer = null;
     var lastUpdate = 0;
     var UpdateNotificationsMessages = function() {
@@ -55,9 +95,8 @@ function Controller() {
             for (var i = e.chats.length - 1; i >= 0; i--) {
                 var chat = e.chats[i];
                 lastUpdate = chat.updated_at;
-                console.log(chat.from.username, chat.message);
+                AddNewNotification(chat);
             }
-            console.log(e.chats);
         });
     };
     win.addEventListener("open", function() {

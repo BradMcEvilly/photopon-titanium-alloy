@@ -219,7 +219,6 @@ function Controller() {
     $.btnRemoveCoupon.addEventListener("click", function() {
         API.DeleteCoupon(args.edit.id, function() {
             alert("Coupon removed!");
-            UTL.ShowPage("MerchantCoupons");
             $.winAddCoupon.close();
         });
     });
@@ -231,7 +230,6 @@ function Controller() {
             location: $.locationField.locationid
         }, function() {
             alert("Coupon edited!");
-            UTL.ShowPage("MerchantCoupons");
             $.winAddCoupon.close();
         }) : API.NewCoupon({
             name: $.nameField.value,
@@ -241,7 +239,6 @@ function Controller() {
         }, function() {
             alert("Coupon added!");
             $.winAddCoupon.close();
-            UTL.ShowPage("MerchantCoupons");
         });
     });
     if (args.edit) {

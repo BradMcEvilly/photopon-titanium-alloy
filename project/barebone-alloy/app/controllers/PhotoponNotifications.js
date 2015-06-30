@@ -4,32 +4,80 @@ var win = PUI.DecorateWindow($.winNotifications);
 var fa = PUI.Awesomize(win);
 
 var table = PUI.CreateTable(win);
-table.top = 40;
+table.top = 0;
 table.bottom = 0;
+
+
+table.addEventListener("click", function(event) {
+	if (event.row.type == "PHOTOPON") {
+		var photoponid = event.row.props.photoponid; //TODO: remove this later
+		
+		 var dialog = Ti.UI.createAlertDialog({
+		    buttonNames: ['Sure!', 'Nope'],
+			message: 'Do you want to save Photopon in your wallet?',
+			title: 'Save'
+		});
+		
+		dialog.addEventListener('click', function(e){
+			console.log(e);
+			if (e.index === 0) {
+				API.NewWalletItem(photoponid, UTL.userInfo().uid, function() {
+					alert("Photopon saved");
+					Alloy.Globals.ScrollableView.scrollToView(Alloy.Globals.ScrollableView.walletPage);
+				});
+			}
+		});
+		dialog.show();
+	}
+ 	console.log(event.row.type, event.row.props);
+ });
 
 var groupMap = {};
 
 var AddNewNotification = function(chat) {
-	//console.log("***********************************");
-	//console.log(chat);
-	//console.log("***********************************");
-	/*
+	var type = "CHAT";
+	
+	if (chat.custom_fields && chat.custom_fields.type) {
+		type = chat.custom_fields.type;
+	}
+		
+	if (chat.from.id == UTL.userInfo().uid) {
+		return;
+	}
+	
+	console.log(chat.from.username, chat.message, type);
+	
+	
+	
+	
 	 var row = PUI.CreateRow(table);
-	 var label = PUI.CreateLabel(row, from.username + ": " + message);
-	 label.width = Titanium.Platform.displayCaps.platformWidth - 10;
-	 label.left = 5;
-
-	 if (from.id == UTL.userInfo().uid) {
-	 label.textAlign = Titanium.UI.TEXT_ALIGNMENT_LEFT;
-	 label.color = PUI.Colors.lightBlue;
-	 } else {
-	 label.textAlign = Titanium.UI.TEXT_ALIGNMENT_RIGHT;
-	 label.color = PUI.Colors.darkestPurple;
+	 row.height = 36;
+	 row.type = type;
+	 row.props = chat.custom_fields;
+	 
+	 var icon = PUI.CreateLabel(row, "");
+	 if (type == "USER") {
+	 	fa.add(icon,'fa-user-plus');
+	 } else if (type == "CHAT") {
+	 	fa.add(icon,'fa-comments');
+	 } else if (type == "PHOTOPON") {
+	 	fa.add(icon,'fa-rocket');
 	 }
-
-	 console.log("AddMessage", from.username, message);
+	 
+	 icon.width = 20;
+	 icon.height = 20;
+	 icon.left = 5;
+	 
+	 
+	 var label = PUI.CreateLabel(row, chat.from.username + ": " + chat.message);
+	 label.width = Titanium.Platform.displayCaps.platformWidth - 10;
+	 label.left = 20;
+	 label.font.fontSize = 4;
+	 label.color = "#000";
+	 
+	 
 	 table.setData(table.data);
-	 */
+	 
 };
 
 var updateTimer = null;
@@ -52,12 +100,8 @@ var UpdateNotificationsMessages = function() {
 		for (var i = e.chats.length - 1; i >= 0; i--) {
 			var chat = e.chats[i];
 			lastUpdate = chat.updated_at;
-
-			//AddNewNotification(chat);
-			console.log(chat.from.username, chat.message);
+			AddNewNotification(chat);
 		}
-		
-		console.log(e.chats);
 	});
 };
 

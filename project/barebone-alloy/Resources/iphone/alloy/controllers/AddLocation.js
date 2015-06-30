@@ -104,7 +104,10 @@ function Controller() {
             }
             if (1 == locInfo.results.length) {
                 var loc = locInfo.results[0];
-                loc.geometry && loc.geometry.location ? win.location = loc.geometry.location : alert("Can not resolve location");
+                if (loc.geometry && loc.geometry.location) {
+                    win.location = loc.geometry.location;
+                    addressField.value = loc.formatted_address;
+                } else alert("Can not resolve location");
                 return;
             }
             promptLocation(locInfo.results);

@@ -86,6 +86,20 @@
 			nil
 		]];
 		
+		[modules addObject:[NSDictionary
+			dictionaryWithObjectsAndKeys:@"paypal",
+			@"name",
+			@"ti.paypal",
+			@"moduleid",
+			@"1.9.0",
+			@"version",
+			@"806d55c1-4ff6-4b11-951a-115af5053252",
+			@"guid",
+			@"",
+			@"licensekey",
+			nil
+		]];
+		
 
 	return modules;
 }

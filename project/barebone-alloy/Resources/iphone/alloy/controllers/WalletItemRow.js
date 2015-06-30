@@ -51,41 +51,14 @@ function Controller() {
         id: "lblName"
     });
     $.__views.rightContainer.add($.__views.lblName);
-    $.__views.btnSaveItem = Ti.UI.createView({
-        right: Alloy.Globals.ThemeStyles.buttonPink.padding,
-        width: 90,
-        height: 50,
-        color: Alloy.Globals.ThemeStyles.buttonPink.color,
-        backgroundColor: Alloy.Globals.ThemeStyles.buttonPink.backgroundColor,
-        borderColor: Alloy.Globals.ThemeStyles.buttonPink.borderColor,
-        borderStyle: Alloy.Globals.ThemeStyles.buttonPink.borderStyle,
-        borderRadius: Alloy.Globals.ThemeStyles.buttonPink.borderRadius,
-        borderWidth: Alloy.Globals.ThemeStyles.buttonPink.borderWidth,
-        font: Alloy.Globals.ThemeStyles.buttonPink.font,
-        id: "btnSaveItem",
-        visible: "true"
-    });
-    $.__views.WalletItemRow.add($.__views.btnSaveItem);
-    $.__views.lblSaveItem = Ti.UI.createLabel({
-        text: "Save",
-        textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
-        verticalAlign: Ti.UI.TEXT_VERTICAL_ALIGNMENT_CENTER,
-        color: Alloy.Globals.ThemeStyles.button.color,
-        font: Alloy.Globals.ThemeStyles.button.font,
-        width: "auto",
-        height: "auto",
-        touchEnabled: false,
-        id: "lblSaveItem"
-    });
-    $.__views.btnSaveItem.add($.__views.lblSaveItem);
     exports.destroy = function() {};
     _.extend($, $.__views);
     var args = arguments[0] || {};
     require("apiHelper");
     $.imgThumbnail.image = "http://lorempixel.com/128/128/people/";
-    $.lblName.text = args.name;
-    $.btnSaveItem.addEventListener("touchend", function() {
-        console.log("Save photopon");
+    $.lblName.text = args.coupon.name;
+    $.WalletItemRow.addEventListener("touchend", function() {
+        UTL.ShowPage("PhotoponShow", args);
     });
     _.extend($, exports);
 }
